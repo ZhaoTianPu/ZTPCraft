@@ -1,5 +1,5 @@
 import numpy as np
-
+ # one-column figures
 fig_width_pt = 246.0
 inches_per_pt = 1.0 / 72.27
 golden_mean = (np.sqrt(5) - 1.0) / 2.0
