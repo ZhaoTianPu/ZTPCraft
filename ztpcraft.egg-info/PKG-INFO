@@ -1,0 +1,9 @@
+Metadata-Version: 2.1
+Name: ztpcraft
+Version: 0.1
+Summary: Tianpu Zhao's personal toolbox
+Home-page: https://github.com/pacosynthesis/ztpcrafts
+Author: Tianpu Zhao
+Author-email: pacosynthesis@gmail.com
+License: MIT
+Requires-Python: >=3.10

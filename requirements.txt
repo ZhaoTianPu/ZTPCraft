@@ -1,0 +1,9 @@
+matplotlib
+numpy
+scipy
+tqdm
+pandas
+dill
+pathos
+scqubits
+IPython

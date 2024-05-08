@@ -1,0 +1,2 @@
+# THIS FILE IS GENERATED FROM chencrafts SETUP.PY
+version = '{VERSION}'
