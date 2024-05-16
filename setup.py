@@ -7,6 +7,7 @@ PACKAGES = [
     "ztpcraft.toolbox",
     "ztpcraft.aedt_interface",
     "ztpcraft.util",
+    "ztpcraft.projects",
 ]
 
 CURRENT_DIR = os.path.dirname(os.path.abspath(__file__))

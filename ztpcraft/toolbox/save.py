@@ -12,6 +12,7 @@ from typing import Any, Dict, Literal
 def datetime_dir(
     save_dir="./",
     dir_suffix=None,
+    save_time=True,
 ):
     """
     Initialize a directory with the current datetime.
@@ -35,22 +36,27 @@ def datetime_dir(
 
     current_time = time.localtime()
     current_ymd_dir = save_dir + time.strftime("/%Y%m%d/", current_time)
-    current_time_dir = current_ymd_dir + time.strftime("%H_%M", current_time)
+    current_datetime_dir = current_ymd_dir + time.strftime("%H_%M", current_time)
 
-    if dir_suffix != "" and dir_suffix is not None:
-        current_date_dir = current_time_dir + "_" + dir_suffix + "/"
-    else:
-        current_date_dir = current_time_dir + "/"
+    if save_time:
+        if dir_suffix != "" and dir_suffix is not None:
+            current_datetime_dir = current_datetime_dir + "_" + dir_suffix + "/"
+        else:
+            current_datetime_dir = current_datetime_dir + "/"
 
     if not os.path.exists(save_dir):
         os.mkdir(save_dir)
     if not os.path.exists(current_ymd_dir):
         os.mkdir(current_ymd_dir)
-    if not os.path.exists(current_date_dir):
-        os.mkdir(current_date_dir)
+    if save_time and not os.path.exists(current_datetime_dir):
+        os.mkdir(current_datetime_dir)
 
-    print(f"Current datetime directory: {current_date_dir}")
-    return current_date_dir
+    if save_time:
+        print(f"Current datetime directory: {current_datetime_dir}")
+        return current_datetime_dir
+    else:
+        print(f"Current date directory: {current_ymd_dir}")
+        return current_ymd_dir
 
 
 def dill_dump(obj: Any, filename: str) -> None:
