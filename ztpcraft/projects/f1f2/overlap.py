@@ -47,6 +47,7 @@ def g_from_overlap_lossless(
 def g_from_overlap_lossy(
     f_p: ArrayLike,
     overlap_int: ArrayLike,
+    overlap_phase: ArrayLike,
     f_q: ArrayLike,
     gamma_q: ArrayLike,
 ) -> ArrayLike:
@@ -89,6 +90,7 @@ def g_from_overlap_lossy(
                     / (f_q[mode_idx] ** 2 - 1j * f_p[drive_idx] * gamma_q[mode_idx])
                 )
                 * overlap_int[drive_idx, mode_idx]
+                * np.exp(1j * overlap_phase[drive_idx, mode_idx])
                 / h
             )
     return g

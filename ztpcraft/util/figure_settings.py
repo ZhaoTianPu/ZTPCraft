@@ -1,9 +1,6 @@
 import numpy as np
 from typing import Any, Dict, Literal
 
-# define a literal type that is made of strings of keys of MPL_PRESET
-MPL_PRESET_KEY_TYPE = Literal["PhysRevOneCol", "PhysRevTwoCol"]
-
 # preset
 MPL_PRESET: Dict[str, Dict[str, Any]] = {}
 
@@ -25,6 +22,18 @@ MPL_PRESET["PhysRevOneCol"] = {
     "ytick.labelsize": 10,
     "mathtext.fontset": "stix",
     "font.family": "times",
+    "figure.dpi": 300,
+}
+MPL_PRESET["PhysRevOneColSans"] = {
+    "lines.linewidth": 1,
+    "font.size": 10,
+    "figure.figsize": [PHYS_REV_ONE_COL_FIG_WIDTH, PHYS_REV_ONE_COL_FIG_HEIGHT],
+    "legend.fontsize": 10,
+    "axes.labelsize": 10,
+    "xtick.labelsize": 10,
+    "ytick.labelsize": 10,
+    "mathtext.fontset": "dejavusans",
+    "font.family": "helvetica",
     "figure.dpi": 300,
 }
 PHYS_REV_TWO_COL_FIG_WIDTH = PHYS_REV_TWO_COL_WIDTH_PT * PHYS_REV_INCHES_PER_PT
