@@ -7,3 +7,12 @@ Author: Tianpu Zhao
 Author-email: pacosynthesis@gmail.com
 License: MIT
 Requires-Python: >=3.10
+Requires-Dist: matplotlib
+Requires-Dist: numpy
+Requires-Dist: scipy
+Requires-Dist: tqdm
+Requires-Dist: pandas
+Requires-Dist: dill
+Requires-Dist: pathos
+Requires-Dist: scqubits
+Requires-Dist: IPython
