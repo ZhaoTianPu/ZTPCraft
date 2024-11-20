@@ -44,7 +44,7 @@ def g_from_overlap_lossless(
     return g
 
 
-def g_from_overlap_lossy(
+def g_from_overlap_lossy_Kevin(
     f_p: ArrayLike,
     overlap_int: ArrayLike,
     overlap_phase: ArrayLike,
@@ -88,6 +88,58 @@ def g_from_overlap_lossy(
                         + 1j * f_p[drive_idx] * gamma_q[mode_idx]
                     )
                     / (f_q[mode_idx] ** 2 - 1j * f_p[drive_idx] * gamma_q[mode_idx])
+                )
+                * overlap_int[drive_idx, mode_idx]
+                * np.exp(1j * overlap_phase[drive_idx, mode_idx])
+                / h
+            )
+    return g
+
+
+def g_from_overlap_lossy_Yao(
+    f_p: ArrayLike,
+    overlap_int: ArrayLike,
+    overlap_phase: ArrayLike,
+    f_q: ArrayLike,
+    gamma_q: ArrayLike,
+) -> ArrayLike:
+    """
+    Calculate the charge drive strength (in unit of Hz) from the electric field overlap,
+    neglecting losses (assume very small loss). Notice that this function assumes that
+    the overlap integral already uses normalized displacement field (i.e. the factor
+    sqrt(2*pi*hbar*freq_q/mode_energy) is already included in the overlap integral).
+    Also notice that the expression does not have a factor of 2 in the denominator, which
+    is "compatible" with HFSS calculation results but is differ from the paper expression.
+
+    Parameters
+    ----------
+    f_p : ArrayLike, shape (n_drive,)
+        The frequency of the drive in Hz.
+    overlap_int : ArrayLike, shape (n_drive, n_mode)
+        The electric field overlap integral (normalized).
+    f_q : float, shape (n_mode,)
+        The frequency of the qubit in Hz.
+
+    Returns
+    -------
+    g : ArrayLike, shape (n_drive, n_mode)
+        The charge drive strength in Hz, for each drive and each mode.
+    """
+    f_p = np.array(f_p)
+    overlap_int = np.array(overlap_int)
+    f_q = np.array(f_q)
+    gamma_q = np.array(gamma_q)
+    g = np.zeros_like(overlap_int) * 1j
+    for drive_idx in range(np.size(f_p)):
+        for mode_idx in range(np.size(f_q)):
+            g[drive_idx, mode_idx] = (
+                (
+                    (
+                        f_p[drive_idx] ** 2
+                        - f_q[mode_idx] ** 2
+                        + 1j * f_p[drive_idx] * gamma_q[mode_idx]
+                    )
+                    / (f_q[mode_idx] ** 2)
                 )
                 * overlap_int[drive_idx, mode_idx]
                 * np.exp(1j * overlap_phase[drive_idx, mode_idx])

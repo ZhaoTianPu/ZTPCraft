@@ -36,7 +36,7 @@ def datetime_dir(
 
     current_time = time.localtime()
     current_ymd_dir = save_dir + time.strftime("/%Y%m%d/", current_time)
-    current_datetime_dir = current_ymd_dir + time.strftime("%H_%M", current_time)
+    current_datetime_dir = current_ymd_dir + time.strftime("%H_%M_%S", current_time)
 
     if save_time:
         if dir_suffix != "" and dir_suffix is not None:

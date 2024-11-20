@@ -92,3 +92,6 @@ COLOR_PALETTE["RdBu_11"] = [
     "#2166ac",
     "#053061",
 ]
+# from chencrafts
+COLOR_PALETTE["PGL"] = (["#0c2e6d", "#b63566", "#91adc2", "#e9c2c3", "#AEB358"],)
+
