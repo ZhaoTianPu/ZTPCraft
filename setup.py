@@ -5,7 +5,6 @@ VERSION = 0.1
 PACKAGES = [
     "ztpcraft",
     "ztpcraft.toolbox",
-    "ztpcraft.aedt_interface",
     "ztpcraft.util",
     "ztpcraft.projects",
 ]
