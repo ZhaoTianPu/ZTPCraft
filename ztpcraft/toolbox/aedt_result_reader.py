@@ -1,5 +1,6 @@
 import re
 import numpy as np
+from typing import Dict
 
 
 def read_hfss_eigenmode_file(filename):
@@ -35,3 +36,27 @@ def read_hfss_eigenmode_file(filename):
                 frequencies.append(float(real_freq))
                 Q_factors.append(float(Q))
     return np.array(frequencies), np.array(Q_factors)
+
+
+def weighted_sum(
+    indexed_results: Dict[int, float], idx_weight_dict: Dict[int, float]
+) -> float:
+    """
+    A function to calculate the weighted sum of a dictionary of indexed results.
+
+    Parameters
+    ----------
+    indexed_results : Dict[int, float]
+        A dictionary of indexed results.
+    idx_weight_dict : Dict[int, float]
+        A dictionary of index and corresponding weight.
+
+    Returns
+    -------
+    float
+        The weighted sum of the indexed results.
+    """
+    weighted_total = 0
+    for idx, weight in idx_weight_dict.items():
+        weighted_total += indexed_results[idx] * weight
+    return weighted_total
