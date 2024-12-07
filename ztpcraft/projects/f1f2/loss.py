@@ -1,7 +1,7 @@
 import numpy as np
 from scipy.constants import hbar, Boltzmann, h
 from numpy.typing import ArrayLike
-from typing import Callable
+from typing import Callable, List
 
 
 def voltage_max_yao(power: float, resistance: float) -> float:
@@ -20,10 +20,8 @@ def voltage_max_yao(power: float, resistance: float) -> float:
 
 def decay_rate(
     f_q: float,
-    g: ArrayLike,
-    matelem: ArrayLike,
-    resistance: float,
-    source_power: float,
+    chi: ArrayLike | List,
+    matelem: ArrayLike | List,
     S_V: Callable,
 ) -> float:
     """
@@ -33,14 +31,13 @@ def decay_rate(
     ----------
     f_q : float
         The qubit frequency in Hz.
-    g : ArrayLike
-        The coupling strength between qubit and cavity.
+    chi : ArrayLike
+        The susceptibility of the qubit drive parameter g wrt the input voltage. Unit of g is defined such that
+        g * matelem has dimension of energy.
     matelem : ArrayLike
         The matrix element of the qubit operator. The unit of g*matelem is energy.
     resistance : float
         The resistance of the port in Ohm.
-    source_power : float
-        The power in W, used in the simulation.
     S_V : Callable
         The voltage noise spectral density in V^2/Hz, should be a function of frequency in Hz, i.e. S_V(f).
 
@@ -48,10 +45,15 @@ def decay_rate(
     -------
     The decay rate in Hz
     """
-    g = np.array(g)
     matelem = np.array(matelem)
-    chi = g / voltage_max_yao(source_power, resistance)
-    gamma = (1 / hbar**2) * np.abs(np.sum(chi * matelem)) ** 2 * S_V(f_q)
+    chi = np.array(chi)
+    chi_matelem_total = 0
+    for term_idx in range(len(chi)):
+        if isinstance(chi[term_idx], Callable):
+            chi_matelem_total += chi[term_idx](np.abs(f_q)) * matelem[term_idx]
+        else:
+            chi_matelem_total += chi[term_idx] * matelem[term_idx]
+    gamma = (1 / hbar**2) * np.abs(chi_matelem_total) ** 2 * S_V(f_q)
     return gamma
 
 
