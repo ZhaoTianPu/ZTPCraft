@@ -1,12 +1,14 @@
-Metadata-Version: 2.1
+Metadata-Version: 2.4
 Name: ztpcraft
-Version: 0.1
+Version: 0.2
 Summary: Tianpu Zhao's personal toolbox
-Home-page: https://github.com/pacosynthesis/ztpcrafts
-Author: Tianpu Zhao
-Author-email: pacosynthesis@gmail.com
-License: MIT
+Author-email: Tianpu Zhao <pacosynthesis@gmail.com>
+License-Expression: BSD-3-Clause
+Keywords: quantum,toolbox,physics,research
+Classifier: Programming Language :: Python :: 3
+Classifier: Operating System :: OS Independent
 Requires-Python: >=3.10
+Description-Content-Type: text/markdown
 Requires-Dist: matplotlib
 Requires-Dist: numpy
 Requires-Dist: scipy
@@ -16,3 +18,27 @@ Requires-Dist: dill
 Requires-Dist: pathos
 Requires-Dist: scqubits
 Requires-Dist: IPython
+Provides-Extra: dev
+Requires-Dist: black; extra == "dev"
+Requires-Dist: isort; extra == "dev"
+Requires-Dist: mypy; extra == "dev"
+Requires-Dist: flake8; extra == "dev"
+Requires-Dist: pytest; extra == "dev"
+Requires-Dist: pyright; extra == "dev"
+
+# ztpcraft
+
+Tianpu Zhao's personal physics/quantum research toolbox.
+
+Install editable for development:
+
+```bash
+pip install -e .[dev]
+```
+
+The package provides:
+- Numerical utilities (`ztpcraft.toolbox`)
+- Bosonic circuit helpers (`ztpcraft.bosonic`)
+- Research project modules (`ztpcraft.projects`)
+
+License: BSD-3-Clause 

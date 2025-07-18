@@ -137,9 +137,10 @@ def g_from_overlap_lossy_Yao(
                     (
                         f_p[drive_idx] ** 2
                         - f_q[mode_idx] ** 2
-                        + 1j * f_p[drive_idx] * gamma_q[mode_idx]
+                        - gamma_q[mode_idx] ** 2
+                        - 1j * f_p[drive_idx] * gamma_q[mode_idx]
                     )
-                    / (f_q[mode_idx] ** 2)
+                    / (f_q[mode_idx] ** 2 + gamma_q[mode_idx] ** 2)
                 )
                 * overlap_int[drive_idx, mode_idx]
                 * np.exp(1j * overlap_phase[drive_idx, mode_idx])
@@ -157,7 +158,7 @@ def beta(
     eigenmode_freq: ArrayLike, shape (n_eigenmode,)
         The frequency of the eigenmode in Hz.
     E_elec: ArrayLike, shape (n_eigenmode,)
-        The electric field energy in J.
+        The averaged electric field energy in J.
     junction_flux: ArrayLike, shape (n_eigenmode, n_junction)
         The flux in the junction in unit of Phi_0.
 
@@ -174,7 +175,10 @@ def beta(
             beta[eigenmode_idx, junction_idx] = (
                 np.sqrt(h * eigenmode_freq[eigenmode_idx] / (2 * E_elec[eigenmode_idx]))
                 * junction_flux[eigenmode_idx, junction_idx]
-                * 2
+                #* 2  # TODO: Yao does not have this factor of 2, check who's correct; when I use this formula to compute, together
+                # with averaged electric field energy, I need to divide by sqrt(2) to get the correct result
                 * np.pi
             )
     return beta
+
+# str(repr(pi*sqrt(PC*np.array(fmodes)/(2*np.array(Eelecs)))

@@ -1,5 +1,8 @@
 import numpy as np
-from typing import Any, Dict, Literal
+from typing import Any, Dict, Literal, List, Tuple
+import matplotlib.pyplot as plt
+import matplotlib.axes as axes
+import matplotlib.figure as figure
 
 # preset
 MPL_PRESET: Dict[str, Dict[str, Any]] = {}
@@ -93,5 +96,18 @@ COLOR_PALETTE["RdBu_11"] = [
     "#053061",
 ]
 # from chencrafts
-COLOR_PALETTE["PGL"] = (["#0c2e6d", "#b63566", "#91adc2", "#e9c2c3", "#AEB358"],)
-
+COLOR_PALETTE["PGL"] = [
+    "#0c2e6d",
+    "#b63566",
+    "#91adc2",
+    "#e9c2c3",
+    "#AEB358",
+]
+# IBM colorblind safe
+COLOR_PALETTE["IBM"] = [
+    "#648fff",
+    "#785ef0",
+    "#dc267f",
+    "#fe6100",
+    "#ffb000",
+]

@@ -1,0 +1,70 @@
+# Build configuration for the ztpcraft package
+
+[build-system]
+requires = [
+    "setuptools>=61",
+    "wheel",
+]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ztpcraft"
+version = "0.2"
+description = "Tianpu Zhao's personal toolbox"
+readme = "README.md"
+requires-python = ">=3.10"
+authors = [
+    { name = "Tianpu Zhao", email = "pacosynthesis@gmail.com" },
+]
+license = "BSD-3-Clause"
+keywords = ["quantum", "toolbox", "physics", "research"]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Operating System :: OS Independent",
+]
+
+# Core runtime dependencies (mirrors requirements.txt)
+dependencies = [
+    "matplotlib",
+    "numpy",
+    "scipy",
+    "tqdm",
+    "pandas",
+    "dill",
+    "pathos",
+    "scqubits",
+    "IPython",
+]
+
+[project.optional-dependencies]
+# Developer / contributor extras
+dev = [
+    "black",
+    "isort",
+    "mypy",
+    "flake8",
+    "pytest",
+    "pyright",
+]
+
+[tool.black]
+line-length = 88
+target-version = ["py310"]
+
+[tool.isort]
+profile = "black"
+
+[tool.mypy]
+python_version = "3.10"
+ignore_missing_imports = true
+
+[tool.pyright]
+pythonVersion = "3.10"
+typeCheckingMode = "strict"
+
+[tool.flake8]
+max-line-length = 88
+extend-ignore = ["E203", "W503"] 
+
+[tool.setuptools.packages.find]
+exclude = ["tests*", "docs*", "examples*"] 
