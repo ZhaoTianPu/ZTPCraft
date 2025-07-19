@@ -2,18 +2,15 @@ import time
 import os
 
 import dill
-import h5py
-import numpy as np
-import pandas as pd
 
-from typing import Any, Dict, Literal
+from typing import Any
 
 
 def datetime_dir(
-    save_dir="./",
-    dir_suffix=None,
-    save_time=True,
-):
+    save_dir: str = "./",
+    dir_suffix: str | None = None,
+    save_time: bool = True,
+) -> str:
     """
     Initialize a directory with the current datetime.
 
