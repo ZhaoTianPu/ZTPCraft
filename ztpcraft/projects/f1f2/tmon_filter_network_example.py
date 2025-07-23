@@ -871,7 +871,7 @@ class DriveInducedDecohSim:
                 }
             )
             if solution_config.include_ramp_pulse:
-                simulation_outcome_dict_list.append(
+                simulation_outcome_dict_list[freq_idx].update(
                     {
                         "tlist_ramp": tlist_ramp,
                         "ramp_up_a_expect": ramp_up_output.expects[0],
