@@ -14,3 +14,15 @@ ztpcraft.egg-info/PKG-INFO
 ztpcraft.egg-info/SOURCES.txt
 
 ztpcraft.egg-info/PKG-INFO
+ztpcraft/bosonic/__pycache__/__init__.cpython-312.pyc
+ztpcraft/bosonic/__pycache__/input_output.cpython-312.pyc
+ztpcraft/bosonic/__pycache__/oscillator_integrals.cpython-312.pyc
+ztpcraft/projects/__pycache__/__init__.cpython-312.pyc
+ztpcraft/projects/f1f2/__pycache__/__init__.cpython-312.pyc
+ztpcraft/projects/f1f2/__pycache__/irg_squid.cpython-312.pyc
+ztpcraft/projects/f1f2/__pycache__/loss.cpython-312.pyc
+ztpcraft/projects/f1f2/__pycache__/overlap.cpython-312.pyc
+ztpcraft/projects/f1f2/__pycache__/tmon_filter_network_example.cpython-312.pyc
+ztpcraft/toolbox/__pycache__/mpl_helpers.cpython-312.pyc
+ztpcraft/utils/__pycache__/__init__.cpython-312.pyc
+ztpcraft/utils/__pycache__/figure_settings.cpython-312.pyc
