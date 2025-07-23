@@ -739,10 +739,9 @@ class DriveInducedDecohSim:
             t_ramp_rounded = np.round(solution_config.t_ramp_nominal_ns * f_GHz) / f_GHz
             t_flat_rounded = np.round(solution_config.t_flat_nominal_ns * f_GHz) / f_GHz
             t_period = 1 / f_GHz
-            t_sample_step_ramp = t_ramp_rounded / solution_config.n_snapshots_per_period
-            t_sample_step_flat = t_flat_rounded / solution_config.n_snapshots_per_period
-            n_snapshots_ramp = int(t_ramp_rounded / t_sample_step_ramp)
-            n_snapshots_flat = int(t_flat_rounded / t_sample_step_flat)
+            t_sample_step = t_period / solution_config.n_snapshots_per_period
+            n_snapshots_ramp = int(t_ramp_rounded / t_sample_step)
+            n_snapshots_flat = int(t_flat_rounded / t_sample_step)
 
             if solution_config.include_ramp_pulse:
                 print("Evolving for ramping up")
