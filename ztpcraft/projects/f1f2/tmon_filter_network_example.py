@@ -16,7 +16,7 @@ from ztpcraft.bosonic.input_output import (
     power_dissipator_coeff_frequency_to_drive_strength,
 )
 
-from pydantic import BaseModel, model_validator, field_validator
+from pydantic import BaseModel, model_validator, field_validator, Field
 
 from typing import Callable, Any, Dict, Tuple, Literal, List, Union, Optional
 from numpy.typing import NDArray
@@ -208,9 +208,10 @@ class OutputCfg(BaseModel):
 
 class SimulationCfg(BaseModel):
     physical_config: PhysicalCfg
-    solution_config: SolutionCfg = SolutionCfg()
-    solver_config: SolverCfg = SolverCfg()
-    output_config: OutputCfg = OutputCfg()
+    # Use default_factory to avoid instantiating these objects (and their side-effects)
+    solution_config: SolutionCfg = Field(default_factory=SolutionCfg)
+    solver_config: SolverCfg = Field(default_factory=SolverCfg)
+    output_config: OutputCfg = Field(default_factory=OutputCfg)
 
 
 ###############################################################################
