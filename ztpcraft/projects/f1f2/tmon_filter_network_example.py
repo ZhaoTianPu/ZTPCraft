@@ -761,8 +761,9 @@ class DriveInducedDecohSim:
                 for mode in ["a", "b", "q"]:
                     if self.drive_strength[mode][freq_idx] != 0:
                         H_d_ramp_up += dq.modulated(
-                            lambda t: pulse_ramp_up(
-                                t, args={"t_ramp": t_ramp_rounded}, mode=mode
+                            # capture *mode* to avoid late-binding pitfalls in Python loops
+                            lambda t, m=mode: pulse_ramp_up(
+                                t, args={"t_ramp": t_ramp_rounded}, mode=m
                             ),
                             self.y_ops_truncated[mode],
                         )
@@ -809,8 +810,9 @@ class DriveInducedDecohSim:
             for mode in ["a", "b", "q"]:
                 if self.drive_strength[mode][freq_idx] != 0:
                     H_d_flat += dq.modulated(
-                        lambda t: pulse_flat(
-                            t, args={"t_flat": t_flat_rounded}, mode=mode
+                        # capture *mode* to avoid late-binding pitfalls in Python loops
+                        lambda t, m=mode: pulse_flat(
+                            t, args={"t_flat": t_flat_rounded}, mode=m
                         ),
                         self.y_ops_truncated[mode],
                     )
