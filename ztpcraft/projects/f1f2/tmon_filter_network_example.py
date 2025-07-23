@@ -108,6 +108,45 @@ class PhysicalCfg(BaseModel):
             return parsed
         return v
 
+    # ------------------------------------------------------------------
+    # Allow flexible specification of drive frequencies
+    @field_validator("drive_frequencies_GHz", mode="before")
+    @classmethod
+    def _parse_drive_frequencies_GHz(cls, v):
+        """Parse the *drive_frequencies_GHz* field.
+
+        The user can either provide an explicit list/tuple of floats, or a
+        dictionary describing a range from *start* to *stop* (both in GHz)
+        together with either the number of points (*num*) or the step size
+        (*step*).  Examples::
+
+            [4.70, 4.75, 4.80]
+            {"start": 4.70, "stop": 4.90, "num": 21}
+            {"start": 4.70, "stop": 4.90, "step": 0.05}
+        """
+        # Plain list / tuple → ensure list[float]
+        if isinstance(v, (list, tuple)):
+            return [float(x) for x in v]
+
+        # Dict form → build the sequence
+        if isinstance(v, dict):
+            if {"start", "stop", "num"} <= v.keys():
+                start = float(v["start"])
+                stop = float(v["stop"])
+                num = int(v["num"])
+                return np.linspace(start, stop, num).tolist()
+            if {"start", "stop", "step"} <= v.keys():
+                start = float(v["start"])
+                stop = float(v["stop"])
+                step = float(v["step"])
+                # include the stop value within floating-point tolerance
+                return np.arange(start, stop + step / 2, step).tolist()
+
+        raise ValueError(
+            "drive_frequencies_GHz must be a list of floats or a dict with "
+            "keys {start, stop, num} or {start, stop, step}."
+        )
+
     # Convenience
     @property
     def dim_before_trunc(self) -> int:  # noqa: D401
@@ -912,7 +951,10 @@ class DriveInducedDecohSim:
                 "eps_a_GHz": 0.0,
                 "eps_b_GHz": 0.0,
                 "eps_q_GHz": 0.0,
-                "drive_frequencies_GHz": [4.70, 4.80, 4.90],
+                # Either supply an explicit list or a dict describing a linspace/arange
+                # "drive_frequencies_GHz": [4.70, 4.80, 4.90],
+                # "drive_frequencies_GHz": {"start": 4.70, "stop": 4.90, "step": 0.05},
+                "drive_frequencies_GHz": {"start": 4.70, "stop": 4.90, "num": 21},
                 # Initial state (ket amplitudes)
                 "initial_state": {"0, 0, 1": "1.0 + 0j"},
             },
