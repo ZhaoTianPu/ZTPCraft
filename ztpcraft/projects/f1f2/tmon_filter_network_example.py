@@ -668,15 +668,15 @@ class DriveInducedDecohSim:
         c_ops = [
             np.sqrt(1 + n_bose)
             * (
-                c_prefactor_a * self.number_ops_truncated["a"]
-                + c_prefactor_b * self.number_ops_truncated["b"]
-                + c_prefactor_q * self.number_ops_truncated["q"]
+                c_prefactor_a * self.destroy_ops_truncated["a"]
+                + c_prefactor_b * self.destroy_ops_truncated["b"]
+                + c_prefactor_q * self.destroy_ops_truncated["q"]
             ),
             np.sqrt(n_bose)
             * (
-                c_prefactor_a * self.number_ops_truncated["a"]
-                + c_prefactor_b * self.number_ops_truncated["b"]
-                + c_prefactor_q * self.number_ops_truncated["q"]
+                c_prefactor_a * self.create_ops_truncated["a"]
+                + c_prefactor_b * self.create_ops_truncated["b"]
+                + c_prefactor_q * self.create_ops_truncated["q"]
             ),
         ]
         return c_ops
