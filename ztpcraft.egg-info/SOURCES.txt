@@ -8,6 +8,7 @@ ztpcraft.egg-info/dependency_links.txt
 ztpcraft.egg-info/requires.txt
 ztpcraft.egg-info/top_level.txt
 ztpcraft/bosonic/__init__.py
+ztpcraft/bosonic/helpers.py
 ztpcraft/bosonic/input_output.py
 ztpcraft/bosonic/oscillator_integrals.py
 ztpcraft/projects/__init__.py
@@ -16,8 +17,10 @@ ztpcraft/projects/f1f2/irg_squid.py
 ztpcraft/projects/f1f2/loss.py
 ztpcraft/projects/f1f2/overlap.py
 ztpcraft/projects/f1f2/tmon_filter_network_example.py
+ztpcraft/simulations/dbdqs.py
 ztpcraft/toolbox/__init__.py
 ztpcraft/toolbox/aedt_result_reader.py
+ztpcraft/toolbox/mathematica_output_reader.py
 ztpcraft/toolbox/mpl_helpers.py
 ztpcraft/toolbox/save.py
 ztpcraft/toolbox/units.py

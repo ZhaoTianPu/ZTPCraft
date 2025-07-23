@@ -6,8 +6,17 @@ from scipy.constants import hbar
 import copy
 from pathlib import Path
 from ztpcraft.toolbox.save import datetime_dir
+import json
 
-from pydantic import BaseModel
+import dill
+
+import jax.numpy as jnp
+
+from ztpcraft.bosonic.input_output import (
+    power_dissipator_coeff_frequency_to_drive_strength,
+)
+
+from pydantic import BaseModel, model_validator, field_validator
 
 from typing import Callable, Any, Dict, Tuple, Literal, List, Union, Optional
 from numpy.typing import NDArray
@@ -39,7 +48,7 @@ class PhysicalCfg(BaseModel):
     N_q_before_trunc: int = 10
 
     # Working sizes for real-time evolution
-    N_a_truct: int = 7
+    N_a_trunc: int = 7
     N_b_trunc: int = 14
     N_q_trunc: int = 7
 
@@ -71,11 +80,33 @@ class PhysicalCfg(BaseModel):
     eps_a_GHz: float
     eps_b_GHz: float
     eps_q_GHz: float
+    use_power: bool = True
     # list of drive frequencies to be simulated
     drive_frequencies_GHz: List[float]
 
     # initial state
     initial_state: Dict[Tuple[int, ...], complex] = {(0, 0, 1): 1.0}
+
+    # convert {"\"0,0,1\"": "1+0j"} → {(0,0,1): 1+0j}
+    @field_validator("initial_state", mode="before")
+    @classmethod
+    def _parse_initial_state(cls, v):
+        if isinstance(v, dict):
+            parsed: Dict[Tuple[int, ...], complex] = {}
+            for k, val in v.items():
+                # key "0,0,1" -> tuple(0,0,1)
+                if isinstance(k, str):
+                    k_tuple = tuple(int(s) for s in k.split(","))  # (0,0,1)
+                else:
+                    k_tuple = tuple(k)
+                # value "1+0j" -> 1+0j
+                if isinstance(val, str):
+                    val_cplx = complex(val.replace(" ", ""))
+                else:
+                    val_cplx = complex(val)
+                parsed[k_tuple] = val_cplx
+            return parsed
+        return v
 
     # Convenience
     @property
@@ -84,11 +115,16 @@ class PhysicalCfg(BaseModel):
 
     @property
     def dim_trunc(self) -> int:  # noqa: D401
-        return self.N_a_truct * self.N_b_trunc * self.N_q_trunc
+        return self.N_a_trunc * self.N_b_trunc * self.N_q_trunc
 
 
 class SolutionCfg(BaseModel):
     """Time discretisation & pulse-shape parameters."""
+
+    # processor
+    processor: Literal["cpu", "gpu"] = "cpu"
+    # single/double precision
+    precision: Literal["single", "double"] = "single"
 
     # mode of simulation
     experiment_mode: Literal["Ramsey", "T1"] = "Ramsey"
@@ -100,6 +136,9 @@ class SolutionCfg(BaseModel):
     n_snapshots_per_period: int = 1
     include_ramp_pulse: bool = True
     lossy_system_during_ramp: bool = False
+
+    # whether or not to displace the state for measurements
+    displace_state_for_measurements: bool = False
 
 
 class SolverCfg(BaseModel):
@@ -113,20 +152,19 @@ class OutputCfg(BaseModel):
     """Output directory configuration with auto timestamped sub-folder."""
 
     folder: Path = Path("./results")
-    job: str | None = None  # filled in validator
+    job: str | None = None
 
     @staticmethod
     def _make_job(parent: Path) -> str:
         parent.mkdir(parents=True, exist_ok=True)
-        # Re-use helper; returns the created folder path string
         return datetime_dir(save_dir=str(parent), save_time=True)
 
-    @classmethod
-    def model_validate(cls, value):  # type: ignore[override]
-        obj = super().model_validate(value)
-        if obj.job is None:
-            obj.job = cls._make_job(obj.folder)
-        return obj
+    @model_validator(mode="after")
+    def _auto_job(self):  # noqa: D401
+        """Populate `job` with a timestamp sub-folder when it is missing."""
+        if self.job is None:
+            self.job = self._make_job(self.folder)
+        return self
 
 
 class SimulationCfg(BaseModel):
@@ -141,30 +179,54 @@ class SimulationCfg(BaseModel):
 ###############################################################################
 
 
-class DbdqsSimulation:
+class DriveInducedDecohSim:
     """End-to-end wrapper for the dressed-basis dynamical simulation."""
 
-    def __init__(self, cfg_dict: Dict[str, Any]):
-        # pydantic v2 uses `model_validate`
-        self.cfg = SimulationCfg.model_validate(cfg_dict)
+    def __init__(self, config: Union[str, Dict[str, Any]], autorun: bool = True):
+        if isinstance(config, dict):
+            # pydantic v2 uses `model_validate`
+            self.cfg = SimulationCfg.model_validate(config)
+        elif isinstance(config, str):
+            self.cfg = SimulationCfg.model_validate_json(Path(config).read_text())
+        else:
+            raise ValueError(f"Invalid config type: {type(config)}")
         job_path = Path(self.cfg.output_config.job)
         if job_path.is_absolute():
             self.out_dir = job_path
         else:
-            self.out_dir = (self.cfg.output_config.folder / job_path).absolute()
+            self.out_dir = (job_path).absolute()
         self.out_dir.mkdir(parents=True, exist_ok=True)
         (self.out_dir / "config.json").write_text(self.cfg.model_dump_json(indent=2))
         self._generate_truncation_projector_attr()
         self._generate_dqs_attr()
         self._generate_truncated_static_hamiltonian_attr()
+        if autorun:
+            self.static_circuit_setup()
+            self.dynamic_circuit_setup()
+            self.run_simulation()
+
+    def static_circuit_setup(self):
         self._generate_evals_evecs_attr()
         self._generate_index_list_attr()
         self._generate_qubit_rho01_projector_attr()
+        self._generate_qubit_diagonal_projector_attr()
         self._generate_truncation_projector_attr()
+
+    def dynamic_circuit_setup(self):
+        self._generate_solver_attr()
+        self._generate_initial_state_attr()
+        self._generate_c_ops_attr()
+        self._generate_drive_strength_attr()
 
     # ---------------------------------------------------------------------
     # Attribute generators
     # ---------------------------------------------------------------------
+    def _generate_solver_attr(self):
+        self.solver = self._solver()
+
+    def _generate_initial_state_attr(self):
+        self.initial_state = self._generate_initial_state()
+
     def _generate_truncation_projector_attr(self):
         self.truncation_projector = self._generate_truncation_projector_from_dims(
             (
@@ -173,7 +235,7 @@ class DbdqsSimulation:
                 self.cfg.physical_config.N_q_before_trunc,
             ),
             (
-                self.cfg.physical_config.N_a_truct,
+                self.cfg.physical_config.N_a_trunc,
                 self.cfg.physical_config.N_b_trunc,
                 self.cfg.physical_config.N_q_trunc,
             ),
@@ -231,6 +293,12 @@ class DbdqsSimulation:
             for level in range(self.cfg.solution_config.diagonal_level_to_measure)
         }
 
+    def _generate_c_ops_attr(self):
+        self.c_ops = self._generate_c_ops()
+
+    def _generate_drive_strength_attr(self):
+        self.drive_strength = self._generate_drive_strength()
+
     # ---------------------------------------------------------------------
     # Operator helpers
     # ---------------------------------------------------------------------
@@ -263,7 +331,7 @@ class DbdqsSimulation:
                     single_destroy[idx] if idx == target_idx else single_eye[idx]
                 )
             ops = tuple(ops)
-            destroy_tensors.append(tensor_func(ops))
+            destroy_tensors.append(tensor_func(*ops))
         if op_type == "destroy":
             return tuple(destroy_tensors)
         elif op_type == "create":
@@ -333,7 +401,7 @@ class DbdqsSimulation:
     ) -> Dict[Literal["a", "b", "q"], dq.QArray]:
         if truncated:
             mode_dims = (
-                self.cfg.physical_config.N_a_truct,
+                self.cfg.physical_config.N_a_trunc,
                 self.cfg.physical_config.N_b_trunc,
                 self.cfg.physical_config.N_q_trunc,
             )
@@ -402,7 +470,14 @@ class DbdqsSimulation:
                 @ static_hamiltonian
                 @ self.truncation_projector
             )
-            static_hamiltonian = dq.QArray(static_hamiltonian)
+            static_hamiltonian = dq.asqarray(
+                static_hamiltonian,
+                dims=(
+                    self.cfg.physical_config.N_a_trunc,
+                    self.cfg.physical_config.N_b_trunc,
+                    self.cfg.physical_config.N_q_trunc,
+                ),
+            )
         return static_hamiltonian
 
     # ---------------------------------------------------------------------
@@ -419,7 +494,16 @@ class DbdqsSimulation:
             evec_full = copy.deepcopy(evec)
             if evec[np.argmax(np.abs(evec))] < 0:
                 evec_full *= -1
-            evecs_new_dq.append(dq.unit([evec_full]))
+            evecs_new_dq.append(
+                dq.asqarray(
+                    np.array([evec_full]),
+                    dims=(
+                        self.cfg.physical_config.N_a_trunc,
+                        self.cfg.physical_config.N_b_trunc,
+                        self.cfg.physical_config.N_q_trunc,
+                    ),
+                )
+            )
         return evals, evecs_new_dq
 
     def _generate_index_list(self, evecs: List[dq.QArray]) -> NDArray[np.int64]:
@@ -457,7 +541,7 @@ class DbdqsSimulation:
 
     def _generate_qubit_rho01_projector(self) -> dq.QArray:
         off_diag_proj: dq.QArray = 0 * dq.eye_like(self.evecs[0])
-        for i in range(self.cfg.physical_config.N_a_truct):
+        for i in range(self.cfg.physical_config.N_a_trunc):
             for j in range(self.cfg.physical_config.N_b_trunc):
                 state_ij0 = self.evecs[self._get_index(i, j, 0, self.index_list)]
                 state_ij1 = self.evecs[self._get_index(i, j, 1, self.index_list)]
@@ -466,7 +550,7 @@ class DbdqsSimulation:
 
     def _generate_qubit_diagonal_projector(self, qubit_level: int) -> dq.QArray:
         diag_proj: dq.QArray = 0 * dq.eye_like(self.evecs[0])
-        for i in range(self.cfg.physical_config.N_a_truct):
+        for i in range(self.cfg.physical_config.N_a_trunc):
             for j in range(self.cfg.physical_config.N_b_trunc):
                 state_ijk = self.evecs[
                     self._get_index(i, j, qubit_level, self.index_list)
@@ -480,14 +564,9 @@ class DbdqsSimulation:
     def _solver(self):
         s = self.cfg.solver_config
         if s.method.lower() == "tsit5":
-            return dq.integrators.Tsit5(
-                max_steps=1_000_000_000, atol=s.atol, rtol=s.rtol
-            )
+            return dq.integrators.Tsit5(max_steps=s.max_steps, atol=s.atol, rtol=s.rtol)
         return dq.integrators.Expm()
 
-    # ---------------------------------------------------------------------
-    # Main entry point
-    # ---------------------------------------------------------------------
     def compute_chi(self) -> Dict[Literal["ab", "aq", "bq"], float]:
         """
         Return chi in unit of GHz
@@ -531,72 +610,348 @@ class DbdqsSimulation:
         )
         return {"ab": chi_ab, "aq": chi_aq, "bq": chi_bq}
 
-    def run(self) -> Path:
-        p = self.cfg.physical_config
-        solver = self._solver()
-        P, U = self._dressed_projector()
-
-        rho0 = qt.fock_dm(p.dim_trunc, 0)
-
-        for f_GHz in p.drive_GHz:
-            # Build dressed+truncated H (static part)
-            h_small = P * (U.dag() * self._hamiltonian(0.0, large=True) * U) * P.dag()
-
-            # --- pulse construction -----------------------------------
-            wd = f_GHz * 2 * np.pi
-
-            def flat_env(t):  # cosine drive during flat section
-                return np.cos(wd * t)
-
-            # y_a operator in small space (placeholder picks first mode)
-            a_a_small = (
-                P * (U.dag() * self._annihilation_tensor_ops(True)[0] * U) * P.dag()
+    def _generate_initial_state(self) -> dq.QArray:
+        init_state_dict = self.cfg.physical_config.initial_state
+        init_state = np.zeros(self.cfg.physical_config.dim_trunc)
+        for state_label, amplitude in init_state_dict.items():
+            init_state += (
+                amplitude * self.evecs[self._get_index(*state_label, self.index_list)]
             )
-            y_a_small = 1j * (a_a_small.dag() - a_a_small)
+        init_state = init_state / init_state.norm()
+        return init_state
 
-            h_flat = h_small + dq.modulated(flat_env, y_a_small)
+    def _generate_c_ops(self) -> List[dq.QArray]:
+        n_bose = self.cfg.physical_config.n_bose
+        c_prefactor_a = self.cfg.physical_config.c_op_a_prefactor
+        c_prefactor_b = self.cfg.physical_config.c_op_b_prefactor
+        c_prefactor_q = self.cfg.physical_config.c_op_q_prefactor
+        c_ops = [
+            np.sqrt(1 + n_bose)
+            * (
+                c_prefactor_a * self.number_ops_truncated["a"]
+                + c_prefactor_b * self.number_ops_truncated["b"]
+                + c_prefactor_q * self.number_ops_truncated["q"]
+            ),
+            np.sqrt(n_bose)
+            * (
+                c_prefactor_a * self.number_ops_truncated["a"]
+                + c_prefactor_b * self.number_ops_truncated["b"]
+                + c_prefactor_q * self.number_ops_truncated["q"]
+            ),
+        ]
+        return c_ops
 
-            # Time grids
-            period = 1 / (f_GHz * 1e9)  # seconds
-            step = period / self.cfg.simulation_config.n_snapshots_per_period
-            t_flat = np.arange(
-                0, self.cfg.simulation_config.t_flat_nominal_ns * 1e-9, step
-            )
+    def _generate_drive_strength(
+        self,
+    ) -> Dict[Literal["a", "b", "q"], NDArray[np.float64]]:
+        physical_config = self.cfg.physical_config
+        drive_strength_dict: Dict[Literal["a", "b", "q"], NDArray[np.float64]] = {}
+        for mode in ["a", "b", "q"]:
+            if physical_config.use_power:
+                drive_strength = np.zeros(len(physical_config.drive_frequencies_GHz))
+                for idx, f_GHz in enumerate(physical_config.drive_frequencies_GHz):
+                    if mode == "a":
+                        c_op_prefactor = physical_config.c_op_a_prefactor
+                    elif mode == "b":
+                        c_op_prefactor = physical_config.c_op_b_prefactor
+                    elif mode == "q":
+                        c_op_prefactor = physical_config.c_op_q_prefactor
+                    else:
+                        raise ValueError(f"Invalid mode: {mode}")
 
-            if self.cfg.simulation_config.include_ramp_pulse:
-                t_ramp = np.arange(
-                    0, self.cfg.simulation_config.t_ramp_nominal_ns * 1e-9, step
-                )
-
-                def ramp_env(t, t_r):
-                    return (t / t_r) * np.cos(wd * t)
-
-                h_ramp = h_small + dq.modulated(
-                    lambda t: ramp_env(
-                        t, self.cfg.simulation_config.t_ramp_nominal_ns * 1e-9
-                    ),
-                    y_a_small,
-                )
-
-                if self.cfg.simulation_config.lossy_system_during_ramp:
-                    out_ramp = dq.mesolve(h_ramp, [], rho0, t_ramp, solver=solver)
-                else:
-                    out_ramp = dq.sesolve(h_ramp, rho0, t_ramp, solver=solver)
-
-                rho_start = out_ramp.states[-1]
+                    drive_strength[idx] = (
+                        power_dissipator_coeff_frequency_to_drive_strength(
+                            input_power=physical_config.power_W,
+                            dissipator_coeff=c_op_prefactor,
+                            omega_d=f_GHz * 2 * np.pi,
+                        )
+                    )
+                drive_strength_dict[mode] = drive_strength
             else:
-                rho_start = rho0
+                if mode == "a":
+                    drive_strength = physical_config.eps_a_GHz
+                elif mode == "b":
+                    drive_strength = physical_config.eps_b_GHz
+                elif mode == "q":
+                    drive_strength = physical_config.eps_q_GHz
+                drive_strength_dict[mode] = (
+                    np.ones(len(physical_config.drive_frequencies_GHz))
+                    * drive_strength
+                    * 2
+                    * np.pi
+                )
+        return drive_strength_dict
 
-            out_flat = dq.mesolve(h_flat, [], rho_start, t_flat, solver=solver)
+    def run_simulation(self) -> Path:
+        dq.set_device(self.cfg.solution_config.processor)
+        dq.set_precision(self.cfg.solution_config.precision)
 
-            np.savez(
-                self.out_dir / f"traj_{f_GHz:.6f}.npz",
-                t=t_flat,
-                expect=out_flat.expect,
+        initial_state = self.initial_state.dag()
+        static_hamiltonian = self.static_hamiltonian_truncated
+        physical_config = self.cfg.physical_config
+        solution_config = self.cfg.solution_config
+        drive_frequencies_GHz = physical_config.drive_frequencies_GHz
+        simulation_outcome_dict_list = []
+
+        for freq_idx, f_GHz in enumerate(drive_frequencies_GHz):
+            print(f"frequency sweep {freq_idx+1}/{len(drive_frequencies_GHz)}")
+            omega_d = f_GHz * 2 * np.pi
+            # round to nearest 1/f_d time for the ramp and the flat part
+            t_ramp_rounded = np.round(solution_config.t_ramp_nominal_ns * f_GHz) / f_GHz
+            t_flat_rounded = np.round(solution_config.t_flat_nominal_ns * f_GHz) / f_GHz
+            t_period = 1 / f_GHz
+            t_sample_step_ramp = t_ramp_rounded / solution_config.n_snapshots_per_period
+            t_sample_step_flat = t_flat_rounded / solution_config.n_snapshots_per_period
+            n_snapshots_ramp = int(t_ramp_rounded / t_sample_step_ramp)
+            n_snapshots_flat = int(t_flat_rounded / t_sample_step_flat)
+
+            if solution_config.include_ramp_pulse:
+                print("Evolving for ramping up")
+                tlist_ramp = np.linspace(0, t_ramp_rounded, n_snapshots_ramp + 1)
+
+                def pulse_ramp_up(
+                    t, args: Dict[str, float], mode: Literal["a", "b", "q"]
+                ) -> float:
+                    t_ramp = args["t_ramp"]
+                    return (
+                        self.drive_strength[mode][freq_idx]
+                        * jnp.cos(omega_d * t)
+                        * (t / t_ramp)
+                    )
+
+                H_d_ramp_up = static_hamiltonian
+                for mode in ["a", "b", "q"]:
+                    if self.drive_strength[mode][freq_idx] != 0:
+                        H_d_ramp_up += dq.modulated(
+                            lambda t: pulse_ramp_up(
+                                t, args={"t_ramp": t_ramp_rounded}, mode=mode
+                            ),
+                            self.y_ops_truncated[mode],
+                        )
+
+                print("Computing ramp propagators")
+                if not solution_config.lossy_system_during_ramp:
+                    ramp_up_output = dq.sesolve(
+                        H_d_ramp_up,
+                        initial_state,
+                        tlist_ramp,
+                        method=self.solver,
+                        exp_ops=[
+                            self.number_ops_truncated["a"],
+                            self.number_ops_truncated["b"],
+                            self.number_ops_truncated["q"],
+                        ],
+                        options=dq.Options(save_states=True),
+                    )
+                else:
+                    # evolve the state for the ramp up
+                    ramp_up_output = dq.mesolve(
+                        H_d_ramp_up,
+                        self.c_ops,
+                        initial_state,
+                        tlist_ramp,
+                        method=self.solver,
+                        exp_ops=[
+                            self.number_ops_truncated["a"],
+                            self.number_ops_truncated["b"],
+                            self.number_ops_truncated["q"],
+                        ],
+                        options=dq.Options(save_states=True),
+                    )
+
+            print("Evolving for flat part")
+            tlist_flat = np.linspace(0, t_flat_rounded, n_snapshots_flat + 1)
+
+            def pulse_flat(
+                t, args: Dict[str, float], mode: Literal["a", "b", "q"]
+            ) -> float:
+                return self.drive_strength[mode][freq_idx] * jnp.cos(omega_d * t)
+
+            H_d_flat = static_hamiltonian
+            for mode in ["a", "b", "q"]:
+                if self.drive_strength[mode][freq_idx] != 0:
+                    H_d_flat += dq.modulated(
+                        lambda t: pulse_flat(
+                            t, args={"t_flat": t_flat_rounded}, mode=mode
+                        ),
+                        self.y_ops_truncated[mode],
+                    )
+
+            if solution_config.include_ramp_pulse:
+                initial_state_for_flat_pulse = ramp_up_output.states[-1]
+            else:
+                initial_state_for_flat_pulse = initial_state.dag()
+            flat_output = dq.mesolve(
+                H_d_flat,
+                self.c_ops,
+                initial_state_for_flat_pulse,
+                tlist_flat,
+                method=self.solver,
+                exp_ops=[
+                    self.number_ops_truncated["a"],
+                    self.number_ops_truncated["b"],
+                    self.number_ops_truncated["q"],
+                ],
+                options=dq.Options(save_states=True),
             )
-            print(f"[dbdqs] saved {f_GHz:.4f} GHz → {self.out_dir}")
+            measurement_ops: Dict[str, dq.QArray] = {}
+            if solution_config.experiment_mode == "Ramsey":
+                measurement_ops["01"] = self.rho01_projector
+            elif solution_config.experiment_mode == "T1":
+                for level_idx, projector in self.diag_projector.items():
+                    measurement_ops[f"{level_idx}{level_idx}"] = projector
+            else:
+                raise ValueError(
+                    f"Invalid experiment mode: {solution_config.experiment_mode}"
+                )
+
+            measurement_outcomes: Dict[str, NDArray[np.complex128]] = {}
+            for projector_label, projector in measurement_ops.items():
+                measurement_outcomes[projector_label] = np.zeros(
+                    len(tlist_flat), dtype=np.complex128
+                )
+                for time_idx, time in enumerate(tlist_flat):
+                    if solution_config.displace_state_for_measurements:
+                        raise NotImplementedError(
+                            "Displacement of state for measurements is not implemented"
+                        )
+                    else:
+                        measurement_outcomes[projector_label][time_idx] = dq.expect(
+                            projector, flat_output.states[time_idx]
+                        )
+
+            simulation_outcome_dict_list.append(
+                {
+                    # parameters
+                    "drive_frequency_GHz": f_GHz,
+                    "tlist_flat": tlist_flat,
+                    "flat_a_expect": flat_output.expects[0],
+                    "flat_b_expect": flat_output.expects[1],
+                    "flat_q_expect": flat_output.expects[2],
+                    "measurement_outcomes": measurement_outcomes,
+                }
+            )
+            if solution_config.include_ramp_pulse:
+                simulation_outcome_dict_list.append(
+                    {
+                        "tlist_ramp": tlist_ramp,
+                        "ramp_up_a_expect": ramp_up_output.expects[0],
+                        "ramp_up_b_expect": ramp_up_output.expects[1],
+                        "ramp_up_q_expect": ramp_up_output.expects[2],
+                    }
+                )
+            print(
+                f"Saved data for {f_GHz:.4f} GHz ({freq_idx+1}/{len(drive_frequencies_GHz)})"
+            )
+        simulation_data_dict: Dict[str, Any] = {
+            "outcome": simulation_outcome_dict_list,
+            "config": self.cfg,
+        }
+
+        with open(self.out_dir / "simulation_data.pkl", "wb") as f:
+            dill.dump(simulation_data_dict, f)
+
+        self.simulation_data_dict = simulation_data_dict
 
         return self.out_dir
+
+    # ------------------------------------------------------------------
+    # Convenience helpers (public API)
+    # ------------------------------------------------------------------
+    @classmethod
+    def generate_config_template(
+        cls,
+        save_path: str | Path | None = None,
+        output_type: Literal["json", "dict"] = "json",
+        *,
+        indent: int = 4,
+    ) -> Union[str, Dict[str, Any]]:
+        """Return a JSON string with a *minimal* configuration template.
+
+        Parameters
+        ----------
+        save_path
+            When given, the JSON template is also written to the specified
+            file path (parent directories are created automatically).
+        indent
+            Number of spaces for `json.dumps` pretty-printing.
+
+        Returns
+        -------
+        str
+            The JSON text that was generated (and possibly written to disk).
+        """
+
+        # Build a partially-filled config dict illustrating the required keys.
+        template: Dict[str, Any] = {
+            "physical_config": {
+                # Hilbert-space sizes
+                "N_a_before_trunc": 7,
+                "N_b_before_trunc": 7,
+                "N_q_before_trunc": 7,
+                "N_a_trunc": 5,
+                "N_b_trunc": 5,
+                "N_q_trunc": 5,
+                # Bare frequencies (GHz) – *** EDIT THESE ***
+                "f_a_GHz": 5.000,
+                "f_b_GHz": 6.200,
+                "f_q_GHz": 4.800,
+                # Josephson energy & ZPF factors
+                "EJ_GHz": 20.0,
+                "phi_a_zpf": 0.015,
+                "phi_b_zpf": 0.017,
+                "phi_q_zpf": 0.220,
+                # Dissipation prefactors (GHz·2π)
+                "c_op_a_prefactor": 0.0004,
+                "c_op_b_prefactor": 0.0001,
+                "c_op_q_prefactor": 0.0,
+                "n_bose": 0.0,
+                # Drive parameters
+                "use_power": True,
+                "power_W": 1e-9,
+                "eps_a_GHz": 0.0,
+                "eps_b_GHz": 0.0,
+                "eps_q_GHz": 0.0,
+                "drive_frequencies_GHz": [4.70, 4.80, 4.90],
+                # Initial state (ket amplitudes)
+                "initial_state": {"0, 0, 1": "1.0 + 0j"},
+            },
+            "solution_config": {
+                "processor": "cpu",
+                "precision": "single",
+                "experiment_mode": "Ramsey",
+                "diagonal_level_to_measure": 5,
+                "t_ramp_nominal_ns": 1.0,
+                "t_flat_nominal_ns": 120.0,
+                "n_snapshots_per_period": 1,
+                "include_ramp_pulse": True,
+                "lossy_system_during_ramp": False,
+                "displace_state_for_measurements": False,
+            },
+            "solver_config": {
+                "method": "Tsit5",
+                "max_steps": 1_000_000_000,
+                "atol": 1e-6,
+                "rtol": 1e-6,
+            },
+            "output_config": {
+                "folder": "./results",
+                "job": None,
+            },
+        }
+
+        json_text = json.dumps(template, indent=indent)
+
+        if save_path is not None:
+            save_path = Path(save_path).expanduser().absolute()
+            save_path.parent.mkdir(parents=True, exist_ok=True)
+            save_path.write_text(json_text)
+        if output_type == "json":
+            return json_text
+        elif output_type == "dict":
+            return template
+        else:
+            raise ValueError(f"Invalid output type: {output_type}")
 
 
 ###############################################################################
@@ -604,21 +959,22 @@ class DbdqsSimulation:
 ###############################################################################
 
 
-class DbdqsAnalysis:
-    """Minimal post-processing helper (load .npz files, quick plots, etc.)."""
+class DriveInducedDecohPostProc:
+    """Minimal post-processing helper (load files, quick plots, etc.)."""
 
     def __init__(self, result_dir: str | Path):
         self.dir = Path(result_dir).expanduser().absolute()
-        self.files = sorted(self.dir.glob("traj_*.npz"))
+        self.files = sorted(self.dir.glob("simulation_data.pkl"))
         if not self.files:
-            raise FileNotFoundError(f"No traj_*.npz in {self.dir}")
+            raise FileNotFoundError(f"No simulation_data.pkl in {self.dir}")
+        self.simulation_data_dict = self._load(0)
+        self.config = self.simulation_data_dict["config"]
+        self.outcome_list = self.simulation_data_dict["outcome"]
 
     def _load(self, idx: int):
-        return np.load(self.files[idx])
+        with open(self.files[idx], "rb") as f:
+            return dill.load(f)
 
-    # ------------------------------------------------------------------
-    # Example metrics
-    # ------------------------------------------------------------------
     def max_amplitudes(self) -> Dict[float, float]:
         amps: Dict[float, float] = {}
         for f in self.files:
@@ -642,6 +998,58 @@ class DbdqsAnalysis:
             plt.show()
         else:
             plt.savefig(self.dir / f"amp_{idx}.png", dpi=300)
+
+    # ------------------------------------------------------------------
+    # Aggregation helper
+    # ------------------------------------------------------------------
+    def collect_results(self) -> Dict[str, Any]:
+        """Return a nested dict organised as::
+
+            {
+                "flat_a_expect": {freq: np.ndarray, ...},
+                "flat_b_expect": {freq: np.ndarray, ...},
+                "flat_q_expect": {freq: np.ndarray, ...},
+                "measurement_outcomes": {
+                    "01": {freq: np.ndarray, ...},
+                    "11": {freq: np.ndarray, ...},
+                    ...
+                },
+            }
+
+        where *freq* is the drive frequency in GHz and the arrays are the
+        time-series saved by the simulation.
+        """
+
+        outcome_list = self.outcome_list
+
+        # Initialise the container with the expected top-level keys.
+        result: Dict[str, Any] = {
+            "tlist_flat": {},
+            "flat_a_expect": {},
+            "flat_b_expect": {},
+            "flat_q_expect": {},
+            "measurement_outcomes": {},
+        }
+
+        for rec in outcome_list:
+            # Skip ramp records – they lack the *flat_* keys.
+            if "flat_a_expect" not in rec:
+                continue
+
+            freq = float(rec["drive_frequency_GHz"])
+
+            # Simple quantities ------------------------------------------------
+            result["flat_a_expect"][freq] = rec["flat_a_expect"]
+            result["flat_b_expect"][freq] = rec["flat_b_expect"]
+            result["flat_q_expect"][freq] = rec["flat_q_expect"]
+
+            # Nested measurement outcomes -------------------------------------
+            for label, ts in rec["measurement_outcomes"].items():
+                if label not in result["measurement_outcomes"]:
+                    result["measurement_outcomes"][label] = {}
+                result["measurement_outcomes"][label][freq] = ts
+
+        return result
 
 
 # -- Helper functions ------------------------------------------------------------
