@@ -1,6 +1,7 @@
 import numpy as np
 import sympy as sm
 import qutip as qt
+from scipy.optimize import curve_fit
 import dynamiqs as dq
 from scipy.constants import hbar
 import copy
@@ -1006,47 +1007,28 @@ class DriveInducedDecohSim:
 class DriveInducedDecohPostProc:
     """Minimal post-processing helper (load files, quick plots, etc.)."""
 
-    def __init__(self, result_dir: str | Path):
+    def __init__(self, result_dir: str | Path, autorun: bool = True):
         self.dir = Path(result_dir).expanduser().absolute()
         self.files = sorted(self.dir.glob("simulation_data.pkl"))
         if not self.files:
             raise FileNotFoundError(f"No simulation_data.pkl in {self.dir}")
         self.simulation_data_dict = self._load(0)
         self.config = self.simulation_data_dict["config"]
-        self.outcome_list = self.simulation_data_dict["outcome"]
+        self.outcome_sweep_list = self.simulation_data_dict["outcome"]
+        if autorun:
+            self.grouped_results_by_var_types = self.regroup_results()
+            self.decay_rate_dict = self.fit_decay_rate_for_all_experiments(
+                extraction_mode="fit"
+            )
 
     def _load(self, idx: int):
         with open(self.files[idx], "rb") as f:
             return dill.load(f)
 
-    def max_amplitudes(self) -> Dict[float, float]:
-        amps: Dict[float, float] = {}
-        for f in self.files:
-            data = np.load(f)
-            amp = np.max(np.abs(data["expect"]))
-            freq = float(f.stem.split("_")[1])
-            amps[freq] = amp
-        return amps
-
-    def quick_plot(self, idx: int = 0, *, show: bool = True):
-        import matplotlib.pyplot as plt
-
-        d = self._load(idx)
-        t_us = d["t"] * 1e6
-        y = np.abs(d["expect"])
-        plt.plot(t_us, y)
-        plt.xlabel("Time (µs)")
-        plt.ylabel("|a(t)|")
-        plt.title(self.files[idx].stem)
-        if show:
-            plt.show()
-        else:
-            plt.savefig(self.dir / f"amp_{idx}.png", dpi=300)
-
     # ------------------------------------------------------------------
     # Aggregation helper
     # ------------------------------------------------------------------
-    def collect_results(self) -> Dict[str, Any]:
+    def regroup_results(self) -> Dict[str, Any]:
         """Return a nested dict organised as::
 
             {
@@ -1064,7 +1046,7 @@ class DriveInducedDecohPostProc:
         time-series saved by the simulation.
         """
 
-        outcome_list = self.outcome_list
+        outcome_list = self.outcome_sweep_list
 
         # Initialise the container with the expected top-level keys.
         result: Dict[str, Any] = {
@@ -1095,8 +1077,58 @@ class DriveInducedDecohPostProc:
 
         return result
 
+    @classmethod
+    def fit_decay_rate_for_one_experiment(
+        cls,
+        tlist: NDArray[np.float64],
+        expect: NDArray[np.float64],
+        extraction_mode: Literal["fit", "difference"],
+    ) -> tuple[float, NDArray[np.float64], NDArray[np.float64]]:
+        """
+        fit the decay rate for one experiment
+        """
+        if extraction_mode == "fit":
+            popt, pcov = curve_fit(
+                decay_function, tlist, expect, p0=[1e-5, expect[0], 0]
+            )
+        elif extraction_mode == "difference":
+            rate = (expect[0] - expect[-1]) / (tlist[0] - tlist[-1])
+            popt = [rate]
+            pcov = np.array([[0]])
+        else:
+            raise ValueError(f"Invalid extraction mode: {extraction_mode}")
+        return popt[0], popt, pcov
+
+    def fit_decay_rate_for_all_experiments(
+        self, extraction_mode: Literal["fit", "difference"]
+    ) -> Dict[str, Dict[float, float]]:
+        """
+        fit the decay rate for all experiments
+        """
+        decay_rate_dict: Dict[str, Dict[float, float]] = {}
+        density_matrix_component_list = list(
+            self.grouped_results_by_var_types["measurement_outcomes"].keys()
+        )
+        for density_matrix_component in density_matrix_component_list:
+            decay_rate_dict[density_matrix_component] = {}
+            for freq, ts in self.grouped_results_by_var_types["measurement_outcomes"][
+                density_matrix_component
+            ].items():
+                tlist = self.grouped_results_by_var_types["tlist_flat"][freq]
+                decay_rate, _popt, _pcov = self.fit_decay_rate_for_one_experiment(
+                    tlist, ts, extraction_mode
+                )
+                decay_rate_dict[density_matrix_component][freq] = decay_rate
+        return decay_rate_dict
+
 
 # -- Helper functions ------------------------------------------------------------
+
+
+def decay_function(
+    t: float, decay_rate: float, init_value: float, final_value: float
+) -> float:
+    return final_value + (init_value - final_value) * np.exp(-decay_rate * t)
 
 
 def three_resonator_capacitive_coupling_secular_equation(
