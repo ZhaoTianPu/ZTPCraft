@@ -2,9 +2,6 @@
 	"folders": [
 		{
 			"path": "."
-		},
-		{
-			"path": "../Superconducting_qubit_NU/Codes/chencrafts"
 		}
 	],
 	"settings": {}

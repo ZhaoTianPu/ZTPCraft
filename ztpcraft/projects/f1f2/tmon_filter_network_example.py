@@ -1116,7 +1116,7 @@ class DriveInducedDecohPostProc:
             ].items():
                 tlist = self.grouped_results_by_var_types["tlist_flat"][freq]
                 decay_rate, _popt, _pcov = self.fit_decay_rate_for_one_experiment(
-                    tlist, ts, extraction_mode
+                    tlist, np.abs(ts), extraction_mode
                 )
                 decay_rate_dict[density_matrix_component][freq] = decay_rate
         return decay_rate_dict
