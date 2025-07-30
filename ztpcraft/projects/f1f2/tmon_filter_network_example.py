@@ -1032,12 +1032,14 @@ class DriveInducedDecohPostProc:
         """Return a nested dict organised as::
 
             {
-                "flat_a_expect": {freq: np.ndarray, ...},
-                "flat_b_expect": {freq: np.ndarray, ...},
-                "flat_q_expect": {freq: np.ndarray, ...},
+                "freq_list": [freq1, freq2, ...],
+                "tlist_flat": np.ndarray,
+                "flat_a_expect": np.ndarray,
+                "flat_b_expect": np.ndarray,
+                "flat_q_expect": np.ndarray,
                 "measurement_outcomes": {
-                    "01": {freq: np.ndarray, ...},
-                    "11": {freq: np.ndarray, ...},
+                    "01": np.ndarray,
+                    "11": np.ndarray,
                     ...
                 },
             }
@@ -1050,10 +1052,11 @@ class DriveInducedDecohPostProc:
 
         # Initialise the container with the expected top-level keys.
         result: Dict[str, Any] = {
-            "tlist_flat": {},
-            "flat_a_expect": {},
-            "flat_b_expect": {},
-            "flat_q_expect": {},
+            "freq_list": [],
+            "tlist_flat": [],
+            "flat_a_expect": [],
+            "flat_b_expect": [],
+            "flat_q_expect": [],
             "measurement_outcomes": {},
         }
 
@@ -1061,19 +1064,18 @@ class DriveInducedDecohPostProc:
             # Skip ramp records – they lack the *flat_* keys.
             if "flat_a_expect" not in rec:
                 continue
-
-            freq = float(rec["drive_frequency_GHz"])
-
+            result["freq_list"].append(float(rec["drive_frequency_GHz"]))
             # Simple quantities ------------------------------------------------
-            result["flat_a_expect"][freq] = rec["flat_a_expect"]
-            result["flat_b_expect"][freq] = rec["flat_b_expect"]
-            result["flat_q_expect"][freq] = rec["flat_q_expect"]
+            result["flat_a_expect"].append(rec["flat_a_expect"])
+            result["flat_b_expect"].append(rec["flat_b_expect"])
+            result["flat_q_expect"].append(rec["flat_q_expect"])
+            result["tlist_flat"].append(rec["tlist_flat"])
 
             # Nested measurement outcomes -------------------------------------
             for label, ts in rec["measurement_outcomes"].items():
                 if label not in result["measurement_outcomes"]:
-                    result["measurement_outcomes"][label] = {}
-                result["measurement_outcomes"][label][freq] = ts
+                    result["measurement_outcomes"][label] = []
+                result["measurement_outcomes"][label].append(ts)
 
         return result
 
@@ -1089,10 +1091,10 @@ class DriveInducedDecohPostProc:
         """
         if extraction_mode == "fit":
             popt, pcov = curve_fit(
-                decay_function, tlist, expect, p0=[1e-5, expect[0], 0]
+                decay_function, tlist, expect, p0=[1e-5, expect[0], 0], maxfev=1000000
             )
         elif extraction_mode == "difference":
-            rate = (expect[0] - expect[-1]) / (tlist[0] - tlist[-1])
+            rate = (expect[0] - expect[-1]) / (tlist[-1] - tlist[0]) / expect[0]
             popt = [rate]
             pcov = np.array([[0]])
         else:
@@ -1101,24 +1103,27 @@ class DriveInducedDecohPostProc:
 
     def fit_decay_rate_for_all_experiments(
         self, extraction_mode: Literal["fit", "difference"]
-    ) -> Dict[str, Dict[float, float]]:
+    ) -> Dict[str, NDArray[np.float64]]:
         """
         fit the decay rate for all experiments
         """
-        decay_rate_dict: Dict[str, Dict[float, float]] = {}
+        decay_rate_dict: Dict[str, NDArray[np.float64]] = {}
         density_matrix_component_list = list(
             self.grouped_results_by_var_types["measurement_outcomes"].keys()
         )
         for density_matrix_component in density_matrix_component_list:
-            decay_rate_dict[density_matrix_component] = {}
-            for freq, ts in self.grouped_results_by_var_types["measurement_outcomes"][
-                density_matrix_component
-            ].items():
-                tlist = self.grouped_results_by_var_types["tlist_flat"][freq]
+            decay_rate_dict[density_matrix_component] = []
+            for freq_idx, ts in enumerate(
+                self.grouped_results_by_var_types["measurement_outcomes"][
+                    density_matrix_component
+                ]
+            ):
+                freq = self.grouped_results_by_var_types["freq_list"][freq_idx]
+                tlist = self.grouped_results_by_var_types["tlist_flat"][freq_idx]
                 decay_rate, _popt, _pcov = self.fit_decay_rate_for_one_experiment(
                     tlist, np.abs(ts), extraction_mode
                 )
-                decay_rate_dict[density_matrix_component][freq] = decay_rate
+                decay_rate_dict[density_matrix_component].append(decay_rate)
         return decay_rate_dict
 
 
@@ -1556,3 +1561,19 @@ def _get_drive_amplitude(
         / np.pi
     )
     return g_a, g_b, g_q
+
+def dephasing_rate_gambetta(chi, nbar, kappa, omega_d, omega_r):
+    """
+    Compute dephasing rate using Gambetta's formula.
+
+    Parameters:
+    - chi: coupling strength (in GHz)
+    - nbar: mean photon number
+    - kappa: cavity decay rate (in 2pi GHz)
+    - omega_d: drive frequency (in 2pi GHz)
+    - omega_r: resonance frequency (in 2pi GHz)
+
+    Returns:
+    - gamma_phi: dephasing rate (in kHz)
+    """
+    return 0.5*chi*chi*nbar*kappa/((omega_d - omega_r)**2 + kappa*kappa/4) *1E6

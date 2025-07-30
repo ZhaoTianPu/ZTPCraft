@@ -6,6 +6,7 @@ import ztpcraft.projects as prj
 import ztpcraft.toolbox as tb
 import ztpcraft.bosonic as bosonic
 import ztpcraft.utils as utils
+import ztpcraft.misc as misc
 
 # public modules
 __all__ = [
@@ -13,5 +14,6 @@ __all__ = [
     "tb",
     "bosonic",
     "utils",
+    "misc",
     "__version__",
 ]

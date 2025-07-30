@@ -11,6 +11,8 @@ ztpcraft/bosonic/__init__.py
 ztpcraft/bosonic/helpers.py
 ztpcraft/bosonic/input_output.py
 ztpcraft/bosonic/oscillator_integrals.py
+ztpcraft/misc/__init__.py
+ztpcraft/misc/helpers.py
 ztpcraft/projects/__init__.py
 ztpcraft/projects/f1f2/__init__.py
 ztpcraft/projects/f1f2/irg_squid.py
