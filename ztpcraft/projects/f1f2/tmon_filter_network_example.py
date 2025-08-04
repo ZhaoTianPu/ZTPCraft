@@ -15,6 +15,9 @@ import jax.numpy as jnp
 
 from ztpcraft.bosonic.input_output import (
     power_dissipator_coeff_frequency_to_drive_strength,
+    enveloped_cos,
+    envelope_func,
+    solve_oscillator_under_drive,
 )
 
 from pydantic import BaseModel, model_validator, field_validator, Field
@@ -847,6 +850,16 @@ class DriveInducedDecohSim:
                     f"Invalid experiment mode: {solution_config.experiment_mode}"
                 )
 
+            if solution_config.displace_state_for_measurements:
+                flat_output_displaced = solve_oscillator_under_drive(
+                    t_sample=tlist_flat + t_ramp_rounded,
+                    t_ramp=t_ramp_rounded,
+                    drive_strength=self.drive_strength["q"][freq_idx],
+                    omega_q=physical_config.f_q_GHz * 2 * np.pi,
+                    omega_d=omega_d,
+                    init_displacement=ramp_up_output.expects[2][-1],
+                )
+
             measurement_outcomes: Dict[str, NDArray[np.complex128]] = {}
             for projector_label, projector in measurement_ops.items():
                 measurement_outcomes[projector_label] = np.zeros(
@@ -854,25 +867,37 @@ class DriveInducedDecohSim:
                 )
                 for time_idx, time in enumerate(tlist_flat):
                     if solution_config.displace_state_for_measurements:
-                        raise NotImplementedError(
-                            "Displacement of state for measurements is not implemented"
+                        disp = flat_output_displaced.y[0][time_idx]
+                        N_a_trunc = self.cfg.physical_config.N_a_trunc
+                        N_b_trunc = self.cfg.physical_config.N_b_trunc
+                        N_q_trunc = self.cfg.physical_config.N_q_trunc
+                        U_disp = dq.tensor(
+                            dq.eye(N_a_trunc),
+                            dq.eye(N_b_trunc),
+                            dq.displace(dim=N_q_trunc, alpha=-disp),
+                        )
+                        states_displaced = (
+                            U_disp @ flat_output.states[time_idx] @ U_disp.dag()
+                        )
+                        measurement_outcomes[projector_label][time_idx] = dq.expect(
+                            projector, states_displaced
                         )
                     else:
                         measurement_outcomes[projector_label][time_idx] = dq.expect(
                             projector, flat_output.states[time_idx]
                         )
 
-            simulation_outcome_dict_list.append(
-                {
-                    # parameters
-                    "drive_frequency_GHz": f_GHz,
-                    "tlist_flat": tlist_flat,
-                    "flat_a_expect": flat_output.expects[0],
-                    "flat_b_expect": flat_output.expects[1],
-                    "flat_q_expect": flat_output.expects[2],
-                    "measurement_outcomes": measurement_outcomes,
-                }
-            )
+                        simulation_outcome_dict_list.append(
+                            {
+                                # parameters
+                                "drive_frequency_GHz": f_GHz,
+                                "tlist_flat": tlist_flat,
+                                "flat_a_expect": flat_output.expects[0],
+                                "flat_b_expect": flat_output.expects[1],
+                                "flat_q_expect": flat_output.expects[2],
+                                "measurement_outcomes": measurement_outcomes,
+                            }
+                        )
             if solution_config.include_ramp_pulse:
                 simulation_outcome_dict_list[freq_idx].update(
                     {
@@ -1562,6 +1587,7 @@ def _get_drive_amplitude(
     )
     return g_a, g_b, g_q
 
+
 def dephasing_rate_gambetta(chi, nbar, kappa, omega_d, omega_r):
     """
     Compute dephasing rate using Gambetta's formula.
@@ -1576,4 +1602,12 @@ def dephasing_rate_gambetta(chi, nbar, kappa, omega_d, omega_r):
     Returns:
     - gamma_phi: dephasing rate (in kHz)
     """
-    return 0.5*chi*chi*nbar*kappa/((omega_d - omega_r)**2 + kappa*kappa/4) *1E6
+    return (
+        0.5
+        * chi
+        * chi
+        * nbar
+        * kappa
+        / ((omega_d - omega_r) ** 2 + kappa * kappa / 4)
+        * 1e6
+    )

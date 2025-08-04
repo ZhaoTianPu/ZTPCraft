@@ -1,7 +1,11 @@
 import numpy as np
 from scipy.constants import hbar
+import scipy as sp
 
-from typing import Callable, Union, Literal
+from numpy.typing import NDArray
+from typing import Callable, Union, Literal, Optional, Dict, Any
+
+from scipy.integrate._ivp.ivp import OdeResult
 
 
 def power_kappa_frequency_to_drive_strength(
@@ -72,12 +76,7 @@ def power_dissipator_coeff_frequency_to_drive_strength(
         Drive strength in units of GHz*2*pi (compatible with using angular frequency in static Hamiltonian).
         The drive takes the form epsilon*sin(omega_d*t + phi), and epsilon is returned.
     """
-    return (
-        2
-        * np.sqrt(input_power / (hbar * omega_d))
-        * dissipator_coeff
-        * 1e-9
-    )
+    return 2 * np.sqrt(input_power / (hbar * omega_d)) * dissipator_coeff * 1e-9
 
 
 def steady_state_displacement(
@@ -190,3 +189,83 @@ def steady_state_displacement(
             return float(phase + drive_phase)
     else:
         raise ValueError(f"Invalid return_type: {return_type}")
+
+
+def envelope_func(
+    t: float,
+    ramp_time_const: float,
+    ramp_type: Literal["linear", "gaussian", "tanh", "sin"] = "linear",
+    single_sided: bool = True,
+    flat_top_time: Optional[float] = None,
+) -> float:
+    """
+    Generate an envelope function for a ramp pulse.
+
+    Parameters
+    ----------
+    t : float
+        Time in seconds.
+    ramp_time_const : float
+        Ramp time constant in seconds.
+    ramp_type : Literal["linear", "gaussian", "tanh", "sin"]
+        Ramp type.
+    single_sided : bool
+        Whether the ramp is single-sided.
+    flat_top_time : Optional[float]
+        Flat top time in seconds.
+
+    Returns
+    -------
+    envelope : float
+        Value of the envelope function at time t.
+    """
+    if ramp_type != "linear" or not single_sided:
+        raise NotImplementedError("Only single-sidedlinear ramp is implemented for now")
+    else:
+        if t < ramp_time_const:
+            # linear ramp
+            raw_envelope = t / (ramp_time_const)
+        else:
+            raw_envelope = 1
+        return raw_envelope
+
+
+def enveloped_cos(
+    t: float,
+    omega_d: float,
+    t_ramp: float,
+    envelope_func: Callable[[Any], float],
+    envelope_func_args: Dict[str, float] = {},
+) -> float:
+    return envelope_func(t, t_ramp, **envelope_func_args) * np.cos(omega_d * t)
+
+
+def solve_oscillator_under_drive(
+    t_sample: NDArray[np.float64],
+    t_ramp: float,
+    drive_strength: float,
+    omega_q: float,
+    omega_d: float,
+    init_displacement: complex = 0j,
+    envelope_func_args: Dict[str, float] = {},
+) -> "OdeResult":
+    drive_term: Callable[[float], float] = lambda t: drive_strength * enveloped_cos(
+        t,
+        omega_d=omega_d,
+        t_ramp=t_ramp,
+        envelope_func=envelope_func,
+        envelope_func_args=envelope_func_args,
+    )
+
+    def dxdt(t: float, x: complex) -> complex:
+        return -1j * omega_q * x + drive_term(t)
+
+    sol = sp.integrate.solve_ivp(
+        dxdt,
+        (t_sample[0], t_sample[-1]),
+        [init_displacement],
+        t_eval=t_sample,
+        rtol=1e-10,
+        atol=1e-10,
+    )
+    return sol
