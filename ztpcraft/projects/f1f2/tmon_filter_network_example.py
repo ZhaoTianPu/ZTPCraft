@@ -887,17 +887,17 @@ class DriveInducedDecohSim:
                             projector, flat_output.states[time_idx]
                         )
 
-                        simulation_outcome_dict_list.append(
-                            {
-                                # parameters
-                                "drive_frequency_GHz": f_GHz,
-                                "tlist_flat": tlist_flat,
-                                "flat_a_expect": flat_output.expects[0],
-                                "flat_b_expect": flat_output.expects[1],
-                                "flat_q_expect": flat_output.expects[2],
-                                "measurement_outcomes": measurement_outcomes,
-                            }
-                        )
+                    simulation_outcome_dict_list.append(
+                        {
+                            # parameters
+                            "drive_frequency_GHz": f_GHz,
+                            "tlist_flat": tlist_flat,
+                            "flat_a_expect": flat_output.expects[0],
+                            "flat_b_expect": flat_output.expects[1],
+                            "flat_q_expect": flat_output.expects[2],
+                            "measurement_outcomes": measurement_outcomes,
+                        }
+                    )
             if solution_config.include_ramp_pulse:
                 simulation_outcome_dict_list[freq_idx].update(
                     {
