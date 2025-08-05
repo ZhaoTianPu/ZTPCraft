@@ -781,9 +781,9 @@ class DriveInducedDecohSim:
                         tlist_ramp,
                         method=self.solver,
                         exp_ops=[
-                            self.number_ops_truncated["a"],
-                            self.number_ops_truncated["b"],
-                            self.number_ops_truncated["q"],
+                            self.destroy_ops_truncated["a"],
+                            self.destroy_ops_truncated["b"],
+                            self.destroy_ops_truncated["q"],
                         ],
                         options=dq.Options(save_states=True),
                     )
@@ -796,9 +796,9 @@ class DriveInducedDecohSim:
                         tlist_ramp,
                         method=self.solver,
                         exp_ops=[
-                            self.number_ops_truncated["a"],
-                            self.number_ops_truncated["b"],
-                            self.number_ops_truncated["q"],
+                            self.destroy_ops_truncated["a"],
+                            self.destroy_ops_truncated["b"],
+                            self.destroy_ops_truncated["q"],
                         ],
                         options=dq.Options(save_states=True),
                     )
@@ -833,9 +833,9 @@ class DriveInducedDecohSim:
                 tlist_flat,
                 method=self.solver,
                 exp_ops=[
-                    self.number_ops_truncated["a"],
-                    self.number_ops_truncated["b"],
-                    self.number_ops_truncated["q"],
+                    self.destroy_ops_truncated["a"],
+                    self.destroy_ops_truncated["b"],
+                    self.destroy_ops_truncated["q"],
                 ],
                 options=dq.Options(save_states=True),
             )
@@ -1588,19 +1588,23 @@ def _get_drive_amplitude(
     return g_a, g_b, g_q
 
 
-def dephasing_rate_gambetta(chi, nbar, kappa, omega_d, omega_r):
+def dephasing_rate_gambetta(
+    chi: float, nbar: float, kappa: float, omega_d: float, omega_r: float
+) -> float:
     """
-    Compute dephasing rate using Gambetta's formula.
+    Compute dephasing rate due to measurement/drive, using Gambetta's formula PRA 74, 042318 (2006).
 
-    Parameters:
-    - chi: coupling strength (in GHz)
-    - nbar: mean photon number
-    - kappa: cavity decay rate (in 2pi GHz)
-    - omega_d: drive frequency (in 2pi GHz)
-    - omega_r: resonance frequency (in 2pi GHz)
+    Parameters
+    ----------
+    chi: dispersive shift (in GHz)
+    nbar: mean photon number
+    kappa: inverse of photon lifetime (in 1/ns)
+    omega_d: drive frequency (in 2pi GHz)
+    omega_r: resonance frequency (in 2pi GHz)
 
-    Returns:
-    - gamma_phi: dephasing rate (in kHz)
+    Returns
+    -------
+    gamma_phi: dephasing rate (in kHz)
     """
     return (
         0.5
