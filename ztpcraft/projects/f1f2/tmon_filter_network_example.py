@@ -227,6 +227,7 @@ class DriveInducedDecohSim:
     """End-to-end wrapper for the dressed-basis dynamical simulation."""
 
     def __init__(self, config: Union[str, Dict[str, Any]], autorun: bool = True):
+        dq.set_precision("double")
         if isinstance(config, dict):
             # pydantic v2 uses `model_validate`
             self.cfg = SimulationCfg.model_validate(config)
@@ -485,12 +486,6 @@ class DriveInducedDecohSim:
             self.x_ops_untruncated["b"],
             self.x_ops_untruncated["q"],
         )
-        phase_op = (
-            physical_params.phi_a_zpf * x_a
-            + physical_params.phi_b_zpf * x_b
-            + physical_params.phi_q_zpf * x_q
-        )
-        cos_nl_phase_op = self._cos_nl_op(phase_op)
         phase_op = (
             physical_params.phi_a_zpf * x_a
             + physical_params.phi_b_zpf * x_b
@@ -766,10 +761,10 @@ class DriveInducedDecohSim:
                 for mode in ["a", "b", "q"]:
                     if self.drive_strength[mode][freq_idx] != 0:
                         H_d_ramp_up += dq.modulated(
-                            # capture *mode* to avoid late-binding pitfalls in Python loops
-                            lambda t, m=mode: pulse_ramp_up(
-                                t, args={"t_ramp": t_ramp_rounded}, mode=m
-                            ),
+                            # capture mode and args to avoid late-binding pitfalls in Python loops
+                            lambda t, args={
+                                "t_ramp": t_ramp_rounded
+                            }, m=mode: pulse_ramp_up(t, args=args, mode=m),
                             self.y_ops_truncated[mode],
                         )
 
@@ -1043,7 +1038,7 @@ class DriveInducedDecohPostProc:
         if autorun:
             self.grouped_results_by_var_types = self.regroup_results()
             self.decay_rate_dict = self.fit_decay_rate_for_all_experiments(
-                extraction_mode="fit"
+                extraction_mode="fit_linear"
             )
 
     def _load(self, idx: int):
@@ -1109,14 +1104,28 @@ class DriveInducedDecohPostProc:
         cls,
         tlist: NDArray[np.float64],
         expect: NDArray[np.float64],
-        extraction_mode: Literal["fit", "difference"],
+        extraction_mode: Literal["fit_exp", "fit_linear", "difference"],
     ) -> tuple[float, NDArray[np.float64], NDArray[np.float64]]:
         """
         fit the decay rate for one experiment
         """
-        if extraction_mode == "fit":
+        if extraction_mode == "fit_exp":
             popt, pcov = curve_fit(
-                decay_function, tlist, expect, p0=[1e-5, expect[0], 0], maxfev=1000000
+                lambda t, decay_rate, init_value: decay_function(
+                    t, decay_rate, init_value, 0
+                ),
+                tlist,
+                expect,
+                p0=[1e-5, expect[0]],
+                maxfev=1000000,
+            )
+        elif extraction_mode == "fit_linear":
+            popt, pcov = curve_fit(
+                lambda t, decay_rate, init_value: init_value - decay_rate * t,
+                tlist,
+                expect,
+                p0=[1e-5, expect[0]],
+                maxfev=1000000,
             )
         elif extraction_mode == "difference":
             rate = (expect[0] - expect[-1]) / (tlist[-1] - tlist[0]) / expect[0]
@@ -1127,7 +1136,7 @@ class DriveInducedDecohPostProc:
         return popt[0], popt, pcov
 
     def fit_decay_rate_for_all_experiments(
-        self, extraction_mode: Literal["fit", "difference"]
+        self, extraction_mode: Literal["fit_exp", "fit_linear", "difference"]
     ) -> Dict[str, NDArray[np.float64]]:
         """
         fit the decay rate for all experiments
