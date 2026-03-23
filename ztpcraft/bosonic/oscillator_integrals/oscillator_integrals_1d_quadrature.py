@@ -6,22 +6,28 @@ exposes convenience functions used in notebooks.
 
 from __future__ import annotations
 
-import numpy as np
-from scipy.linalg import eigh
-from math import pi, sqrt, factorial
+from math import factorial, pi, sqrt
+from typing import Any, cast
 
-from ._oscillator_integrals_1d import (
-    hermite_complex,
-    cprefactor,
-    cSij,
-    ccosij,
-    cn2ij,
-    cphi2ij,
-    cSij_GH,
-    cphi2ij_GH,
-    cn2ij_GH,
-    ccosij_complex_GH,
-)
+import numpy as np
+import numpy.typing as npt
+from scipy.linalg import eigh
+
+from . import _oscillator_integrals_1d_quadrature as _osc1d_ext  # type: ignore[reportMissingImports]
+
+hermite_complex: Any = cast(Any, _osc1d_ext.hermite_complex)
+cprefactor: Any = cast(Any, _osc1d_ext.cprefactor)
+cSij: Any = cast(Any, _osc1d_ext.cSij)
+ccosij: Any = cast(Any, _osc1d_ext.ccosij)
+cn2ij: Any = cast(Any, _osc1d_ext.cn2ij)
+cphi2ij: Any = cast(Any, _osc1d_ext.cphi2ij)
+cSij_GH: Any = cast(Any, _osc1d_ext.cSij_GH)
+cphi2ij_GH: Any = cast(Any, _osc1d_ext.cphi2ij_GH)
+cn2ij_GH: Any = cast(Any, _osc1d_ext.cn2ij_GH)
+ccosij_complex_GH: Any = cast(Any, _osc1d_ext.ccosij_complex_GH)
+
+Array2D = npt.NDArray[np.float64]
+Array1D = npt.NDArray[np.float64]
 
 # Import Cython-accelerated functions
 # try:
@@ -65,31 +71,28 @@ def prefactor(n_i: int, n_j: int, phi_0_i: float, phi_0_j: float) -> float:
 
 
 def lowdin(
-    S: np.ndarray[float, np.dtype[np.float64]],
-    H: np.ndarray[float, np.dtype[np.float64]],
+    S: Array2D,
+    H: Array2D,
     delta_cutoff: float,
-) -> tuple[
-    np.ndarray[float, np.dtype[np.float64]], np.ndarray[float, np.dtype[np.float64]]
-]:
+) -> tuple[Array1D, Array2D]:
     eigvals, U = eigh(S)
     first_untruncated_basis: int = 0
     for index, delta_val in enumerate(eigvals):
         if delta_val > delta_cutoff:
             first_untruncated_basis = index
             break
-    delta_truncated: np.ndarray[float, np.dtype[np.float64]] = eigvals[
-        first_untruncated_basis:
-    ]
-    U_truncated: np.ndarray[float, np.dtype[np.float64]] = U[
-        :, first_untruncated_basis:
-    ]
-    delta_inv_sqrt: np.ndarray[float, np.dtype[np.float64]] = np.diag(
-        1.0 / np.sqrt(delta_truncated)
+    eigvals_arr: Array1D = np.asarray(eigvals, dtype=np.float64)
+    U_arr: Array2D = np.asarray(U, dtype=np.float64)
+    delta_truncated = eigvals_arr[first_untruncated_basis:]
+    U_truncated = U_arr[:, first_untruncated_basis:]
+    delta_inv_sqrt: Array2D = np.asarray(
+        np.diag(1.0 / np.sqrt(delta_truncated)), dtype=np.float64
     )
-    H_orth: np.ndarray[float, np.dtype[np.float64]] = (
-        delta_inv_sqrt @ (U_truncated.T) @ H @ U_truncated @ delta_inv_sqrt
+    H_orth: Array2D = np.asarray(
+        delta_inv_sqrt @ (U_truncated.T) @ H @ U_truncated @ delta_inv_sqrt,
+        dtype=np.float64,
     )
-    return eigvals, H_orth
+    return eigvals_arr, H_orth
 
 
 __all__ = [

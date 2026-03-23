@@ -69,5 +69,10 @@ typeCheckingMode = "strict"
 max-line-length = 88
 extend-ignore = ["E203", "W503"] 
 
+[tool.pytest.ini_options]
+markers = [
+    "slow: marks tests as slow (deselect with '-m \"not slow\"')",
+]
+
 [tool.setuptools.packages.find]
 exclude = ["tests*", "docs*", "examples*"] 

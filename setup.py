@@ -9,8 +9,10 @@ except Exception as exc:
 
 # Configure the extension; fall back to a pre-generated C file if Cython is not available
 ext = Extension(
-    name="ztpcraft.bosonic._oscillator_integrals_1d",
-    sources=["ztpcraft/bosonic/_oscillator_integrals_1d.pyx"],
+    name="ztpcraft.bosonic.oscillator_integrals._oscillator_integrals_1d_quadrature",
+    sources=[
+        "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx"
+    ],
     include_dirs=[_np.get_include()],
     language="c",
 )
@@ -21,7 +23,9 @@ try:
     ext_modules = cythonize([ext])  # , language_level="3")
 except Exception:
     # If Cython is not available, attempt to build from a generated C source
-    ext.sources = ["ztpcraft/bosonic/_oscillator_integrals_1d.c"]
+    ext.sources = [
+        "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.c"
+    ]
     ext_modules = [ext]
 
 setup(ext_modules=ext_modules)

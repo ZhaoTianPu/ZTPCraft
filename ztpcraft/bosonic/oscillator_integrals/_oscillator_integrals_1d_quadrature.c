@@ -5,15 +5,15 @@
     "distutils": {
         "depends": [],
         "include_dirs": [
-            "/private/var/folders/0f/hd_vjc8d4f90plv74n4dz9h00000gn/T/pip-build-env-_b5_ahfj/overlay/lib/python3.11/site-packages/numpy/_core/include"
+            "/private/var/folders/0f/hd_vjc8d4f90plv74n4dz9h00000gn/T/pip-build-env-kk95ey5l/overlay/lib/python3.11/site-packages/numpy/_core/include"
         ],
         "language": "c",
-        "name": "ztpcraft.bosonic._oscillator_integrals_1d",
+        "name": "ztpcraft.bosonic.oscillator_integrals._oscillator_integrals_1d_quadrature",
         "sources": [
-            "ztpcraft/bosonic/_oscillator_integrals_1d.pyx"
+            "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx"
         ]
     },
-    "module_name": "ztpcraft.bosonic._oscillator_integrals_1d"
+    "module_name": "ztpcraft.bosonic.oscillator_integrals._oscillator_integrals_1d_quadrature"
 }
 END: Cython Metadata */
 
@@ -1131,8 +1131,8 @@ static int __Pyx_init_co_variables(void) {
   #endif
 #endif
 
-#define __PYX_HAVE__ztpcraft__bosonic___oscillator_integrals_1d
-#define __PYX_HAVE_API__ztpcraft__bosonic___oscillator_integrals_1d
+#define __PYX_HAVE__ztpcraft__bosonic__oscillator_integrals___oscillator_integrals_1d_quadrature
+#define __PYX_HAVE_API__ztpcraft__bosonic__oscillator_integrals___oscillator_integrals_1d_quadrature
 /* Early includes */
 #include <math.h>
 #include "complex.h"
@@ -1377,7 +1377,7 @@ static const char *__pyx_filename;
 /* #### Code section: filename_table ### */
 
 static const char* const __pyx_f[] = {
-  "ztpcraft/bosonic/_oscillator_integrals_1d.pyx",
+  "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx",
   "<stringsource>",
 };
 /* #### Code section: utility_code_proto_before_types ### */
@@ -3138,8 +3138,8 @@ static double (*__pyx_fuse_1__pyx_f_5scipy_7special_14cython_special_gamma)(doub
 static __pyx_t_double_complex (*__pyx_fuse_0__pyx_f_5scipy_7special_14cython_special_hyp1f1)(double, double, __pyx_t_double_complex, int __pyx_skip_dispatch); /*proto*/
 static double (*__pyx_fuse_1__pyx_f_5scipy_7special_14cython_special_hyp1f1)(double, double, double, int __pyx_skip_dispatch); /*proto*/
 
-/* Module declarations from "ztpcraft.bosonic._oscillator_integrals_1d" */
-static __Pyx_memviewslice __pyx_v_8ztpcraft_7bosonic_24_oscillator_integrals_1d_GHdata_view = { 0, 0, { 0 }, { 0 }, { 0 } };
+/* Module declarations from "ztpcraft.bosonic.oscillator_integrals._oscillator_integrals_1d_quadrature" */
+static __Pyx_memviewslice __pyx_v_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_GHdata_view = { 0, 0, { 0 }, { 0 }, { 0 } };
 static PyObject *__pyx_collections_abc_Sequence = 0;
 static PyObject *generic = 0;
 static PyObject *strided = 0;
@@ -3148,21 +3148,21 @@ static PyObject *contiguous = 0;
 static PyObject *indirect_contiguous = 0;
 static int __pyx_memoryview_thread_locks_used;
 static PyThread_type_lock __pyx_memoryview_thread_locks[8];
-static unsigned long __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_cprod(Py_ssize_t, Py_ssize_t, Py_ssize_t); /*proto*/
-static __pyx_t_double_complex __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_hermite_complex(Py_ssize_t, __pyx_t_double_complex, int __pyx_skip_dispatch); /*proto*/
-static unsigned long __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_ccomb(Py_ssize_t, Py_ssize_t); /*proto*/
-static double __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_cGauss_int_without_exp(Py_ssize_t, double, double); /*proto*/
-static __pyx_t_long_double_complex __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_cGauss_int_without_exp_complex(Py_ssize_t, __pyx_t_double_complex, __pyx_t_double_complex); /*proto*/
-static double __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_cprefactor(Py_ssize_t, Py_ssize_t, double, double, int __pyx_skip_dispatch); /*proto*/
-static double __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_cSij(Py_ssize_t, Py_ssize_t, double, double, double, double, int __pyx_skip_dispatch); /*proto*/
-static double __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_ccosij(Py_ssize_t, Py_ssize_t, double, double, double, double, double, double, int __pyx_skip_dispatch); /*proto*/
-static double __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_cn2ij(Py_ssize_t, Py_ssize_t, double, double, double, double, int __pyx_skip_dispatch); /*proto*/
-static double __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_cn2ij_GH(Py_ssize_t, Py_ssize_t, double, double, double, double, int __pyx_skip_dispatch); /*proto*/
-static double __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_cphi2ij(Py_ssize_t, Py_ssize_t, double, double, double, double, int __pyx_skip_dispatch); /*proto*/
-static double __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_cSij_GH(Py_ssize_t, Py_ssize_t, double, double, double, double, int __pyx_skip_dispatch); /*proto*/
-static double __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_cphi2ij_GH(Py_ssize_t, Py_ssize_t, double, double, double, double, int __pyx_skip_dispatch); /*proto*/
-static double __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_ccosij_plain_GH(Py_ssize_t, Py_ssize_t, double, double, double, double, PyObject *, PyObject *, int __pyx_skip_dispatch); /*proto*/
-static double __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_ccosij_complex_GH(Py_ssize_t, Py_ssize_t, double, double, double, double, double, double, int __pyx_skip_dispatch); /*proto*/
+static unsigned long __pyx_f_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_cprod(Py_ssize_t, Py_ssize_t, Py_ssize_t); /*proto*/
+static __pyx_t_double_complex __pyx_f_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_hermite_complex(Py_ssize_t, __pyx_t_double_complex, int __pyx_skip_dispatch); /*proto*/
+static unsigned long __pyx_f_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_ccomb(Py_ssize_t, Py_ssize_t); /*proto*/
+static double __pyx_f_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_cGauss_int_without_exp(Py_ssize_t, double, double); /*proto*/
+static __pyx_t_long_double_complex __pyx_f_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_cGauss_int_without_exp_complex(Py_ssize_t, __pyx_t_double_complex, __pyx_t_double_complex); /*proto*/
+static double __pyx_f_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_cprefactor(Py_ssize_t, Py_ssize_t, double, double, int __pyx_skip_dispatch); /*proto*/
+static double __pyx_f_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_cSij(Py_ssize_t, Py_ssize_t, double, double, double, double, int __pyx_skip_dispatch); /*proto*/
+static double __pyx_f_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_ccosij(Py_ssize_t, Py_ssize_t, double, double, double, double, double, double, int __pyx_skip_dispatch); /*proto*/
+static double __pyx_f_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_cn2ij(Py_ssize_t, Py_ssize_t, double, double, double, double, int __pyx_skip_dispatch); /*proto*/
+static double __pyx_f_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_cn2ij_GH(Py_ssize_t, Py_ssize_t, double, double, double, double, int __pyx_skip_dispatch); /*proto*/
+static double __pyx_f_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_cphi2ij(Py_ssize_t, Py_ssize_t, double, double, double, double, int __pyx_skip_dispatch); /*proto*/
+static double __pyx_f_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_cSij_GH(Py_ssize_t, Py_ssize_t, double, double, double, double, int __pyx_skip_dispatch); /*proto*/
+static double __pyx_f_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_cphi2ij_GH(Py_ssize_t, Py_ssize_t, double, double, double, double, int __pyx_skip_dispatch); /*proto*/
+static double __pyx_f_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_ccosij_plain_GH(Py_ssize_t, Py_ssize_t, double, double, double, double, PyObject *, PyObject *, int __pyx_skip_dispatch); /*proto*/
+static double __pyx_f_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_ccosij_complex_GH(Py_ssize_t, Py_ssize_t, double, double, double, double, double, double, int __pyx_skip_dispatch); /*proto*/
 static int __pyx_array_allocate_buffer(struct __pyx_array_obj *); /*proto*/
 static struct __pyx_array_obj *__pyx_array_new(PyObject *, Py_ssize_t, char *, char const *, char *); /*proto*/
 static PyObject *__pyx_memoryview_new(PyObject *, int, int, __Pyx_TypeInfo const *); /*proto*/
@@ -3200,11 +3200,11 @@ static PyObject *__pyx_unpickle_Enum__set_state(struct __pyx_MemviewEnum_obj *, 
 /* #### Code section: typeinfo ### */
 static const __Pyx_TypeInfo __Pyx_TypeInfo_double = { "double", NULL, sizeof(double), { 0 }, 0, 'R', 0, 0 };
 /* #### Code section: before_global_var ### */
-#define __Pyx_MODULE_NAME "ztpcraft.bosonic._oscillator_integrals_1d"
-extern int __pyx_module_is_main_ztpcraft__bosonic___oscillator_integrals_1d;
-int __pyx_module_is_main_ztpcraft__bosonic___oscillator_integrals_1d = 0;
+#define __Pyx_MODULE_NAME "ztpcraft.bosonic.oscillator_integrals._oscillator_integrals_1d_quadrature"
+extern int __pyx_module_is_main_ztpcraft__bosonic__oscillator_integrals___oscillator_integrals_1d_quadrature;
+int __pyx_module_is_main_ztpcraft__bosonic__oscillator_integrals___oscillator_integrals_1d_quadrature = 0;
 
-/* Implementation of "ztpcraft.bosonic._oscillator_integrals_1d" */
+/* Implementation of "ztpcraft.bosonic.oscillator_integrals._oscillator_integrals_1d_quadrature" */
 /* #### Code section: global_var ### */
 static PyObject *__pyx_builtin_round;
 static PyObject *__pyx_builtin___import__;
@@ -3258,17 +3258,17 @@ static void __pyx_memoryviewslice___pyx_pf_15View_dot_MemoryView_16_memoryviewsl
 static PyObject *__pyx_pf___pyx_memoryviewslice___reduce_cython__(CYTHON_UNUSED struct __pyx_memoryviewslice_obj *__pyx_v_self); /* proto */
 static PyObject *__pyx_pf___pyx_memoryviewslice_2__setstate_cython__(CYTHON_UNUSED struct __pyx_memoryviewslice_obj *__pyx_v_self, CYTHON_UNUSED PyObject *__pyx_v___pyx_state); /* proto */
 static PyObject *__pyx_pf_15View_dot_MemoryView___pyx_unpickle_Enum(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v___pyx_type, long __pyx_v___pyx_checksum, PyObject *__pyx_v___pyx_state); /* proto */
-static PyObject *__pyx_pf_8ztpcraft_7bosonic_24_oscillator_integrals_1d_hermite_complex(CYTHON_UNUSED PyObject *__pyx_self, Py_ssize_t __pyx_v_n, __pyx_t_double_complex __pyx_v_z); /* proto */
-static PyObject *__pyx_pf_8ztpcraft_7bosonic_24_oscillator_integrals_1d_2cprefactor(CYTHON_UNUSED PyObject *__pyx_self, Py_ssize_t __pyx_v_n_i, Py_ssize_t __pyx_v_n_j, double __pyx_v_phi_0_i, double __pyx_v_phi_0_j); /* proto */
-static PyObject *__pyx_pf_8ztpcraft_7bosonic_24_oscillator_integrals_1d_4cSij(CYTHON_UNUSED PyObject *__pyx_self, Py_ssize_t __pyx_v_n_i, Py_ssize_t __pyx_v_n_j, double __pyx_v_phi_ratio_i, double __pyx_v_phi_ratio_j, double __pyx_v_phi_0_i, double __pyx_v_phi_0_j); /* proto */
-static PyObject *__pyx_pf_8ztpcraft_7bosonic_24_oscillator_integrals_1d_6ccosij(CYTHON_UNUSED PyObject *__pyx_self, Py_ssize_t __pyx_v_n_i, Py_ssize_t __pyx_v_n_j, double __pyx_v_phi_ratio_i, double __pyx_v_phi_ratio_j, double __pyx_v_phi_0_i, double __pyx_v_phi_0_j, double __pyx_v_a, double __pyx_v_phi_ext); /* proto */
-static PyObject *__pyx_pf_8ztpcraft_7bosonic_24_oscillator_integrals_1d_8cn2ij(CYTHON_UNUSED PyObject *__pyx_self, Py_ssize_t __pyx_v_n_i, Py_ssize_t __pyx_v_n_j, double __pyx_v_phi_ratio_i, double __pyx_v_phi_ratio_j, double __pyx_v_phi_0_i, double __pyx_v_phi_0_j); /* proto */
-static PyObject *__pyx_pf_8ztpcraft_7bosonic_24_oscillator_integrals_1d_10cn2ij_GH(CYTHON_UNUSED PyObject *__pyx_self, Py_ssize_t __pyx_v_n_i, Py_ssize_t __pyx_v_n_j, double __pyx_v_phi_ratio_i, double __pyx_v_phi_ratio_j, double __pyx_v_phi_0_i, double __pyx_v_phi_0_j); /* proto */
-static PyObject *__pyx_pf_8ztpcraft_7bosonic_24_oscillator_integrals_1d_12cphi2ij(CYTHON_UNUSED PyObject *__pyx_self, Py_ssize_t __pyx_v_n_i, Py_ssize_t __pyx_v_n_j, double __pyx_v_phi_ratio_i, double __pyx_v_phi_ratio_j, double __pyx_v_phi_0_i, double __pyx_v_phi_0_j); /* proto */
-static PyObject *__pyx_pf_8ztpcraft_7bosonic_24_oscillator_integrals_1d_14cSij_GH(CYTHON_UNUSED PyObject *__pyx_self, Py_ssize_t __pyx_v_n_i, Py_ssize_t __pyx_v_n_j, double __pyx_v_phi_ratio_i, double __pyx_v_phi_ratio_j, double __pyx_v_phi_0_i, double __pyx_v_phi_0_j); /* proto */
-static PyObject *__pyx_pf_8ztpcraft_7bosonic_24_oscillator_integrals_1d_16cphi2ij_GH(CYTHON_UNUSED PyObject *__pyx_self, Py_ssize_t __pyx_v_n_i, Py_ssize_t __pyx_v_n_j, double __pyx_v_phi_ratio_i, double __pyx_v_phi_ratio_j, double __pyx_v_phi_0_i, double __pyx_v_phi_0_j); /* proto */
-static PyObject *__pyx_pf_8ztpcraft_7bosonic_24_oscillator_integrals_1d_18ccosij_plain_GH(CYTHON_UNUSED PyObject *__pyx_self, Py_ssize_t __pyx_v_n_i, Py_ssize_t __pyx_v_n_j, double __pyx_v_phi_ratio_i, double __pyx_v_phi_ratio_j, double __pyx_v_phi_0_i, double __pyx_v_phi_0_j, PyObject *__pyx_v_a, PyObject *__pyx_v_phi_ext); /* proto */
-static PyObject *__pyx_pf_8ztpcraft_7bosonic_24_oscillator_integrals_1d_20ccosij_complex_GH(CYTHON_UNUSED PyObject *__pyx_self, Py_ssize_t __pyx_v_n_i, Py_ssize_t __pyx_v_n_j, double __pyx_v_phi_ratio_i, double __pyx_v_phi_ratio_j, double __pyx_v_phi_0_i, double __pyx_v_phi_0_j, double __pyx_v_a, double __pyx_v_phi_ext); /* proto */
+static PyObject *__pyx_pf_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_hermite_complex(CYTHON_UNUSED PyObject *__pyx_self, Py_ssize_t __pyx_v_n, __pyx_t_double_complex __pyx_v_z); /* proto */
+static PyObject *__pyx_pf_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_2cprefactor(CYTHON_UNUSED PyObject *__pyx_self, Py_ssize_t __pyx_v_n_i, Py_ssize_t __pyx_v_n_j, double __pyx_v_phi_0_i, double __pyx_v_phi_0_j); /* proto */
+static PyObject *__pyx_pf_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_4cSij(CYTHON_UNUSED PyObject *__pyx_self, Py_ssize_t __pyx_v_n_i, Py_ssize_t __pyx_v_n_j, double __pyx_v_phi_ratio_i, double __pyx_v_phi_ratio_j, double __pyx_v_phi_0_i, double __pyx_v_phi_0_j); /* proto */
+static PyObject *__pyx_pf_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_6ccosij(CYTHON_UNUSED PyObject *__pyx_self, Py_ssize_t __pyx_v_n_i, Py_ssize_t __pyx_v_n_j, double __pyx_v_phi_ratio_i, double __pyx_v_phi_ratio_j, double __pyx_v_phi_0_i, double __pyx_v_phi_0_j, double __pyx_v_a, double __pyx_v_phi_ext); /* proto */
+static PyObject *__pyx_pf_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_8cn2ij(CYTHON_UNUSED PyObject *__pyx_self, Py_ssize_t __pyx_v_n_i, Py_ssize_t __pyx_v_n_j, double __pyx_v_phi_ratio_i, double __pyx_v_phi_ratio_j, double __pyx_v_phi_0_i, double __pyx_v_phi_0_j); /* proto */
+static PyObject *__pyx_pf_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_10cn2ij_GH(CYTHON_UNUSED PyObject *__pyx_self, Py_ssize_t __pyx_v_n_i, Py_ssize_t __pyx_v_n_j, double __pyx_v_phi_ratio_i, double __pyx_v_phi_ratio_j, double __pyx_v_phi_0_i, double __pyx_v_phi_0_j); /* proto */
+static PyObject *__pyx_pf_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_12cphi2ij(CYTHON_UNUSED PyObject *__pyx_self, Py_ssize_t __pyx_v_n_i, Py_ssize_t __pyx_v_n_j, double __pyx_v_phi_ratio_i, double __pyx_v_phi_ratio_j, double __pyx_v_phi_0_i, double __pyx_v_phi_0_j); /* proto */
+static PyObject *__pyx_pf_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_14cSij_GH(CYTHON_UNUSED PyObject *__pyx_self, Py_ssize_t __pyx_v_n_i, Py_ssize_t __pyx_v_n_j, double __pyx_v_phi_ratio_i, double __pyx_v_phi_ratio_j, double __pyx_v_phi_0_i, double __pyx_v_phi_0_j); /* proto */
+static PyObject *__pyx_pf_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_16cphi2ij_GH(CYTHON_UNUSED PyObject *__pyx_self, Py_ssize_t __pyx_v_n_i, Py_ssize_t __pyx_v_n_j, double __pyx_v_phi_ratio_i, double __pyx_v_phi_ratio_j, double __pyx_v_phi_0_i, double __pyx_v_phi_0_j); /* proto */
+static PyObject *__pyx_pf_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_18ccosij_plain_GH(CYTHON_UNUSED PyObject *__pyx_self, Py_ssize_t __pyx_v_n_i, Py_ssize_t __pyx_v_n_j, double __pyx_v_phi_ratio_i, double __pyx_v_phi_ratio_j, double __pyx_v_phi_0_i, double __pyx_v_phi_0_j, PyObject *__pyx_v_a, PyObject *__pyx_v_phi_ext); /* proto */
+static PyObject *__pyx_pf_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_20ccosij_complex_GH(CYTHON_UNUSED PyObject *__pyx_self, Py_ssize_t __pyx_v_n_i, Py_ssize_t __pyx_v_n_j, double __pyx_v_phi_ratio_i, double __pyx_v_phi_ratio_j, double __pyx_v_phi_0_i, double __pyx_v_phi_0_j, double __pyx_v_a, double __pyx_v_phi_ext); /* proto */
 static PyObject *__pyx_tp_new_array(PyTypeObject *t, PyObject *a, PyObject *k); /*proto*/
 static PyObject *__pyx_tp_new_Enum(PyTypeObject *t, PyObject *a, PyObject *k); /*proto*/
 static PyObject *__pyx_tp_new_memoryview(PyTypeObject *t, PyObject *a, PyObject *k); /*proto*/
@@ -3393,7 +3393,7 @@ static __pyx_mstatetype * const __pyx_mstate_global = &__pyx_mstate_global_stati
 #define __pyx_kp_u_strided_and_indirect __pyx_string_tab[41]
 #define __pyx_kp_u_unable_to_allocate_array_data __pyx_string_tab[42]
 #define __pyx_kp_u_unable_to_allocate_shape_and_str __pyx_string_tab[43]
-#define __pyx_kp_u_ztpcraft_bosonic__oscillator_int_2 __pyx_string_tab[44]
+#define __pyx_kp_u_ztpcraft_bosonic_oscillator_inte_2 __pyx_string_tab[44]
 #define __pyx_n_u_ASCII __pyx_string_tab[45]
 #define __pyx_n_u_Ellipsis __pyx_string_tab[46]
 #define __pyx_n_u_GHdata __pyx_string_tab[47]
@@ -3490,7 +3490,7 @@ static __pyx_mstatetype * const __pyx_mstate_global = &__pyx_mstate_global_stati
 #define __pyx_n_u_x __pyx_string_tab[138]
 #define __pyx_n_u_z __pyx_string_tab[139]
 #define __pyx_n_u_zeros __pyx_string_tab[140]
-#define __pyx_n_u_ztpcraft_bosonic__oscillator_int __pyx_string_tab[141]
+#define __pyx_n_u_ztpcraft_bosonic_oscillator_inte __pyx_string_tab[141]
 #define __pyx_kp_b_iso88591_1_a_q_ARq_Baq_bPQQRRTTWWYYZZ_ii __pyx_string_tab[142]
 #define __pyx_kp_b_iso88591_2Q_r_1Cs_1_E_Bc_q_Ba_Qaq_q_3a_u __pyx_string_tab[143]
 #define __pyx_kp_b_iso88591_2_7_A_Cr_ARq_Baq_1A_3aq_ARq_AT __pyx_string_tab[144]
@@ -16852,7 +16852,7 @@ static PyObject *__pyx_unpickle_Enum__set_state(struct __pyx_MemviewEnum_obj *__
   return __pyx_r;
 }
 
-/* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":38
+/* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":38
  * 
  * # continuous product function
  * cdef unsigned long int cprod(Py_ssize_t nstart, Py_ssize_t nfinal, Py_ssize_t dn):             # <<<<<<<<<<<<<<
@@ -16860,13 +16860,13 @@ static PyObject *__pyx_unpickle_Enum__set_state(struct __pyx_MemviewEnum_obj *__
  *     cdef Py_ssize_t n = nstart + dn
 */
 
-static unsigned long __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_cprod(Py_ssize_t __pyx_v_nstart, Py_ssize_t __pyx_v_nfinal, Py_ssize_t __pyx_v_dn) {
+static unsigned long __pyx_f_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_cprod(Py_ssize_t __pyx_v_nstart, Py_ssize_t __pyx_v_nfinal, Py_ssize_t __pyx_v_dn) {
   unsigned long __pyx_v_prod_result;
   Py_ssize_t __pyx_v_n;
   unsigned long __pyx_r;
   int __pyx_t_1;
 
-  /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":40
+  /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":40
  * cdef unsigned long int cprod(Py_ssize_t nstart, Py_ssize_t nfinal, Py_ssize_t dn):
  *     cdef unsigned long int prod_result
  *     cdef Py_ssize_t n = nstart + dn             # <<<<<<<<<<<<<<
@@ -16875,7 +16875,7 @@ static unsigned long __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_cprod
 */
   __pyx_v_n = (__pyx_v_nstart + __pyx_v_dn);
 
-  /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":41
+  /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":41
  *     cdef unsigned long int prod_result
  *     cdef Py_ssize_t n = nstart + dn
  *     if nstart <= 0:             # <<<<<<<<<<<<<<
@@ -16885,7 +16885,7 @@ static unsigned long __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_cprod
   __pyx_t_1 = (__pyx_v_nstart <= 0);
   if (__pyx_t_1) {
 
-    /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":42
+    /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":42
  *     cdef Py_ssize_t n = nstart + dn
  *     if nstart <= 0:
  *         prod_result = 1             # <<<<<<<<<<<<<<
@@ -16894,7 +16894,7 @@ static unsigned long __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_cprod
 */
     __pyx_v_prod_result = 1;
 
-    /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":41
+    /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":41
  *     cdef unsigned long int prod_result
  *     cdef Py_ssize_t n = nstart + dn
  *     if nstart <= 0:             # <<<<<<<<<<<<<<
@@ -16904,7 +16904,7 @@ static unsigned long __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_cprod
     goto __pyx_L3;
   }
 
-  /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":44
+  /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":44
  *         prod_result = 1
  *     else:
  *         prod_result = nstart             # <<<<<<<<<<<<<<
@@ -16916,7 +16916,7 @@ static unsigned long __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_cprod
   }
   __pyx_L3:;
 
-  /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":45
+  /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":45
  *     else:
  *         prod_result = nstart
  *     if nfinal == 0:             # <<<<<<<<<<<<<<
@@ -16926,7 +16926,7 @@ static unsigned long __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_cprod
   __pyx_t_1 = (__pyx_v_nfinal == 0);
   if (__pyx_t_1) {
 
-    /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":46
+    /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":46
  *         prod_result = nstart
  *     if nfinal == 0:
  *         while n > nfinal:             # <<<<<<<<<<<<<<
@@ -16937,7 +16937,7 @@ static unsigned long __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_cprod
       __pyx_t_1 = (__pyx_v_n > __pyx_v_nfinal);
       if (!__pyx_t_1) break;
 
-      /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":47
+      /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":47
  *     if nfinal == 0:
  *         while n > nfinal:
  *             prod_result *= n             # <<<<<<<<<<<<<<
@@ -16946,7 +16946,7 @@ static unsigned long __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_cprod
 */
       __pyx_v_prod_result = (__pyx_v_prod_result * __pyx_v_n);
 
-      /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":48
+      /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":48
  *         while n > nfinal:
  *             prod_result *= n
  *             n += dn             # <<<<<<<<<<<<<<
@@ -16956,7 +16956,7 @@ static unsigned long __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_cprod
       __pyx_v_n = (__pyx_v_n + __pyx_v_dn);
     }
 
-    /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":45
+    /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":45
  *     else:
  *         prod_result = nstart
  *     if nfinal == 0:             # <<<<<<<<<<<<<<
@@ -16966,7 +16966,7 @@ static unsigned long __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_cprod
     goto __pyx_L4;
   }
 
-  /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":50
+  /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":50
  *             n += dn
  *     else:
  *         while n >= nfinal:             # <<<<<<<<<<<<<<
@@ -16978,7 +16978,7 @@ static unsigned long __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_cprod
       __pyx_t_1 = (__pyx_v_n >= __pyx_v_nfinal);
       if (!__pyx_t_1) break;
 
-      /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":51
+      /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":51
  *     else:
  *         while n >= nfinal:
  *             prod_result *= n             # <<<<<<<<<<<<<<
@@ -16987,7 +16987,7 @@ static unsigned long __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_cprod
 */
       __pyx_v_prod_result = (__pyx_v_prod_result * __pyx_v_n);
 
-      /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":52
+      /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":52
  *         while n >= nfinal:
  *             prod_result *= n
  *             n += dn             # <<<<<<<<<<<<<<
@@ -16999,7 +16999,7 @@ static unsigned long __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_cprod
   }
   __pyx_L4:;
 
-  /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":53
+  /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":53
  *             prod_result *= n
  *             n += dn
  *     return prod_result             # <<<<<<<<<<<<<<
@@ -17009,7 +17009,7 @@ static unsigned long __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_cprod
   __pyx_r = __pyx_v_prod_result;
   goto __pyx_L0;
 
-  /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":38
+  /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":38
  * 
  * # continuous product function
  * cdef unsigned long int cprod(Py_ssize_t nstart, Py_ssize_t nfinal, Py_ssize_t dn):             # <<<<<<<<<<<<<<
@@ -17022,7 +17022,7 @@ static unsigned long __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_cprod
   return __pyx_r;
 }
 
-/* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":57
+/* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":57
  * # Hermite polynomial with complex argument, using hyp1f1 functions
  * # notice that there are known numerical issues with this function when n is large
  * cpdef double complex hermite_complex(Py_ssize_t n, double complex z):             # <<<<<<<<<<<<<<
@@ -17030,14 +17030,14 @@ static unsigned long __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_cprod
  *     cdef double sign = 1 - 2* (n_2%2)
 */
 
-static PyObject *__pyx_pw_8ztpcraft_7bosonic_24_oscillator_integrals_1d_1hermite_complex(PyObject *__pyx_self, 
+static PyObject *__pyx_pw_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_1hermite_complex(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-static __pyx_t_double_complex __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_hermite_complex(Py_ssize_t __pyx_v_n, __pyx_t_double_complex __pyx_v_z, CYTHON_UNUSED int __pyx_skip_dispatch) {
+static __pyx_t_double_complex __pyx_f_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_hermite_complex(Py_ssize_t __pyx_v_n, __pyx_t_double_complex __pyx_v_z, CYTHON_UNUSED int __pyx_skip_dispatch) {
   Py_ssize_t __pyx_v_n_2;
   double __pyx_v_sign;
   double __pyx_v_prefactor;
@@ -17050,7 +17050,7 @@ static __pyx_t_double_complex __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
 
-  /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":58
+  /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":58
  * # notice that there are known numerical issues with this function when n is large
  * cpdef double complex hermite_complex(Py_ssize_t n, double complex z):
  *     cdef Py_ssize_t n_2 = n//2             # <<<<<<<<<<<<<<
@@ -17059,7 +17059,7 @@ static __pyx_t_double_complex __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals
 */
   __pyx_v_n_2 = __Pyx_div_Py_ssize_t(__pyx_v_n, 2, 1);
 
-  /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":59
+  /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":59
  * cpdef double complex hermite_complex(Py_ssize_t n, double complex z):
  *     cdef Py_ssize_t n_2 = n//2
  *     cdef double sign = 1 - 2* (n_2%2)             # <<<<<<<<<<<<<<
@@ -17068,7 +17068,7 @@ static __pyx_t_double_complex __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals
 */
   __pyx_v_sign = (1 - (2 * __Pyx_mod_Py_ssize_t(__pyx_v_n_2, 2, 1)));
 
-  /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":60
+  /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":60
  *     cdef Py_ssize_t n_2 = n//2
  *     cdef double sign = 1 - 2* (n_2%2)
  *     cdef double prefactor = gamma(n + 1.)/gamma(n_2 + 1.)             # <<<<<<<<<<<<<<
@@ -17083,7 +17083,7 @@ static __pyx_t_double_complex __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals
   }
   __pyx_v_prefactor = (__pyx_t_1 / __pyx_t_2);
 
-  /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":61
+  /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":61
  *     cdef double sign = 1 - 2* (n_2%2)
  *     cdef double prefactor = gamma(n + 1.)/gamma(n_2 + 1.)
  *     cdef double complex z2 = z*z             # <<<<<<<<<<<<<<
@@ -17092,7 +17092,7 @@ static __pyx_t_double_complex __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals
 */
   __pyx_v_z2 = __Pyx_c_prod_double(__pyx_v_z, __pyx_v_z);
 
-  /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":62
+  /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":62
  *     cdef double prefactor = gamma(n + 1.)/gamma(n_2 + 1.)
  *     cdef double complex z2 = z*z
  *     if n%2 == 0:             # <<<<<<<<<<<<<<
@@ -17102,7 +17102,7 @@ static __pyx_t_double_complex __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals
   __pyx_t_3 = (__Pyx_mod_Py_ssize_t(__pyx_v_n, 2, 1) == 0);
   if (__pyx_t_3) {
 
-    /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":63
+    /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":63
  *     cdef double complex z2 = z*z
  *     if n%2 == 0:
  *         return sign * prefactor * hyp1f1(-n_2, 0.5, z2)             # <<<<<<<<<<<<<<
@@ -17112,7 +17112,7 @@ static __pyx_t_double_complex __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals
     __pyx_r = __Pyx_c_prod_double(__pyx_t_double_complex_from_parts((__pyx_v_sign * __pyx_v_prefactor), 0), __pyx_fuse_0__pyx_f_5scipy_7special_14cython_special_hyp1f1((-__pyx_v_n_2), 0.5, __pyx_v_z2, 0));
     goto __pyx_L0;
 
-    /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":62
+    /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":62
  *     cdef double prefactor = gamma(n + 1.)/gamma(n_2 + 1.)
  *     cdef double complex z2 = z*z
  *     if n%2 == 0:             # <<<<<<<<<<<<<<
@@ -17121,7 +17121,7 @@ static __pyx_t_double_complex __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals
 */
   }
 
-  /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":65
+  /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":65
  *         return sign * prefactor * hyp1f1(-n_2, 0.5, z2)
  *     else:
  *         return sign * prefactor * 2 * z * hyp1f1(-n_2, 1.5, z2)             # <<<<<<<<<<<<<<
@@ -17133,7 +17133,7 @@ static __pyx_t_double_complex __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals
     goto __pyx_L0;
   }
 
-  /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":57
+  /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":57
  * # Hermite polynomial with complex argument, using hyp1f1 functions
  * # notice that there are known numerical issues with this function when n is large
  * cpdef double complex hermite_complex(Py_ssize_t n, double complex z):             # <<<<<<<<<<<<<<
@@ -17143,22 +17143,22 @@ static __pyx_t_double_complex __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals
 
   /* function exit code */
   __pyx_L1_error:;
-  __Pyx_AddTraceback("ztpcraft.bosonic._oscillator_integrals_1d.hermite_complex", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("ztpcraft.bosonic.oscillator_integrals._oscillator_integrals_1d_quadrature.hermite_complex", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = __pyx_t_double_complex_from_parts(0, 0);
   __pyx_L0:;
   return __pyx_r;
 }
 
 /* Python wrapper */
-static PyObject *__pyx_pw_8ztpcraft_7bosonic_24_oscillator_integrals_1d_1hermite_complex(PyObject *__pyx_self, 
+static PyObject *__pyx_pw_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_1hermite_complex(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-static PyMethodDef __pyx_mdef_8ztpcraft_7bosonic_24_oscillator_integrals_1d_1hermite_complex = {"hermite_complex", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_8ztpcraft_7bosonic_24_oscillator_integrals_1d_1hermite_complex, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
-static PyObject *__pyx_pw_8ztpcraft_7bosonic_24_oscillator_integrals_1d_1hermite_complex(PyObject *__pyx_self, 
+static PyMethodDef __pyx_mdef_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_1hermite_complex = {"hermite_complex", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_1hermite_complex, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_1hermite_complex(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
@@ -17228,11 +17228,11 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   for (Py_ssize_t __pyx_temp=0; __pyx_temp < (Py_ssize_t)(sizeof(values)/sizeof(values[0])); ++__pyx_temp) {
     Py_XDECREF(values[__pyx_temp]);
   }
-  __Pyx_AddTraceback("ztpcraft.bosonic._oscillator_integrals_1d.hermite_complex", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("ztpcraft.bosonic.oscillator_integrals._oscillator_integrals_1d_quadrature.hermite_complex", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_8ztpcraft_7bosonic_24_oscillator_integrals_1d_hermite_complex(__pyx_self, __pyx_v_n, __pyx_v_z);
+  __pyx_r = __pyx_pf_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_hermite_complex(__pyx_self, __pyx_v_n, __pyx_v_z);
 
   /* function exit code */
   for (Py_ssize_t __pyx_temp=0; __pyx_temp < (Py_ssize_t)(sizeof(values)/sizeof(values[0])); ++__pyx_temp) {
@@ -17242,7 +17242,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_8ztpcraft_7bosonic_24_oscillator_integrals_1d_hermite_complex(CYTHON_UNUSED PyObject *__pyx_self, Py_ssize_t __pyx_v_n, __pyx_t_double_complex __pyx_v_z) {
+static PyObject *__pyx_pf_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_hermite_complex(CYTHON_UNUSED PyObject *__pyx_self, Py_ssize_t __pyx_v_n, __pyx_t_double_complex __pyx_v_z) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   __pyx_t_double_complex __pyx_t_1;
@@ -17252,7 +17252,7 @@ static PyObject *__pyx_pf_8ztpcraft_7bosonic_24_oscillator_integrals_1d_hermite_
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("hermite_complex", 0);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_hermite_complex(__pyx_v_n, __pyx_v_z, 1); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 57, __pyx_L1_error)
+  __pyx_t_1 = __pyx_f_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_hermite_complex(__pyx_v_n, __pyx_v_z, 1); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 57, __pyx_L1_error)
   __pyx_t_2 = __pyx_PyComplex_FromComplex(__pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 57, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_r = __pyx_t_2;
@@ -17262,7 +17262,7 @@ static PyObject *__pyx_pf_8ztpcraft_7bosonic_24_oscillator_integrals_1d_hermite_
   /* function exit code */
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_2);
-  __Pyx_AddTraceback("ztpcraft.bosonic._oscillator_integrals_1d.hermite_complex", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("ztpcraft.bosonic.oscillator_integrals._oscillator_integrals_1d_quadrature.hermite_complex", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XGIVEREF(__pyx_r);
@@ -17270,7 +17270,7 @@ static PyObject *__pyx_pf_8ztpcraft_7bosonic_24_oscillator_integrals_1d_hermite_
   return __pyx_r;
 }
 
-/* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":68
+/* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":68
  * 
  * # combination function
  * cdef unsigned long int ccomb(Py_ssize_t n, Py_ssize_t r):             # <<<<<<<<<<<<<<
@@ -17278,7 +17278,7 @@ static PyObject *__pyx_pf_8ztpcraft_7bosonic_24_oscillator_integrals_1d_hermite_
  *         return 1
 */
 
-static unsigned long __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_ccomb(Py_ssize_t __pyx_v_n, Py_ssize_t __pyx_v_r) {
+static unsigned long __pyx_f_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_ccomb(Py_ssize_t __pyx_v_n, Py_ssize_t __pyx_v_r) {
   unsigned long __pyx_r;
   int __pyx_t_1;
   unsigned long __pyx_t_2;
@@ -17287,7 +17287,7 @@ static unsigned long __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_ccomb
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
 
-  /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":69
+  /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":69
  * # combination function
  * cdef unsigned long int ccomb(Py_ssize_t n, Py_ssize_t r):
  *     if n==r:             # <<<<<<<<<<<<<<
@@ -17297,7 +17297,7 @@ static unsigned long __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_ccomb
   __pyx_t_1 = (__pyx_v_n == __pyx_v_r);
   if (__pyx_t_1) {
 
-    /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":70
+    /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":70
  * cdef unsigned long int ccomb(Py_ssize_t n, Py_ssize_t r):
  *     if n==r:
  *         return 1             # <<<<<<<<<<<<<<
@@ -17307,7 +17307,7 @@ static unsigned long __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_ccomb
     __pyx_r = 1;
     goto __pyx_L0;
 
-    /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":69
+    /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":69
  * # combination function
  * cdef unsigned long int ccomb(Py_ssize_t n, Py_ssize_t r):
  *     if n==r:             # <<<<<<<<<<<<<<
@@ -17316,7 +17316,7 @@ static unsigned long __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_ccomb
 */
   }
 
-  /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":71
+  /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":71
  *     if n==r:
  *         return 1
  *     elif r==0:             # <<<<<<<<<<<<<<
@@ -17326,7 +17326,7 @@ static unsigned long __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_ccomb
   __pyx_t_1 = (__pyx_v_r == 0);
   if (__pyx_t_1) {
 
-    /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":72
+    /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":72
  *         return 1
  *     elif r==0:
  *         return 1             # <<<<<<<<<<<<<<
@@ -17336,7 +17336,7 @@ static unsigned long __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_ccomb
     __pyx_r = 1;
     goto __pyx_L0;
 
-    /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":71
+    /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":71
  *     if n==r:
  *         return 1
  *     elif r==0:             # <<<<<<<<<<<<<<
@@ -17345,7 +17345,7 @@ static unsigned long __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_ccomb
 */
   }
 
-  /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":74
+  /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":74
  *         return 1
  *     else:
  *         return cprod(n,n-r+1,-1)//cprod(r,0,-1)             # <<<<<<<<<<<<<<
@@ -17353,8 +17353,8 @@ static unsigned long __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_ccomb
  * # the result of the Gaussian integral without the exponential part
 */
   /*else*/ {
-    __pyx_t_2 = __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_cprod(__pyx_v_n, ((__pyx_v_n - __pyx_v_r) + 1), -1L); if (unlikely(__pyx_t_2 == ((unsigned long)-1L) && PyErr_Occurred())) __PYX_ERR(0, 74, __pyx_L1_error)
-    __pyx_t_3 = __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_cprod(__pyx_v_r, 0, -1L); if (unlikely(__pyx_t_3 == ((unsigned long)-1L) && PyErr_Occurred())) __PYX_ERR(0, 74, __pyx_L1_error)
+    __pyx_t_2 = __pyx_f_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_cprod(__pyx_v_n, ((__pyx_v_n - __pyx_v_r) + 1), -1L); if (unlikely(__pyx_t_2 == ((unsigned long)-1L) && PyErr_Occurred())) __PYX_ERR(0, 74, __pyx_L1_error)
+    __pyx_t_3 = __pyx_f_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_cprod(__pyx_v_r, 0, -1L); if (unlikely(__pyx_t_3 == ((unsigned long)-1L) && PyErr_Occurred())) __PYX_ERR(0, 74, __pyx_L1_error)
     if (unlikely(__pyx_t_3 == 0)) {
       PyErr_SetString(PyExc_ZeroDivisionError, "integer division or modulo by zero");
       __PYX_ERR(0, 74, __pyx_L1_error)
@@ -17363,7 +17363,7 @@ static unsigned long __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_ccomb
     goto __pyx_L0;
   }
 
-  /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":68
+  /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":68
  * 
  * # combination function
  * cdef unsigned long int ccomb(Py_ssize_t n, Py_ssize_t r):             # <<<<<<<<<<<<<<
@@ -17373,13 +17373,13 @@ static unsigned long __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_ccomb
 
   /* function exit code */
   __pyx_L1_error:;
-  __Pyx_AddTraceback("ztpcraft.bosonic._oscillator_integrals_1d.ccomb", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("ztpcraft.bosonic.oscillator_integrals._oscillator_integrals_1d_quadrature.ccomb", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = -1L;
   __pyx_L0:;
   return __pyx_r;
 }
 
-/* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":77
+/* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":77
  * 
  * # the result of the Gaussian integral without the exponential part
  * cdef double cGauss_int_without_exp(Py_ssize_t n, double a, double b):             # <<<<<<<<<<<<<<
@@ -17387,7 +17387,7 @@ static unsigned long __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_ccomb
  *     cdef Py_ssize_t k
 */
 
-static double __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_cGauss_int_without_exp(Py_ssize_t __pyx_v_n, double __pyx_v_a, double __pyx_v_b) {
+static double __pyx_f_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_cGauss_int_without_exp(Py_ssize_t __pyx_v_n, double __pyx_v_a, double __pyx_v_b) {
   double __pyx_v_Gauss_sum;
   Py_ssize_t __pyx_v_k;
   double __pyx_r;
@@ -17408,7 +17408,7 @@ static double __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_cGauss_int_w
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("cGauss_int_without_exp", 0);
 
-  /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":80
+  /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":80
  *     cdef double Gauss_sum
  *     cdef Py_ssize_t k
  *     Gauss_sum = 0             # <<<<<<<<<<<<<<
@@ -17417,7 +17417,7 @@ static double __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_cGauss_int_w
 */
   __pyx_v_Gauss_sum = 0.0;
 
-  /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":81
+  /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":81
  *     cdef Py_ssize_t k
  *     Gauss_sum = 0
  *     for k in range(round(floor(n/2.+1))):             # <<<<<<<<<<<<<<
@@ -17442,15 +17442,15 @@ static double __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_cGauss_int_w
   for (__pyx_t_7 = 0; __pyx_t_7 < __pyx_t_6; __pyx_t_7+=1) {
     __pyx_v_k = __pyx_t_7;
 
-    /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":82
+    /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":82
  *     Gauss_sum = 0
  *     for k in range(round(floor(n/2.+1))):
  *         Gauss_sum += ccomb(n,2*k)*cprod(2*k-1, 0, -2)/(2*a)**(n-k)*b**(n-2*k)             # <<<<<<<<<<<<<<
  *     Gauss_sum *= sqrt(pi/a)
  *     return Gauss_sum
 */
-    __pyx_t_8 = __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_ccomb(__pyx_v_n, (2 * __pyx_v_k)); if (unlikely(__pyx_t_8 == ((unsigned long)-1L) && PyErr_Occurred())) __PYX_ERR(0, 82, __pyx_L1_error)
-    __pyx_t_9 = __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_cprod(((2 * __pyx_v_k) - 1), 0, -2L); if (unlikely(__pyx_t_9 == ((unsigned long)-1L) && PyErr_Occurred())) __PYX_ERR(0, 82, __pyx_L1_error)
+    __pyx_t_8 = __pyx_f_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_ccomb(__pyx_v_n, (2 * __pyx_v_k)); if (unlikely(__pyx_t_8 == ((unsigned long)-1L) && PyErr_Occurred())) __PYX_ERR(0, 82, __pyx_L1_error)
+    __pyx_t_9 = __pyx_f_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_cprod(((2 * __pyx_v_k) - 1), 0, -2L); if (unlikely(__pyx_t_9 == ((unsigned long)-1L) && PyErr_Occurred())) __PYX_ERR(0, 82, __pyx_L1_error)
     __pyx_t_10 = (__pyx_t_8 * __pyx_t_9);
     __pyx_t_11 = pow((2.0 * __pyx_v_a), ((double)(__pyx_v_n - __pyx_v_k)));
     if (unlikely(__pyx_t_11 == 0)) {
@@ -17460,7 +17460,7 @@ static double __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_cGauss_int_w
     __pyx_v_Gauss_sum = (__pyx_v_Gauss_sum + ((((double)__pyx_t_10) / __pyx_t_11) * pow(__pyx_v_b, ((double)(__pyx_v_n - (2 * __pyx_v_k))))));
   }
 
-  /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":83
+  /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":83
  *     for k in range(round(floor(n/2.+1))):
  *         Gauss_sum += ccomb(n,2*k)*cprod(2*k-1, 0, -2)/(2*a)**(n-k)*b**(n-2*k)
  *     Gauss_sum *= sqrt(pi/a)             # <<<<<<<<<<<<<<
@@ -17473,7 +17473,7 @@ static double __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_cGauss_int_w
   }
   __pyx_v_Gauss_sum = (__pyx_v_Gauss_sum * sqrt((((double)M_PI) / __pyx_v_a)));
 
-  /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":84
+  /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":84
  *         Gauss_sum += ccomb(n,2*k)*cprod(2*k-1, 0, -2)/(2*a)**(n-k)*b**(n-2*k)
  *     Gauss_sum *= sqrt(pi/a)
  *     return Gauss_sum             # <<<<<<<<<<<<<<
@@ -17483,7 +17483,7 @@ static double __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_cGauss_int_w
   __pyx_r = __pyx_v_Gauss_sum;
   goto __pyx_L0;
 
-  /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":77
+  /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":77
  * 
  * # the result of the Gaussian integral without the exponential part
  * cdef double cGauss_int_without_exp(Py_ssize_t n, double a, double b):             # <<<<<<<<<<<<<<
@@ -17496,14 +17496,14 @@ static double __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_cGauss_int_w
   __Pyx_XDECREF(__pyx_t_1);
   __Pyx_XDECREF(__pyx_t_2);
   __Pyx_XDECREF(__pyx_t_3);
-  __Pyx_AddTraceback("ztpcraft.bosonic._oscillator_integrals_1d.cGauss_int_without_exp", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("ztpcraft.bosonic.oscillator_integrals._oscillator_integrals_1d_quadrature.cGauss_int_without_exp", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = -1;
   __pyx_L0:;
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-/* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":87
+/* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":87
  * 
  * # the result of the Gaussian integral without the exponential part, for complex coefficients
  * cdef long double complex cGauss_int_without_exp_complex(Py_ssize_t n, double complex a, double complex b):             # <<<<<<<<<<<<<<
@@ -17511,7 +17511,7 @@ static double __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_cGauss_int_w
  *     cdef Py_ssize_t k
 */
 
-static __pyx_t_long_double_complex __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_cGauss_int_without_exp_complex(Py_ssize_t __pyx_v_n, __pyx_t_double_complex __pyx_v_a, __pyx_t_double_complex __pyx_v_b) {
+static __pyx_t_long_double_complex __pyx_f_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_cGauss_int_without_exp_complex(Py_ssize_t __pyx_v_n, __pyx_t_double_complex __pyx_v_a, __pyx_t_double_complex __pyx_v_b) {
   __pyx_t_long_double_complex __pyx_v_Gauss_sum;
   Py_ssize_t __pyx_v_k;
   __pyx_t_long_double_complex __pyx_r;
@@ -17533,7 +17533,7 @@ static __pyx_t_long_double_complex __pyx_f_8ztpcraft_7bosonic_24_oscillator_inte
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("cGauss_int_without_exp_complex", 0);
 
-  /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":90
+  /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":90
  *     cdef long double complex Gauss_sum
  *     cdef Py_ssize_t k
  *     Gauss_sum = 0             # <<<<<<<<<<<<<<
@@ -17542,7 +17542,7 @@ static __pyx_t_long_double_complex __pyx_f_8ztpcraft_7bosonic_24_oscillator_inte
 */
   __pyx_v_Gauss_sum = __pyx_t_long_double_complex_from_parts(0, 0);
 
-  /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":91
+  /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":91
  *     cdef Py_ssize_t k
  *     Gauss_sum = 0
  *     for k in range(round(floor(n/2.+1))):             # <<<<<<<<<<<<<<
@@ -17567,15 +17567,15 @@ static __pyx_t_long_double_complex __pyx_f_8ztpcraft_7bosonic_24_oscillator_inte
   for (__pyx_t_7 = 0; __pyx_t_7 < __pyx_t_6; __pyx_t_7+=1) {
     __pyx_v_k = __pyx_t_7;
 
-    /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":92
+    /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":92
  *     Gauss_sum = 0
  *     for k in range(round(floor(n/2.+1))):
  *         Gauss_sum += ccomb(n,2*k)*cprod(2*k-1, 0, -2)/(2*a)**(n-k)*b**(n-2*k)             # <<<<<<<<<<<<<<
  *     Gauss_sum *= csqrt(pi/a)
  *     return Gauss_sum
 */
-    __pyx_t_8 = __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_ccomb(__pyx_v_n, (2 * __pyx_v_k)); if (unlikely(__pyx_t_8 == ((unsigned long)-1L) && PyErr_Occurred())) __PYX_ERR(0, 92, __pyx_L1_error)
-    __pyx_t_9 = __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_cprod(((2 * __pyx_v_k) - 1), 0, -2L); if (unlikely(__pyx_t_9 == ((unsigned long)-1L) && PyErr_Occurred())) __PYX_ERR(0, 92, __pyx_L1_error)
+    __pyx_t_8 = __pyx_f_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_ccomb(__pyx_v_n, (2 * __pyx_v_k)); if (unlikely(__pyx_t_8 == ((unsigned long)-1L) && PyErr_Occurred())) __PYX_ERR(0, 92, __pyx_L1_error)
+    __pyx_t_9 = __pyx_f_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_cprod(((2 * __pyx_v_k) - 1), 0, -2L); if (unlikely(__pyx_t_9 == ((unsigned long)-1L) && PyErr_Occurred())) __PYX_ERR(0, 92, __pyx_L1_error)
     __pyx_t_10 = __pyx_t_double_complex_from_parts((__pyx_t_8 * __pyx_t_9), 0);
     __pyx_t_11 = __Pyx_c_pow_double(__Pyx_c_prod_double(__pyx_t_double_complex_from_parts(2, 0), __pyx_v_a), __pyx_t_double_complex_from_parts((__pyx_v_n - __pyx_v_k), 0));
     if (unlikely(__Pyx_c_is_zero_double(__pyx_t_11))) {
@@ -17586,7 +17586,7 @@ static __pyx_t_long_double_complex __pyx_f_8ztpcraft_7bosonic_24_oscillator_inte
     __pyx_v_Gauss_sum = __Pyx_c_sum_long__double(__pyx_v_Gauss_sum, __pyx_t_long_double_complex_from_parts(__Pyx_CREAL(__pyx_t_12), __Pyx_CIMAG(__pyx_t_12)));
   }
 
-  /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":93
+  /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":93
  *     for k in range(round(floor(n/2.+1))):
  *         Gauss_sum += ccomb(n,2*k)*cprod(2*k-1, 0, -2)/(2*a)**(n-k)*b**(n-2*k)
  *     Gauss_sum *= csqrt(pi/a)             # <<<<<<<<<<<<<<
@@ -17601,7 +17601,7 @@ static __pyx_t_long_double_complex __pyx_f_8ztpcraft_7bosonic_24_oscillator_inte
   __pyx_t_11 = csqrt(__Pyx_c_quot_double(__pyx_t_12, __pyx_v_a));
   __pyx_v_Gauss_sum = __Pyx_c_prod_long__double(__pyx_v_Gauss_sum, __pyx_t_long_double_complex_from_parts(__Pyx_CREAL(__pyx_t_11), __Pyx_CIMAG(__pyx_t_11)));
 
-  /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":94
+  /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":94
  *         Gauss_sum += ccomb(n,2*k)*cprod(2*k-1, 0, -2)/(2*a)**(n-k)*b**(n-2*k)
  *     Gauss_sum *= csqrt(pi/a)
  *     return Gauss_sum             # <<<<<<<<<<<<<<
@@ -17611,7 +17611,7 @@ static __pyx_t_long_double_complex __pyx_f_8ztpcraft_7bosonic_24_oscillator_inte
   __pyx_r = __pyx_v_Gauss_sum;
   goto __pyx_L0;
 
-  /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":87
+  /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":87
  * 
  * # the result of the Gaussian integral without the exponential part, for complex coefficients
  * cdef long double complex cGauss_int_without_exp_complex(Py_ssize_t n, double complex a, double complex b):             # <<<<<<<<<<<<<<
@@ -17624,14 +17624,14 @@ static __pyx_t_long_double_complex __pyx_f_8ztpcraft_7bosonic_24_oscillator_inte
   __Pyx_XDECREF(__pyx_t_1);
   __Pyx_XDECREF(__pyx_t_2);
   __Pyx_XDECREF(__pyx_t_3);
-  __Pyx_AddTraceback("ztpcraft.bosonic._oscillator_integrals_1d.cGauss_int_without_exp_complex", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("ztpcraft.bosonic.oscillator_integrals._oscillator_integrals_1d_quadrature.cGauss_int_without_exp_complex", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = __pyx_t_long_double_complex_from_parts(0, 0);
   __pyx_L0:;
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-/* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":97
+/* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":97
  * 
  * # prefactor of the matrix element integrals from the two harmonic oscillator states
  * cpdef double cprefactor(Py_ssize_t n_i,Py_ssize_t n_j, double phi_0_i, double phi_0_j):             # <<<<<<<<<<<<<<
@@ -17639,14 +17639,14 @@ static __pyx_t_long_double_complex __pyx_f_8ztpcraft_7bosonic_24_oscillator_inte
  *            (1./sqrt(2.**n_j)) * 1./sqrt(gamma(<double>n_j + 1.) )*\
 */
 
-static PyObject *__pyx_pw_8ztpcraft_7bosonic_24_oscillator_integrals_1d_3cprefactor(PyObject *__pyx_self, 
+static PyObject *__pyx_pw_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_3cprefactor(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-static double __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_cprefactor(Py_ssize_t __pyx_v_n_i, Py_ssize_t __pyx_v_n_j, double __pyx_v_phi_0_i, double __pyx_v_phi_0_j, CYTHON_UNUSED int __pyx_skip_dispatch) {
+static double __pyx_f_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_cprefactor(Py_ssize_t __pyx_v_n_i, Py_ssize_t __pyx_v_n_j, double __pyx_v_phi_0_i, double __pyx_v_phi_0_j, CYTHON_UNUSED int __pyx_skip_dispatch) {
   double __pyx_r;
   double __pyx_t_1;
   double __pyx_t_2;
@@ -17656,7 +17656,7 @@ static double __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_cprefactor(P
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
 
-  /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":98
+  /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":98
  * # prefactor of the matrix element integrals from the two harmonic oscillator states
  * cpdef double cprefactor(Py_ssize_t n_i,Py_ssize_t n_j, double phi_0_i, double phi_0_j):
  *     return (1./sqrt(2.**n_i)) * 1./sqrt(gamma(<double>n_i + 1.) )*\             # <<<<<<<<<<<<<<
@@ -17675,7 +17675,7 @@ static double __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_cprefactor(P
     __PYX_ERR(0, 98, __pyx_L1_error)
   }
 
-  /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":99
+  /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":99
  * cpdef double cprefactor(Py_ssize_t n_i,Py_ssize_t n_j, double phi_0_i, double phi_0_j):
  *     return (1./sqrt(2.**n_i)) * 1./sqrt(gamma(<double>n_i + 1.) )*\
  *            (1./sqrt(2.**n_j)) * 1./sqrt(gamma(<double>n_j + 1.) )*\             # <<<<<<<<<<<<<<
@@ -17688,7 +17688,7 @@ static double __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_cprefactor(P
     __PYX_ERR(0, 99, __pyx_L1_error)
   }
 
-  /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":98
+  /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":98
  * # prefactor of the matrix element integrals from the two harmonic oscillator states
  * cpdef double cprefactor(Py_ssize_t n_i,Py_ssize_t n_j, double phi_0_i, double phi_0_j):
  *     return (1./sqrt(2.**n_i)) * 1./sqrt(gamma(<double>n_i + 1.) )*\             # <<<<<<<<<<<<<<
@@ -17697,7 +17697,7 @@ static double __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_cprefactor(P
 */
   __pyx_t_4 = (((__pyx_t_2 / __pyx_t_1) * (1. / __pyx_t_3)) * 1.);
 
-  /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":99
+  /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":99
  * cpdef double cprefactor(Py_ssize_t n_i,Py_ssize_t n_j, double phi_0_i, double phi_0_j):
  *     return (1./sqrt(2.**n_i)) * 1./sqrt(gamma(<double>n_i + 1.) )*\
  *            (1./sqrt(2.**n_j)) * 1./sqrt(gamma(<double>n_j + 1.) )*\             # <<<<<<<<<<<<<<
@@ -17710,7 +17710,7 @@ static double __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_cprefactor(P
     __PYX_ERR(0, 99, __pyx_L1_error)
   }
 
-  /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":100
+  /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":100
  *     return (1./sqrt(2.**n_i)) * 1./sqrt(gamma(<double>n_i + 1.) )*\
  *            (1./sqrt(2.**n_j)) * 1./sqrt(gamma(<double>n_j + 1.) )*\
  *            (1./sqrt(pi * phi_0_i * phi_0_j))             # <<<<<<<<<<<<<<
@@ -17723,7 +17723,7 @@ static double __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_cprefactor(P
     __PYX_ERR(0, 100, __pyx_L1_error)
   }
 
-  /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":99
+  /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":99
  * cpdef double cprefactor(Py_ssize_t n_i,Py_ssize_t n_j, double phi_0_i, double phi_0_j):
  *     return (1./sqrt(2.**n_i)) * 1./sqrt(gamma(<double>n_i + 1.) )*\
  *            (1./sqrt(2.**n_j)) * 1./sqrt(gamma(<double>n_j + 1.) )*\             # <<<<<<<<<<<<<<
@@ -17733,7 +17733,7 @@ static double __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_cprefactor(P
   __pyx_r = ((__pyx_t_4 / __pyx_t_3) * (1. / __pyx_t_1));
   goto __pyx_L0;
 
-  /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":97
+  /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":97
  * 
  * # prefactor of the matrix element integrals from the two harmonic oscillator states
  * cpdef double cprefactor(Py_ssize_t n_i,Py_ssize_t n_j, double phi_0_i, double phi_0_j):             # <<<<<<<<<<<<<<
@@ -17743,22 +17743,22 @@ static double __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_cprefactor(P
 
   /* function exit code */
   __pyx_L1_error:;
-  __Pyx_AddTraceback("ztpcraft.bosonic._oscillator_integrals_1d.cprefactor", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("ztpcraft.bosonic.oscillator_integrals._oscillator_integrals_1d_quadrature.cprefactor", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = -1;
   __pyx_L0:;
   return __pyx_r;
 }
 
 /* Python wrapper */
-static PyObject *__pyx_pw_8ztpcraft_7bosonic_24_oscillator_integrals_1d_3cprefactor(PyObject *__pyx_self, 
+static PyObject *__pyx_pw_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_3cprefactor(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-static PyMethodDef __pyx_mdef_8ztpcraft_7bosonic_24_oscillator_integrals_1d_3cprefactor = {"cprefactor", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_8ztpcraft_7bosonic_24_oscillator_integrals_1d_3cprefactor, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
-static PyObject *__pyx_pw_8ztpcraft_7bosonic_24_oscillator_integrals_1d_3cprefactor(PyObject *__pyx_self, 
+static PyMethodDef __pyx_mdef_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_3cprefactor = {"cprefactor", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_3cprefactor, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_3cprefactor(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
@@ -17844,11 +17844,11 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   for (Py_ssize_t __pyx_temp=0; __pyx_temp < (Py_ssize_t)(sizeof(values)/sizeof(values[0])); ++__pyx_temp) {
     Py_XDECREF(values[__pyx_temp]);
   }
-  __Pyx_AddTraceback("ztpcraft.bosonic._oscillator_integrals_1d.cprefactor", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("ztpcraft.bosonic.oscillator_integrals._oscillator_integrals_1d_quadrature.cprefactor", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_8ztpcraft_7bosonic_24_oscillator_integrals_1d_2cprefactor(__pyx_self, __pyx_v_n_i, __pyx_v_n_j, __pyx_v_phi_0_i, __pyx_v_phi_0_j);
+  __pyx_r = __pyx_pf_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_2cprefactor(__pyx_self, __pyx_v_n_i, __pyx_v_n_j, __pyx_v_phi_0_i, __pyx_v_phi_0_j);
 
   /* function exit code */
   for (Py_ssize_t __pyx_temp=0; __pyx_temp < (Py_ssize_t)(sizeof(values)/sizeof(values[0])); ++__pyx_temp) {
@@ -17858,7 +17858,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_8ztpcraft_7bosonic_24_oscillator_integrals_1d_2cprefactor(CYTHON_UNUSED PyObject *__pyx_self, Py_ssize_t __pyx_v_n_i, Py_ssize_t __pyx_v_n_j, double __pyx_v_phi_0_i, double __pyx_v_phi_0_j) {
+static PyObject *__pyx_pf_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_2cprefactor(CYTHON_UNUSED PyObject *__pyx_self, Py_ssize_t __pyx_v_n_i, Py_ssize_t __pyx_v_n_j, double __pyx_v_phi_0_i, double __pyx_v_phi_0_j) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   double __pyx_t_1;
@@ -17868,7 +17868,7 @@ static PyObject *__pyx_pf_8ztpcraft_7bosonic_24_oscillator_integrals_1d_2cprefac
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("cprefactor", 0);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_cprefactor(__pyx_v_n_i, __pyx_v_n_j, __pyx_v_phi_0_i, __pyx_v_phi_0_j, 1); if (unlikely(__pyx_t_1 == ((double)-1) && PyErr_Occurred())) __PYX_ERR(0, 97, __pyx_L1_error)
+  __pyx_t_1 = __pyx_f_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_cprefactor(__pyx_v_n_i, __pyx_v_n_j, __pyx_v_phi_0_i, __pyx_v_phi_0_j, 1); if (unlikely(__pyx_t_1 == ((double)-1) && PyErr_Occurred())) __PYX_ERR(0, 97, __pyx_L1_error)
   __pyx_t_2 = PyFloat_FromDouble(__pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 97, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_r = __pyx_t_2;
@@ -17878,7 +17878,7 @@ static PyObject *__pyx_pf_8ztpcraft_7bosonic_24_oscillator_integrals_1d_2cprefac
   /* function exit code */
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_2);
-  __Pyx_AddTraceback("ztpcraft.bosonic._oscillator_integrals_1d.cprefactor", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("ztpcraft.bosonic.oscillator_integrals._oscillator_integrals_1d_quadrature.cprefactor", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XGIVEREF(__pyx_r);
@@ -17886,7 +17886,7 @@ static PyObject *__pyx_pf_8ztpcraft_7bosonic_24_oscillator_integrals_1d_2cprefac
   return __pyx_r;
 }
 
-/* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":103
+/* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":103
  * 
  * # matrix elements of the overlapping integral, using the analytical form
  * cpdef double cSij(Py_ssize_t n_i,Py_ssize_t n_j,double phi_ratio_i,double phi_ratio_j,double phi_0_i,double phi_0_j):             # <<<<<<<<<<<<<<
@@ -17894,14 +17894,14 @@ static PyObject *__pyx_pf_8ztpcraft_7bosonic_24_oscillator_integrals_1d_2cprefac
  *     cdef double Sij_sum_ij = 0
 */
 
-static PyObject *__pyx_pw_8ztpcraft_7bosonic_24_oscillator_integrals_1d_5cSij(PyObject *__pyx_self, 
+static PyObject *__pyx_pw_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_5cSij(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-static double __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_cSij(Py_ssize_t __pyx_v_n_i, Py_ssize_t __pyx_v_n_j, double __pyx_v_phi_ratio_i, double __pyx_v_phi_ratio_j, double __pyx_v_phi_0_i, double __pyx_v_phi_0_j, CYTHON_UNUSED int __pyx_skip_dispatch) {
+static double __pyx_f_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_cSij(Py_ssize_t __pyx_v_n_i, Py_ssize_t __pyx_v_n_j, double __pyx_v_phi_ratio_i, double __pyx_v_phi_ratio_j, double __pyx_v_phi_0_i, double __pyx_v_phi_0_j, CYTHON_UNUSED int __pyx_skip_dispatch) {
   double __pyx_v_Sij_sum_j;
   double __pyx_v_Sij_sum_ij;
   double __pyx_v_expfactor;
@@ -17925,7 +17925,7 @@ static double __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_cSij(Py_ssiz
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
 
-  /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":104
+  /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":104
  * # matrix elements of the overlapping integral, using the analytical form
  * cpdef double cSij(Py_ssize_t n_i,Py_ssize_t n_j,double phi_ratio_i,double phi_ratio_j,double phi_0_i,double phi_0_j):
  *     cdef double Sij_sum_j = 0             # <<<<<<<<<<<<<<
@@ -17934,7 +17934,7 @@ static double __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_cSij(Py_ssiz
 */
   __pyx_v_Sij_sum_j = 0.0;
 
-  /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":105
+  /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":105
  * cpdef double cSij(Py_ssize_t n_i,Py_ssize_t n_j,double phi_ratio_i,double phi_ratio_j,double phi_0_i,double phi_0_j):
  *     cdef double Sij_sum_j = 0
  *     cdef double Sij_sum_ij = 0             # <<<<<<<<<<<<<<
@@ -17943,7 +17943,7 @@ static double __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_cSij(Py_ssiz
 */
   __pyx_v_Sij_sum_ij = 0.0;
 
-  /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":106
+  /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":106
  *     cdef double Sij_sum_j = 0
  *     cdef double Sij_sum_ij = 0
  *     cdef double expfactor = -phi_ratio_i**2/2 -phi_ratio_j**2/2 + (phi_ratio_i/phi_0_i+phi_ratio_j/phi_0_j)*(phi_ratio_i/phi_0_i+phi_ratio_j/phi_0_j)/(4*(1/(2*phi_0_i**2)+1/(2*phi_0_j**2)))             # <<<<<<<<<<<<<<
@@ -17984,7 +17984,7 @@ static double __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_cSij(Py_ssiz
   }
   __pyx_v_expfactor = ((((-pow(__pyx_v_phi_ratio_i, 2.0)) / 2.0) - (pow(__pyx_v_phi_ratio_j, 2.0) / 2.0)) + (__pyx_t_1 / __pyx_t_4));
 
-  /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":107
+  /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":107
  *     cdef double Sij_sum_ij = 0
  *     cdef double expfactor = -phi_ratio_i**2/2 -phi_ratio_j**2/2 + (phi_ratio_i/phi_0_i+phi_ratio_j/phi_0_j)*(phi_ratio_i/phi_0_i+phi_ratio_j/phi_0_j)/(4*(1/(2*phi_0_i**2)+1/(2*phi_0_j**2)))
  *     cdef double expvalue = exp(expfactor)             # <<<<<<<<<<<<<<
@@ -17993,7 +17993,7 @@ static double __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_cSij(Py_ssiz
 */
   __pyx_v_expvalue = exp(__pyx_v_expfactor);
 
-  /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":110
+  /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":110
  *     cdef Py_ssize_t k_i
  *     cdef Py_ssize_t k_j
  *     if (phi_ratio_i==phi_ratio_j)&(phi_0_i==phi_0_j):             # <<<<<<<<<<<<<<
@@ -18003,7 +18003,7 @@ static double __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_cSij(Py_ssiz
   __pyx_t_5 = ((__pyx_v_phi_ratio_i == __pyx_v_phi_ratio_j) & (__pyx_v_phi_0_i == __pyx_v_phi_0_j));
   if (__pyx_t_5) {
 
-    /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":111
+    /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":111
  *     cdef Py_ssize_t k_j
  *     if (phi_ratio_i==phi_ratio_j)&(phi_0_i==phi_0_j):
  *         if (n_i==n_j):             # <<<<<<<<<<<<<<
@@ -18013,7 +18013,7 @@ static double __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_cSij(Py_ssiz
     __pyx_t_5 = (__pyx_v_n_i == __pyx_v_n_j);
     if (__pyx_t_5) {
 
-      /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":112
+      /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":112
  *     if (phi_ratio_i==phi_ratio_j)&(phi_0_i==phi_0_j):
  *         if (n_i==n_j):
  *             return 1             # <<<<<<<<<<<<<<
@@ -18023,7 +18023,7 @@ static double __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_cSij(Py_ssiz
       __pyx_r = 1.0;
       goto __pyx_L0;
 
-      /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":111
+      /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":111
  *     cdef Py_ssize_t k_j
  *     if (phi_ratio_i==phi_ratio_j)&(phi_0_i==phi_0_j):
  *         if (n_i==n_j):             # <<<<<<<<<<<<<<
@@ -18032,7 +18032,7 @@ static double __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_cSij(Py_ssiz
 */
     }
 
-    /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":114
+    /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":114
  *             return 1
  *         else:
  *             return 0             # <<<<<<<<<<<<<<
@@ -18044,7 +18044,7 @@ static double __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_cSij(Py_ssiz
       goto __pyx_L0;
     }
 
-    /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":110
+    /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":110
  *     cdef Py_ssize_t k_i
  *     cdef Py_ssize_t k_j
  *     if (phi_ratio_i==phi_ratio_j)&(phi_0_i==phi_0_j):             # <<<<<<<<<<<<<<
@@ -18053,7 +18053,7 @@ static double __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_cSij(Py_ssiz
 */
   }
 
-  /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":116
+  /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":116
  *             return 0
  *     else:
  *         for k_i in range(n_i+1):             # <<<<<<<<<<<<<<
@@ -18066,7 +18066,7 @@ static double __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_cSij(Py_ssiz
     for (__pyx_t_8 = 0; __pyx_t_8 < __pyx_t_7; __pyx_t_8+=1) {
       __pyx_v_k_i = __pyx_t_8;
 
-      /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":117
+      /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":117
  *     else:
  *         for k_i in range(n_i+1):
  *             Sij_sum_j = 0             # <<<<<<<<<<<<<<
@@ -18075,7 +18075,7 @@ static double __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_cSij(Py_ssiz
 */
       __pyx_v_Sij_sum_j = 0.0;
 
-      /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":118
+      /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":118
  *         for k_i in range(n_i+1):
  *             Sij_sum_j = 0
  *             for k_j in range(n_j+1):             # <<<<<<<<<<<<<<
@@ -18087,16 +18087,16 @@ static double __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_cSij(Py_ssiz
       for (__pyx_t_11 = 0; __pyx_t_11 < __pyx_t_10; __pyx_t_11+=1) {
         __pyx_v_k_j = __pyx_t_11;
 
-        /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":120
+        /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":120
  *             for k_j in range(n_j+1):
  *                 Sij_sum_j +=\
  *                 ccomb(n_j,k_j)*eval_hermite(n_j-k_j,-phi_ratio_j)\             # <<<<<<<<<<<<<<
  *                 *(2/phi_0_j)**k_j\
  *                 *cGauss_int_without_exp(k_i+k_j,1/(2*phi_0_i**2)+1/(2*phi_0_j**2),phi_ratio_i/phi_0_i+phi_ratio_j/phi_0_j)
 */
-        __pyx_t_12 = __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_ccomb(__pyx_v_n_j, __pyx_v_k_j); if (unlikely(__pyx_t_12 == ((unsigned long)-1L) && PyErr_Occurred())) __PYX_ERR(0, 120, __pyx_L1_error)
+        __pyx_t_12 = __pyx_f_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_ccomb(__pyx_v_n_j, __pyx_v_k_j); if (unlikely(__pyx_t_12 == ((unsigned long)-1L) && PyErr_Occurred())) __PYX_ERR(0, 120, __pyx_L1_error)
 
-        /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":121
+        /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":121
  *                 Sij_sum_j +=\
  *                 ccomb(n_j,k_j)*eval_hermite(n_j-k_j,-phi_ratio_j)\
  *                 *(2/phi_0_j)**k_j\             # <<<<<<<<<<<<<<
@@ -18108,7 +18108,7 @@ static double __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_cSij(Py_ssiz
           __PYX_ERR(0, 121, __pyx_L1_error)
         }
 
-        /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":122
+        /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":122
  *                 ccomb(n_j,k_j)*eval_hermite(n_j-k_j,-phi_ratio_j)\
  *                 *(2/phi_0_j)**k_j\
  *                 *cGauss_int_without_exp(k_i+k_j,1/(2*phi_0_i**2)+1/(2*phi_0_j**2),phi_ratio_i/phi_0_i+phi_ratio_j/phi_0_j)             # <<<<<<<<<<<<<<
@@ -18133,9 +18133,9 @@ static double __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_cSij(Py_ssiz
           PyErr_SetString(PyExc_ZeroDivisionError, "float division");
           __PYX_ERR(0, 122, __pyx_L1_error)
         }
-        __pyx_t_3 = __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_cGauss_int_without_exp((__pyx_v_k_i + __pyx_v_k_j), ((1.0 / __pyx_t_4) + (1.0 / __pyx_t_1)), ((__pyx_v_phi_ratio_i / __pyx_v_phi_0_i) + (__pyx_v_phi_ratio_j / __pyx_v_phi_0_j))); if (unlikely(__pyx_t_3 == ((double)-1) && PyErr_Occurred())) __PYX_ERR(0, 122, __pyx_L1_error)
+        __pyx_t_3 = __pyx_f_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_cGauss_int_without_exp((__pyx_v_k_i + __pyx_v_k_j), ((1.0 / __pyx_t_4) + (1.0 / __pyx_t_1)), ((__pyx_v_phi_ratio_i / __pyx_v_phi_0_i) + (__pyx_v_phi_ratio_j / __pyx_v_phi_0_j))); if (unlikely(__pyx_t_3 == ((double)-1) && PyErr_Occurred())) __PYX_ERR(0, 122, __pyx_L1_error)
 
-        /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":119
+        /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":119
  *             Sij_sum_j = 0
  *             for k_j in range(n_j+1):
  *                 Sij_sum_j +=\             # <<<<<<<<<<<<<<
@@ -18145,14 +18145,14 @@ static double __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_cSij(Py_ssiz
         __pyx_v_Sij_sum_j = (__pyx_v_Sij_sum_j + (((__pyx_t_12 * __pyx_f_5scipy_7special_14cython_special_eval_hermite((__pyx_v_n_j - __pyx_v_k_j), (-__pyx_v_phi_ratio_j), 0)) * pow((2.0 / __pyx_v_phi_0_j), ((double)__pyx_v_k_j))) * __pyx_t_3));
       }
 
-      /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":123
+      /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":123
  *                 *(2/phi_0_j)**k_j\
  *                 *cGauss_int_without_exp(k_i+k_j,1/(2*phi_0_i**2)+1/(2*phi_0_j**2),phi_ratio_i/phi_0_i+phi_ratio_j/phi_0_j)
  *             Sij_sum_ij += Sij_sum_j*ccomb(n_i,k_i)*eval_hermite(n_i-k_i,-phi_ratio_i)*(2/phi_0_i)**k_i             # <<<<<<<<<<<<<<
  *         return Sij_sum_ij*cprefactor(n_i,n_j,phi_0_i,phi_0_j)*expvalue
  * 
 */
-      __pyx_t_12 = __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_ccomb(__pyx_v_n_i, __pyx_v_k_i); if (unlikely(__pyx_t_12 == ((unsigned long)-1L) && PyErr_Occurred())) __PYX_ERR(0, 123, __pyx_L1_error)
+      __pyx_t_12 = __pyx_f_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_ccomb(__pyx_v_n_i, __pyx_v_k_i); if (unlikely(__pyx_t_12 == ((unsigned long)-1L) && PyErr_Occurred())) __PYX_ERR(0, 123, __pyx_L1_error)
       if (unlikely(__pyx_v_phi_0_i == 0)) {
         PyErr_SetString(PyExc_ZeroDivisionError, "float division");
         __PYX_ERR(0, 123, __pyx_L1_error)
@@ -18160,19 +18160,19 @@ static double __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_cSij(Py_ssiz
       __pyx_v_Sij_sum_ij = (__pyx_v_Sij_sum_ij + (((__pyx_v_Sij_sum_j * __pyx_t_12) * __pyx_f_5scipy_7special_14cython_special_eval_hermite((__pyx_v_n_i - __pyx_v_k_i), (-__pyx_v_phi_ratio_i), 0)) * pow((2.0 / __pyx_v_phi_0_i), ((double)__pyx_v_k_i))));
     }
 
-    /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":124
+    /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":124
  *                 *cGauss_int_without_exp(k_i+k_j,1/(2*phi_0_i**2)+1/(2*phi_0_j**2),phi_ratio_i/phi_0_i+phi_ratio_j/phi_0_j)
  *             Sij_sum_ij += Sij_sum_j*ccomb(n_i,k_i)*eval_hermite(n_i-k_i,-phi_ratio_i)*(2/phi_0_i)**k_i
  *         return Sij_sum_ij*cprefactor(n_i,n_j,phi_0_i,phi_0_j)*expvalue             # <<<<<<<<<<<<<<
  * 
  * # matrix elements of the cos(a*phi - phi_ext), using the analytical form
 */
-    __pyx_t_3 = __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_cprefactor(__pyx_v_n_i, __pyx_v_n_j, __pyx_v_phi_0_i, __pyx_v_phi_0_j, 0); if (unlikely(__pyx_t_3 == ((double)-1) && PyErr_Occurred())) __PYX_ERR(0, 124, __pyx_L1_error)
+    __pyx_t_3 = __pyx_f_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_cprefactor(__pyx_v_n_i, __pyx_v_n_j, __pyx_v_phi_0_i, __pyx_v_phi_0_j, 0); if (unlikely(__pyx_t_3 == ((double)-1) && PyErr_Occurred())) __PYX_ERR(0, 124, __pyx_L1_error)
     __pyx_r = ((__pyx_v_Sij_sum_ij * __pyx_t_3) * __pyx_v_expvalue);
     goto __pyx_L0;
   }
 
-  /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":103
+  /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":103
  * 
  * # matrix elements of the overlapping integral, using the analytical form
  * cpdef double cSij(Py_ssize_t n_i,Py_ssize_t n_j,double phi_ratio_i,double phi_ratio_j,double phi_0_i,double phi_0_j):             # <<<<<<<<<<<<<<
@@ -18182,22 +18182,22 @@ static double __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_cSij(Py_ssiz
 
   /* function exit code */
   __pyx_L1_error:;
-  __Pyx_AddTraceback("ztpcraft.bosonic._oscillator_integrals_1d.cSij", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("ztpcraft.bosonic.oscillator_integrals._oscillator_integrals_1d_quadrature.cSij", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = -1;
   __pyx_L0:;
   return __pyx_r;
 }
 
 /* Python wrapper */
-static PyObject *__pyx_pw_8ztpcraft_7bosonic_24_oscillator_integrals_1d_5cSij(PyObject *__pyx_self, 
+static PyObject *__pyx_pw_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_5cSij(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-static PyMethodDef __pyx_mdef_8ztpcraft_7bosonic_24_oscillator_integrals_1d_5cSij = {"cSij", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_8ztpcraft_7bosonic_24_oscillator_integrals_1d_5cSij, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
-static PyObject *__pyx_pw_8ztpcraft_7bosonic_24_oscillator_integrals_1d_5cSij(PyObject *__pyx_self, 
+static PyMethodDef __pyx_mdef_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_5cSij = {"cSij", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_5cSij, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_5cSij(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
@@ -18299,11 +18299,11 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   for (Py_ssize_t __pyx_temp=0; __pyx_temp < (Py_ssize_t)(sizeof(values)/sizeof(values[0])); ++__pyx_temp) {
     Py_XDECREF(values[__pyx_temp]);
   }
-  __Pyx_AddTraceback("ztpcraft.bosonic._oscillator_integrals_1d.cSij", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("ztpcraft.bosonic.oscillator_integrals._oscillator_integrals_1d_quadrature.cSij", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_8ztpcraft_7bosonic_24_oscillator_integrals_1d_4cSij(__pyx_self, __pyx_v_n_i, __pyx_v_n_j, __pyx_v_phi_ratio_i, __pyx_v_phi_ratio_j, __pyx_v_phi_0_i, __pyx_v_phi_0_j);
+  __pyx_r = __pyx_pf_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_4cSij(__pyx_self, __pyx_v_n_i, __pyx_v_n_j, __pyx_v_phi_ratio_i, __pyx_v_phi_ratio_j, __pyx_v_phi_0_i, __pyx_v_phi_0_j);
 
   /* function exit code */
   for (Py_ssize_t __pyx_temp=0; __pyx_temp < (Py_ssize_t)(sizeof(values)/sizeof(values[0])); ++__pyx_temp) {
@@ -18313,7 +18313,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_8ztpcraft_7bosonic_24_oscillator_integrals_1d_4cSij(CYTHON_UNUSED PyObject *__pyx_self, Py_ssize_t __pyx_v_n_i, Py_ssize_t __pyx_v_n_j, double __pyx_v_phi_ratio_i, double __pyx_v_phi_ratio_j, double __pyx_v_phi_0_i, double __pyx_v_phi_0_j) {
+static PyObject *__pyx_pf_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_4cSij(CYTHON_UNUSED PyObject *__pyx_self, Py_ssize_t __pyx_v_n_i, Py_ssize_t __pyx_v_n_j, double __pyx_v_phi_ratio_i, double __pyx_v_phi_ratio_j, double __pyx_v_phi_0_i, double __pyx_v_phi_0_j) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   double __pyx_t_1;
@@ -18323,7 +18323,7 @@ static PyObject *__pyx_pf_8ztpcraft_7bosonic_24_oscillator_integrals_1d_4cSij(CY
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("cSij", 0);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_cSij(__pyx_v_n_i, __pyx_v_n_j, __pyx_v_phi_ratio_i, __pyx_v_phi_ratio_j, __pyx_v_phi_0_i, __pyx_v_phi_0_j, 1); if (unlikely(__pyx_t_1 == ((double)-1) && PyErr_Occurred())) __PYX_ERR(0, 103, __pyx_L1_error)
+  __pyx_t_1 = __pyx_f_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_cSij(__pyx_v_n_i, __pyx_v_n_j, __pyx_v_phi_ratio_i, __pyx_v_phi_ratio_j, __pyx_v_phi_0_i, __pyx_v_phi_0_j, 1); if (unlikely(__pyx_t_1 == ((double)-1) && PyErr_Occurred())) __PYX_ERR(0, 103, __pyx_L1_error)
   __pyx_t_2 = PyFloat_FromDouble(__pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 103, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_r = __pyx_t_2;
@@ -18333,7 +18333,7 @@ static PyObject *__pyx_pf_8ztpcraft_7bosonic_24_oscillator_integrals_1d_4cSij(CY
   /* function exit code */
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_2);
-  __Pyx_AddTraceback("ztpcraft.bosonic._oscillator_integrals_1d.cSij", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("ztpcraft.bosonic.oscillator_integrals._oscillator_integrals_1d_quadrature.cSij", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XGIVEREF(__pyx_r);
@@ -18341,7 +18341,7 @@ static PyObject *__pyx_pf_8ztpcraft_7bosonic_24_oscillator_integrals_1d_4cSij(CY
   return __pyx_r;
 }
 
-/* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":127
+/* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":127
  * 
  * # matrix elements of the cos(a*phi - phi_ext), using the analytical form
  * cpdef double ccosij(Py_ssize_t n_i,Py_ssize_t n_j,double phi_ratio_i,double phi_ratio_j,double phi_0_i,double phi_0_j, double a, double phi_ext):             # <<<<<<<<<<<<<<
@@ -18349,14 +18349,14 @@ static PyObject *__pyx_pf_8ztpcraft_7bosonic_24_oscillator_integrals_1d_4cSij(CY
  *     cdef double complex cosij_sum_ij = 0
 */
 
-static PyObject *__pyx_pw_8ztpcraft_7bosonic_24_oscillator_integrals_1d_7ccosij(PyObject *__pyx_self, 
+static PyObject *__pyx_pw_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_7ccosij(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-static double __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_ccosij(Py_ssize_t __pyx_v_n_i, Py_ssize_t __pyx_v_n_j, double __pyx_v_phi_ratio_i, double __pyx_v_phi_ratio_j, double __pyx_v_phi_0_i, double __pyx_v_phi_0_j, double __pyx_v_a, double __pyx_v_phi_ext, CYTHON_UNUSED int __pyx_skip_dispatch) {
+static double __pyx_f_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_ccosij(Py_ssize_t __pyx_v_n_i, Py_ssize_t __pyx_v_n_j, double __pyx_v_phi_ratio_i, double __pyx_v_phi_ratio_j, double __pyx_v_phi_0_i, double __pyx_v_phi_0_j, double __pyx_v_a, double __pyx_v_phi_ext, CYTHON_UNUSED int __pyx_skip_dispatch) {
   __pyx_t_double_complex __pyx_v_cosij_sum_j;
   __pyx_t_double_complex __pyx_v_cosij_sum_ij;
   __pyx_t_double_complex __pyx_v_expfactor;
@@ -18381,7 +18381,7 @@ static double __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_ccosij(Py_ss
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
 
-  /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":128
+  /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":128
  * # matrix elements of the cos(a*phi - phi_ext), using the analytical form
  * cpdef double ccosij(Py_ssize_t n_i,Py_ssize_t n_j,double phi_ratio_i,double phi_ratio_j,double phi_0_i,double phi_0_j, double a, double phi_ext):
  *     cdef double complex cosij_sum_j = 0             # <<<<<<<<<<<<<<
@@ -18390,7 +18390,7 @@ static double __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_ccosij(Py_ss
 */
   __pyx_v_cosij_sum_j = __pyx_t_double_complex_from_parts(0, 0);
 
-  /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":129
+  /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":129
  * cpdef double ccosij(Py_ssize_t n_i,Py_ssize_t n_j,double phi_ratio_i,double phi_ratio_j,double phi_0_i,double phi_0_j, double a, double phi_ext):
  *     cdef double complex cosij_sum_j = 0
  *     cdef double complex cosij_sum_ij = 0             # <<<<<<<<<<<<<<
@@ -18399,7 +18399,7 @@ static double __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_ccosij(Py_ss
 */
   __pyx_v_cosij_sum_ij = __pyx_t_double_complex_from_parts(0, 0);
 
-  /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":130
+  /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":130
  *     cdef double complex cosij_sum_j = 0
  *     cdef double complex cosij_sum_ij = 0
  *     cdef double complex expfactor = -1j*phi_ext -phi_ratio_i**2/2 -phi_ratio_j**2/2 + (1j*a + phi_ratio_i/phi_0_i+phi_ratio_j/phi_0_j)*(1j*a + phi_ratio_i/phi_0_i+phi_ratio_j/phi_0_j)/(4*(1/(2*phi_0_i**2)+1/(2*phi_0_j**2)))             # <<<<<<<<<<<<<<
@@ -18440,7 +18440,7 @@ static double __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_ccosij(Py_ss
   }
   __pyx_v_expfactor = __Pyx_c_sum_double(__Pyx_c_diff_double(__Pyx_c_diff_double(__Pyx_c_prod_double(__Pyx_c_neg_double(__pyx_t_double_complex_from_parts(0, 1.0)), __pyx_t_double_complex_from_parts(__pyx_v_phi_ext, 0)), __pyx_t_double_complex_from_parts((pow(__pyx_v_phi_ratio_i, 2.0) / 2.0), 0)), __pyx_t_double_complex_from_parts((pow(__pyx_v_phi_ratio_j, 2.0) / 2.0), 0)), __Pyx_c_quot_double(__pyx_t_1, __pyx_t_4));
 
-  /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":131
+  /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":131
  *     cdef double complex cosij_sum_ij = 0
  *     cdef double complex expfactor = -1j*phi_ext -phi_ratio_i**2/2 -phi_ratio_j**2/2 + (1j*a + phi_ratio_i/phi_0_i+phi_ratio_j/phi_0_j)*(1j*a + phi_ratio_i/phi_0_i+phi_ratio_j/phi_0_j)/(4*(1/(2*phi_0_i**2)+1/(2*phi_0_j**2)))
  *     cdef double complex expvalue = cexp(expfactor)             # <<<<<<<<<<<<<<
@@ -18449,7 +18449,7 @@ static double __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_ccosij(Py_ss
 */
   __pyx_v_expvalue = cexp(__pyx_v_expfactor);
 
-  /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":134
+  /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":134
  *     cdef Py_ssize_t k_i
  *     cdef Py_ssize_t k_j
  *     for k_i in range(n_i+1):             # <<<<<<<<<<<<<<
@@ -18461,7 +18461,7 @@ static double __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_ccosij(Py_ss
   for (__pyx_t_7 = 0; __pyx_t_7 < __pyx_t_6; __pyx_t_7+=1) {
     __pyx_v_k_i = __pyx_t_7;
 
-    /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":135
+    /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":135
  *     cdef Py_ssize_t k_j
  *     for k_i in range(n_i+1):
  *         cosij_sum_j = 0             # <<<<<<<<<<<<<<
@@ -18470,7 +18470,7 @@ static double __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_ccosij(Py_ss
 */
     __pyx_v_cosij_sum_j = __pyx_t_double_complex_from_parts(0, 0);
 
-    /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":136
+    /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":136
  *     for k_i in range(n_i+1):
  *         cosij_sum_j = 0
  *         for k_j in range(n_j+1):             # <<<<<<<<<<<<<<
@@ -18482,16 +18482,16 @@ static double __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_ccosij(Py_ss
     for (__pyx_t_10 = 0; __pyx_t_10 < __pyx_t_9; __pyx_t_10+=1) {
       __pyx_v_k_j = __pyx_t_10;
 
-      /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":138
+      /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":138
  *         for k_j in range(n_j+1):
  *             cosij_sum_j +=\
  *             ccomb(n_j,k_j)*eval_hermite(n_j-k_j,-phi_ratio_j)\             # <<<<<<<<<<<<<<
  *             *(2/phi_0_j)**k_j\
  *             *cGauss_int_without_exp_complex(k_i+k_j,1/(2*phi_0_i**2)+1/(2*phi_0_j**2),1j*a+phi_ratio_i/phi_0_i+phi_ratio_j/phi_0_j)
 */
-      __pyx_t_11 = __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_ccomb(__pyx_v_n_j, __pyx_v_k_j); if (unlikely(__pyx_t_11 == ((unsigned long)-1L) && PyErr_Occurred())) __PYX_ERR(0, 138, __pyx_L1_error)
+      __pyx_t_11 = __pyx_f_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_ccomb(__pyx_v_n_j, __pyx_v_k_j); if (unlikely(__pyx_t_11 == ((unsigned long)-1L) && PyErr_Occurred())) __PYX_ERR(0, 138, __pyx_L1_error)
 
-      /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":139
+      /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":139
  *             cosij_sum_j +=\
  *             ccomb(n_j,k_j)*eval_hermite(n_j-k_j,-phi_ratio_j)\
  *             *(2/phi_0_j)**k_j\             # <<<<<<<<<<<<<<
@@ -18503,7 +18503,7 @@ static double __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_ccosij(Py_ss
         __PYX_ERR(0, 139, __pyx_L1_error)
       }
 
-      /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":140
+      /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":140
  *             ccomb(n_j,k_j)*eval_hermite(n_j-k_j,-phi_ratio_j)\
  *             *(2/phi_0_j)**k_j\
  *             *cGauss_int_without_exp_complex(k_i+k_j,1/(2*phi_0_i**2)+1/(2*phi_0_j**2),1j*a+phi_ratio_i/phi_0_i+phi_ratio_j/phi_0_j)             # <<<<<<<<<<<<<<
@@ -18528,9 +18528,9 @@ static double __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_ccosij(Py_ss
         PyErr_SetString(PyExc_ZeroDivisionError, "float division");
         __PYX_ERR(0, 140, __pyx_L1_error)
       }
-      __pyx_t_12 = __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_cGauss_int_without_exp_complex((__pyx_v_k_i + __pyx_v_k_j), __pyx_t_double_complex_from_parts(((1.0 / __pyx_t_3) + (1.0 / __pyx_t_2)), 0), __Pyx_c_sum_double(__Pyx_c_sum_double(__Pyx_c_prod_double(__pyx_t_double_complex_from_parts(0, 1.0), __pyx_t_double_complex_from_parts(__pyx_v_a, 0)), __pyx_t_double_complex_from_parts((__pyx_v_phi_ratio_i / __pyx_v_phi_0_i), 0)), __pyx_t_double_complex_from_parts((__pyx_v_phi_ratio_j / __pyx_v_phi_0_j), 0))); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 140, __pyx_L1_error)
+      __pyx_t_12 = __pyx_f_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_cGauss_int_without_exp_complex((__pyx_v_k_i + __pyx_v_k_j), __pyx_t_double_complex_from_parts(((1.0 / __pyx_t_3) + (1.0 / __pyx_t_2)), 0), __Pyx_c_sum_double(__Pyx_c_sum_double(__Pyx_c_prod_double(__pyx_t_double_complex_from_parts(0, 1.0), __pyx_t_double_complex_from_parts(__pyx_v_a, 0)), __pyx_t_double_complex_from_parts((__pyx_v_phi_ratio_i / __pyx_v_phi_0_i), 0)), __pyx_t_double_complex_from_parts((__pyx_v_phi_ratio_j / __pyx_v_phi_0_j), 0))); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 140, __pyx_L1_error)
 
-      /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":137
+      /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":137
  *         cosij_sum_j = 0
  *         for k_j in range(n_j+1):
  *             cosij_sum_j +=\             # <<<<<<<<<<<<<<
@@ -18541,14 +18541,14 @@ static double __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_ccosij(Py_ss
       __pyx_v_cosij_sum_j = __pyx_t_double_complex_from_parts(__Pyx_CREAL(__pyx_t_13), __Pyx_CIMAG(__pyx_t_13));
     }
 
-    /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":141
+    /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":141
  *             *(2/phi_0_j)**k_j\
  *             *cGauss_int_without_exp_complex(k_i+k_j,1/(2*phi_0_i**2)+1/(2*phi_0_j**2),1j*a+phi_ratio_i/phi_0_i+phi_ratio_j/phi_0_j)
  *         cosij_sum_ij += cosij_sum_j*ccomb(n_i,k_i)*eval_hermite(n_i-k_i,-phi_ratio_i)*(2/phi_0_i)**k_i             # <<<<<<<<<<<<<<
  *     return creal(cosij_sum_ij*cprefactor(n_i,n_j,phi_0_i,phi_0_j)*expvalue)
  * 
 */
-    __pyx_t_11 = __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_ccomb(__pyx_v_n_i, __pyx_v_k_i); if (unlikely(__pyx_t_11 == ((unsigned long)-1L) && PyErr_Occurred())) __PYX_ERR(0, 141, __pyx_L1_error)
+    __pyx_t_11 = __pyx_f_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_ccomb(__pyx_v_n_i, __pyx_v_k_i); if (unlikely(__pyx_t_11 == ((unsigned long)-1L) && PyErr_Occurred())) __PYX_ERR(0, 141, __pyx_L1_error)
     if (unlikely(__pyx_v_phi_0_i == 0)) {
       PyErr_SetString(PyExc_ZeroDivisionError, "float division");
       __PYX_ERR(0, 141, __pyx_L1_error)
@@ -18556,18 +18556,18 @@ static double __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_ccosij(Py_ss
     __pyx_v_cosij_sum_ij = __Pyx_c_sum_double(__pyx_v_cosij_sum_ij, __Pyx_c_prod_double(__Pyx_c_prod_double(__Pyx_c_prod_double(__pyx_v_cosij_sum_j, __pyx_t_double_complex_from_parts(__pyx_t_11, 0)), __pyx_t_double_complex_from_parts(__pyx_f_5scipy_7special_14cython_special_eval_hermite((__pyx_v_n_i - __pyx_v_k_i), (-__pyx_v_phi_ratio_i), 0), 0)), __pyx_t_double_complex_from_parts(pow((2.0 / __pyx_v_phi_0_i), ((double)__pyx_v_k_i)), 0)));
   }
 
-  /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":142
+  /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":142
  *             *cGauss_int_without_exp_complex(k_i+k_j,1/(2*phi_0_i**2)+1/(2*phi_0_j**2),1j*a+phi_ratio_i/phi_0_i+phi_ratio_j/phi_0_j)
  *         cosij_sum_ij += cosij_sum_j*ccomb(n_i,k_i)*eval_hermite(n_i-k_i,-phi_ratio_i)*(2/phi_0_i)**k_i
  *     return creal(cosij_sum_ij*cprefactor(n_i,n_j,phi_0_i,phi_0_j)*expvalue)             # <<<<<<<<<<<<<<
  * 
  * # matrix elements of n^2, using the analytical form
 */
-  __pyx_t_2 = __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_cprefactor(__pyx_v_n_i, __pyx_v_n_j, __pyx_v_phi_0_i, __pyx_v_phi_0_j, 0); if (unlikely(__pyx_t_2 == ((double)-1) && PyErr_Occurred())) __PYX_ERR(0, 142, __pyx_L1_error)
+  __pyx_t_2 = __pyx_f_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_cprefactor(__pyx_v_n_i, __pyx_v_n_j, __pyx_v_phi_0_i, __pyx_v_phi_0_j, 0); if (unlikely(__pyx_t_2 == ((double)-1) && PyErr_Occurred())) __PYX_ERR(0, 142, __pyx_L1_error)
   __pyx_r = creal(__Pyx_c_prod_double(__Pyx_c_prod_double(__pyx_v_cosij_sum_ij, __pyx_t_double_complex_from_parts(__pyx_t_2, 0)), __pyx_v_expvalue));
   goto __pyx_L0;
 
-  /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":127
+  /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":127
  * 
  * # matrix elements of the cos(a*phi - phi_ext), using the analytical form
  * cpdef double ccosij(Py_ssize_t n_i,Py_ssize_t n_j,double phi_ratio_i,double phi_ratio_j,double phi_0_i,double phi_0_j, double a, double phi_ext):             # <<<<<<<<<<<<<<
@@ -18577,22 +18577,22 @@ static double __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_ccosij(Py_ss
 
   /* function exit code */
   __pyx_L1_error:;
-  __Pyx_AddTraceback("ztpcraft.bosonic._oscillator_integrals_1d.ccosij", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("ztpcraft.bosonic.oscillator_integrals._oscillator_integrals_1d_quadrature.ccosij", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = -1;
   __pyx_L0:;
   return __pyx_r;
 }
 
 /* Python wrapper */
-static PyObject *__pyx_pw_8ztpcraft_7bosonic_24_oscillator_integrals_1d_7ccosij(PyObject *__pyx_self, 
+static PyObject *__pyx_pw_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_7ccosij(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-static PyMethodDef __pyx_mdef_8ztpcraft_7bosonic_24_oscillator_integrals_1d_7ccosij = {"ccosij", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_8ztpcraft_7bosonic_24_oscillator_integrals_1d_7ccosij, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
-static PyObject *__pyx_pw_8ztpcraft_7bosonic_24_oscillator_integrals_1d_7ccosij(PyObject *__pyx_self, 
+static PyMethodDef __pyx_mdef_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_7ccosij = {"ccosij", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_7ccosij, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_7ccosij(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
@@ -18710,11 +18710,11 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   for (Py_ssize_t __pyx_temp=0; __pyx_temp < (Py_ssize_t)(sizeof(values)/sizeof(values[0])); ++__pyx_temp) {
     Py_XDECREF(values[__pyx_temp]);
   }
-  __Pyx_AddTraceback("ztpcraft.bosonic._oscillator_integrals_1d.ccosij", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("ztpcraft.bosonic.oscillator_integrals._oscillator_integrals_1d_quadrature.ccosij", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_8ztpcraft_7bosonic_24_oscillator_integrals_1d_6ccosij(__pyx_self, __pyx_v_n_i, __pyx_v_n_j, __pyx_v_phi_ratio_i, __pyx_v_phi_ratio_j, __pyx_v_phi_0_i, __pyx_v_phi_0_j, __pyx_v_a, __pyx_v_phi_ext);
+  __pyx_r = __pyx_pf_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_6ccosij(__pyx_self, __pyx_v_n_i, __pyx_v_n_j, __pyx_v_phi_ratio_i, __pyx_v_phi_ratio_j, __pyx_v_phi_0_i, __pyx_v_phi_0_j, __pyx_v_a, __pyx_v_phi_ext);
 
   /* function exit code */
   for (Py_ssize_t __pyx_temp=0; __pyx_temp < (Py_ssize_t)(sizeof(values)/sizeof(values[0])); ++__pyx_temp) {
@@ -18724,7 +18724,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_8ztpcraft_7bosonic_24_oscillator_integrals_1d_6ccosij(CYTHON_UNUSED PyObject *__pyx_self, Py_ssize_t __pyx_v_n_i, Py_ssize_t __pyx_v_n_j, double __pyx_v_phi_ratio_i, double __pyx_v_phi_ratio_j, double __pyx_v_phi_0_i, double __pyx_v_phi_0_j, double __pyx_v_a, double __pyx_v_phi_ext) {
+static PyObject *__pyx_pf_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_6ccosij(CYTHON_UNUSED PyObject *__pyx_self, Py_ssize_t __pyx_v_n_i, Py_ssize_t __pyx_v_n_j, double __pyx_v_phi_ratio_i, double __pyx_v_phi_ratio_j, double __pyx_v_phi_0_i, double __pyx_v_phi_0_j, double __pyx_v_a, double __pyx_v_phi_ext) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   double __pyx_t_1;
@@ -18734,7 +18734,7 @@ static PyObject *__pyx_pf_8ztpcraft_7bosonic_24_oscillator_integrals_1d_6ccosij(
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("ccosij", 0);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_ccosij(__pyx_v_n_i, __pyx_v_n_j, __pyx_v_phi_ratio_i, __pyx_v_phi_ratio_j, __pyx_v_phi_0_i, __pyx_v_phi_0_j, __pyx_v_a, __pyx_v_phi_ext, 1); if (unlikely(__pyx_t_1 == ((double)-1) && PyErr_Occurred())) __PYX_ERR(0, 127, __pyx_L1_error)
+  __pyx_t_1 = __pyx_f_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_ccosij(__pyx_v_n_i, __pyx_v_n_j, __pyx_v_phi_ratio_i, __pyx_v_phi_ratio_j, __pyx_v_phi_0_i, __pyx_v_phi_0_j, __pyx_v_a, __pyx_v_phi_ext, 1); if (unlikely(__pyx_t_1 == ((double)-1) && PyErr_Occurred())) __PYX_ERR(0, 127, __pyx_L1_error)
   __pyx_t_2 = PyFloat_FromDouble(__pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 127, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_r = __pyx_t_2;
@@ -18744,7 +18744,7 @@ static PyObject *__pyx_pf_8ztpcraft_7bosonic_24_oscillator_integrals_1d_6ccosij(
   /* function exit code */
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_2);
-  __Pyx_AddTraceback("ztpcraft.bosonic._oscillator_integrals_1d.ccosij", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("ztpcraft.bosonic.oscillator_integrals._oscillator_integrals_1d_quadrature.ccosij", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XGIVEREF(__pyx_r);
@@ -18752,7 +18752,7 @@ static PyObject *__pyx_pf_8ztpcraft_7bosonic_24_oscillator_integrals_1d_6ccosij(
   return __pyx_r;
 }
 
-/* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":145
+/* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":145
  * 
  * # matrix elements of n^2, using the analytical form
  * cpdef double cn2ij(Py_ssize_t n_i,Py_ssize_t n_j,double phi_ratio_i,double phi_ratio_j,double phi_0_i,double phi_0_j):             # <<<<<<<<<<<<<<
@@ -18760,14 +18760,14 @@ static PyObject *__pyx_pf_8ztpcraft_7bosonic_24_oscillator_integrals_1d_6ccosij(
  *         if (n_i==n_j):
 */
 
-static PyObject *__pyx_pw_8ztpcraft_7bosonic_24_oscillator_integrals_1d_9cn2ij(PyObject *__pyx_self, 
+static PyObject *__pyx_pw_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_9cn2ij(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-static double __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_cn2ij(Py_ssize_t __pyx_v_n_i, Py_ssize_t __pyx_v_n_j, double __pyx_v_phi_ratio_i, double __pyx_v_phi_ratio_j, double __pyx_v_phi_0_i, double __pyx_v_phi_0_j, CYTHON_UNUSED int __pyx_skip_dispatch) {
+static double __pyx_f_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_cn2ij(Py_ssize_t __pyx_v_n_i, Py_ssize_t __pyx_v_n_j, double __pyx_v_phi_ratio_i, double __pyx_v_phi_ratio_j, double __pyx_v_phi_0_i, double __pyx_v_phi_0_j, CYTHON_UNUSED int __pyx_skip_dispatch) {
   double __pyx_r;
   int __pyx_t_1;
   double __pyx_t_2;
@@ -18778,7 +18778,7 @@ static double __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_cn2ij(Py_ssi
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
 
-  /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":146
+  /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":146
  * # matrix elements of n^2, using the analytical form
  * cpdef double cn2ij(Py_ssize_t n_i,Py_ssize_t n_j,double phi_ratio_i,double phi_ratio_j,double phi_0_i,double phi_0_j):
  *     if (phi_ratio_i==phi_ratio_j)&(phi_0_i==phi_0_j):             # <<<<<<<<<<<<<<
@@ -18788,7 +18788,7 @@ static double __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_cn2ij(Py_ssi
   __pyx_t_1 = ((__pyx_v_phi_ratio_i == __pyx_v_phi_ratio_j) & (__pyx_v_phi_0_i == __pyx_v_phi_0_j));
   if (__pyx_t_1) {
 
-    /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":147
+    /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":147
  * cpdef double cn2ij(Py_ssize_t n_i,Py_ssize_t n_j,double phi_ratio_i,double phi_ratio_j,double phi_0_i,double phi_0_j):
  *     if (phi_ratio_i==phi_ratio_j)&(phi_0_i==phi_0_j):
  *         if (n_i==n_j):             # <<<<<<<<<<<<<<
@@ -18798,7 +18798,7 @@ static double __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_cn2ij(Py_ssi
     __pyx_t_1 = (__pyx_v_n_i == __pyx_v_n_j);
     if (__pyx_t_1) {
 
-      /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":148
+      /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":148
  *     if (phi_ratio_i==phi_ratio_j)&(phi_0_i==phi_0_j):
  *         if (n_i==n_j):
  *             return -1/(2*phi_0_j**2)*(2*n_j+1)             # <<<<<<<<<<<<<<
@@ -18813,7 +18813,7 @@ static double __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_cn2ij(Py_ssi
       __pyx_r = ((-1.0 / __pyx_t_2) * ((2 * __pyx_v_n_j) + 1));
       goto __pyx_L0;
 
-      /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":147
+      /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":147
  * cpdef double cn2ij(Py_ssize_t n_i,Py_ssize_t n_j,double phi_ratio_i,double phi_ratio_j,double phi_0_i,double phi_0_j):
  *     if (phi_ratio_i==phi_ratio_j)&(phi_0_i==phi_0_j):
  *         if (n_i==n_j):             # <<<<<<<<<<<<<<
@@ -18822,7 +18822,7 @@ static double __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_cn2ij(Py_ssi
 */
     }
 
-    /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":149
+    /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":149
  *         if (n_i==n_j):
  *             return -1/(2*phi_0_j**2)*(2*n_j+1)
  *         elif (n_i==n_j+2):             # <<<<<<<<<<<<<<
@@ -18832,7 +18832,7 @@ static double __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_cn2ij(Py_ssi
     __pyx_t_1 = (__pyx_v_n_i == (__pyx_v_n_j + 2));
     if (__pyx_t_1) {
 
-      /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":150
+      /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":150
  *             return -1/(2*phi_0_j**2)*(2*n_j+1)
  *         elif (n_i==n_j+2):
  *             return  1/(2*phi_0_j**2)*sqrt((n_j+1)*(n_j+2))             # <<<<<<<<<<<<<<
@@ -18847,7 +18847,7 @@ static double __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_cn2ij(Py_ssi
       __pyx_r = ((1.0 / __pyx_t_2) * sqrt(((__pyx_v_n_j + 1) * (__pyx_v_n_j + 2))));
       goto __pyx_L0;
 
-      /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":149
+      /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":149
  *         if (n_i==n_j):
  *             return -1/(2*phi_0_j**2)*(2*n_j+1)
  *         elif (n_i==n_j+2):             # <<<<<<<<<<<<<<
@@ -18856,7 +18856,7 @@ static double __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_cn2ij(Py_ssi
 */
     }
 
-    /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":151
+    /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":151
  *         elif (n_i==n_j+2):
  *             return  1/(2*phi_0_j**2)*sqrt((n_j+1)*(n_j+2))
  *         elif (n_i==n_j-2):             # <<<<<<<<<<<<<<
@@ -18866,7 +18866,7 @@ static double __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_cn2ij(Py_ssi
     __pyx_t_1 = (__pyx_v_n_i == (__pyx_v_n_j - 2));
     if (__pyx_t_1) {
 
-      /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":152
+      /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":152
  *             return  1/(2*phi_0_j**2)*sqrt((n_j+1)*(n_j+2))
  *         elif (n_i==n_j-2):
  *             return  1/(2*phi_0_j**2)*sqrt(n_j*(n_j-1))             # <<<<<<<<<<<<<<
@@ -18881,7 +18881,7 @@ static double __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_cn2ij(Py_ssi
       __pyx_r = ((1.0 / __pyx_t_2) * sqrt((__pyx_v_n_j * (__pyx_v_n_j - 1))));
       goto __pyx_L0;
 
-      /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":151
+      /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":151
  *         elif (n_i==n_j+2):
  *             return  1/(2*phi_0_j**2)*sqrt((n_j+1)*(n_j+2))
  *         elif (n_i==n_j-2):             # <<<<<<<<<<<<<<
@@ -18890,7 +18890,7 @@ static double __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_cn2ij(Py_ssi
 */
     }
 
-    /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":154
+    /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":154
  *             return  1/(2*phi_0_j**2)*sqrt(n_j*(n_j-1))
  *         else:
  *             return 0             # <<<<<<<<<<<<<<
@@ -18902,7 +18902,7 @@ static double __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_cn2ij(Py_ssi
       goto __pyx_L0;
     }
 
-    /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":146
+    /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":146
  * # matrix elements of n^2, using the analytical form
  * cpdef double cn2ij(Py_ssize_t n_i,Py_ssize_t n_j,double phi_ratio_i,double phi_ratio_j,double phi_0_i,double phi_0_j):
  *     if (phi_ratio_i==phi_ratio_j)&(phi_0_i==phi_0_j):             # <<<<<<<<<<<<<<
@@ -18911,7 +18911,7 @@ static double __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_cn2ij(Py_ssi
 */
   }
 
-  /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":156
+  /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":156
  *             return 0
  *     else:
  *         if n_j>1:             # <<<<<<<<<<<<<<
@@ -18922,7 +18922,7 @@ static double __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_cn2ij(Py_ssi
     __pyx_t_1 = (__pyx_v_n_j > 1);
     if (__pyx_t_1) {
 
-      /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":157
+      /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":157
  *     else:
  *         if n_j>1:
  *             return 1/(2*phi_0_j**2)*\             # <<<<<<<<<<<<<<
@@ -18935,34 +18935,34 @@ static double __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_cn2ij(Py_ssi
         __PYX_ERR(0, 157, __pyx_L1_error)
       }
 
-      /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":159
+      /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":159
  *             return 1/(2*phi_0_j**2)*\
  *             (\
  *              sqrt(n_j    *(n_j-1))*cSij(n_i,n_j-2,phi_ratio_i,phi_ratio_j,phi_0_i,phi_0_j)\             # <<<<<<<<<<<<<<
  *             +sqrt((n_j+1)*(n_j+2))*cSij(n_i,n_j+2,phi_ratio_i,phi_ratio_j,phi_0_i,phi_0_j)\
  *             -    (2*n_j+1        )*cSij(n_i,n_j,phi_ratio_i,phi_ratio_j,phi_0_i,phi_0_j)
 */
-      __pyx_t_3 = __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_cSij(__pyx_v_n_i, (__pyx_v_n_j - 2), __pyx_v_phi_ratio_i, __pyx_v_phi_ratio_j, __pyx_v_phi_0_i, __pyx_v_phi_0_j, 0); if (unlikely(__pyx_t_3 == ((double)-1) && PyErr_Occurred())) __PYX_ERR(0, 159, __pyx_L1_error)
+      __pyx_t_3 = __pyx_f_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_cSij(__pyx_v_n_i, (__pyx_v_n_j - 2), __pyx_v_phi_ratio_i, __pyx_v_phi_ratio_j, __pyx_v_phi_0_i, __pyx_v_phi_0_j, 0); if (unlikely(__pyx_t_3 == ((double)-1) && PyErr_Occurred())) __PYX_ERR(0, 159, __pyx_L1_error)
 
-      /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":160
+      /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":160
  *             (\
  *              sqrt(n_j    *(n_j-1))*cSij(n_i,n_j-2,phi_ratio_i,phi_ratio_j,phi_0_i,phi_0_j)\
  *             +sqrt((n_j+1)*(n_j+2))*cSij(n_i,n_j+2,phi_ratio_i,phi_ratio_j,phi_0_i,phi_0_j)\             # <<<<<<<<<<<<<<
  *             -    (2*n_j+1        )*cSij(n_i,n_j,phi_ratio_i,phi_ratio_j,phi_0_i,phi_0_j)
  *             )
 */
-      __pyx_t_4 = __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_cSij(__pyx_v_n_i, (__pyx_v_n_j + 2), __pyx_v_phi_ratio_i, __pyx_v_phi_ratio_j, __pyx_v_phi_0_i, __pyx_v_phi_0_j, 0); if (unlikely(__pyx_t_4 == ((double)-1) && PyErr_Occurred())) __PYX_ERR(0, 160, __pyx_L1_error)
+      __pyx_t_4 = __pyx_f_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_cSij(__pyx_v_n_i, (__pyx_v_n_j + 2), __pyx_v_phi_ratio_i, __pyx_v_phi_ratio_j, __pyx_v_phi_0_i, __pyx_v_phi_0_j, 0); if (unlikely(__pyx_t_4 == ((double)-1) && PyErr_Occurred())) __PYX_ERR(0, 160, __pyx_L1_error)
 
-      /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":161
+      /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":161
  *              sqrt(n_j    *(n_j-1))*cSij(n_i,n_j-2,phi_ratio_i,phi_ratio_j,phi_0_i,phi_0_j)\
  *             +sqrt((n_j+1)*(n_j+2))*cSij(n_i,n_j+2,phi_ratio_i,phi_ratio_j,phi_0_i,phi_0_j)\
  *             -    (2*n_j+1        )*cSij(n_i,n_j,phi_ratio_i,phi_ratio_j,phi_0_i,phi_0_j)             # <<<<<<<<<<<<<<
  *             )
  *         else:
 */
-      __pyx_t_5 = __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_cSij(__pyx_v_n_i, __pyx_v_n_j, __pyx_v_phi_ratio_i, __pyx_v_phi_ratio_j, __pyx_v_phi_0_i, __pyx_v_phi_0_j, 0); if (unlikely(__pyx_t_5 == ((double)-1) && PyErr_Occurred())) __PYX_ERR(0, 161, __pyx_L1_error)
+      __pyx_t_5 = __pyx_f_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_cSij(__pyx_v_n_i, __pyx_v_n_j, __pyx_v_phi_ratio_i, __pyx_v_phi_ratio_j, __pyx_v_phi_0_i, __pyx_v_phi_0_j, 0); if (unlikely(__pyx_t_5 == ((double)-1) && PyErr_Occurred())) __PYX_ERR(0, 161, __pyx_L1_error)
 
-      /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":157
+      /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":157
  *     else:
  *         if n_j>1:
  *             return 1/(2*phi_0_j**2)*\             # <<<<<<<<<<<<<<
@@ -18972,7 +18972,7 @@ static double __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_cn2ij(Py_ssi
       __pyx_r = ((1.0 / __pyx_t_2) * (((sqrt((__pyx_v_n_j * (__pyx_v_n_j - 1))) * __pyx_t_3) + (sqrt(((__pyx_v_n_j + 1) * (__pyx_v_n_j + 2))) * __pyx_t_4)) - (((2 * __pyx_v_n_j) + 1) * __pyx_t_5)));
       goto __pyx_L0;
 
-      /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":156
+      /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":156
  *             return 0
  *     else:
  *         if n_j>1:             # <<<<<<<<<<<<<<
@@ -18981,7 +18981,7 @@ static double __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_cn2ij(Py_ssi
 */
     }
 
-    /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":164
+    /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":164
  *             )
  *         else:
  *             return 1/(2*phi_0_j**2)*\             # <<<<<<<<<<<<<<
@@ -18995,25 +18995,25 @@ static double __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_cn2ij(Py_ssi
         __PYX_ERR(0, 164, __pyx_L1_error)
       }
 
-      /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":166
+      /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":166
  *             return 1/(2*phi_0_j**2)*\
  *             (\
  *              sqrt((n_j+1)*(n_j+2))*cSij(n_i,n_j+2,phi_ratio_i,phi_ratio_j,phi_0_i,phi_0_j)\             # <<<<<<<<<<<<<<
  *             -    (2*n_j+1        )*cSij(n_i,n_j,phi_ratio_i,phi_ratio_j,phi_0_i,phi_0_j)
  *             )
 */
-      __pyx_t_4 = __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_cSij(__pyx_v_n_i, (__pyx_v_n_j + 2), __pyx_v_phi_ratio_i, __pyx_v_phi_ratio_j, __pyx_v_phi_0_i, __pyx_v_phi_0_j, 0); if (unlikely(__pyx_t_4 == ((double)-1) && PyErr_Occurred())) __PYX_ERR(0, 166, __pyx_L1_error)
+      __pyx_t_4 = __pyx_f_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_cSij(__pyx_v_n_i, (__pyx_v_n_j + 2), __pyx_v_phi_ratio_i, __pyx_v_phi_ratio_j, __pyx_v_phi_0_i, __pyx_v_phi_0_j, 0); if (unlikely(__pyx_t_4 == ((double)-1) && PyErr_Occurred())) __PYX_ERR(0, 166, __pyx_L1_error)
 
-      /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":167
+      /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":167
  *             (\
  *              sqrt((n_j+1)*(n_j+2))*cSij(n_i,n_j+2,phi_ratio_i,phi_ratio_j,phi_0_i,phi_0_j)\
  *             -    (2*n_j+1        )*cSij(n_i,n_j,phi_ratio_i,phi_ratio_j,phi_0_i,phi_0_j)             # <<<<<<<<<<<<<<
  *             )
  * 
 */
-      __pyx_t_3 = __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_cSij(__pyx_v_n_i, __pyx_v_n_j, __pyx_v_phi_ratio_i, __pyx_v_phi_ratio_j, __pyx_v_phi_0_i, __pyx_v_phi_0_j, 0); if (unlikely(__pyx_t_3 == ((double)-1) && PyErr_Occurred())) __PYX_ERR(0, 167, __pyx_L1_error)
+      __pyx_t_3 = __pyx_f_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_cSij(__pyx_v_n_i, __pyx_v_n_j, __pyx_v_phi_ratio_i, __pyx_v_phi_ratio_j, __pyx_v_phi_0_i, __pyx_v_phi_0_j, 0); if (unlikely(__pyx_t_3 == ((double)-1) && PyErr_Occurred())) __PYX_ERR(0, 167, __pyx_L1_error)
 
-      /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":164
+      /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":164
  *             )
  *         else:
  *             return 1/(2*phi_0_j**2)*\             # <<<<<<<<<<<<<<
@@ -19025,7 +19025,7 @@ static double __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_cn2ij(Py_ssi
     }
   }
 
-  /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":145
+  /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":145
  * 
  * # matrix elements of n^2, using the analytical form
  * cpdef double cn2ij(Py_ssize_t n_i,Py_ssize_t n_j,double phi_ratio_i,double phi_ratio_j,double phi_0_i,double phi_0_j):             # <<<<<<<<<<<<<<
@@ -19035,22 +19035,22 @@ static double __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_cn2ij(Py_ssi
 
   /* function exit code */
   __pyx_L1_error:;
-  __Pyx_AddTraceback("ztpcraft.bosonic._oscillator_integrals_1d.cn2ij", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("ztpcraft.bosonic.oscillator_integrals._oscillator_integrals_1d_quadrature.cn2ij", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = -1;
   __pyx_L0:;
   return __pyx_r;
 }
 
 /* Python wrapper */
-static PyObject *__pyx_pw_8ztpcraft_7bosonic_24_oscillator_integrals_1d_9cn2ij(PyObject *__pyx_self, 
+static PyObject *__pyx_pw_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_9cn2ij(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-static PyMethodDef __pyx_mdef_8ztpcraft_7bosonic_24_oscillator_integrals_1d_9cn2ij = {"cn2ij", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_8ztpcraft_7bosonic_24_oscillator_integrals_1d_9cn2ij, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
-static PyObject *__pyx_pw_8ztpcraft_7bosonic_24_oscillator_integrals_1d_9cn2ij(PyObject *__pyx_self, 
+static PyMethodDef __pyx_mdef_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_9cn2ij = {"cn2ij", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_9cn2ij, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_9cn2ij(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
@@ -19152,11 +19152,11 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   for (Py_ssize_t __pyx_temp=0; __pyx_temp < (Py_ssize_t)(sizeof(values)/sizeof(values[0])); ++__pyx_temp) {
     Py_XDECREF(values[__pyx_temp]);
   }
-  __Pyx_AddTraceback("ztpcraft.bosonic._oscillator_integrals_1d.cn2ij", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("ztpcraft.bosonic.oscillator_integrals._oscillator_integrals_1d_quadrature.cn2ij", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_8ztpcraft_7bosonic_24_oscillator_integrals_1d_8cn2ij(__pyx_self, __pyx_v_n_i, __pyx_v_n_j, __pyx_v_phi_ratio_i, __pyx_v_phi_ratio_j, __pyx_v_phi_0_i, __pyx_v_phi_0_j);
+  __pyx_r = __pyx_pf_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_8cn2ij(__pyx_self, __pyx_v_n_i, __pyx_v_n_j, __pyx_v_phi_ratio_i, __pyx_v_phi_ratio_j, __pyx_v_phi_0_i, __pyx_v_phi_0_j);
 
   /* function exit code */
   for (Py_ssize_t __pyx_temp=0; __pyx_temp < (Py_ssize_t)(sizeof(values)/sizeof(values[0])); ++__pyx_temp) {
@@ -19166,7 +19166,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_8ztpcraft_7bosonic_24_oscillator_integrals_1d_8cn2ij(CYTHON_UNUSED PyObject *__pyx_self, Py_ssize_t __pyx_v_n_i, Py_ssize_t __pyx_v_n_j, double __pyx_v_phi_ratio_i, double __pyx_v_phi_ratio_j, double __pyx_v_phi_0_i, double __pyx_v_phi_0_j) {
+static PyObject *__pyx_pf_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_8cn2ij(CYTHON_UNUSED PyObject *__pyx_self, Py_ssize_t __pyx_v_n_i, Py_ssize_t __pyx_v_n_j, double __pyx_v_phi_ratio_i, double __pyx_v_phi_ratio_j, double __pyx_v_phi_0_i, double __pyx_v_phi_0_j) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   double __pyx_t_1;
@@ -19176,7 +19176,7 @@ static PyObject *__pyx_pf_8ztpcraft_7bosonic_24_oscillator_integrals_1d_8cn2ij(C
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("cn2ij", 0);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_cn2ij(__pyx_v_n_i, __pyx_v_n_j, __pyx_v_phi_ratio_i, __pyx_v_phi_ratio_j, __pyx_v_phi_0_i, __pyx_v_phi_0_j, 1); if (unlikely(__pyx_t_1 == ((double)-1) && PyErr_Occurred())) __PYX_ERR(0, 145, __pyx_L1_error)
+  __pyx_t_1 = __pyx_f_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_cn2ij(__pyx_v_n_i, __pyx_v_n_j, __pyx_v_phi_ratio_i, __pyx_v_phi_ratio_j, __pyx_v_phi_0_i, __pyx_v_phi_0_j, 1); if (unlikely(__pyx_t_1 == ((double)-1) && PyErr_Occurred())) __PYX_ERR(0, 145, __pyx_L1_error)
   __pyx_t_2 = PyFloat_FromDouble(__pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 145, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_r = __pyx_t_2;
@@ -19186,7 +19186,7 @@ static PyObject *__pyx_pf_8ztpcraft_7bosonic_24_oscillator_integrals_1d_8cn2ij(C
   /* function exit code */
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_2);
-  __Pyx_AddTraceback("ztpcraft.bosonic._oscillator_integrals_1d.cn2ij", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("ztpcraft.bosonic.oscillator_integrals._oscillator_integrals_1d_quadrature.cn2ij", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XGIVEREF(__pyx_r);
@@ -19194,7 +19194,7 @@ static PyObject *__pyx_pf_8ztpcraft_7bosonic_24_oscillator_integrals_1d_8cn2ij(C
   return __pyx_r;
 }
 
-/* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":170
+/* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":170
  *             )
  * 
  * cpdef double cn2ij_GH(Py_ssize_t n_i,Py_ssize_t n_j,double phi_ratio_i,double phi_ratio_j,double phi_0_i,double phi_0_j):             # <<<<<<<<<<<<<<
@@ -19202,14 +19202,14 @@ static PyObject *__pyx_pf_8ztpcraft_7bosonic_24_oscillator_integrals_1d_8cn2ij(C
  *         if (n_i==n_j):
 */
 
-static PyObject *__pyx_pw_8ztpcraft_7bosonic_24_oscillator_integrals_1d_11cn2ij_GH(PyObject *__pyx_self, 
+static PyObject *__pyx_pw_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_11cn2ij_GH(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-static double __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_cn2ij_GH(Py_ssize_t __pyx_v_n_i, Py_ssize_t __pyx_v_n_j, double __pyx_v_phi_ratio_i, double __pyx_v_phi_ratio_j, double __pyx_v_phi_0_i, double __pyx_v_phi_0_j, CYTHON_UNUSED int __pyx_skip_dispatch) {
+static double __pyx_f_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_cn2ij_GH(Py_ssize_t __pyx_v_n_i, Py_ssize_t __pyx_v_n_j, double __pyx_v_phi_ratio_i, double __pyx_v_phi_ratio_j, double __pyx_v_phi_0_i, double __pyx_v_phi_0_j, CYTHON_UNUSED int __pyx_skip_dispatch) {
   double __pyx_r;
   int __pyx_t_1;
   double __pyx_t_2;
@@ -19220,7 +19220,7 @@ static double __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_cn2ij_GH(Py_
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
 
-  /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":171
+  /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":171
  * 
  * cpdef double cn2ij_GH(Py_ssize_t n_i,Py_ssize_t n_j,double phi_ratio_i,double phi_ratio_j,double phi_0_i,double phi_0_j):
  *     if (phi_ratio_i==phi_ratio_j)&(phi_0_i==phi_0_j):             # <<<<<<<<<<<<<<
@@ -19230,7 +19230,7 @@ static double __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_cn2ij_GH(Py_
   __pyx_t_1 = ((__pyx_v_phi_ratio_i == __pyx_v_phi_ratio_j) & (__pyx_v_phi_0_i == __pyx_v_phi_0_j));
   if (__pyx_t_1) {
 
-    /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":172
+    /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":172
  * cpdef double cn2ij_GH(Py_ssize_t n_i,Py_ssize_t n_j,double phi_ratio_i,double phi_ratio_j,double phi_0_i,double phi_0_j):
  *     if (phi_ratio_i==phi_ratio_j)&(phi_0_i==phi_0_j):
  *         if (n_i==n_j):             # <<<<<<<<<<<<<<
@@ -19240,7 +19240,7 @@ static double __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_cn2ij_GH(Py_
     __pyx_t_1 = (__pyx_v_n_i == __pyx_v_n_j);
     if (__pyx_t_1) {
 
-      /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":173
+      /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":173
  *     if (phi_ratio_i==phi_ratio_j)&(phi_0_i==phi_0_j):
  *         if (n_i==n_j):
  *             return -1/(2*phi_0_j**2)*(2*n_j+1)             # <<<<<<<<<<<<<<
@@ -19255,7 +19255,7 @@ static double __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_cn2ij_GH(Py_
       __pyx_r = ((-1.0 / __pyx_t_2) * ((2 * __pyx_v_n_j) + 1));
       goto __pyx_L0;
 
-      /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":172
+      /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":172
  * cpdef double cn2ij_GH(Py_ssize_t n_i,Py_ssize_t n_j,double phi_ratio_i,double phi_ratio_j,double phi_0_i,double phi_0_j):
  *     if (phi_ratio_i==phi_ratio_j)&(phi_0_i==phi_0_j):
  *         if (n_i==n_j):             # <<<<<<<<<<<<<<
@@ -19264,7 +19264,7 @@ static double __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_cn2ij_GH(Py_
 */
     }
 
-    /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":174
+    /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":174
  *         if (n_i==n_j):
  *             return -1/(2*phi_0_j**2)*(2*n_j+1)
  *         elif (n_i==n_j+2):             # <<<<<<<<<<<<<<
@@ -19274,7 +19274,7 @@ static double __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_cn2ij_GH(Py_
     __pyx_t_1 = (__pyx_v_n_i == (__pyx_v_n_j + 2));
     if (__pyx_t_1) {
 
-      /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":175
+      /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":175
  *             return -1/(2*phi_0_j**2)*(2*n_j+1)
  *         elif (n_i==n_j+2):
  *             return  1/(2*phi_0_j**2)*sqrt((n_j+1.)*(n_j+2.))             # <<<<<<<<<<<<<<
@@ -19289,7 +19289,7 @@ static double __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_cn2ij_GH(Py_
       __pyx_r = ((1.0 / __pyx_t_2) * sqrt(((__pyx_v_n_j + 1.) * (__pyx_v_n_j + 2.))));
       goto __pyx_L0;
 
-      /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":174
+      /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":174
  *         if (n_i==n_j):
  *             return -1/(2*phi_0_j**2)*(2*n_j+1)
  *         elif (n_i==n_j+2):             # <<<<<<<<<<<<<<
@@ -19298,7 +19298,7 @@ static double __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_cn2ij_GH(Py_
 */
     }
 
-    /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":176
+    /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":176
  *         elif (n_i==n_j+2):
  *             return  1/(2*phi_0_j**2)*sqrt((n_j+1.)*(n_j+2.))
  *         elif (n_i==n_j-2):             # <<<<<<<<<<<<<<
@@ -19308,7 +19308,7 @@ static double __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_cn2ij_GH(Py_
     __pyx_t_1 = (__pyx_v_n_i == (__pyx_v_n_j - 2));
     if (__pyx_t_1) {
 
-      /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":177
+      /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":177
  *             return  1/(2*phi_0_j**2)*sqrt((n_j+1.)*(n_j+2.))
  *         elif (n_i==n_j-2):
  *             return  1/(2*phi_0_j**2)*sqrt(n_j*(n_j-1.))             # <<<<<<<<<<<<<<
@@ -19323,7 +19323,7 @@ static double __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_cn2ij_GH(Py_
       __pyx_r = ((1.0 / __pyx_t_2) * sqrt((__pyx_v_n_j * (__pyx_v_n_j - 1.))));
       goto __pyx_L0;
 
-      /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":176
+      /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":176
  *         elif (n_i==n_j+2):
  *             return  1/(2*phi_0_j**2)*sqrt((n_j+1.)*(n_j+2.))
  *         elif (n_i==n_j-2):             # <<<<<<<<<<<<<<
@@ -19332,7 +19332,7 @@ static double __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_cn2ij_GH(Py_
 */
     }
 
-    /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":179
+    /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":179
  *             return  1/(2*phi_0_j**2)*sqrt(n_j*(n_j-1.))
  *         else:
  *             return 0             # <<<<<<<<<<<<<<
@@ -19344,7 +19344,7 @@ static double __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_cn2ij_GH(Py_
       goto __pyx_L0;
     }
 
-    /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":171
+    /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":171
  * 
  * cpdef double cn2ij_GH(Py_ssize_t n_i,Py_ssize_t n_j,double phi_ratio_i,double phi_ratio_j,double phi_0_i,double phi_0_j):
  *     if (phi_ratio_i==phi_ratio_j)&(phi_0_i==phi_0_j):             # <<<<<<<<<<<<<<
@@ -19353,7 +19353,7 @@ static double __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_cn2ij_GH(Py_
 */
   }
 
-  /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":181
+  /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":181
  *             return 0
  *     else:
  *         if n_j>1:             # <<<<<<<<<<<<<<
@@ -19364,7 +19364,7 @@ static double __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_cn2ij_GH(Py_
     __pyx_t_1 = (__pyx_v_n_j > 1);
     if (__pyx_t_1) {
 
-      /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":182
+      /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":182
  *     else:
  *         if n_j>1:
  *             return 1/(2*phi_0_j**2)*\             # <<<<<<<<<<<<<<
@@ -19377,34 +19377,34 @@ static double __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_cn2ij_GH(Py_
         __PYX_ERR(0, 182, __pyx_L1_error)
       }
 
-      /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":184
+      /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":184
  *             return 1/(2*phi_0_j**2)*\
  *             (\
  *              sqrt(n_j    *(n_j-1))*cSij_GH(n_i,n_j-2,phi_ratio_i,phi_ratio_j,phi_0_i,phi_0_j)\             # <<<<<<<<<<<<<<
  *             +sqrt((n_j+1)*(n_j+2))*cSij_GH(n_i,n_j+2,phi_ratio_i,phi_ratio_j,phi_0_i,phi_0_j)\
  *             -    (2*n_j+1        )*cSij_GH(n_i,n_j,phi_ratio_i,phi_ratio_j,phi_0_i,phi_0_j)
 */
-      __pyx_t_3 = __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_cSij_GH(__pyx_v_n_i, (__pyx_v_n_j - 2), __pyx_v_phi_ratio_i, __pyx_v_phi_ratio_j, __pyx_v_phi_0_i, __pyx_v_phi_0_j, 0); if (unlikely(__pyx_t_3 == ((double)-1) && PyErr_Occurred())) __PYX_ERR(0, 184, __pyx_L1_error)
+      __pyx_t_3 = __pyx_f_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_cSij_GH(__pyx_v_n_i, (__pyx_v_n_j - 2), __pyx_v_phi_ratio_i, __pyx_v_phi_ratio_j, __pyx_v_phi_0_i, __pyx_v_phi_0_j, 0); if (unlikely(__pyx_t_3 == ((double)-1) && PyErr_Occurred())) __PYX_ERR(0, 184, __pyx_L1_error)
 
-      /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":185
+      /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":185
  *             (\
  *              sqrt(n_j    *(n_j-1))*cSij_GH(n_i,n_j-2,phi_ratio_i,phi_ratio_j,phi_0_i,phi_0_j)\
  *             +sqrt((n_j+1)*(n_j+2))*cSij_GH(n_i,n_j+2,phi_ratio_i,phi_ratio_j,phi_0_i,phi_0_j)\             # <<<<<<<<<<<<<<
  *             -    (2*n_j+1        )*cSij_GH(n_i,n_j,phi_ratio_i,phi_ratio_j,phi_0_i,phi_0_j)
  *             )
 */
-      __pyx_t_4 = __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_cSij_GH(__pyx_v_n_i, (__pyx_v_n_j + 2), __pyx_v_phi_ratio_i, __pyx_v_phi_ratio_j, __pyx_v_phi_0_i, __pyx_v_phi_0_j, 0); if (unlikely(__pyx_t_4 == ((double)-1) && PyErr_Occurred())) __PYX_ERR(0, 185, __pyx_L1_error)
+      __pyx_t_4 = __pyx_f_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_cSij_GH(__pyx_v_n_i, (__pyx_v_n_j + 2), __pyx_v_phi_ratio_i, __pyx_v_phi_ratio_j, __pyx_v_phi_0_i, __pyx_v_phi_0_j, 0); if (unlikely(__pyx_t_4 == ((double)-1) && PyErr_Occurred())) __PYX_ERR(0, 185, __pyx_L1_error)
 
-      /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":186
+      /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":186
  *              sqrt(n_j    *(n_j-1))*cSij_GH(n_i,n_j-2,phi_ratio_i,phi_ratio_j,phi_0_i,phi_0_j)\
  *             +sqrt((n_j+1)*(n_j+2))*cSij_GH(n_i,n_j+2,phi_ratio_i,phi_ratio_j,phi_0_i,phi_0_j)\
  *             -    (2*n_j+1        )*cSij_GH(n_i,n_j,phi_ratio_i,phi_ratio_j,phi_0_i,phi_0_j)             # <<<<<<<<<<<<<<
  *             )
  *         else:
 */
-      __pyx_t_5 = __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_cSij_GH(__pyx_v_n_i, __pyx_v_n_j, __pyx_v_phi_ratio_i, __pyx_v_phi_ratio_j, __pyx_v_phi_0_i, __pyx_v_phi_0_j, 0); if (unlikely(__pyx_t_5 == ((double)-1) && PyErr_Occurred())) __PYX_ERR(0, 186, __pyx_L1_error)
+      __pyx_t_5 = __pyx_f_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_cSij_GH(__pyx_v_n_i, __pyx_v_n_j, __pyx_v_phi_ratio_i, __pyx_v_phi_ratio_j, __pyx_v_phi_0_i, __pyx_v_phi_0_j, 0); if (unlikely(__pyx_t_5 == ((double)-1) && PyErr_Occurred())) __PYX_ERR(0, 186, __pyx_L1_error)
 
-      /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":182
+      /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":182
  *     else:
  *         if n_j>1:
  *             return 1/(2*phi_0_j**2)*\             # <<<<<<<<<<<<<<
@@ -19414,7 +19414,7 @@ static double __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_cn2ij_GH(Py_
       __pyx_r = ((1.0 / __pyx_t_2) * (((sqrt((__pyx_v_n_j * (__pyx_v_n_j - 1))) * __pyx_t_3) + (sqrt(((__pyx_v_n_j + 1) * (__pyx_v_n_j + 2))) * __pyx_t_4)) - (((2 * __pyx_v_n_j) + 1) * __pyx_t_5)));
       goto __pyx_L0;
 
-      /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":181
+      /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":181
  *             return 0
  *     else:
  *         if n_j>1:             # <<<<<<<<<<<<<<
@@ -19423,7 +19423,7 @@ static double __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_cn2ij_GH(Py_
 */
     }
 
-    /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":189
+    /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":189
  *             )
  *         else:
  *             return 1/(2*phi_0_j**2)*\             # <<<<<<<<<<<<<<
@@ -19437,25 +19437,25 @@ static double __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_cn2ij_GH(Py_
         __PYX_ERR(0, 189, __pyx_L1_error)
       }
 
-      /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":191
+      /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":191
  *             return 1/(2*phi_0_j**2)*\
  *             (\
  *              sqrt((n_j+1)*(n_j+2))*cSij_GH(n_i,n_j+2,phi_ratio_i,phi_ratio_j,phi_0_i,phi_0_j)\             # <<<<<<<<<<<<<<
  *             -    (2*n_j+1        )*cSij_GH(n_i,n_j,phi_ratio_i,phi_ratio_j,phi_0_i,phi_0_j)
  *             )
 */
-      __pyx_t_4 = __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_cSij_GH(__pyx_v_n_i, (__pyx_v_n_j + 2), __pyx_v_phi_ratio_i, __pyx_v_phi_ratio_j, __pyx_v_phi_0_i, __pyx_v_phi_0_j, 0); if (unlikely(__pyx_t_4 == ((double)-1) && PyErr_Occurred())) __PYX_ERR(0, 191, __pyx_L1_error)
+      __pyx_t_4 = __pyx_f_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_cSij_GH(__pyx_v_n_i, (__pyx_v_n_j + 2), __pyx_v_phi_ratio_i, __pyx_v_phi_ratio_j, __pyx_v_phi_0_i, __pyx_v_phi_0_j, 0); if (unlikely(__pyx_t_4 == ((double)-1) && PyErr_Occurred())) __PYX_ERR(0, 191, __pyx_L1_error)
 
-      /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":192
+      /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":192
  *             (\
  *              sqrt((n_j+1)*(n_j+2))*cSij_GH(n_i,n_j+2,phi_ratio_i,phi_ratio_j,phi_0_i,phi_0_j)\
  *             -    (2*n_j+1        )*cSij_GH(n_i,n_j,phi_ratio_i,phi_ratio_j,phi_0_i,phi_0_j)             # <<<<<<<<<<<<<<
  *             )
  * 
 */
-      __pyx_t_3 = __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_cSij_GH(__pyx_v_n_i, __pyx_v_n_j, __pyx_v_phi_ratio_i, __pyx_v_phi_ratio_j, __pyx_v_phi_0_i, __pyx_v_phi_0_j, 0); if (unlikely(__pyx_t_3 == ((double)-1) && PyErr_Occurred())) __PYX_ERR(0, 192, __pyx_L1_error)
+      __pyx_t_3 = __pyx_f_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_cSij_GH(__pyx_v_n_i, __pyx_v_n_j, __pyx_v_phi_ratio_i, __pyx_v_phi_ratio_j, __pyx_v_phi_0_i, __pyx_v_phi_0_j, 0); if (unlikely(__pyx_t_3 == ((double)-1) && PyErr_Occurred())) __PYX_ERR(0, 192, __pyx_L1_error)
 
-      /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":189
+      /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":189
  *             )
  *         else:
  *             return 1/(2*phi_0_j**2)*\             # <<<<<<<<<<<<<<
@@ -19467,7 +19467,7 @@ static double __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_cn2ij_GH(Py_
     }
   }
 
-  /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":170
+  /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":170
  *             )
  * 
  * cpdef double cn2ij_GH(Py_ssize_t n_i,Py_ssize_t n_j,double phi_ratio_i,double phi_ratio_j,double phi_0_i,double phi_0_j):             # <<<<<<<<<<<<<<
@@ -19477,22 +19477,22 @@ static double __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_cn2ij_GH(Py_
 
   /* function exit code */
   __pyx_L1_error:;
-  __Pyx_AddTraceback("ztpcraft.bosonic._oscillator_integrals_1d.cn2ij_GH", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("ztpcraft.bosonic.oscillator_integrals._oscillator_integrals_1d_quadrature.cn2ij_GH", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = -1;
   __pyx_L0:;
   return __pyx_r;
 }
 
 /* Python wrapper */
-static PyObject *__pyx_pw_8ztpcraft_7bosonic_24_oscillator_integrals_1d_11cn2ij_GH(PyObject *__pyx_self, 
+static PyObject *__pyx_pw_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_11cn2ij_GH(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-static PyMethodDef __pyx_mdef_8ztpcraft_7bosonic_24_oscillator_integrals_1d_11cn2ij_GH = {"cn2ij_GH", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_8ztpcraft_7bosonic_24_oscillator_integrals_1d_11cn2ij_GH, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
-static PyObject *__pyx_pw_8ztpcraft_7bosonic_24_oscillator_integrals_1d_11cn2ij_GH(PyObject *__pyx_self, 
+static PyMethodDef __pyx_mdef_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_11cn2ij_GH = {"cn2ij_GH", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_11cn2ij_GH, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_11cn2ij_GH(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
@@ -19594,11 +19594,11 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   for (Py_ssize_t __pyx_temp=0; __pyx_temp < (Py_ssize_t)(sizeof(values)/sizeof(values[0])); ++__pyx_temp) {
     Py_XDECREF(values[__pyx_temp]);
   }
-  __Pyx_AddTraceback("ztpcraft.bosonic._oscillator_integrals_1d.cn2ij_GH", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("ztpcraft.bosonic.oscillator_integrals._oscillator_integrals_1d_quadrature.cn2ij_GH", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_8ztpcraft_7bosonic_24_oscillator_integrals_1d_10cn2ij_GH(__pyx_self, __pyx_v_n_i, __pyx_v_n_j, __pyx_v_phi_ratio_i, __pyx_v_phi_ratio_j, __pyx_v_phi_0_i, __pyx_v_phi_0_j);
+  __pyx_r = __pyx_pf_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_10cn2ij_GH(__pyx_self, __pyx_v_n_i, __pyx_v_n_j, __pyx_v_phi_ratio_i, __pyx_v_phi_ratio_j, __pyx_v_phi_0_i, __pyx_v_phi_0_j);
 
   /* function exit code */
   for (Py_ssize_t __pyx_temp=0; __pyx_temp < (Py_ssize_t)(sizeof(values)/sizeof(values[0])); ++__pyx_temp) {
@@ -19608,7 +19608,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_8ztpcraft_7bosonic_24_oscillator_integrals_1d_10cn2ij_GH(CYTHON_UNUSED PyObject *__pyx_self, Py_ssize_t __pyx_v_n_i, Py_ssize_t __pyx_v_n_j, double __pyx_v_phi_ratio_i, double __pyx_v_phi_ratio_j, double __pyx_v_phi_0_i, double __pyx_v_phi_0_j) {
+static PyObject *__pyx_pf_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_10cn2ij_GH(CYTHON_UNUSED PyObject *__pyx_self, Py_ssize_t __pyx_v_n_i, Py_ssize_t __pyx_v_n_j, double __pyx_v_phi_ratio_i, double __pyx_v_phi_ratio_j, double __pyx_v_phi_0_i, double __pyx_v_phi_0_j) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   double __pyx_t_1;
@@ -19618,7 +19618,7 @@ static PyObject *__pyx_pf_8ztpcraft_7bosonic_24_oscillator_integrals_1d_10cn2ij_
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("cn2ij_GH", 0);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_cn2ij_GH(__pyx_v_n_i, __pyx_v_n_j, __pyx_v_phi_ratio_i, __pyx_v_phi_ratio_j, __pyx_v_phi_0_i, __pyx_v_phi_0_j, 1); if (unlikely(__pyx_t_1 == ((double)-1) && PyErr_Occurred())) __PYX_ERR(0, 170, __pyx_L1_error)
+  __pyx_t_1 = __pyx_f_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_cn2ij_GH(__pyx_v_n_i, __pyx_v_n_j, __pyx_v_phi_ratio_i, __pyx_v_phi_ratio_j, __pyx_v_phi_0_i, __pyx_v_phi_0_j, 1); if (unlikely(__pyx_t_1 == ((double)-1) && PyErr_Occurred())) __PYX_ERR(0, 170, __pyx_L1_error)
   __pyx_t_2 = PyFloat_FromDouble(__pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 170, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_r = __pyx_t_2;
@@ -19628,7 +19628,7 @@ static PyObject *__pyx_pf_8ztpcraft_7bosonic_24_oscillator_integrals_1d_10cn2ij_
   /* function exit code */
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_2);
-  __Pyx_AddTraceback("ztpcraft.bosonic._oscillator_integrals_1d.cn2ij_GH", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("ztpcraft.bosonic.oscillator_integrals._oscillator_integrals_1d_quadrature.cn2ij_GH", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XGIVEREF(__pyx_r);
@@ -19636,7 +19636,7 @@ static PyObject *__pyx_pf_8ztpcraft_7bosonic_24_oscillator_integrals_1d_10cn2ij_
   return __pyx_r;
 }
 
-/* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":196
+/* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":196
  * 
  * # matrix elements of phi^2, using the analytical form
  * cpdef double cphi2ij(Py_ssize_t n_i,Py_ssize_t n_j,double phi_ratio_i,double phi_ratio_j,double phi_0_i,double phi_0_j):             # <<<<<<<<<<<<<<
@@ -19644,14 +19644,14 @@ static PyObject *__pyx_pf_8ztpcraft_7bosonic_24_oscillator_integrals_1d_10cn2ij_
  *     cdef double phi2ij_sum_ij = 0
 */
 
-static PyObject *__pyx_pw_8ztpcraft_7bosonic_24_oscillator_integrals_1d_13cphi2ij(PyObject *__pyx_self, 
+static PyObject *__pyx_pw_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_13cphi2ij(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-static double __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_cphi2ij(Py_ssize_t __pyx_v_n_i, Py_ssize_t __pyx_v_n_j, double __pyx_v_phi_ratio_i, double __pyx_v_phi_ratio_j, double __pyx_v_phi_0_i, double __pyx_v_phi_0_j, CYTHON_UNUSED int __pyx_skip_dispatch) {
+static double __pyx_f_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_cphi2ij(Py_ssize_t __pyx_v_n_i, Py_ssize_t __pyx_v_n_j, double __pyx_v_phi_ratio_i, double __pyx_v_phi_ratio_j, double __pyx_v_phi_0_i, double __pyx_v_phi_0_j, CYTHON_UNUSED int __pyx_skip_dispatch) {
   double __pyx_v_phi2ij_sum_j;
   double __pyx_v_phi2ij_sum_ij;
   double __pyx_v_expfactor;
@@ -19681,7 +19681,7 @@ static double __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_cphi2ij(Py_s
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("cphi2ij", 0);
 
-  /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":197
+  /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":197
  * # matrix elements of phi^2, using the analytical form
  * cpdef double cphi2ij(Py_ssize_t n_i,Py_ssize_t n_j,double phi_ratio_i,double phi_ratio_j,double phi_0_i,double phi_0_j):
  *     cdef double phi2ij_sum_j = 0             # <<<<<<<<<<<<<<
@@ -19690,7 +19690,7 @@ static double __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_cphi2ij(Py_s
 */
   __pyx_v_phi2ij_sum_j = 0.0;
 
-  /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":198
+  /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":198
  * cpdef double cphi2ij(Py_ssize_t n_i,Py_ssize_t n_j,double phi_ratio_i,double phi_ratio_j,double phi_0_i,double phi_0_j):
  *     cdef double phi2ij_sum_j = 0
  *     cdef double phi2ij_sum_ij = 0             # <<<<<<<<<<<<<<
@@ -19699,7 +19699,7 @@ static double __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_cphi2ij(Py_s
 */
   __pyx_v_phi2ij_sum_ij = 0.0;
 
-  /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":199
+  /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":199
  *     cdef double phi2ij_sum_j = 0
  *     cdef double phi2ij_sum_ij = 0
  *     cdef double expfactor = -phi_ratio_i**2/2 -phi_ratio_j**2/2 + (phi_ratio_i/phi_0_i+phi_ratio_j/phi_0_j)*(phi_ratio_i/phi_0_i+phi_ratio_j/phi_0_j)/(4*(1/(2*phi_0_i**2)+1/(2*phi_0_j**2)))             # <<<<<<<<<<<<<<
@@ -19740,7 +19740,7 @@ static double __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_cphi2ij(Py_s
   }
   __pyx_v_expfactor = ((((-pow(__pyx_v_phi_ratio_i, 2.0)) / 2.0) - (pow(__pyx_v_phi_ratio_j, 2.0) / 2.0)) + (__pyx_t_1 / __pyx_t_4));
 
-  /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":200
+  /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":200
  *     cdef double phi2ij_sum_ij = 0
  *     cdef double expfactor = -phi_ratio_i**2/2 -phi_ratio_j**2/2 + (phi_ratio_i/phi_0_i+phi_ratio_j/phi_0_j)*(phi_ratio_i/phi_0_i+phi_ratio_j/phi_0_j)/(4*(1/(2*phi_0_i**2)+1/(2*phi_0_j**2)))
  *     cdef double expvalue = exp(expfactor)             # <<<<<<<<<<<<<<
@@ -19749,7 +19749,7 @@ static double __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_cphi2ij(Py_s
 */
   __pyx_v_expvalue = exp(__pyx_v_expfactor);
 
-  /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":201
+  /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":201
  *     cdef double expfactor = -phi_ratio_i**2/2 -phi_ratio_j**2/2 + (phi_ratio_i/phi_0_i+phi_ratio_j/phi_0_j)*(phi_ratio_i/phi_0_i+phi_ratio_j/phi_0_j)/(4*(1/(2*phi_0_i**2)+1/(2*phi_0_j**2)))
  *     cdef double expvalue = exp(expfactor)
  *     if (phi_ratio_i==phi_ratio_j)&(phi_ratio_i==0)&(phi_0_i==phi_0_j)&(n_i!=n_j)&(n_i!=n_j+2)&(n_i!=n_j-2):             # <<<<<<<<<<<<<<
@@ -19759,7 +19759,7 @@ static double __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_cphi2ij(Py_s
   __pyx_t_5 = ((((((__pyx_v_phi_ratio_i == __pyx_v_phi_ratio_j) & (__pyx_v_phi_ratio_i == 0.0)) & (__pyx_v_phi_0_i == __pyx_v_phi_0_j)) & (__pyx_v_n_i != __pyx_v_n_j)) & (__pyx_v_n_i != (__pyx_v_n_j + 2))) & (__pyx_v_n_i != (__pyx_v_n_j - 2)));
   if (__pyx_t_5) {
 
-    /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":202
+    /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":202
  *     cdef double expvalue = exp(expfactor)
  *     if (phi_ratio_i==phi_ratio_j)&(phi_ratio_i==0)&(phi_0_i==phi_0_j)&(n_i!=n_j)&(n_i!=n_j+2)&(n_i!=n_j-2):
  *         return 0             # <<<<<<<<<<<<<<
@@ -19769,7 +19769,7 @@ static double __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_cphi2ij(Py_s
     __pyx_r = 0.0;
     goto __pyx_L0;
 
-    /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":201
+    /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":201
  *     cdef double expfactor = -phi_ratio_i**2/2 -phi_ratio_j**2/2 + (phi_ratio_i/phi_0_i+phi_ratio_j/phi_0_j)*(phi_ratio_i/phi_0_i+phi_ratio_j/phi_0_j)/(4*(1/(2*phi_0_i**2)+1/(2*phi_0_j**2)))
  *     cdef double expvalue = exp(expfactor)
  *     if (phi_ratio_i==phi_ratio_j)&(phi_ratio_i==0)&(phi_0_i==phi_0_j)&(n_i!=n_j)&(n_i!=n_j+2)&(n_i!=n_j-2):             # <<<<<<<<<<<<<<
@@ -19778,7 +19778,7 @@ static double __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_cphi2ij(Py_s
 */
   }
 
-  /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":204
+  /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":204
  *         return 0
  *     else:
  *         for k_i in range(n_i+1):             # <<<<<<<<<<<<<<
@@ -19818,7 +19818,7 @@ static double __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_cphi2ij(Py_s
       __Pyx_XDECREF_SET(__pyx_v_k_i, __pyx_t_6);
       __pyx_t_6 = 0;
 
-      /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":205
+      /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":205
  *     else:
  *         for k_i in range(n_i+1):
  *             phi2ij_sum_j = 0             # <<<<<<<<<<<<<<
@@ -19827,7 +19827,7 @@ static double __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_cphi2ij(Py_s
 */
       __pyx_v_phi2ij_sum_j = 0.0;
 
-      /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":206
+      /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":206
  *         for k_i in range(n_i+1):
  *             phi2ij_sum_j = 0
  *             for k_j in range(n_j+1):             # <<<<<<<<<<<<<<
@@ -19866,7 +19866,7 @@ static double __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_cphi2ij(Py_s
         __Pyx_XDECREF_SET(__pyx_v_k_j, __pyx_t_6);
         __pyx_t_6 = 0;
 
-        /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":207
+        /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":207
  *             phi2ij_sum_j = 0
  *             for k_j in range(n_j+1):
  *                 phi2ij_sum_j +=\             # <<<<<<<<<<<<<<
@@ -19876,7 +19876,7 @@ static double __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_cphi2ij(Py_s
         __pyx_t_6 = PyFloat_FromDouble(__pyx_v_phi2ij_sum_j); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 207, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_6);
 
-        /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":208
+        /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":208
  *             for k_j in range(n_j+1):
  *                 phi2ij_sum_j +=\
  *                 ccomb(n_j,k_j)*eval_hermite(n_j-k_j,-phi_ratio_j)\             # <<<<<<<<<<<<<<
@@ -19884,7 +19884,7 @@ static double __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_cphi2ij(Py_s
  *                 *cGauss_int_without_exp(k_i+k_j+2,1/(2*phi_0_i**2)+1/(2*phi_0_j**2),phi_ratio_i/phi_0_i+phi_ratio_j/phi_0_j)
 */
         __pyx_t_13 = __Pyx_PyIndex_AsSsize_t(__pyx_v_k_j); if (unlikely((__pyx_t_13 == (Py_ssize_t)-1) && PyErr_Occurred())) __PYX_ERR(0, 208, __pyx_L1_error)
-        __pyx_t_14 = __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_ccomb(__pyx_v_n_j, __pyx_t_13); if (unlikely(__pyx_t_14 == ((unsigned long)-1L) && PyErr_Occurred())) __PYX_ERR(0, 208, __pyx_L1_error)
+        __pyx_t_14 = __pyx_f_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_ccomb(__pyx_v_n_j, __pyx_t_13); if (unlikely(__pyx_t_14 == ((unsigned long)-1L) && PyErr_Occurred())) __PYX_ERR(0, 208, __pyx_L1_error)
         __pyx_t_7 = PyLong_FromSsize_t(__pyx_v_n_j); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 208, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_7);
         __pyx_t_15 = PyNumber_Subtract(__pyx_t_7, __pyx_v_k_j); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 208, __pyx_L1_error)
@@ -19895,7 +19895,7 @@ static double __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_cphi2ij(Py_s
         __pyx_t_15 = PyFloat_FromDouble((__pyx_t_14 * __pyx_f_5scipy_7special_14cython_special_eval_hermite(__pyx_t_13, (-__pyx_v_phi_ratio_j), 0))); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 208, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_15);
 
-        /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":209
+        /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":209
  *                 phi2ij_sum_j +=\
  *                 ccomb(n_j,k_j)*eval_hermite(n_j-k_j,-phi_ratio_j)\
  *                 *(2/phi_0_j)**k_j\             # <<<<<<<<<<<<<<
@@ -19916,7 +19916,7 @@ static double __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_cphi2ij(Py_s
         __Pyx_DECREF(__pyx_t_15); __pyx_t_15 = 0;
         __Pyx_DECREF(__pyx_t_16); __pyx_t_16 = 0;
 
-        /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":210
+        /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":210
  *                 ccomb(n_j,k_j)*eval_hermite(n_j-k_j,-phi_ratio_j)\
  *                 *(2/phi_0_j)**k_j\
  *                 *cGauss_int_without_exp(k_i+k_j+2,1/(2*phi_0_i**2)+1/(2*phi_0_j**2),phi_ratio_i/phi_0_i+phi_ratio_j/phi_0_j)             # <<<<<<<<<<<<<<
@@ -19948,7 +19948,7 @@ static double __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_cphi2ij(Py_s
           PyErr_SetString(PyExc_ZeroDivisionError, "float division");
           __PYX_ERR(0, 210, __pyx_L1_error)
         }
-        __pyx_t_3 = __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_cGauss_int_without_exp(__pyx_t_13, ((1.0 / __pyx_t_4) + (1.0 / __pyx_t_1)), ((__pyx_v_phi_ratio_i / __pyx_v_phi_0_i) + (__pyx_v_phi_ratio_j / __pyx_v_phi_0_j))); if (unlikely(__pyx_t_3 == ((double)-1) && PyErr_Occurred())) __PYX_ERR(0, 210, __pyx_L1_error)
+        __pyx_t_3 = __pyx_f_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_cGauss_int_without_exp(__pyx_t_13, ((1.0 / __pyx_t_4) + (1.0 / __pyx_t_1)), ((__pyx_v_phi_ratio_i / __pyx_v_phi_0_i) + (__pyx_v_phi_ratio_j / __pyx_v_phi_0_j))); if (unlikely(__pyx_t_3 == ((double)-1) && PyErr_Occurred())) __PYX_ERR(0, 210, __pyx_L1_error)
         __pyx_t_15 = PyFloat_FromDouble(__pyx_t_3); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 210, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_15);
         __pyx_t_16 = PyNumber_Multiply(__pyx_t_7, __pyx_t_15); if (unlikely(!__pyx_t_16)) __PYX_ERR(0, 210, __pyx_L1_error)
@@ -19956,7 +19956,7 @@ static double __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_cphi2ij(Py_s
         __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
         __Pyx_DECREF(__pyx_t_15); __pyx_t_15 = 0;
 
-        /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":207
+        /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":207
  *             phi2ij_sum_j = 0
  *             for k_j in range(n_j+1):
  *                 phi2ij_sum_j +=\             # <<<<<<<<<<<<<<
@@ -19971,7 +19971,7 @@ static double __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_cphi2ij(Py_s
         __Pyx_DECREF(__pyx_t_15); __pyx_t_15 = 0;
         __pyx_v_phi2ij_sum_j = __pyx_t_3;
 
-        /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":206
+        /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":206
  *         for k_i in range(n_i+1):
  *             phi2ij_sum_j = 0
  *             for k_j in range(n_j+1):             # <<<<<<<<<<<<<<
@@ -19981,7 +19981,7 @@ static double __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_cphi2ij(Py_s
       }
       __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
 
-      /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":211
+      /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":211
  *                 *(2/phi_0_j)**k_j\
  *                 *cGauss_int_without_exp(k_i+k_j+2,1/(2*phi_0_i**2)+1/(2*phi_0_j**2),phi_ratio_i/phi_0_i+phi_ratio_j/phi_0_j)
  *             phi2ij_sum_ij += phi2ij_sum_j*ccomb(n_i,k_i)*eval_hermite(n_i-k_i,-phi_ratio_i)*(2/phi_0_i)**k_i             # <<<<<<<<<<<<<<
@@ -19991,7 +19991,7 @@ static double __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_cphi2ij(Py_s
       __pyx_t_11 = PyFloat_FromDouble(__pyx_v_phi2ij_sum_ij); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 211, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_11);
       __pyx_t_13 = __Pyx_PyIndex_AsSsize_t(__pyx_v_k_i); if (unlikely((__pyx_t_13 == (Py_ssize_t)-1) && PyErr_Occurred())) __PYX_ERR(0, 211, __pyx_L1_error)
-      __pyx_t_14 = __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_ccomb(__pyx_v_n_i, __pyx_t_13); if (unlikely(__pyx_t_14 == ((unsigned long)-1L) && PyErr_Occurred())) __PYX_ERR(0, 211, __pyx_L1_error)
+      __pyx_t_14 = __pyx_f_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_ccomb(__pyx_v_n_i, __pyx_t_13); if (unlikely(__pyx_t_14 == ((unsigned long)-1L) && PyErr_Occurred())) __PYX_ERR(0, 211, __pyx_L1_error)
       __pyx_t_15 = PyLong_FromSsize_t(__pyx_v_n_i); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 211, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_15);
       __pyx_t_16 = PyNumber_Subtract(__pyx_t_15, __pyx_v_k_i); if (unlikely(!__pyx_t_16)) __PYX_ERR(0, 211, __pyx_L1_error)
@@ -20022,7 +20022,7 @@ static double __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_cphi2ij(Py_s
       __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
       __pyx_v_phi2ij_sum_ij = __pyx_t_3;
 
-      /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":204
+      /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":204
  *         return 0
  *     else:
  *         for k_i in range(n_i+1):             # <<<<<<<<<<<<<<
@@ -20033,18 +20033,18 @@ static double __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_cphi2ij(Py_s
     __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
   }
 
-  /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":212
+  /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":212
  *                 *cGauss_int_without_exp(k_i+k_j+2,1/(2*phi_0_i**2)+1/(2*phi_0_j**2),phi_ratio_i/phi_0_i+phi_ratio_j/phi_0_j)
  *             phi2ij_sum_ij += phi2ij_sum_j*ccomb(n_i,k_i)*eval_hermite(n_i-k_i,-phi_ratio_i)*(2/phi_0_i)**k_i
  *     return phi2ij_sum_ij*cprefactor(n_i,n_j,phi_0_i,phi_0_j)*expvalue             # <<<<<<<<<<<<<<
  * 
  * #evaluating the overlap matrix elements with Gauss-Hermite quadrature
 */
-  __pyx_t_3 = __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_cprefactor(__pyx_v_n_i, __pyx_v_n_j, __pyx_v_phi_0_i, __pyx_v_phi_0_j, 0); if (unlikely(__pyx_t_3 == ((double)-1) && PyErr_Occurred())) __PYX_ERR(0, 212, __pyx_L1_error)
+  __pyx_t_3 = __pyx_f_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_cprefactor(__pyx_v_n_i, __pyx_v_n_j, __pyx_v_phi_0_i, __pyx_v_phi_0_j, 0); if (unlikely(__pyx_t_3 == ((double)-1) && PyErr_Occurred())) __PYX_ERR(0, 212, __pyx_L1_error)
   __pyx_r = ((__pyx_v_phi2ij_sum_ij * __pyx_t_3) * __pyx_v_expvalue);
   goto __pyx_L0;
 
-  /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":196
+  /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":196
  * 
  * # matrix elements of phi^2, using the analytical form
  * cpdef double cphi2ij(Py_ssize_t n_i,Py_ssize_t n_j,double phi_ratio_i,double phi_ratio_j,double phi_0_i,double phi_0_j):             # <<<<<<<<<<<<<<
@@ -20060,7 +20060,7 @@ static double __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_cphi2ij(Py_s
   __Pyx_XDECREF(__pyx_t_11);
   __Pyx_XDECREF(__pyx_t_15);
   __Pyx_XDECREF(__pyx_t_16);
-  __Pyx_AddTraceback("ztpcraft.bosonic._oscillator_integrals_1d.cphi2ij", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("ztpcraft.bosonic.oscillator_integrals._oscillator_integrals_1d_quadrature.cphi2ij", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = -1;
   __pyx_L0:;
   __Pyx_XDECREF(__pyx_v_k_i);
@@ -20070,15 +20070,15 @@ static double __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_cphi2ij(Py_s
 }
 
 /* Python wrapper */
-static PyObject *__pyx_pw_8ztpcraft_7bosonic_24_oscillator_integrals_1d_13cphi2ij(PyObject *__pyx_self, 
+static PyObject *__pyx_pw_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_13cphi2ij(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-static PyMethodDef __pyx_mdef_8ztpcraft_7bosonic_24_oscillator_integrals_1d_13cphi2ij = {"cphi2ij", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_8ztpcraft_7bosonic_24_oscillator_integrals_1d_13cphi2ij, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
-static PyObject *__pyx_pw_8ztpcraft_7bosonic_24_oscillator_integrals_1d_13cphi2ij(PyObject *__pyx_self, 
+static PyMethodDef __pyx_mdef_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_13cphi2ij = {"cphi2ij", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_13cphi2ij, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_13cphi2ij(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
@@ -20180,11 +20180,11 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   for (Py_ssize_t __pyx_temp=0; __pyx_temp < (Py_ssize_t)(sizeof(values)/sizeof(values[0])); ++__pyx_temp) {
     Py_XDECREF(values[__pyx_temp]);
   }
-  __Pyx_AddTraceback("ztpcraft.bosonic._oscillator_integrals_1d.cphi2ij", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("ztpcraft.bosonic.oscillator_integrals._oscillator_integrals_1d_quadrature.cphi2ij", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_8ztpcraft_7bosonic_24_oscillator_integrals_1d_12cphi2ij(__pyx_self, __pyx_v_n_i, __pyx_v_n_j, __pyx_v_phi_ratio_i, __pyx_v_phi_ratio_j, __pyx_v_phi_0_i, __pyx_v_phi_0_j);
+  __pyx_r = __pyx_pf_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_12cphi2ij(__pyx_self, __pyx_v_n_i, __pyx_v_n_j, __pyx_v_phi_ratio_i, __pyx_v_phi_ratio_j, __pyx_v_phi_0_i, __pyx_v_phi_0_j);
 
   /* function exit code */
   for (Py_ssize_t __pyx_temp=0; __pyx_temp < (Py_ssize_t)(sizeof(values)/sizeof(values[0])); ++__pyx_temp) {
@@ -20194,7 +20194,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_8ztpcraft_7bosonic_24_oscillator_integrals_1d_12cphi2ij(CYTHON_UNUSED PyObject *__pyx_self, Py_ssize_t __pyx_v_n_i, Py_ssize_t __pyx_v_n_j, double __pyx_v_phi_ratio_i, double __pyx_v_phi_ratio_j, double __pyx_v_phi_0_i, double __pyx_v_phi_0_j) {
+static PyObject *__pyx_pf_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_12cphi2ij(CYTHON_UNUSED PyObject *__pyx_self, Py_ssize_t __pyx_v_n_i, Py_ssize_t __pyx_v_n_j, double __pyx_v_phi_ratio_i, double __pyx_v_phi_ratio_j, double __pyx_v_phi_0_i, double __pyx_v_phi_0_j) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   double __pyx_t_1;
@@ -20204,7 +20204,7 @@ static PyObject *__pyx_pf_8ztpcraft_7bosonic_24_oscillator_integrals_1d_12cphi2i
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("cphi2ij", 0);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_cphi2ij(__pyx_v_n_i, __pyx_v_n_j, __pyx_v_phi_ratio_i, __pyx_v_phi_ratio_j, __pyx_v_phi_0_i, __pyx_v_phi_0_j, 1); if (unlikely(__pyx_t_1 == ((double)-1) && PyErr_Occurred())) __PYX_ERR(0, 196, __pyx_L1_error)
+  __pyx_t_1 = __pyx_f_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_cphi2ij(__pyx_v_n_i, __pyx_v_n_j, __pyx_v_phi_ratio_i, __pyx_v_phi_ratio_j, __pyx_v_phi_0_i, __pyx_v_phi_0_j, 1); if (unlikely(__pyx_t_1 == ((double)-1) && PyErr_Occurred())) __PYX_ERR(0, 196, __pyx_L1_error)
   __pyx_t_2 = PyFloat_FromDouble(__pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 196, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_r = __pyx_t_2;
@@ -20214,7 +20214,7 @@ static PyObject *__pyx_pf_8ztpcraft_7bosonic_24_oscillator_integrals_1d_12cphi2i
   /* function exit code */
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_2);
-  __Pyx_AddTraceback("ztpcraft.bosonic._oscillator_integrals_1d.cphi2ij", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("ztpcraft.bosonic.oscillator_integrals._oscillator_integrals_1d_quadrature.cphi2ij", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XGIVEREF(__pyx_r);
@@ -20222,7 +20222,7 @@ static PyObject *__pyx_pf_8ztpcraft_7bosonic_24_oscillator_integrals_1d_12cphi2i
   return __pyx_r;
 }
 
-/* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":215
+/* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":215
  * 
  * #evaluating the overlap matrix elements with Gauss-Hermite quadrature
  * cpdef double cSij_GH(Py_ssize_t n_i,Py_ssize_t n_j,double phi_ratio_i,double phi_ratio_j,double phi_0_i,double phi_0_j):             # <<<<<<<<<<<<<<
@@ -20230,14 +20230,14 @@ static PyObject *__pyx_pf_8ztpcraft_7bosonic_24_oscillator_integrals_1d_12cphi2i
  *     Evaluating the overlap matrix elements with Gauss-Hermite quadrature
 */
 
-static PyObject *__pyx_pw_8ztpcraft_7bosonic_24_oscillator_integrals_1d_15cSij_GH(PyObject *__pyx_self, 
+static PyObject *__pyx_pw_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_15cSij_GH(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-static double __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_cSij_GH(Py_ssize_t __pyx_v_n_i, Py_ssize_t __pyx_v_n_j, double __pyx_v_phi_ratio_i, double __pyx_v_phi_ratio_j, double __pyx_v_phi_0_i, double __pyx_v_phi_0_j, CYTHON_UNUSED int __pyx_skip_dispatch) {
+static double __pyx_f_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_cSij_GH(Py_ssize_t __pyx_v_n_i, Py_ssize_t __pyx_v_n_j, double __pyx_v_phi_ratio_i, double __pyx_v_phi_ratio_j, double __pyx_v_phi_0_i, double __pyx_v_phi_0_j, CYTHON_UNUSED int __pyx_skip_dispatch) {
   double __pyx_v_A;
   double __pyx_v_Asqrt;
   double __pyx_v_B;
@@ -20262,7 +20262,7 @@ static double __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_cSij_GH(Py_s
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
 
-  /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":239
+  /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":239
  *     """
  *     # initialization
  *     cdef double A = 0             # <<<<<<<<<<<<<<
@@ -20271,7 +20271,7 @@ static double __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_cSij_GH(Py_s
 */
   __pyx_v_A = 0.0;
 
-  /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":240
+  /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":240
  *     # initialization
  *     cdef double A = 0
  *     cdef double Asqrt = 0             # <<<<<<<<<<<<<<
@@ -20280,7 +20280,7 @@ static double __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_cSij_GH(Py_s
 */
   __pyx_v_Asqrt = 0.0;
 
-  /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":241
+  /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":241
  *     cdef double A = 0
  *     cdef double Asqrt = 0
  *     cdef double B = 0             # <<<<<<<<<<<<<<
@@ -20289,7 +20289,7 @@ static double __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_cSij_GH(Py_s
 */
   __pyx_v_B = 0.0;
 
-  /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":242
+  /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":242
  *     cdef double Asqrt = 0
  *     cdef double B = 0
  *     cdef double B2 = 0             # <<<<<<<<<<<<<<
@@ -20298,7 +20298,7 @@ static double __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_cSij_GH(Py_s
 */
   __pyx_v_B2 = 0.0;
 
-  /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":243
+  /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":243
  *     cdef double B = 0
  *     cdef double B2 = 0
  *     cdef double B_2A = 0             # <<<<<<<<<<<<<<
@@ -20307,7 +20307,7 @@ static double __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_cSij_GH(Py_s
 */
   __pyx_v_B_2A = 0.0;
 
-  /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":244
+  /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":244
  *     cdef double B2 = 0
  *     cdef double B_2A = 0
  *     cdef double exparg = 0             # <<<<<<<<<<<<<<
@@ -20316,7 +20316,7 @@ static double __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_cSij_GH(Py_s
 */
   __pyx_v_exparg = 0.0;
 
-  /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":245
+  /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":245
  *     cdef double B_2A = 0
  *     cdef double exparg = 0
  *     cdef Py_ssize_t order = 0             # <<<<<<<<<<<<<<
@@ -20325,7 +20325,7 @@ static double __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_cSij_GH(Py_s
 */
   __pyx_v_order = 0;
 
-  /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":246
+  /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":246
  *     cdef double exparg = 0
  *     cdef Py_ssize_t order = 0
  *     cdef double GHintegral = 0             # <<<<<<<<<<<<<<
@@ -20334,7 +20334,7 @@ static double __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_cSij_GH(Py_s
 */
   __pyx_v_GHintegral = 0.0;
 
-  /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":247
+  /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":247
  *     cdef Py_ssize_t order = 0
  *     cdef double GHintegral = 0
  *     cdef double phi_temp = 0             # <<<<<<<<<<<<<<
@@ -20343,7 +20343,7 @@ static double __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_cSij_GH(Py_s
 */
   __pyx_v_phi_temp = 0.0;
 
-  /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":249
+  /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":249
  *     cdef double phi_temp = 0
  *     # calculate some useful numbers
  *     A = 1./(2.*phi_0_i*phi_0_i) + 1./(2.*phi_0_j*phi_0_j)             # <<<<<<<<<<<<<<
@@ -20362,7 +20362,7 @@ static double __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_cSij_GH(Py_s
   }
   __pyx_v_A = ((1. / __pyx_t_1) + (1. / __pyx_t_2));
 
-  /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":250
+  /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":250
  *     # calculate some useful numbers
  *     A = 1./(2.*phi_0_i*phi_0_i) + 1./(2.*phi_0_j*phi_0_j)
  *     Asqrt = sqrt(A)             # <<<<<<<<<<<<<<
@@ -20371,7 +20371,7 @@ static double __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_cSij_GH(Py_s
 */
   __pyx_v_Asqrt = sqrt(__pyx_v_A);
 
-  /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":251
+  /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":251
  *     A = 1./(2.*phi_0_i*phi_0_i) + 1./(2.*phi_0_j*phi_0_j)
  *     Asqrt = sqrt(A)
  *     B = phi_ratio_i / phi_0_i + phi_ratio_j / phi_0_j             # <<<<<<<<<<<<<<
@@ -20388,7 +20388,7 @@ static double __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_cSij_GH(Py_s
   }
   __pyx_v_B = ((__pyx_v_phi_ratio_i / __pyx_v_phi_0_i) + (__pyx_v_phi_ratio_j / __pyx_v_phi_0_j));
 
-  /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":252
+  /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":252
  *     Asqrt = sqrt(A)
  *     B = phi_ratio_i / phi_0_i + phi_ratio_j / phi_0_j
  *     B2 = B*B             # <<<<<<<<<<<<<<
@@ -20397,7 +20397,7 @@ static double __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_cSij_GH(Py_s
 */
   __pyx_v_B2 = (__pyx_v_B * __pyx_v_B);
 
-  /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":253
+  /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":253
  *     B = phi_ratio_i / phi_0_i + phi_ratio_j / phi_0_j
  *     B2 = B*B
  *     B_2A = B/(2. * A)             # <<<<<<<<<<<<<<
@@ -20411,7 +20411,7 @@ static double __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_cSij_GH(Py_s
   }
   __pyx_v_B_2A = (__pyx_v_B / __pyx_t_2);
 
-  /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":254
+  /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":254
  *     B2 = B*B
  *     B_2A = B/(2. * A)
  *     exparg = B2/(4. * A) - phi_ratio_i * phi_ratio_i / 2. - phi_ratio_j * phi_ratio_j / 2.             # <<<<<<<<<<<<<<
@@ -20425,7 +20425,7 @@ static double __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_cSij_GH(Py_s
   }
   __pyx_v_exparg = (((__pyx_v_B2 / __pyx_t_2) - ((__pyx_v_phi_ratio_i * __pyx_v_phi_ratio_i) / 2.)) - ((__pyx_v_phi_ratio_j * __pyx_v_phi_ratio_j) / 2.));
 
-  /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":257
+  /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":257
  *     # compute the integral with Gauss-Hermite quadrature
  *     # ceil((n_i + n_j + 1)/2)
  *     order = int(-(-((n_i + n_j +1)/2.)//1))             # <<<<<<<<<<<<<<
@@ -20434,7 +20434,7 @@ static double __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_cSij_GH(Py_s
 */
   __pyx_v_order = ((Py_ssize_t)(-floor((-(((double)((__pyx_v_n_i + __pyx_v_n_j) + 1)) / 2.)) / 1.0)));
 
-  /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":258
+  /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":258
  *     # ceil((n_i + n_j + 1)/2)
  *     order = int(-(-((n_i + n_j +1)/2.)//1))
  *     for term in range(order):             # <<<<<<<<<<<<<<
@@ -20446,71 +20446,71 @@ static double __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_cSij_GH(Py_s
   for (__pyx_t_5 = 0; __pyx_t_5 < __pyx_t_4; __pyx_t_5+=1) {
     __pyx_v_term = __pyx_t_5;
 
-    /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":259
+    /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":259
  *     order = int(-(-((n_i + n_j +1)/2.)//1))
  *     for term in range(order):
  *         phi_temp = GHdata_view[0,order,term]/Asqrt + B_2A             # <<<<<<<<<<<<<<
  *         GHintegral += GHdata_view[1,order,term] *\
  *             eval_hermite(n_i, phi_temp/phi_0_i - phi_ratio_i) *\
 */
-    if (unlikely(!__pyx_v_8ztpcraft_7bosonic_24_oscillator_integrals_1d_GHdata_view.memview)) { __Pyx_RaiseUnboundLocalError("GHdata_view"); __PYX_ERR(0, 259, __pyx_L1_error) }
+    if (unlikely(!__pyx_v_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_GHdata_view.memview)) { __Pyx_RaiseUnboundLocalError("GHdata_view"); __PYX_ERR(0, 259, __pyx_L1_error) }
     __pyx_t_6 = 0;
     __pyx_t_7 = __pyx_v_order;
     __pyx_t_8 = __pyx_v_term;
     __pyx_t_9 = -1;
     if (__pyx_t_6 < 0) {
-      __pyx_t_6 += __pyx_v_8ztpcraft_7bosonic_24_oscillator_integrals_1d_GHdata_view.shape[0];
+      __pyx_t_6 += __pyx_v_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_GHdata_view.shape[0];
       if (unlikely(__pyx_t_6 < 0)) __pyx_t_9 = 0;
-    } else if (unlikely(__pyx_t_6 >= __pyx_v_8ztpcraft_7bosonic_24_oscillator_integrals_1d_GHdata_view.shape[0])) __pyx_t_9 = 0;
+    } else if (unlikely(__pyx_t_6 >= __pyx_v_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_GHdata_view.shape[0])) __pyx_t_9 = 0;
     if (__pyx_t_7 < 0) {
-      __pyx_t_7 += __pyx_v_8ztpcraft_7bosonic_24_oscillator_integrals_1d_GHdata_view.shape[1];
+      __pyx_t_7 += __pyx_v_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_GHdata_view.shape[1];
       if (unlikely(__pyx_t_7 < 0)) __pyx_t_9 = 1;
-    } else if (unlikely(__pyx_t_7 >= __pyx_v_8ztpcraft_7bosonic_24_oscillator_integrals_1d_GHdata_view.shape[1])) __pyx_t_9 = 1;
+    } else if (unlikely(__pyx_t_7 >= __pyx_v_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_GHdata_view.shape[1])) __pyx_t_9 = 1;
     if (__pyx_t_8 < 0) {
-      __pyx_t_8 += __pyx_v_8ztpcraft_7bosonic_24_oscillator_integrals_1d_GHdata_view.shape[2];
+      __pyx_t_8 += __pyx_v_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_GHdata_view.shape[2];
       if (unlikely(__pyx_t_8 < 0)) __pyx_t_9 = 2;
-    } else if (unlikely(__pyx_t_8 >= __pyx_v_8ztpcraft_7bosonic_24_oscillator_integrals_1d_GHdata_view.shape[2])) __pyx_t_9 = 2;
+    } else if (unlikely(__pyx_t_8 >= __pyx_v_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_GHdata_view.shape[2])) __pyx_t_9 = 2;
     if (unlikely(__pyx_t_9 != -1)) {
       __Pyx_RaiseBufferIndexError(__pyx_t_9);
       __PYX_ERR(0, 259, __pyx_L1_error)
     }
-    __pyx_t_2 = (*((double *) ( /* dim=2 */ (( /* dim=1 */ (( /* dim=0 */ (__pyx_v_8ztpcraft_7bosonic_24_oscillator_integrals_1d_GHdata_view.data + __pyx_t_6 * __pyx_v_8ztpcraft_7bosonic_24_oscillator_integrals_1d_GHdata_view.strides[0]) ) + __pyx_t_7 * __pyx_v_8ztpcraft_7bosonic_24_oscillator_integrals_1d_GHdata_view.strides[1]) ) + __pyx_t_8 * __pyx_v_8ztpcraft_7bosonic_24_oscillator_integrals_1d_GHdata_view.strides[2]) )));
+    __pyx_t_2 = (*((double *) ( /* dim=2 */ (( /* dim=1 */ (( /* dim=0 */ (__pyx_v_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_GHdata_view.data + __pyx_t_6 * __pyx_v_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_GHdata_view.strides[0]) ) + __pyx_t_7 * __pyx_v_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_GHdata_view.strides[1]) ) + __pyx_t_8 * __pyx_v_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_GHdata_view.strides[2]) )));
     if (unlikely(__pyx_v_Asqrt == 0)) {
       PyErr_SetString(PyExc_ZeroDivisionError, "float division");
       __PYX_ERR(0, 259, __pyx_L1_error)
     }
     __pyx_v_phi_temp = ((__pyx_t_2 / __pyx_v_Asqrt) + __pyx_v_B_2A);
 
-    /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":260
+    /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":260
  *     for term in range(order):
  *         phi_temp = GHdata_view[0,order,term]/Asqrt + B_2A
  *         GHintegral += GHdata_view[1,order,term] *\             # <<<<<<<<<<<<<<
  *             eval_hermite(n_i, phi_temp/phi_0_i - phi_ratio_i) *\
  *             eval_hermite(n_j, phi_temp/phi_0_j - phi_ratio_j)
 */
-    if (unlikely(!__pyx_v_8ztpcraft_7bosonic_24_oscillator_integrals_1d_GHdata_view.memview)) { __Pyx_RaiseUnboundLocalError("GHdata_view"); __PYX_ERR(0, 260, __pyx_L1_error) }
+    if (unlikely(!__pyx_v_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_GHdata_view.memview)) { __Pyx_RaiseUnboundLocalError("GHdata_view"); __PYX_ERR(0, 260, __pyx_L1_error) }
     __pyx_t_8 = 1;
     __pyx_t_7 = __pyx_v_order;
     __pyx_t_6 = __pyx_v_term;
     __pyx_t_9 = -1;
     if (__pyx_t_8 < 0) {
-      __pyx_t_8 += __pyx_v_8ztpcraft_7bosonic_24_oscillator_integrals_1d_GHdata_view.shape[0];
+      __pyx_t_8 += __pyx_v_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_GHdata_view.shape[0];
       if (unlikely(__pyx_t_8 < 0)) __pyx_t_9 = 0;
-    } else if (unlikely(__pyx_t_8 >= __pyx_v_8ztpcraft_7bosonic_24_oscillator_integrals_1d_GHdata_view.shape[0])) __pyx_t_9 = 0;
+    } else if (unlikely(__pyx_t_8 >= __pyx_v_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_GHdata_view.shape[0])) __pyx_t_9 = 0;
     if (__pyx_t_7 < 0) {
-      __pyx_t_7 += __pyx_v_8ztpcraft_7bosonic_24_oscillator_integrals_1d_GHdata_view.shape[1];
+      __pyx_t_7 += __pyx_v_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_GHdata_view.shape[1];
       if (unlikely(__pyx_t_7 < 0)) __pyx_t_9 = 1;
-    } else if (unlikely(__pyx_t_7 >= __pyx_v_8ztpcraft_7bosonic_24_oscillator_integrals_1d_GHdata_view.shape[1])) __pyx_t_9 = 1;
+    } else if (unlikely(__pyx_t_7 >= __pyx_v_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_GHdata_view.shape[1])) __pyx_t_9 = 1;
     if (__pyx_t_6 < 0) {
-      __pyx_t_6 += __pyx_v_8ztpcraft_7bosonic_24_oscillator_integrals_1d_GHdata_view.shape[2];
+      __pyx_t_6 += __pyx_v_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_GHdata_view.shape[2];
       if (unlikely(__pyx_t_6 < 0)) __pyx_t_9 = 2;
-    } else if (unlikely(__pyx_t_6 >= __pyx_v_8ztpcraft_7bosonic_24_oscillator_integrals_1d_GHdata_view.shape[2])) __pyx_t_9 = 2;
+    } else if (unlikely(__pyx_t_6 >= __pyx_v_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_GHdata_view.shape[2])) __pyx_t_9 = 2;
     if (unlikely(__pyx_t_9 != -1)) {
       __Pyx_RaiseBufferIndexError(__pyx_t_9);
       __PYX_ERR(0, 260, __pyx_L1_error)
     }
 
-    /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":261
+    /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":261
  *         phi_temp = GHdata_view[0,order,term]/Asqrt + B_2A
  *         GHintegral += GHdata_view[1,order,term] *\
  *             eval_hermite(n_i, phi_temp/phi_0_i - phi_ratio_i) *\             # <<<<<<<<<<<<<<
@@ -20522,7 +20522,7 @@ static double __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_cSij_GH(Py_s
       __PYX_ERR(0, 261, __pyx_L1_error)
     }
 
-    /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":262
+    /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":262
  *         GHintegral += GHdata_view[1,order,term] *\
  *             eval_hermite(n_i, phi_temp/phi_0_i - phi_ratio_i) *\
  *             eval_hermite(n_j, phi_temp/phi_0_j - phi_ratio_j)             # <<<<<<<<<<<<<<
@@ -20534,24 +20534,24 @@ static double __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_cSij_GH(Py_s
       __PYX_ERR(0, 262, __pyx_L1_error)
     }
 
-    /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":260
+    /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":260
  *     for term in range(order):
  *         phi_temp = GHdata_view[0,order,term]/Asqrt + B_2A
  *         GHintegral += GHdata_view[1,order,term] *\             # <<<<<<<<<<<<<<
  *             eval_hermite(n_i, phi_temp/phi_0_i - phi_ratio_i) *\
  *             eval_hermite(n_j, phi_temp/phi_0_j - phi_ratio_j)
 */
-    __pyx_v_GHintegral = (__pyx_v_GHintegral + (((*((double *) ( /* dim=2 */ (( /* dim=1 */ (( /* dim=0 */ (__pyx_v_8ztpcraft_7bosonic_24_oscillator_integrals_1d_GHdata_view.data + __pyx_t_8 * __pyx_v_8ztpcraft_7bosonic_24_oscillator_integrals_1d_GHdata_view.strides[0]) ) + __pyx_t_7 * __pyx_v_8ztpcraft_7bosonic_24_oscillator_integrals_1d_GHdata_view.strides[1]) ) + __pyx_t_6 * __pyx_v_8ztpcraft_7bosonic_24_oscillator_integrals_1d_GHdata_view.strides[2]) ))) * __pyx_f_5scipy_7special_14cython_special_eval_hermite(__pyx_v_n_i, ((__pyx_v_phi_temp / __pyx_v_phi_0_i) - __pyx_v_phi_ratio_i), 0)) * __pyx_f_5scipy_7special_14cython_special_eval_hermite(__pyx_v_n_j, ((__pyx_v_phi_temp / __pyx_v_phi_0_j) - __pyx_v_phi_ratio_j), 0)));
+    __pyx_v_GHintegral = (__pyx_v_GHintegral + (((*((double *) ( /* dim=2 */ (( /* dim=1 */ (( /* dim=0 */ (__pyx_v_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_GHdata_view.data + __pyx_t_8 * __pyx_v_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_GHdata_view.strides[0]) ) + __pyx_t_7 * __pyx_v_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_GHdata_view.strides[1]) ) + __pyx_t_6 * __pyx_v_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_GHdata_view.strides[2]) ))) * __pyx_f_5scipy_7special_14cython_special_eval_hermite(__pyx_v_n_i, ((__pyx_v_phi_temp / __pyx_v_phi_0_i) - __pyx_v_phi_ratio_i), 0)) * __pyx_f_5scipy_7special_14cython_special_eval_hermite(__pyx_v_n_j, ((__pyx_v_phi_temp / __pyx_v_phi_0_j) - __pyx_v_phi_ratio_j), 0)));
   }
 
-  /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":263
+  /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":263
  *             eval_hermite(n_i, phi_temp/phi_0_i - phi_ratio_i) *\
  *             eval_hermite(n_j, phi_temp/phi_0_j - phi_ratio_j)
  *     return exp(exparg) * cprefactor(n_i,n_j,phi_0_i,phi_0_j)/Asqrt * GHintegral             # <<<<<<<<<<<<<<
  * 
  * #evaluating the phi^2 matrix elements with Gauss-Hermite quadrature
 */
-  __pyx_t_2 = __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_cprefactor(__pyx_v_n_i, __pyx_v_n_j, __pyx_v_phi_0_i, __pyx_v_phi_0_j, 0); if (unlikely(__pyx_t_2 == ((double)-1) && PyErr_Occurred())) __PYX_ERR(0, 263, __pyx_L1_error)
+  __pyx_t_2 = __pyx_f_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_cprefactor(__pyx_v_n_i, __pyx_v_n_j, __pyx_v_phi_0_i, __pyx_v_phi_0_j, 0); if (unlikely(__pyx_t_2 == ((double)-1) && PyErr_Occurred())) __PYX_ERR(0, 263, __pyx_L1_error)
   __pyx_t_1 = (exp(__pyx_v_exparg) * __pyx_t_2);
   if (unlikely(__pyx_v_Asqrt == 0)) {
     PyErr_SetString(PyExc_ZeroDivisionError, "float division");
@@ -20560,7 +20560,7 @@ static double __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_cSij_GH(Py_s
   __pyx_r = ((__pyx_t_1 / __pyx_v_Asqrt) * __pyx_v_GHintegral);
   goto __pyx_L0;
 
-  /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":215
+  /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":215
  * 
  * #evaluating the overlap matrix elements with Gauss-Hermite quadrature
  * cpdef double cSij_GH(Py_ssize_t n_i,Py_ssize_t n_j,double phi_ratio_i,double phi_ratio_j,double phi_0_i,double phi_0_j):             # <<<<<<<<<<<<<<
@@ -20570,23 +20570,23 @@ static double __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_cSij_GH(Py_s
 
   /* function exit code */
   __pyx_L1_error:;
-  __Pyx_AddTraceback("ztpcraft.bosonic._oscillator_integrals_1d.cSij_GH", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("ztpcraft.bosonic.oscillator_integrals._oscillator_integrals_1d_quadrature.cSij_GH", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = -1;
   __pyx_L0:;
   return __pyx_r;
 }
 
 /* Python wrapper */
-static PyObject *__pyx_pw_8ztpcraft_7bosonic_24_oscillator_integrals_1d_15cSij_GH(PyObject *__pyx_self, 
+static PyObject *__pyx_pw_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_15cSij_GH(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-PyDoc_STRVAR(__pyx_doc_8ztpcraft_7bosonic_24_oscillator_integrals_1d_14cSij_GH, " \n    Evaluating the overlap matrix elements with Gauss-Hermite quadrature\n\n    PARAMETERS\n    ----------\n        n_i : int\n            the excitation number of the state i\n        n_j : int\n            the excitation number of the state j\n        phi_ratio_i : double\n            the ratio of the center displacement of the state i to the width (phi_0_i) of the state i\n        phi_ratio_j : double\n            the ratio of the center displacement of the state j to the width (phi_0_j) of the state j\n        phi_0_i : double\n            the width of the state i\n        phi_0_j : double\n            the width of the state j\n    \n    RETURNS\n    -------\n        the overlap matrix element of the state i and j\n    ");
-static PyMethodDef __pyx_mdef_8ztpcraft_7bosonic_24_oscillator_integrals_1d_15cSij_GH = {"cSij_GH", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_8ztpcraft_7bosonic_24_oscillator_integrals_1d_15cSij_GH, __Pyx_METH_FASTCALL|METH_KEYWORDS, __pyx_doc_8ztpcraft_7bosonic_24_oscillator_integrals_1d_14cSij_GH};
-static PyObject *__pyx_pw_8ztpcraft_7bosonic_24_oscillator_integrals_1d_15cSij_GH(PyObject *__pyx_self, 
+PyDoc_STRVAR(__pyx_doc_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_14cSij_GH, " \n    Evaluating the overlap matrix elements with Gauss-Hermite quadrature\n\n    PARAMETERS\n    ----------\n        n_i : int\n            the excitation number of the state i\n        n_j : int\n            the excitation number of the state j\n        phi_ratio_i : double\n            the ratio of the center displacement of the state i to the width (phi_0_i) of the state i\n        phi_ratio_j : double\n            the ratio of the center displacement of the state j to the width (phi_0_j) of the state j\n        phi_0_i : double\n            the width of the state i\n        phi_0_j : double\n            the width of the state j\n    \n    RETURNS\n    -------\n        the overlap matrix element of the state i and j\n    ");
+static PyMethodDef __pyx_mdef_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_15cSij_GH = {"cSij_GH", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_15cSij_GH, __Pyx_METH_FASTCALL|METH_KEYWORDS, __pyx_doc_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_14cSij_GH};
+static PyObject *__pyx_pw_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_15cSij_GH(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
@@ -20688,11 +20688,11 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   for (Py_ssize_t __pyx_temp=0; __pyx_temp < (Py_ssize_t)(sizeof(values)/sizeof(values[0])); ++__pyx_temp) {
     Py_XDECREF(values[__pyx_temp]);
   }
-  __Pyx_AddTraceback("ztpcraft.bosonic._oscillator_integrals_1d.cSij_GH", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("ztpcraft.bosonic.oscillator_integrals._oscillator_integrals_1d_quadrature.cSij_GH", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_8ztpcraft_7bosonic_24_oscillator_integrals_1d_14cSij_GH(__pyx_self, __pyx_v_n_i, __pyx_v_n_j, __pyx_v_phi_ratio_i, __pyx_v_phi_ratio_j, __pyx_v_phi_0_i, __pyx_v_phi_0_j);
+  __pyx_r = __pyx_pf_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_14cSij_GH(__pyx_self, __pyx_v_n_i, __pyx_v_n_j, __pyx_v_phi_ratio_i, __pyx_v_phi_ratio_j, __pyx_v_phi_0_i, __pyx_v_phi_0_j);
 
   /* function exit code */
   for (Py_ssize_t __pyx_temp=0; __pyx_temp < (Py_ssize_t)(sizeof(values)/sizeof(values[0])); ++__pyx_temp) {
@@ -20702,7 +20702,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_8ztpcraft_7bosonic_24_oscillator_integrals_1d_14cSij_GH(CYTHON_UNUSED PyObject *__pyx_self, Py_ssize_t __pyx_v_n_i, Py_ssize_t __pyx_v_n_j, double __pyx_v_phi_ratio_i, double __pyx_v_phi_ratio_j, double __pyx_v_phi_0_i, double __pyx_v_phi_0_j) {
+static PyObject *__pyx_pf_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_14cSij_GH(CYTHON_UNUSED PyObject *__pyx_self, Py_ssize_t __pyx_v_n_i, Py_ssize_t __pyx_v_n_j, double __pyx_v_phi_ratio_i, double __pyx_v_phi_ratio_j, double __pyx_v_phi_0_i, double __pyx_v_phi_0_j) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   double __pyx_t_1;
@@ -20712,7 +20712,7 @@ static PyObject *__pyx_pf_8ztpcraft_7bosonic_24_oscillator_integrals_1d_14cSij_G
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("cSij_GH", 0);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_cSij_GH(__pyx_v_n_i, __pyx_v_n_j, __pyx_v_phi_ratio_i, __pyx_v_phi_ratio_j, __pyx_v_phi_0_i, __pyx_v_phi_0_j, 1); if (unlikely(__pyx_t_1 == ((double)-1) && PyErr_Occurred())) __PYX_ERR(0, 215, __pyx_L1_error)
+  __pyx_t_1 = __pyx_f_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_cSij_GH(__pyx_v_n_i, __pyx_v_n_j, __pyx_v_phi_ratio_i, __pyx_v_phi_ratio_j, __pyx_v_phi_0_i, __pyx_v_phi_0_j, 1); if (unlikely(__pyx_t_1 == ((double)-1) && PyErr_Occurred())) __PYX_ERR(0, 215, __pyx_L1_error)
   __pyx_t_2 = PyFloat_FromDouble(__pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 215, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_r = __pyx_t_2;
@@ -20722,7 +20722,7 @@ static PyObject *__pyx_pf_8ztpcraft_7bosonic_24_oscillator_integrals_1d_14cSij_G
   /* function exit code */
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_2);
-  __Pyx_AddTraceback("ztpcraft.bosonic._oscillator_integrals_1d.cSij_GH", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("ztpcraft.bosonic.oscillator_integrals._oscillator_integrals_1d_quadrature.cSij_GH", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XGIVEREF(__pyx_r);
@@ -20730,7 +20730,7 @@ static PyObject *__pyx_pf_8ztpcraft_7bosonic_24_oscillator_integrals_1d_14cSij_G
   return __pyx_r;
 }
 
-/* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":266
+/* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":266
  * 
  * #evaluating the phi^2 matrix elements with Gauss-Hermite quadrature
  * cpdef double cphi2ij_GH(Py_ssize_t n_i,Py_ssize_t n_j,double phi_ratio_i,double phi_ratio_j,double phi_0_i,double phi_0_j):             # <<<<<<<<<<<<<<
@@ -20738,14 +20738,14 @@ static PyObject *__pyx_pf_8ztpcraft_7bosonic_24_oscillator_integrals_1d_14cSij_G
  *     Evaluating the phi^2 matrix elements with Gauss-Hermite quadrature
 */
 
-static PyObject *__pyx_pw_8ztpcraft_7bosonic_24_oscillator_integrals_1d_17cphi2ij_GH(PyObject *__pyx_self, 
+static PyObject *__pyx_pw_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_17cphi2ij_GH(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-static double __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_cphi2ij_GH(Py_ssize_t __pyx_v_n_i, Py_ssize_t __pyx_v_n_j, double __pyx_v_phi_ratio_i, double __pyx_v_phi_ratio_j, double __pyx_v_phi_0_i, double __pyx_v_phi_0_j, CYTHON_UNUSED int __pyx_skip_dispatch) {
+static double __pyx_f_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_cphi2ij_GH(Py_ssize_t __pyx_v_n_i, Py_ssize_t __pyx_v_n_j, double __pyx_v_phi_ratio_i, double __pyx_v_phi_ratio_j, double __pyx_v_phi_0_i, double __pyx_v_phi_0_j, CYTHON_UNUSED int __pyx_skip_dispatch) {
   double __pyx_v_A;
   double __pyx_v_Asqrt;
   double __pyx_v_B;
@@ -20774,7 +20774,7 @@ static double __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_cphi2ij_GH(P
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("cphi2ij_GH", 0);
 
-  /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":289
+  /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":289
  *         the phi^2 matrix element of the state i and j
  *     """
  *     cdef double A = 0             # <<<<<<<<<<<<<<
@@ -20783,7 +20783,7 @@ static double __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_cphi2ij_GH(P
 */
   __pyx_v_A = 0.0;
 
-  /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":290
+  /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":290
  *     """
  *     cdef double A = 0
  *     cdef double Asqrt = 0             # <<<<<<<<<<<<<<
@@ -20792,7 +20792,7 @@ static double __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_cphi2ij_GH(P
 */
   __pyx_v_Asqrt = 0.0;
 
-  /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":291
+  /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":291
  *     cdef double A = 0
  *     cdef double Asqrt = 0
  *     cdef double B = 0             # <<<<<<<<<<<<<<
@@ -20801,7 +20801,7 @@ static double __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_cphi2ij_GH(P
 */
   __pyx_v_B = 0.0;
 
-  /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":292
+  /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":292
  *     cdef double Asqrt = 0
  *     cdef double B = 0
  *     cdef double B2 = 0             # <<<<<<<<<<<<<<
@@ -20810,7 +20810,7 @@ static double __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_cphi2ij_GH(P
 */
   __pyx_v_B2 = 0.0;
 
-  /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":293
+  /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":293
  *     cdef double B = 0
  *     cdef double B2 = 0
  *     cdef double B_2A = 0             # <<<<<<<<<<<<<<
@@ -20819,7 +20819,7 @@ static double __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_cphi2ij_GH(P
 */
   __pyx_v_B_2A = 0.0;
 
-  /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":294
+  /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":294
  *     cdef double B2 = 0
  *     cdef double B_2A = 0
  *     cdef double exparg = 0             # <<<<<<<<<<<<<<
@@ -20828,7 +20828,7 @@ static double __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_cphi2ij_GH(P
 */
   __pyx_v_exparg = 0.0;
 
-  /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":295
+  /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":295
  *     cdef double B_2A = 0
  *     cdef double exparg = 0
  *     cdef Py_ssize_t order = 0             # <<<<<<<<<<<<<<
@@ -20837,7 +20837,7 @@ static double __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_cphi2ij_GH(P
 */
   __pyx_v_order = 0;
 
-  /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":296
+  /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":296
  *     cdef double exparg = 0
  *     cdef Py_ssize_t order = 0
  *     cdef double GHintegral = 0             # <<<<<<<<<<<<<<
@@ -20846,7 +20846,7 @@ static double __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_cphi2ij_GH(P
 */
   __pyx_v_GHintegral = 0.0;
 
-  /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":297
+  /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":297
  *     cdef Py_ssize_t order = 0
  *     cdef double GHintegral = 0
  *     cdef double phi_temp = 0             # <<<<<<<<<<<<<<
@@ -20855,7 +20855,7 @@ static double __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_cphi2ij_GH(P
 */
   __pyx_v_phi_temp = 0.0;
 
-  /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":299
+  /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":299
  *     cdef double phi_temp = 0
  *     # calculate some useful numbers
  *     A = 1./(2.*phi_0_i*phi_0_i) + 1./(2.*phi_0_j*phi_0_j)             # <<<<<<<<<<<<<<
@@ -20874,7 +20874,7 @@ static double __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_cphi2ij_GH(P
   }
   __pyx_v_A = ((1. / __pyx_t_1) + (1. / __pyx_t_2));
 
-  /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":300
+  /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":300
  *     # calculate some useful numbers
  *     A = 1./(2.*phi_0_i*phi_0_i) + 1./(2.*phi_0_j*phi_0_j)
  *     Asqrt = sqrt(A)             # <<<<<<<<<<<<<<
@@ -20883,7 +20883,7 @@ static double __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_cphi2ij_GH(P
 */
   __pyx_v_Asqrt = sqrt(__pyx_v_A);
 
-  /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":301
+  /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":301
  *     A = 1./(2.*phi_0_i*phi_0_i) + 1./(2.*phi_0_j*phi_0_j)
  *     Asqrt = sqrt(A)
  *     B = phi_ratio_i / phi_0_i + phi_ratio_j / phi_0_j             # <<<<<<<<<<<<<<
@@ -20900,7 +20900,7 @@ static double __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_cphi2ij_GH(P
   }
   __pyx_v_B = ((__pyx_v_phi_ratio_i / __pyx_v_phi_0_i) + (__pyx_v_phi_ratio_j / __pyx_v_phi_0_j));
 
-  /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":302
+  /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":302
  *     Asqrt = sqrt(A)
  *     B = phi_ratio_i / phi_0_i + phi_ratio_j / phi_0_j
  *     B2 = B*B             # <<<<<<<<<<<<<<
@@ -20909,7 +20909,7 @@ static double __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_cphi2ij_GH(P
 */
   __pyx_v_B2 = (__pyx_v_B * __pyx_v_B);
 
-  /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":303
+  /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":303
  *     B = phi_ratio_i / phi_0_i + phi_ratio_j / phi_0_j
  *     B2 = B*B
  *     B_2A = B/(2. * A)             # <<<<<<<<<<<<<<
@@ -20923,7 +20923,7 @@ static double __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_cphi2ij_GH(P
   }
   __pyx_v_B_2A = (__pyx_v_B / __pyx_t_2);
 
-  /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":304
+  /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":304
  *     B2 = B*B
  *     B_2A = B/(2. * A)
  *     exparg = B2/(4. * A) - phi_ratio_i * phi_ratio_i / 2. - phi_ratio_j * phi_ratio_j / 2.             # <<<<<<<<<<<<<<
@@ -20937,7 +20937,7 @@ static double __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_cphi2ij_GH(P
   }
   __pyx_v_exparg = (((__pyx_v_B2 / __pyx_t_2) - ((__pyx_v_phi_ratio_i * __pyx_v_phi_ratio_i) / 2.)) - ((__pyx_v_phi_ratio_j * __pyx_v_phi_ratio_j) / 2.));
 
-  /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":306
+  /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":306
  *     exparg = B2/(4. * A) - phi_ratio_i * phi_ratio_i / 2. - phi_ratio_j * phi_ratio_j / 2.
  *     # Gauss-Hermite quadrature
  *     order = int(-(-((n_i + n_j +1)/2.)//1)) + 1             # <<<<<<<<<<<<<<
@@ -20953,7 +20953,7 @@ static double __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_cphi2ij_GH(P
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __pyx_v_order = __pyx_t_5;
 
-  /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":307
+  /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":307
  *     # Gauss-Hermite quadrature
  *     order = int(-(-((n_i + n_j +1)/2.)//1)) + 1
  *     for term in range(order):             # <<<<<<<<<<<<<<
@@ -20965,71 +20965,71 @@ static double __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_cphi2ij_GH(P
   for (__pyx_t_7 = 0; __pyx_t_7 < __pyx_t_6; __pyx_t_7+=1) {
     __pyx_v_term = __pyx_t_7;
 
-    /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":308
+    /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":308
  *     order = int(-(-((n_i + n_j +1)/2.)//1)) + 1
  *     for term in range(order):
  *         phi_temp = GHdata_view[0,order,term]/Asqrt + B_2A             # <<<<<<<<<<<<<<
  *         GHintegral += GHdata_view[1,order,term] *\
  *             eval_hermite(n_i, phi_temp/phi_0_i - phi_ratio_i) *\
 */
-    if (unlikely(!__pyx_v_8ztpcraft_7bosonic_24_oscillator_integrals_1d_GHdata_view.memview)) { __Pyx_RaiseUnboundLocalError("GHdata_view"); __PYX_ERR(0, 308, __pyx_L1_error) }
+    if (unlikely(!__pyx_v_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_GHdata_view.memview)) { __Pyx_RaiseUnboundLocalError("GHdata_view"); __PYX_ERR(0, 308, __pyx_L1_error) }
     __pyx_t_8 = 0;
     __pyx_t_9 = __pyx_v_order;
     __pyx_t_10 = __pyx_v_term;
     __pyx_t_11 = -1;
     if (__pyx_t_8 < 0) {
-      __pyx_t_8 += __pyx_v_8ztpcraft_7bosonic_24_oscillator_integrals_1d_GHdata_view.shape[0];
+      __pyx_t_8 += __pyx_v_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_GHdata_view.shape[0];
       if (unlikely(__pyx_t_8 < 0)) __pyx_t_11 = 0;
-    } else if (unlikely(__pyx_t_8 >= __pyx_v_8ztpcraft_7bosonic_24_oscillator_integrals_1d_GHdata_view.shape[0])) __pyx_t_11 = 0;
+    } else if (unlikely(__pyx_t_8 >= __pyx_v_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_GHdata_view.shape[0])) __pyx_t_11 = 0;
     if (__pyx_t_9 < 0) {
-      __pyx_t_9 += __pyx_v_8ztpcraft_7bosonic_24_oscillator_integrals_1d_GHdata_view.shape[1];
+      __pyx_t_9 += __pyx_v_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_GHdata_view.shape[1];
       if (unlikely(__pyx_t_9 < 0)) __pyx_t_11 = 1;
-    } else if (unlikely(__pyx_t_9 >= __pyx_v_8ztpcraft_7bosonic_24_oscillator_integrals_1d_GHdata_view.shape[1])) __pyx_t_11 = 1;
+    } else if (unlikely(__pyx_t_9 >= __pyx_v_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_GHdata_view.shape[1])) __pyx_t_11 = 1;
     if (__pyx_t_10 < 0) {
-      __pyx_t_10 += __pyx_v_8ztpcraft_7bosonic_24_oscillator_integrals_1d_GHdata_view.shape[2];
+      __pyx_t_10 += __pyx_v_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_GHdata_view.shape[2];
       if (unlikely(__pyx_t_10 < 0)) __pyx_t_11 = 2;
-    } else if (unlikely(__pyx_t_10 >= __pyx_v_8ztpcraft_7bosonic_24_oscillator_integrals_1d_GHdata_view.shape[2])) __pyx_t_11 = 2;
+    } else if (unlikely(__pyx_t_10 >= __pyx_v_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_GHdata_view.shape[2])) __pyx_t_11 = 2;
     if (unlikely(__pyx_t_11 != -1)) {
       __Pyx_RaiseBufferIndexError(__pyx_t_11);
       __PYX_ERR(0, 308, __pyx_L1_error)
     }
-    __pyx_t_2 = (*((double *) ( /* dim=2 */ (( /* dim=1 */ (( /* dim=0 */ (__pyx_v_8ztpcraft_7bosonic_24_oscillator_integrals_1d_GHdata_view.data + __pyx_t_8 * __pyx_v_8ztpcraft_7bosonic_24_oscillator_integrals_1d_GHdata_view.strides[0]) ) + __pyx_t_9 * __pyx_v_8ztpcraft_7bosonic_24_oscillator_integrals_1d_GHdata_view.strides[1]) ) + __pyx_t_10 * __pyx_v_8ztpcraft_7bosonic_24_oscillator_integrals_1d_GHdata_view.strides[2]) )));
+    __pyx_t_2 = (*((double *) ( /* dim=2 */ (( /* dim=1 */ (( /* dim=0 */ (__pyx_v_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_GHdata_view.data + __pyx_t_8 * __pyx_v_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_GHdata_view.strides[0]) ) + __pyx_t_9 * __pyx_v_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_GHdata_view.strides[1]) ) + __pyx_t_10 * __pyx_v_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_GHdata_view.strides[2]) )));
     if (unlikely(__pyx_v_Asqrt == 0)) {
       PyErr_SetString(PyExc_ZeroDivisionError, "float division");
       __PYX_ERR(0, 308, __pyx_L1_error)
     }
     __pyx_v_phi_temp = ((__pyx_t_2 / __pyx_v_Asqrt) + __pyx_v_B_2A);
 
-    /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":309
+    /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":309
  *     for term in range(order):
  *         phi_temp = GHdata_view[0,order,term]/Asqrt + B_2A
  *         GHintegral += GHdata_view[1,order,term] *\             # <<<<<<<<<<<<<<
  *             eval_hermite(n_i, phi_temp/phi_0_i - phi_ratio_i) *\
  *             eval_hermite(n_j, phi_temp/phi_0_j - phi_ratio_j) *\
 */
-    if (unlikely(!__pyx_v_8ztpcraft_7bosonic_24_oscillator_integrals_1d_GHdata_view.memview)) { __Pyx_RaiseUnboundLocalError("GHdata_view"); __PYX_ERR(0, 309, __pyx_L1_error) }
+    if (unlikely(!__pyx_v_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_GHdata_view.memview)) { __Pyx_RaiseUnboundLocalError("GHdata_view"); __PYX_ERR(0, 309, __pyx_L1_error) }
     __pyx_t_10 = 1;
     __pyx_t_9 = __pyx_v_order;
     __pyx_t_8 = __pyx_v_term;
     __pyx_t_11 = -1;
     if (__pyx_t_10 < 0) {
-      __pyx_t_10 += __pyx_v_8ztpcraft_7bosonic_24_oscillator_integrals_1d_GHdata_view.shape[0];
+      __pyx_t_10 += __pyx_v_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_GHdata_view.shape[0];
       if (unlikely(__pyx_t_10 < 0)) __pyx_t_11 = 0;
-    } else if (unlikely(__pyx_t_10 >= __pyx_v_8ztpcraft_7bosonic_24_oscillator_integrals_1d_GHdata_view.shape[0])) __pyx_t_11 = 0;
+    } else if (unlikely(__pyx_t_10 >= __pyx_v_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_GHdata_view.shape[0])) __pyx_t_11 = 0;
     if (__pyx_t_9 < 0) {
-      __pyx_t_9 += __pyx_v_8ztpcraft_7bosonic_24_oscillator_integrals_1d_GHdata_view.shape[1];
+      __pyx_t_9 += __pyx_v_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_GHdata_view.shape[1];
       if (unlikely(__pyx_t_9 < 0)) __pyx_t_11 = 1;
-    } else if (unlikely(__pyx_t_9 >= __pyx_v_8ztpcraft_7bosonic_24_oscillator_integrals_1d_GHdata_view.shape[1])) __pyx_t_11 = 1;
+    } else if (unlikely(__pyx_t_9 >= __pyx_v_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_GHdata_view.shape[1])) __pyx_t_11 = 1;
     if (__pyx_t_8 < 0) {
-      __pyx_t_8 += __pyx_v_8ztpcraft_7bosonic_24_oscillator_integrals_1d_GHdata_view.shape[2];
+      __pyx_t_8 += __pyx_v_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_GHdata_view.shape[2];
       if (unlikely(__pyx_t_8 < 0)) __pyx_t_11 = 2;
-    } else if (unlikely(__pyx_t_8 >= __pyx_v_8ztpcraft_7bosonic_24_oscillator_integrals_1d_GHdata_view.shape[2])) __pyx_t_11 = 2;
+    } else if (unlikely(__pyx_t_8 >= __pyx_v_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_GHdata_view.shape[2])) __pyx_t_11 = 2;
     if (unlikely(__pyx_t_11 != -1)) {
       __Pyx_RaiseBufferIndexError(__pyx_t_11);
       __PYX_ERR(0, 309, __pyx_L1_error)
     }
 
-    /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":310
+    /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":310
  *         phi_temp = GHdata_view[0,order,term]/Asqrt + B_2A
  *         GHintegral += GHdata_view[1,order,term] *\
  *             eval_hermite(n_i, phi_temp/phi_0_i - phi_ratio_i) *\             # <<<<<<<<<<<<<<
@@ -21041,7 +21041,7 @@ static double __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_cphi2ij_GH(P
       __PYX_ERR(0, 310, __pyx_L1_error)
     }
 
-    /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":311
+    /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":311
  *         GHintegral += GHdata_view[1,order,term] *\
  *             eval_hermite(n_i, phi_temp/phi_0_i - phi_ratio_i) *\
  *             eval_hermite(n_j, phi_temp/phi_0_j - phi_ratio_j) *\             # <<<<<<<<<<<<<<
@@ -21053,24 +21053,24 @@ static double __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_cphi2ij_GH(P
       __PYX_ERR(0, 311, __pyx_L1_error)
     }
 
-    /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":309
+    /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":309
  *     for term in range(order):
  *         phi_temp = GHdata_view[0,order,term]/Asqrt + B_2A
  *         GHintegral += GHdata_view[1,order,term] *\             # <<<<<<<<<<<<<<
  *             eval_hermite(n_i, phi_temp/phi_0_i - phi_ratio_i) *\
  *             eval_hermite(n_j, phi_temp/phi_0_j - phi_ratio_j) *\
 */
-    __pyx_v_GHintegral = (__pyx_v_GHintegral + (((((*((double *) ( /* dim=2 */ (( /* dim=1 */ (( /* dim=0 */ (__pyx_v_8ztpcraft_7bosonic_24_oscillator_integrals_1d_GHdata_view.data + __pyx_t_10 * __pyx_v_8ztpcraft_7bosonic_24_oscillator_integrals_1d_GHdata_view.strides[0]) ) + __pyx_t_9 * __pyx_v_8ztpcraft_7bosonic_24_oscillator_integrals_1d_GHdata_view.strides[1]) ) + __pyx_t_8 * __pyx_v_8ztpcraft_7bosonic_24_oscillator_integrals_1d_GHdata_view.strides[2]) ))) * __pyx_f_5scipy_7special_14cython_special_eval_hermite(__pyx_v_n_i, ((__pyx_v_phi_temp / __pyx_v_phi_0_i) - __pyx_v_phi_ratio_i), 0)) * __pyx_f_5scipy_7special_14cython_special_eval_hermite(__pyx_v_n_j, ((__pyx_v_phi_temp / __pyx_v_phi_0_j) - __pyx_v_phi_ratio_j), 0)) * __pyx_v_phi_temp) * __pyx_v_phi_temp));
+    __pyx_v_GHintegral = (__pyx_v_GHintegral + (((((*((double *) ( /* dim=2 */ (( /* dim=1 */ (( /* dim=0 */ (__pyx_v_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_GHdata_view.data + __pyx_t_10 * __pyx_v_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_GHdata_view.strides[0]) ) + __pyx_t_9 * __pyx_v_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_GHdata_view.strides[1]) ) + __pyx_t_8 * __pyx_v_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_GHdata_view.strides[2]) ))) * __pyx_f_5scipy_7special_14cython_special_eval_hermite(__pyx_v_n_i, ((__pyx_v_phi_temp / __pyx_v_phi_0_i) - __pyx_v_phi_ratio_i), 0)) * __pyx_f_5scipy_7special_14cython_special_eval_hermite(__pyx_v_n_j, ((__pyx_v_phi_temp / __pyx_v_phi_0_j) - __pyx_v_phi_ratio_j), 0)) * __pyx_v_phi_temp) * __pyx_v_phi_temp));
   }
 
-  /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":313
+  /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":313
  *             eval_hermite(n_j, phi_temp/phi_0_j - phi_ratio_j) *\
  *             phi_temp*phi_temp # this is the phi^2 operator
  *     return exp(exparg) * cprefactor(n_i,n_j,phi_0_i,phi_0_j)/Asqrt * GHintegral             # <<<<<<<<<<<<<<
  * 
  * #evaluating the cosine (cos(a*phi - phi_ext)) matrix elements with Gauss-Hermite quadrature, here we use the plain cosine
 */
-  __pyx_t_2 = __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_cprefactor(__pyx_v_n_i, __pyx_v_n_j, __pyx_v_phi_0_i, __pyx_v_phi_0_j, 0); if (unlikely(__pyx_t_2 == ((double)-1) && PyErr_Occurred())) __PYX_ERR(0, 313, __pyx_L1_error)
+  __pyx_t_2 = __pyx_f_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_cprefactor(__pyx_v_n_i, __pyx_v_n_j, __pyx_v_phi_0_i, __pyx_v_phi_0_j, 0); if (unlikely(__pyx_t_2 == ((double)-1) && PyErr_Occurred())) __PYX_ERR(0, 313, __pyx_L1_error)
   __pyx_t_1 = (exp(__pyx_v_exparg) * __pyx_t_2);
   if (unlikely(__pyx_v_Asqrt == 0)) {
     PyErr_SetString(PyExc_ZeroDivisionError, "float division");
@@ -21079,7 +21079,7 @@ static double __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_cphi2ij_GH(P
   __pyx_r = ((__pyx_t_1 / __pyx_v_Asqrt) * __pyx_v_GHintegral);
   goto __pyx_L0;
 
-  /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":266
+  /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":266
  * 
  * #evaluating the phi^2 matrix elements with Gauss-Hermite quadrature
  * cpdef double cphi2ij_GH(Py_ssize_t n_i,Py_ssize_t n_j,double phi_ratio_i,double phi_ratio_j,double phi_0_i,double phi_0_j):             # <<<<<<<<<<<<<<
@@ -21091,7 +21091,7 @@ static double __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_cphi2ij_GH(P
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_3);
   __Pyx_XDECREF(__pyx_t_4);
-  __Pyx_AddTraceback("ztpcraft.bosonic._oscillator_integrals_1d.cphi2ij_GH", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("ztpcraft.bosonic.oscillator_integrals._oscillator_integrals_1d_quadrature.cphi2ij_GH", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = -1;
   __pyx_L0:;
   __Pyx_RefNannyFinishContext();
@@ -21099,16 +21099,16 @@ static double __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_cphi2ij_GH(P
 }
 
 /* Python wrapper */
-static PyObject *__pyx_pw_8ztpcraft_7bosonic_24_oscillator_integrals_1d_17cphi2ij_GH(PyObject *__pyx_self, 
+static PyObject *__pyx_pw_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_17cphi2ij_GH(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-PyDoc_STRVAR(__pyx_doc_8ztpcraft_7bosonic_24_oscillator_integrals_1d_16cphi2ij_GH, " \n    Evaluating the phi^2 matrix elements with Gauss-Hermite quadrature\n\n    PARAMETERS\n    ----------\n        n_i : int\n            the excitation number of the state i\n        n_j : int\n            the excitation number of the state j\n        phi_ratio_i : double\n            the ratio of the center displacement of the state i to the width (phi_0_i) of the state i\n        phi_ratio_j : double\n            the ratio of the center displacement of the state j to the width (phi_0_j) of the state j\n        phi_0_i : double\n            the width of the state i\n        phi_0_j : double\n            the width of the state j\n    \n    RETURNS\n    -------\n        the phi^2 matrix element of the state i and j\n    ");
-static PyMethodDef __pyx_mdef_8ztpcraft_7bosonic_24_oscillator_integrals_1d_17cphi2ij_GH = {"cphi2ij_GH", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_8ztpcraft_7bosonic_24_oscillator_integrals_1d_17cphi2ij_GH, __Pyx_METH_FASTCALL|METH_KEYWORDS, __pyx_doc_8ztpcraft_7bosonic_24_oscillator_integrals_1d_16cphi2ij_GH};
-static PyObject *__pyx_pw_8ztpcraft_7bosonic_24_oscillator_integrals_1d_17cphi2ij_GH(PyObject *__pyx_self, 
+PyDoc_STRVAR(__pyx_doc_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_16cphi2ij_GH, " \n    Evaluating the phi^2 matrix elements with Gauss-Hermite quadrature\n\n    PARAMETERS\n    ----------\n        n_i : int\n            the excitation number of the state i\n        n_j : int\n            the excitation number of the state j\n        phi_ratio_i : double\n            the ratio of the center displacement of the state i to the width (phi_0_i) of the state i\n        phi_ratio_j : double\n            the ratio of the center displacement of the state j to the width (phi_0_j) of the state j\n        phi_0_i : double\n            the width of the state i\n        phi_0_j : double\n            the width of the state j\n    \n    RETURNS\n    -------\n        the phi^2 matrix element of the state i and j\n    ");
+static PyMethodDef __pyx_mdef_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_17cphi2ij_GH = {"cphi2ij_GH", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_17cphi2ij_GH, __Pyx_METH_FASTCALL|METH_KEYWORDS, __pyx_doc_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_16cphi2ij_GH};
+static PyObject *__pyx_pw_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_17cphi2ij_GH(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
@@ -21210,11 +21210,11 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   for (Py_ssize_t __pyx_temp=0; __pyx_temp < (Py_ssize_t)(sizeof(values)/sizeof(values[0])); ++__pyx_temp) {
     Py_XDECREF(values[__pyx_temp]);
   }
-  __Pyx_AddTraceback("ztpcraft.bosonic._oscillator_integrals_1d.cphi2ij_GH", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("ztpcraft.bosonic.oscillator_integrals._oscillator_integrals_1d_quadrature.cphi2ij_GH", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_8ztpcraft_7bosonic_24_oscillator_integrals_1d_16cphi2ij_GH(__pyx_self, __pyx_v_n_i, __pyx_v_n_j, __pyx_v_phi_ratio_i, __pyx_v_phi_ratio_j, __pyx_v_phi_0_i, __pyx_v_phi_0_j);
+  __pyx_r = __pyx_pf_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_16cphi2ij_GH(__pyx_self, __pyx_v_n_i, __pyx_v_n_j, __pyx_v_phi_ratio_i, __pyx_v_phi_ratio_j, __pyx_v_phi_0_i, __pyx_v_phi_0_j);
 
   /* function exit code */
   for (Py_ssize_t __pyx_temp=0; __pyx_temp < (Py_ssize_t)(sizeof(values)/sizeof(values[0])); ++__pyx_temp) {
@@ -21224,7 +21224,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_8ztpcraft_7bosonic_24_oscillator_integrals_1d_16cphi2ij_GH(CYTHON_UNUSED PyObject *__pyx_self, Py_ssize_t __pyx_v_n_i, Py_ssize_t __pyx_v_n_j, double __pyx_v_phi_ratio_i, double __pyx_v_phi_ratio_j, double __pyx_v_phi_0_i, double __pyx_v_phi_0_j) {
+static PyObject *__pyx_pf_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_16cphi2ij_GH(CYTHON_UNUSED PyObject *__pyx_self, Py_ssize_t __pyx_v_n_i, Py_ssize_t __pyx_v_n_j, double __pyx_v_phi_ratio_i, double __pyx_v_phi_ratio_j, double __pyx_v_phi_0_i, double __pyx_v_phi_0_j) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   double __pyx_t_1;
@@ -21234,7 +21234,7 @@ static PyObject *__pyx_pf_8ztpcraft_7bosonic_24_oscillator_integrals_1d_16cphi2i
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("cphi2ij_GH", 0);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_cphi2ij_GH(__pyx_v_n_i, __pyx_v_n_j, __pyx_v_phi_ratio_i, __pyx_v_phi_ratio_j, __pyx_v_phi_0_i, __pyx_v_phi_0_j, 1); if (unlikely(__pyx_t_1 == ((double)-1) && PyErr_Occurred())) __PYX_ERR(0, 266, __pyx_L1_error)
+  __pyx_t_1 = __pyx_f_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_cphi2ij_GH(__pyx_v_n_i, __pyx_v_n_j, __pyx_v_phi_ratio_i, __pyx_v_phi_ratio_j, __pyx_v_phi_0_i, __pyx_v_phi_0_j, 1); if (unlikely(__pyx_t_1 == ((double)-1) && PyErr_Occurred())) __PYX_ERR(0, 266, __pyx_L1_error)
   __pyx_t_2 = PyFloat_FromDouble(__pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 266, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_r = __pyx_t_2;
@@ -21244,7 +21244,7 @@ static PyObject *__pyx_pf_8ztpcraft_7bosonic_24_oscillator_integrals_1d_16cphi2i
   /* function exit code */
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_2);
-  __Pyx_AddTraceback("ztpcraft.bosonic._oscillator_integrals_1d.cphi2ij_GH", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("ztpcraft.bosonic.oscillator_integrals._oscillator_integrals_1d_quadrature.cphi2ij_GH", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XGIVEREF(__pyx_r);
@@ -21252,7 +21252,7 @@ static PyObject *__pyx_pf_8ztpcraft_7bosonic_24_oscillator_integrals_1d_16cphi2i
   return __pyx_r;
 }
 
-/* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":316
+/* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":316
  * 
  * #evaluating the cosine (cos(a*phi - phi_ext)) matrix elements with Gauss-Hermite quadrature, here we use the plain cosine
  * cpdef double ccosij_plain_GH(Py_ssize_t n_i, Py_ssize_t n_j, double phi_ratio_i,double phi_ratio_j,double phi_0_i,double phi_0_j, a, phi_ext):             # <<<<<<<<<<<<<<
@@ -21260,14 +21260,14 @@ static PyObject *__pyx_pf_8ztpcraft_7bosonic_24_oscillator_integrals_1d_16cphi2i
  *     Evaluating the the cosine (cos(a*phi - phi_ext)) matrix elements with Gauss-Hermite quadrature, here we use the plain cosine
 */
 
-static PyObject *__pyx_pw_8ztpcraft_7bosonic_24_oscillator_integrals_1d_19ccosij_plain_GH(PyObject *__pyx_self, 
+static PyObject *__pyx_pw_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_19ccosij_plain_GH(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-static double __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_ccosij_plain_GH(Py_ssize_t __pyx_v_n_i, Py_ssize_t __pyx_v_n_j, double __pyx_v_phi_ratio_i, double __pyx_v_phi_ratio_j, double __pyx_v_phi_0_i, double __pyx_v_phi_0_j, PyObject *__pyx_v_a, PyObject *__pyx_v_phi_ext, CYTHON_UNUSED int __pyx_skip_dispatch) {
+static double __pyx_f_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_ccosij_plain_GH(Py_ssize_t __pyx_v_n_i, Py_ssize_t __pyx_v_n_j, double __pyx_v_phi_ratio_i, double __pyx_v_phi_ratio_j, double __pyx_v_phi_0_i, double __pyx_v_phi_0_j, PyObject *__pyx_v_a, PyObject *__pyx_v_phi_ext, CYTHON_UNUSED int __pyx_skip_dispatch) {
   double __pyx_v_A;
   double __pyx_v_Asqrt;
   double __pyx_v_B;
@@ -21299,7 +21299,7 @@ static double __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_ccosij_plain
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("ccosij_plain_GH", 0);
 
-  /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":343
+  /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":343
  *         the cos(a*phi - phi_ext) matrix element of the state i and j
  *     """
  *     cdef double A = 0             # <<<<<<<<<<<<<<
@@ -21308,7 +21308,7 @@ static double __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_ccosij_plain
 */
   __pyx_v_A = 0.0;
 
-  /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":344
+  /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":344
  *     """
  *     cdef double A = 0
  *     cdef double Asqrt = 0             # <<<<<<<<<<<<<<
@@ -21317,7 +21317,7 @@ static double __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_ccosij_plain
 */
   __pyx_v_Asqrt = 0.0;
 
-  /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":345
+  /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":345
  *     cdef double A = 0
  *     cdef double Asqrt = 0
  *     cdef double B = 0             # <<<<<<<<<<<<<<
@@ -21326,7 +21326,7 @@ static double __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_ccosij_plain
 */
   __pyx_v_B = 0.0;
 
-  /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":346
+  /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":346
  *     cdef double Asqrt = 0
  *     cdef double B = 0
  *     cdef double B2 = 0             # <<<<<<<<<<<<<<
@@ -21335,7 +21335,7 @@ static double __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_ccosij_plain
 */
   __pyx_v_B2 = 0.0;
 
-  /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":347
+  /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":347
  *     cdef double B = 0
  *     cdef double B2 = 0
  *     cdef double B_2A = 0             # <<<<<<<<<<<<<<
@@ -21344,7 +21344,7 @@ static double __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_ccosij_plain
 */
   __pyx_v_B_2A = 0.0;
 
-  /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":348
+  /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":348
  *     cdef double B2 = 0
  *     cdef double B_2A = 0
  *     cdef double exparg = 0             # <<<<<<<<<<<<<<
@@ -21353,7 +21353,7 @@ static double __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_ccosij_plain
 */
   __pyx_v_exparg = 0.0;
 
-  /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":349
+  /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":349
  *     cdef double B_2A = 0
  *     cdef double exparg = 0
  *     cdef double GHintegral = 0             # <<<<<<<<<<<<<<
@@ -21362,7 +21362,7 @@ static double __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_ccosij_plain
 */
   __pyx_v_GHintegral = 0.0;
 
-  /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":350
+  /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":350
  *     cdef double exparg = 0
  *     cdef double GHintegral = 0
  *     cdef double phi_temp = 0             # <<<<<<<<<<<<<<
@@ -21371,7 +21371,7 @@ static double __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_ccosij_plain
 */
   __pyx_v_phi_temp = 0.0;
 
-  /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":351
+  /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":351
  *     cdef double GHintegral = 0
  *     cdef double phi_temp = 0
  *     cdef double cosine_order = 0             # <<<<<<<<<<<<<<
@@ -21380,7 +21380,7 @@ static double __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_ccosij_plain
 */
   __pyx_v_cosine_order = 0.0;
 
-  /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":353
+  /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":353
  *     cdef double cosine_order = 0
  *     # calculate some useful numbers
  *     A = 1./(2.*phi_0_i*phi_0_i) + 1./(2.*phi_0_j*phi_0_j)             # <<<<<<<<<<<<<<
@@ -21399,7 +21399,7 @@ static double __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_ccosij_plain
   }
   __pyx_v_A = ((1. / __pyx_t_1) + (1. / __pyx_t_2));
 
-  /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":354
+  /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":354
  *     # calculate some useful numbers
  *     A = 1./(2.*phi_0_i*phi_0_i) + 1./(2.*phi_0_j*phi_0_j)
  *     Asqrt = sqrt(A)             # <<<<<<<<<<<<<<
@@ -21408,7 +21408,7 @@ static double __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_ccosij_plain
 */
   __pyx_v_Asqrt = sqrt(__pyx_v_A);
 
-  /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":355
+  /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":355
  *     A = 1./(2.*phi_0_i*phi_0_i) + 1./(2.*phi_0_j*phi_0_j)
  *     Asqrt = sqrt(A)
  *     B = phi_ratio_i / phi_0_i + phi_ratio_j / phi_0_j             # <<<<<<<<<<<<<<
@@ -21425,7 +21425,7 @@ static double __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_ccosij_plain
   }
   __pyx_v_B = ((__pyx_v_phi_ratio_i / __pyx_v_phi_0_i) + (__pyx_v_phi_ratio_j / __pyx_v_phi_0_j));
 
-  /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":356
+  /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":356
  *     Asqrt = sqrt(A)
  *     B = phi_ratio_i / phi_0_i + phi_ratio_j / phi_0_j
  *     B2 = B*B             # <<<<<<<<<<<<<<
@@ -21434,7 +21434,7 @@ static double __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_ccosij_plain
 */
   __pyx_v_B2 = (__pyx_v_B * __pyx_v_B);
 
-  /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":357
+  /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":357
  *     B = phi_ratio_i / phi_0_i + phi_ratio_j / phi_0_j
  *     B2 = B*B
  *     B_2A = B/(2. * A)             # <<<<<<<<<<<<<<
@@ -21448,7 +21448,7 @@ static double __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_ccosij_plain
   }
   __pyx_v_B_2A = (__pyx_v_B / __pyx_t_2);
 
-  /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":358
+  /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":358
  *     B2 = B*B
  *     B_2A = B/(2. * A)
  *     exparg = B2/(4. * A) - phi_ratio_i * phi_ratio_i / 2. - phi_ratio_j * phi_ratio_j / 2.             # <<<<<<<<<<<<<<
@@ -21462,7 +21462,7 @@ static double __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_ccosij_plain
   }
   __pyx_v_exparg = (((__pyx_v_B2 / __pyx_t_2) - ((__pyx_v_phi_ratio_i * __pyx_v_phi_ratio_i) / 2.)) - ((__pyx_v_phi_ratio_j * __pyx_v_phi_ratio_j) / 2.));
 
-  /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":361
+  /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":361
  *     # Gauss-Hermite quadrature
  *     # to capture the cosine term better, add an extra 6*sigma/(period/2)/2 number of orders
  *     cosine_order = (n_i*phi_0_i+n_j*phi_0_j + abs(phi_ratio_i*phi_0_i - phi_ratio_j*phi_0_j)) * 2 * a /pi             # <<<<<<<<<<<<<<
@@ -21485,7 +21485,7 @@ static double __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_ccosij_plain
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   __pyx_v_cosine_order = __pyx_t_2;
 
-  /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":362
+  /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":362
  *     # to capture the cosine term better, add an extra 6*sigma/(period/2)/2 number of orders
  *     cosine_order = (n_i*phi_0_i+n_j*phi_0_j + abs(phi_ratio_i*phi_0_i - phi_ratio_j*phi_0_j)) * 2 * a /pi
  *     order = int(-(-((n_i + n_j + 1 + 2*cosine_order )/2.)//1))             # <<<<<<<<<<<<<<
@@ -21497,7 +21497,7 @@ static double __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_ccosij_plain
   __pyx_v_order = ((PyObject*)__pyx_t_5);
   __pyx_t_5 = 0;
 
-  /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":363
+  /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":363
  *     cosine_order = (n_i*phi_0_i+n_j*phi_0_j + abs(phi_ratio_i*phi_0_i - phi_ratio_j*phi_0_j)) * 2 * a /pi
  *     order = int(-(-((n_i + n_j + 1 + 2*cosine_order )/2.)//1))
  *     for term in range(order):             # <<<<<<<<<<<<<<
@@ -21534,14 +21534,14 @@ static double __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_ccosij_plain
     __Pyx_XDECREF_SET(__pyx_v_term, ((PyObject*)__pyx_t_5));
     __pyx_t_5 = 0;
 
-    /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":364
+    /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":364
  *     order = int(-(-((n_i + n_j + 1 + 2*cosine_order )/2.)//1))
  *     for term in range(order):
  *         phi_temp = GHdata_view[0,order,term]/Asqrt + B_2A             # <<<<<<<<<<<<<<
  *         GHintegral += GHdata_view[1,order,term] *\
  *             eval_hermite(n_i, phi_temp/phi_0_i - phi_ratio_i) *\
 */
-    if (unlikely(!__pyx_v_8ztpcraft_7bosonic_24_oscillator_integrals_1d_GHdata_view.memview)) { __Pyx_RaiseUnboundLocalError("GHdata_view"); __PYX_ERR(0, 364, __pyx_L1_error) }
+    if (unlikely(!__pyx_v_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_GHdata_view.memview)) { __Pyx_RaiseUnboundLocalError("GHdata_view"); __PYX_ERR(0, 364, __pyx_L1_error) }
     __pyx_t_8 = __Pyx_PyIndex_AsSsize_t(__pyx_v_order); if (unlikely((__pyx_t_8 == (Py_ssize_t)-1) && PyErr_Occurred())) __PYX_ERR(0, 364, __pyx_L1_error)
     __pyx_t_9 = __Pyx_PyIndex_AsSsize_t(__pyx_v_term); if (unlikely((__pyx_t_9 == (Py_ssize_t)-1) && PyErr_Occurred())) __PYX_ERR(0, 364, __pyx_L1_error)
     __pyx_t_10 = 0;
@@ -21549,36 +21549,36 @@ static double __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_ccosij_plain
     __pyx_t_12 = __pyx_t_9;
     __pyx_t_13 = -1;
     if (__pyx_t_10 < 0) {
-      __pyx_t_10 += __pyx_v_8ztpcraft_7bosonic_24_oscillator_integrals_1d_GHdata_view.shape[0];
+      __pyx_t_10 += __pyx_v_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_GHdata_view.shape[0];
       if (unlikely(__pyx_t_10 < 0)) __pyx_t_13 = 0;
-    } else if (unlikely(__pyx_t_10 >= __pyx_v_8ztpcraft_7bosonic_24_oscillator_integrals_1d_GHdata_view.shape[0])) __pyx_t_13 = 0;
+    } else if (unlikely(__pyx_t_10 >= __pyx_v_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_GHdata_view.shape[0])) __pyx_t_13 = 0;
     if (__pyx_t_11 < 0) {
-      __pyx_t_11 += __pyx_v_8ztpcraft_7bosonic_24_oscillator_integrals_1d_GHdata_view.shape[1];
+      __pyx_t_11 += __pyx_v_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_GHdata_view.shape[1];
       if (unlikely(__pyx_t_11 < 0)) __pyx_t_13 = 1;
-    } else if (unlikely(__pyx_t_11 >= __pyx_v_8ztpcraft_7bosonic_24_oscillator_integrals_1d_GHdata_view.shape[1])) __pyx_t_13 = 1;
+    } else if (unlikely(__pyx_t_11 >= __pyx_v_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_GHdata_view.shape[1])) __pyx_t_13 = 1;
     if (__pyx_t_12 < 0) {
-      __pyx_t_12 += __pyx_v_8ztpcraft_7bosonic_24_oscillator_integrals_1d_GHdata_view.shape[2];
+      __pyx_t_12 += __pyx_v_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_GHdata_view.shape[2];
       if (unlikely(__pyx_t_12 < 0)) __pyx_t_13 = 2;
-    } else if (unlikely(__pyx_t_12 >= __pyx_v_8ztpcraft_7bosonic_24_oscillator_integrals_1d_GHdata_view.shape[2])) __pyx_t_13 = 2;
+    } else if (unlikely(__pyx_t_12 >= __pyx_v_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_GHdata_view.shape[2])) __pyx_t_13 = 2;
     if (unlikely(__pyx_t_13 != -1)) {
       __Pyx_RaiseBufferIndexError(__pyx_t_13);
       __PYX_ERR(0, 364, __pyx_L1_error)
     }
-    __pyx_t_2 = (*((double *) ( /* dim=2 */ (( /* dim=1 */ (( /* dim=0 */ (__pyx_v_8ztpcraft_7bosonic_24_oscillator_integrals_1d_GHdata_view.data + __pyx_t_10 * __pyx_v_8ztpcraft_7bosonic_24_oscillator_integrals_1d_GHdata_view.strides[0]) ) + __pyx_t_11 * __pyx_v_8ztpcraft_7bosonic_24_oscillator_integrals_1d_GHdata_view.strides[1]) ) + __pyx_t_12 * __pyx_v_8ztpcraft_7bosonic_24_oscillator_integrals_1d_GHdata_view.strides[2]) )));
+    __pyx_t_2 = (*((double *) ( /* dim=2 */ (( /* dim=1 */ (( /* dim=0 */ (__pyx_v_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_GHdata_view.data + __pyx_t_10 * __pyx_v_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_GHdata_view.strides[0]) ) + __pyx_t_11 * __pyx_v_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_GHdata_view.strides[1]) ) + __pyx_t_12 * __pyx_v_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_GHdata_view.strides[2]) )));
     if (unlikely(__pyx_v_Asqrt == 0)) {
       PyErr_SetString(PyExc_ZeroDivisionError, "float division");
       __PYX_ERR(0, 364, __pyx_L1_error)
     }
     __pyx_v_phi_temp = ((__pyx_t_2 / __pyx_v_Asqrt) + __pyx_v_B_2A);
 
-    /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":365
+    /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":365
  *     for term in range(order):
  *         phi_temp = GHdata_view[0,order,term]/Asqrt + B_2A
  *         GHintegral += GHdata_view[1,order,term] *\             # <<<<<<<<<<<<<<
  *             eval_hermite(n_i, phi_temp/phi_0_i - phi_ratio_i) *\
  *             eval_hermite(n_j, phi_temp/phi_0_j - phi_ratio_j) *\
 */
-    if (unlikely(!__pyx_v_8ztpcraft_7bosonic_24_oscillator_integrals_1d_GHdata_view.memview)) { __Pyx_RaiseUnboundLocalError("GHdata_view"); __PYX_ERR(0, 365, __pyx_L1_error) }
+    if (unlikely(!__pyx_v_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_GHdata_view.memview)) { __Pyx_RaiseUnboundLocalError("GHdata_view"); __PYX_ERR(0, 365, __pyx_L1_error) }
     __pyx_t_9 = __Pyx_PyIndex_AsSsize_t(__pyx_v_order); if (unlikely((__pyx_t_9 == (Py_ssize_t)-1) && PyErr_Occurred())) __PYX_ERR(0, 365, __pyx_L1_error)
     __pyx_t_8 = __Pyx_PyIndex_AsSsize_t(__pyx_v_term); if (unlikely((__pyx_t_8 == (Py_ssize_t)-1) && PyErr_Occurred())) __PYX_ERR(0, 365, __pyx_L1_error)
     __pyx_t_12 = 1;
@@ -21586,23 +21586,23 @@ static double __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_ccosij_plain
     __pyx_t_10 = __pyx_t_8;
     __pyx_t_13 = -1;
     if (__pyx_t_12 < 0) {
-      __pyx_t_12 += __pyx_v_8ztpcraft_7bosonic_24_oscillator_integrals_1d_GHdata_view.shape[0];
+      __pyx_t_12 += __pyx_v_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_GHdata_view.shape[0];
       if (unlikely(__pyx_t_12 < 0)) __pyx_t_13 = 0;
-    } else if (unlikely(__pyx_t_12 >= __pyx_v_8ztpcraft_7bosonic_24_oscillator_integrals_1d_GHdata_view.shape[0])) __pyx_t_13 = 0;
+    } else if (unlikely(__pyx_t_12 >= __pyx_v_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_GHdata_view.shape[0])) __pyx_t_13 = 0;
     if (__pyx_t_11 < 0) {
-      __pyx_t_11 += __pyx_v_8ztpcraft_7bosonic_24_oscillator_integrals_1d_GHdata_view.shape[1];
+      __pyx_t_11 += __pyx_v_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_GHdata_view.shape[1];
       if (unlikely(__pyx_t_11 < 0)) __pyx_t_13 = 1;
-    } else if (unlikely(__pyx_t_11 >= __pyx_v_8ztpcraft_7bosonic_24_oscillator_integrals_1d_GHdata_view.shape[1])) __pyx_t_13 = 1;
+    } else if (unlikely(__pyx_t_11 >= __pyx_v_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_GHdata_view.shape[1])) __pyx_t_13 = 1;
     if (__pyx_t_10 < 0) {
-      __pyx_t_10 += __pyx_v_8ztpcraft_7bosonic_24_oscillator_integrals_1d_GHdata_view.shape[2];
+      __pyx_t_10 += __pyx_v_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_GHdata_view.shape[2];
       if (unlikely(__pyx_t_10 < 0)) __pyx_t_13 = 2;
-    } else if (unlikely(__pyx_t_10 >= __pyx_v_8ztpcraft_7bosonic_24_oscillator_integrals_1d_GHdata_view.shape[2])) __pyx_t_13 = 2;
+    } else if (unlikely(__pyx_t_10 >= __pyx_v_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_GHdata_view.shape[2])) __pyx_t_13 = 2;
     if (unlikely(__pyx_t_13 != -1)) {
       __Pyx_RaiseBufferIndexError(__pyx_t_13);
       __PYX_ERR(0, 365, __pyx_L1_error)
     }
 
-    /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":366
+    /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":366
  *         phi_temp = GHdata_view[0,order,term]/Asqrt + B_2A
  *         GHintegral += GHdata_view[1,order,term] *\
  *             eval_hermite(n_i, phi_temp/phi_0_i - phi_ratio_i) *\             # <<<<<<<<<<<<<<
@@ -21614,7 +21614,7 @@ static double __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_ccosij_plain
       __PYX_ERR(0, 366, __pyx_L1_error)
     }
 
-    /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":367
+    /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":367
  *         GHintegral += GHdata_view[1,order,term] *\
  *             eval_hermite(n_i, phi_temp/phi_0_i - phi_ratio_i) *\
  *             eval_hermite(n_j, phi_temp/phi_0_j - phi_ratio_j) *\             # <<<<<<<<<<<<<<
@@ -21626,7 +21626,7 @@ static double __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_ccosij_plain
       __PYX_ERR(0, 367, __pyx_L1_error)
     }
 
-    /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":368
+    /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":368
  *             eval_hermite(n_i, phi_temp/phi_0_i - phi_ratio_i) *\
  *             eval_hermite(n_j, phi_temp/phi_0_j - phi_ratio_j) *\
  *             cos(a* phi_temp - phi_ext)             # <<<<<<<<<<<<<<
@@ -21644,16 +21644,16 @@ static double __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_ccosij_plain
     __pyx_t_2 = __Pyx_PyFloat_AsDouble(__pyx_t_5); if (unlikely((__pyx_t_2 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 368, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-    /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":365
+    /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":365
  *     for term in range(order):
  *         phi_temp = GHdata_view[0,order,term]/Asqrt + B_2A
  *         GHintegral += GHdata_view[1,order,term] *\             # <<<<<<<<<<<<<<
  *             eval_hermite(n_i, phi_temp/phi_0_i - phi_ratio_i) *\
  *             eval_hermite(n_j, phi_temp/phi_0_j - phi_ratio_j) *\
 */
-    __pyx_v_GHintegral = (__pyx_v_GHintegral + ((((*((double *) ( /* dim=2 */ (( /* dim=1 */ (( /* dim=0 */ (__pyx_v_8ztpcraft_7bosonic_24_oscillator_integrals_1d_GHdata_view.data + __pyx_t_12 * __pyx_v_8ztpcraft_7bosonic_24_oscillator_integrals_1d_GHdata_view.strides[0]) ) + __pyx_t_11 * __pyx_v_8ztpcraft_7bosonic_24_oscillator_integrals_1d_GHdata_view.strides[1]) ) + __pyx_t_10 * __pyx_v_8ztpcraft_7bosonic_24_oscillator_integrals_1d_GHdata_view.strides[2]) ))) * __pyx_f_5scipy_7special_14cython_special_eval_hermite(__pyx_v_n_i, ((__pyx_v_phi_temp / __pyx_v_phi_0_i) - __pyx_v_phi_ratio_i), 0)) * __pyx_f_5scipy_7special_14cython_special_eval_hermite(__pyx_v_n_j, ((__pyx_v_phi_temp / __pyx_v_phi_0_j) - __pyx_v_phi_ratio_j), 0)) * cos(__pyx_t_2)));
+    __pyx_v_GHintegral = (__pyx_v_GHintegral + ((((*((double *) ( /* dim=2 */ (( /* dim=1 */ (( /* dim=0 */ (__pyx_v_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_GHdata_view.data + __pyx_t_12 * __pyx_v_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_GHdata_view.strides[0]) ) + __pyx_t_11 * __pyx_v_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_GHdata_view.strides[1]) ) + __pyx_t_10 * __pyx_v_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_GHdata_view.strides[2]) ))) * __pyx_f_5scipy_7special_14cython_special_eval_hermite(__pyx_v_n_i, ((__pyx_v_phi_temp / __pyx_v_phi_0_i) - __pyx_v_phi_ratio_i), 0)) * __pyx_f_5scipy_7special_14cython_special_eval_hermite(__pyx_v_n_j, ((__pyx_v_phi_temp / __pyx_v_phi_0_j) - __pyx_v_phi_ratio_j), 0)) * cos(__pyx_t_2)));
 
-    /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":363
+    /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":363
  *     cosine_order = (n_i*phi_0_i+n_j*phi_0_j + abs(phi_ratio_i*phi_0_i - phi_ratio_j*phi_0_j)) * 2 * a /pi
  *     order = int(-(-((n_i + n_j + 1 + 2*cosine_order )/2.)//1))
  *     for term in range(order):             # <<<<<<<<<<<<<<
@@ -21663,14 +21663,14 @@ static double __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_ccosij_plain
   }
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":369
+  /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":369
  *             eval_hermite(n_j, phi_temp/phi_0_j - phi_ratio_j) *\
  *             cos(a* phi_temp - phi_ext)
  *     return exp(exparg) * cprefactor(n_i,n_j,phi_0_i,phi_0_j)/Asqrt * GHintegral             # <<<<<<<<<<<<<<
  * 
  * #evaluating the cosine (cos(a*phi - phi_ext)) matrix elements with Gauss-Hermite quadrature by writing the cosine in terms of complex exponentials
 */
-  __pyx_t_2 = __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_cprefactor(__pyx_v_n_i, __pyx_v_n_j, __pyx_v_phi_0_i, __pyx_v_phi_0_j, 0); if (unlikely(__pyx_t_2 == ((double)-1) && PyErr_Occurred())) __PYX_ERR(0, 369, __pyx_L1_error)
+  __pyx_t_2 = __pyx_f_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_cprefactor(__pyx_v_n_i, __pyx_v_n_j, __pyx_v_phi_0_i, __pyx_v_phi_0_j, 0); if (unlikely(__pyx_t_2 == ((double)-1) && PyErr_Occurred())) __PYX_ERR(0, 369, __pyx_L1_error)
   __pyx_t_1 = (exp(__pyx_v_exparg) * __pyx_t_2);
   if (unlikely(__pyx_v_Asqrt == 0)) {
     PyErr_SetString(PyExc_ZeroDivisionError, "float division");
@@ -21679,7 +21679,7 @@ static double __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_ccosij_plain
   __pyx_r = ((__pyx_t_1 / __pyx_v_Asqrt) * __pyx_v_GHintegral);
   goto __pyx_L0;
 
-  /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":316
+  /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":316
  * 
  * #evaluating the cosine (cos(a*phi - phi_ext)) matrix elements with Gauss-Hermite quadrature, here we use the plain cosine
  * cpdef double ccosij_plain_GH(Py_ssize_t n_i, Py_ssize_t n_j, double phi_ratio_i,double phi_ratio_j,double phi_0_i,double phi_0_j, a, phi_ext):             # <<<<<<<<<<<<<<
@@ -21692,7 +21692,7 @@ static double __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_ccosij_plain
   __Pyx_XDECREF(__pyx_t_3);
   __Pyx_XDECREF(__pyx_t_4);
   __Pyx_XDECREF(__pyx_t_5);
-  __Pyx_AddTraceback("ztpcraft.bosonic._oscillator_integrals_1d.ccosij_plain_GH", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("ztpcraft.bosonic.oscillator_integrals._oscillator_integrals_1d_quadrature.ccosij_plain_GH", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = -1;
   __pyx_L0:;
   __Pyx_XDECREF(__pyx_v_order);
@@ -21702,16 +21702,16 @@ static double __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_ccosij_plain
 }
 
 /* Python wrapper */
-static PyObject *__pyx_pw_8ztpcraft_7bosonic_24_oscillator_integrals_1d_19ccosij_plain_GH(PyObject *__pyx_self, 
+static PyObject *__pyx_pw_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_19ccosij_plain_GH(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-PyDoc_STRVAR(__pyx_doc_8ztpcraft_7bosonic_24_oscillator_integrals_1d_18ccosij_plain_GH, " \n    Evaluating the the cosine (cos(a*phi - phi_ext)) matrix elements with Gauss-Hermite quadrature, here we use the plain cosine\n\n    PARAMETERS\n    ----------\n        n_i : int\n            the excitation number of the state i\n        n_j : int\n            the excitation number of the state j\n        phi_ratio_i : double\n            the ratio of the center displacement of the state i to the width (phi_0_i) of the state i\n        phi_ratio_j : double\n            the ratio of the center displacement of the state j to the width (phi_0_j) of the state j\n        phi_0_i : double\n            the width of the state i\n        phi_0_j : double\n            the width of the state j\n        a : double\n            the coefficient of phi in the cosine operator\n        phi_ext : double\n            the external flux\n    \n    RETURNS\n    -------\n        the cos(a*phi - phi_ext) matrix element of the state i and j\n    ");
-static PyMethodDef __pyx_mdef_8ztpcraft_7bosonic_24_oscillator_integrals_1d_19ccosij_plain_GH = {"ccosij_plain_GH", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_8ztpcraft_7bosonic_24_oscillator_integrals_1d_19ccosij_plain_GH, __Pyx_METH_FASTCALL|METH_KEYWORDS, __pyx_doc_8ztpcraft_7bosonic_24_oscillator_integrals_1d_18ccosij_plain_GH};
-static PyObject *__pyx_pw_8ztpcraft_7bosonic_24_oscillator_integrals_1d_19ccosij_plain_GH(PyObject *__pyx_self, 
+PyDoc_STRVAR(__pyx_doc_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_18ccosij_plain_GH, " \n    Evaluating the the cosine (cos(a*phi - phi_ext)) matrix elements with Gauss-Hermite quadrature, here we use the plain cosine\n\n    PARAMETERS\n    ----------\n        n_i : int\n            the excitation number of the state i\n        n_j : int\n            the excitation number of the state j\n        phi_ratio_i : double\n            the ratio of the center displacement of the state i to the width (phi_0_i) of the state i\n        phi_ratio_j : double\n            the ratio of the center displacement of the state j to the width (phi_0_j) of the state j\n        phi_0_i : double\n            the width of the state i\n        phi_0_j : double\n            the width of the state j\n        a : double\n            the coefficient of phi in the cosine operator\n        phi_ext : double\n            the external flux\n    \n    RETURNS\n    -------\n        the cos(a*phi - phi_ext) matrix element of the state i and j\n    ");
+static PyMethodDef __pyx_mdef_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_19ccosij_plain_GH = {"ccosij_plain_GH", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_19ccosij_plain_GH, __Pyx_METH_FASTCALL|METH_KEYWORDS, __pyx_doc_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_18ccosij_plain_GH};
+static PyObject *__pyx_pw_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_19ccosij_plain_GH(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
@@ -21829,11 +21829,11 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   for (Py_ssize_t __pyx_temp=0; __pyx_temp < (Py_ssize_t)(sizeof(values)/sizeof(values[0])); ++__pyx_temp) {
     Py_XDECREF(values[__pyx_temp]);
   }
-  __Pyx_AddTraceback("ztpcraft.bosonic._oscillator_integrals_1d.ccosij_plain_GH", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("ztpcraft.bosonic.oscillator_integrals._oscillator_integrals_1d_quadrature.ccosij_plain_GH", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_8ztpcraft_7bosonic_24_oscillator_integrals_1d_18ccosij_plain_GH(__pyx_self, __pyx_v_n_i, __pyx_v_n_j, __pyx_v_phi_ratio_i, __pyx_v_phi_ratio_j, __pyx_v_phi_0_i, __pyx_v_phi_0_j, __pyx_v_a, __pyx_v_phi_ext);
+  __pyx_r = __pyx_pf_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_18ccosij_plain_GH(__pyx_self, __pyx_v_n_i, __pyx_v_n_j, __pyx_v_phi_ratio_i, __pyx_v_phi_ratio_j, __pyx_v_phi_0_i, __pyx_v_phi_0_j, __pyx_v_a, __pyx_v_phi_ext);
 
   /* function exit code */
   for (Py_ssize_t __pyx_temp=0; __pyx_temp < (Py_ssize_t)(sizeof(values)/sizeof(values[0])); ++__pyx_temp) {
@@ -21843,7 +21843,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_8ztpcraft_7bosonic_24_oscillator_integrals_1d_18ccosij_plain_GH(CYTHON_UNUSED PyObject *__pyx_self, Py_ssize_t __pyx_v_n_i, Py_ssize_t __pyx_v_n_j, double __pyx_v_phi_ratio_i, double __pyx_v_phi_ratio_j, double __pyx_v_phi_0_i, double __pyx_v_phi_0_j, PyObject *__pyx_v_a, PyObject *__pyx_v_phi_ext) {
+static PyObject *__pyx_pf_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_18ccosij_plain_GH(CYTHON_UNUSED PyObject *__pyx_self, Py_ssize_t __pyx_v_n_i, Py_ssize_t __pyx_v_n_j, double __pyx_v_phi_ratio_i, double __pyx_v_phi_ratio_j, double __pyx_v_phi_0_i, double __pyx_v_phi_0_j, PyObject *__pyx_v_a, PyObject *__pyx_v_phi_ext) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   double __pyx_t_1;
@@ -21853,7 +21853,7 @@ static PyObject *__pyx_pf_8ztpcraft_7bosonic_24_oscillator_integrals_1d_18ccosij
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("ccosij_plain_GH", 0);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_ccosij_plain_GH(__pyx_v_n_i, __pyx_v_n_j, __pyx_v_phi_ratio_i, __pyx_v_phi_ratio_j, __pyx_v_phi_0_i, __pyx_v_phi_0_j, __pyx_v_a, __pyx_v_phi_ext, 1); if (unlikely(__pyx_t_1 == ((double)-1) && PyErr_Occurred())) __PYX_ERR(0, 316, __pyx_L1_error)
+  __pyx_t_1 = __pyx_f_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_ccosij_plain_GH(__pyx_v_n_i, __pyx_v_n_j, __pyx_v_phi_ratio_i, __pyx_v_phi_ratio_j, __pyx_v_phi_0_i, __pyx_v_phi_0_j, __pyx_v_a, __pyx_v_phi_ext, 1); if (unlikely(__pyx_t_1 == ((double)-1) && PyErr_Occurred())) __PYX_ERR(0, 316, __pyx_L1_error)
   __pyx_t_2 = PyFloat_FromDouble(__pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 316, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_r = __pyx_t_2;
@@ -21863,7 +21863,7 @@ static PyObject *__pyx_pf_8ztpcraft_7bosonic_24_oscillator_integrals_1d_18ccosij
   /* function exit code */
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_2);
-  __Pyx_AddTraceback("ztpcraft.bosonic._oscillator_integrals_1d.ccosij_plain_GH", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("ztpcraft.bosonic.oscillator_integrals._oscillator_integrals_1d_quadrature.ccosij_plain_GH", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XGIVEREF(__pyx_r);
@@ -21871,7 +21871,7 @@ static PyObject *__pyx_pf_8ztpcraft_7bosonic_24_oscillator_integrals_1d_18ccosij
   return __pyx_r;
 }
 
-/* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":373
+/* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":373
  * #evaluating the cosine (cos(a*phi - phi_ext)) matrix elements with Gauss-Hermite quadrature by writing the cosine in terms of complex exponentials
  * # then group the cosine with the exponentials; this way the polynomial become complex
  * cpdef double ccosij_complex_GH(Py_ssize_t n_i, Py_ssize_t n_j, double phi_ratio_i,double phi_ratio_j,double phi_0_i,double phi_0_j, double a, double phi_ext):             # <<<<<<<<<<<<<<
@@ -21879,14 +21879,14 @@ static PyObject *__pyx_pf_8ztpcraft_7bosonic_24_oscillator_integrals_1d_18ccosij
  *     Evaluating the the cosine (cos(a*phi - phi_ext)) matrix elements with Gauss-Hermite quadrature by writing the cosine in terms of complex exponentials
 */
 
-static PyObject *__pyx_pw_8ztpcraft_7bosonic_24_oscillator_integrals_1d_21ccosij_complex_GH(PyObject *__pyx_self, 
+static PyObject *__pyx_pw_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_21ccosij_complex_GH(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-static double __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_ccosij_complex_GH(Py_ssize_t __pyx_v_n_i, Py_ssize_t __pyx_v_n_j, double __pyx_v_phi_ratio_i, double __pyx_v_phi_ratio_j, double __pyx_v_phi_0_i, double __pyx_v_phi_0_j, double __pyx_v_a, double __pyx_v_phi_ext, CYTHON_UNUSED int __pyx_skip_dispatch) {
+static double __pyx_f_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_ccosij_complex_GH(Py_ssize_t __pyx_v_n_i, Py_ssize_t __pyx_v_n_j, double __pyx_v_phi_ratio_i, double __pyx_v_phi_ratio_j, double __pyx_v_phi_0_i, double __pyx_v_phi_0_j, double __pyx_v_a, double __pyx_v_phi_ext, CYTHON_UNUSED int __pyx_skip_dispatch) {
   double __pyx_v_A;
   double __pyx_v_Asqrt;
   __pyx_t_double_complex __pyx_v_B;
@@ -21918,7 +21918,7 @@ static double __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_ccosij_compl
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("ccosij_complex_GH", 0);
 
-  /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":401
+  /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":401
  *         the cos(a*phi - phi_ext) matrix element of the state i and j
  *     """
  *     cdef double A = 0             # <<<<<<<<<<<<<<
@@ -21927,7 +21927,7 @@ static double __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_ccosij_compl
 */
   __pyx_v_A = 0.0;
 
-  /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":402
+  /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":402
  *     """
  *     cdef double A = 0
  *     cdef double Asqrt = 0             # <<<<<<<<<<<<<<
@@ -21936,7 +21936,7 @@ static double __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_ccosij_compl
 */
   __pyx_v_Asqrt = 0.0;
 
-  /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":403
+  /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":403
  *     cdef double A = 0
  *     cdef double Asqrt = 0
  *     cdef double complex B = 0             # <<<<<<<<<<<<<<
@@ -21945,7 +21945,7 @@ static double __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_ccosij_compl
 */
   __pyx_v_B = __pyx_t_double_complex_from_parts(0, 0);
 
-  /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":404
+  /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":404
  *     cdef double Asqrt = 0
  *     cdef double complex B = 0
  *     cdef double complex B2 = 0             # <<<<<<<<<<<<<<
@@ -21954,7 +21954,7 @@ static double __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_ccosij_compl
 */
   __pyx_v_B2 = __pyx_t_double_complex_from_parts(0, 0);
 
-  /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":405
+  /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":405
  *     cdef double complex B = 0
  *     cdef double complex B2 = 0
  *     cdef double complex B_2A = 0             # <<<<<<<<<<<<<<
@@ -21963,7 +21963,7 @@ static double __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_ccosij_compl
 */
   __pyx_v_B_2A = __pyx_t_double_complex_from_parts(0, 0);
 
-  /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":406
+  /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":406
  *     cdef double complex B2 = 0
  *     cdef double complex B_2A = 0
  *     cdef double complex exparg = 0             # <<<<<<<<<<<<<<
@@ -21972,7 +21972,7 @@ static double __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_ccosij_compl
 */
   __pyx_v_exparg = __pyx_t_double_complex_from_parts(0, 0);
 
-  /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":407
+  /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":407
  *     cdef double complex B_2A = 0
  *     cdef double complex exparg = 0
  *     cdef double complex GHintegral = 0             # <<<<<<<<<<<<<<
@@ -21981,7 +21981,7 @@ static double __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_ccosij_compl
 */
   __pyx_v_GHintegral = __pyx_t_double_complex_from_parts(0, 0);
 
-  /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":408
+  /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":408
  *     cdef double complex exparg = 0
  *     cdef double complex GHintegral = 0
  *     cdef double complex phi_temp = 0             # <<<<<<<<<<<<<<
@@ -21990,7 +21990,7 @@ static double __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_ccosij_compl
 */
   __pyx_v_phi_temp = __pyx_t_double_complex_from_parts(0, 0);
 
-  /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":409
+  /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":409
  *     cdef double complex GHintegral = 0
  *     cdef double complex phi_temp = 0
  *     cdef Py_ssize_t order = 0             # <<<<<<<<<<<<<<
@@ -21999,7 +21999,7 @@ static double __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_ccosij_compl
 */
   __pyx_v_order = 0;
 
-  /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":411
+  /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":411
  *     cdef Py_ssize_t order = 0
  *     # calculate some useful numbers
  *     A = 1./(2.*phi_0_i*phi_0_i) + 1./(2.*phi_0_j*phi_0_j)             # <<<<<<<<<<<<<<
@@ -22018,7 +22018,7 @@ static double __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_ccosij_compl
   }
   __pyx_v_A = ((1. / __pyx_t_1) + (1. / __pyx_t_2));
 
-  /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":412
+  /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":412
  *     # calculate some useful numbers
  *     A = 1./(2.*phi_0_i*phi_0_i) + 1./(2.*phi_0_j*phi_0_j)
  *     Asqrt = sqrt(A)             # <<<<<<<<<<<<<<
@@ -22027,7 +22027,7 @@ static double __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_ccosij_compl
 */
   __pyx_v_Asqrt = sqrt(__pyx_v_A);
 
-  /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":413
+  /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":413
  *     A = 1./(2.*phi_0_i*phi_0_i) + 1./(2.*phi_0_j*phi_0_j)
  *     Asqrt = sqrt(A)
  *     B = phi_ratio_i / phi_0_i + phi_ratio_j / phi_0_j + 1j*a             # <<<<<<<<<<<<<<
@@ -22044,7 +22044,7 @@ static double __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_ccosij_compl
   }
   __pyx_v_B = __Pyx_c_sum_double(__pyx_t_double_complex_from_parts(((__pyx_v_phi_ratio_i / __pyx_v_phi_0_i) + (__pyx_v_phi_ratio_j / __pyx_v_phi_0_j)), 0), __Pyx_c_prod_double(__pyx_t_double_complex_from_parts(0, 1.0), __pyx_t_double_complex_from_parts(__pyx_v_a, 0)));
 
-  /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":414
+  /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":414
  *     Asqrt = sqrt(A)
  *     B = phi_ratio_i / phi_0_i + phi_ratio_j / phi_0_j + 1j*a
  *     B2 = B*B             # <<<<<<<<<<<<<<
@@ -22053,7 +22053,7 @@ static double __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_ccosij_compl
 */
   __pyx_v_B2 = __Pyx_c_prod_double(__pyx_v_B, __pyx_v_B);
 
-  /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":415
+  /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":415
  *     B = phi_ratio_i / phi_0_i + phi_ratio_j / phi_0_j + 1j*a
  *     B2 = B*B
  *     B_2A = B/(2. * A)             # <<<<<<<<<<<<<<
@@ -22067,7 +22067,7 @@ static double __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_ccosij_compl
   }
   __pyx_v_B_2A = __Pyx_c_quot_double(__pyx_v_B, __pyx_t_3);
 
-  /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":416
+  /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":416
  *     B2 = B*B
  *     B_2A = B/(2. * A)
  *     exparg = B2/(4. * A) - phi_ratio_i * phi_ratio_i / 2. - phi_ratio_j * phi_ratio_j / 2.             # <<<<<<<<<<<<<<
@@ -22081,7 +22081,7 @@ static double __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_ccosij_compl
   }
   __pyx_v_exparg = __Pyx_c_diff_double(__Pyx_c_diff_double(__Pyx_c_quot_double(__pyx_v_B2, __pyx_t_3), __pyx_t_double_complex_from_parts(((__pyx_v_phi_ratio_i * __pyx_v_phi_ratio_i) / 2.), 0)), __pyx_t_double_complex_from_parts(((__pyx_v_phi_ratio_j * __pyx_v_phi_ratio_j) / 2.), 0));
 
-  /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":418
+  /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":418
  *     exparg = B2/(4. * A) - phi_ratio_i * phi_ratio_i / 2. - phi_ratio_j * phi_ratio_j / 2.
  *     # Gauss-Hermite quadrature
  *     order = int(-(-((n_i + n_j +1)/2.)//1)) + 1             # <<<<<<<<<<<<<<
@@ -22097,7 +22097,7 @@ static double __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_ccosij_compl
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   __pyx_v_order = __pyx_t_6;
 
-  /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":419
+  /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":419
  *     # Gauss-Hermite quadrature
  *     order = int(-(-((n_i + n_j +1)/2.)//1)) + 1
  *     for term in range(order):             # <<<<<<<<<<<<<<
@@ -22109,71 +22109,71 @@ static double __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_ccosij_compl
   for (__pyx_t_8 = 0; __pyx_t_8 < __pyx_t_7; __pyx_t_8+=1) {
     __pyx_v_term = __pyx_t_8;
 
-    /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":420
+    /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":420
  *     order = int(-(-((n_i + n_j +1)/2.)//1)) + 1
  *     for term in range(order):
  *         phi_temp = GHdata_view[0,order,term]/Asqrt + B_2A             # <<<<<<<<<<<<<<
  *         GHintegral += GHdata_view[1,order,term] *\
  *             hermite_complex(n_i, phi_temp/phi_0_i - phi_ratio_i) *\
 */
-    if (unlikely(!__pyx_v_8ztpcraft_7bosonic_24_oscillator_integrals_1d_GHdata_view.memview)) { __Pyx_RaiseUnboundLocalError("GHdata_view"); __PYX_ERR(0, 420, __pyx_L1_error) }
+    if (unlikely(!__pyx_v_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_GHdata_view.memview)) { __Pyx_RaiseUnboundLocalError("GHdata_view"); __PYX_ERR(0, 420, __pyx_L1_error) }
     __pyx_t_9 = 0;
     __pyx_t_10 = __pyx_v_order;
     __pyx_t_11 = __pyx_v_term;
     __pyx_t_12 = -1;
     if (__pyx_t_9 < 0) {
-      __pyx_t_9 += __pyx_v_8ztpcraft_7bosonic_24_oscillator_integrals_1d_GHdata_view.shape[0];
+      __pyx_t_9 += __pyx_v_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_GHdata_view.shape[0];
       if (unlikely(__pyx_t_9 < 0)) __pyx_t_12 = 0;
-    } else if (unlikely(__pyx_t_9 >= __pyx_v_8ztpcraft_7bosonic_24_oscillator_integrals_1d_GHdata_view.shape[0])) __pyx_t_12 = 0;
+    } else if (unlikely(__pyx_t_9 >= __pyx_v_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_GHdata_view.shape[0])) __pyx_t_12 = 0;
     if (__pyx_t_10 < 0) {
-      __pyx_t_10 += __pyx_v_8ztpcraft_7bosonic_24_oscillator_integrals_1d_GHdata_view.shape[1];
+      __pyx_t_10 += __pyx_v_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_GHdata_view.shape[1];
       if (unlikely(__pyx_t_10 < 0)) __pyx_t_12 = 1;
-    } else if (unlikely(__pyx_t_10 >= __pyx_v_8ztpcraft_7bosonic_24_oscillator_integrals_1d_GHdata_view.shape[1])) __pyx_t_12 = 1;
+    } else if (unlikely(__pyx_t_10 >= __pyx_v_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_GHdata_view.shape[1])) __pyx_t_12 = 1;
     if (__pyx_t_11 < 0) {
-      __pyx_t_11 += __pyx_v_8ztpcraft_7bosonic_24_oscillator_integrals_1d_GHdata_view.shape[2];
+      __pyx_t_11 += __pyx_v_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_GHdata_view.shape[2];
       if (unlikely(__pyx_t_11 < 0)) __pyx_t_12 = 2;
-    } else if (unlikely(__pyx_t_11 >= __pyx_v_8ztpcraft_7bosonic_24_oscillator_integrals_1d_GHdata_view.shape[2])) __pyx_t_12 = 2;
+    } else if (unlikely(__pyx_t_11 >= __pyx_v_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_GHdata_view.shape[2])) __pyx_t_12 = 2;
     if (unlikely(__pyx_t_12 != -1)) {
       __Pyx_RaiseBufferIndexError(__pyx_t_12);
       __PYX_ERR(0, 420, __pyx_L1_error)
     }
-    __pyx_t_2 = (*((double *) ( /* dim=2 */ (( /* dim=1 */ (( /* dim=0 */ (__pyx_v_8ztpcraft_7bosonic_24_oscillator_integrals_1d_GHdata_view.data + __pyx_t_9 * __pyx_v_8ztpcraft_7bosonic_24_oscillator_integrals_1d_GHdata_view.strides[0]) ) + __pyx_t_10 * __pyx_v_8ztpcraft_7bosonic_24_oscillator_integrals_1d_GHdata_view.strides[1]) ) + __pyx_t_11 * __pyx_v_8ztpcraft_7bosonic_24_oscillator_integrals_1d_GHdata_view.strides[2]) )));
+    __pyx_t_2 = (*((double *) ( /* dim=2 */ (( /* dim=1 */ (( /* dim=0 */ (__pyx_v_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_GHdata_view.data + __pyx_t_9 * __pyx_v_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_GHdata_view.strides[0]) ) + __pyx_t_10 * __pyx_v_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_GHdata_view.strides[1]) ) + __pyx_t_11 * __pyx_v_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_GHdata_view.strides[2]) )));
     if (unlikely(__pyx_v_Asqrt == 0)) {
       PyErr_SetString(PyExc_ZeroDivisionError, "float division");
       __PYX_ERR(0, 420, __pyx_L1_error)
     }
     __pyx_v_phi_temp = __Pyx_c_sum_double(__pyx_t_double_complex_from_parts((__pyx_t_2 / __pyx_v_Asqrt), 0), __pyx_v_B_2A);
 
-    /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":421
+    /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":421
  *     for term in range(order):
  *         phi_temp = GHdata_view[0,order,term]/Asqrt + B_2A
  *         GHintegral += GHdata_view[1,order,term] *\             # <<<<<<<<<<<<<<
  *             hermite_complex(n_i, phi_temp/phi_0_i - phi_ratio_i) *\
  *             hermite_complex(n_j, phi_temp/phi_0_j - phi_ratio_j)
 */
-    if (unlikely(!__pyx_v_8ztpcraft_7bosonic_24_oscillator_integrals_1d_GHdata_view.memview)) { __Pyx_RaiseUnboundLocalError("GHdata_view"); __PYX_ERR(0, 421, __pyx_L1_error) }
+    if (unlikely(!__pyx_v_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_GHdata_view.memview)) { __Pyx_RaiseUnboundLocalError("GHdata_view"); __PYX_ERR(0, 421, __pyx_L1_error) }
     __pyx_t_11 = 1;
     __pyx_t_10 = __pyx_v_order;
     __pyx_t_9 = __pyx_v_term;
     __pyx_t_12 = -1;
     if (__pyx_t_11 < 0) {
-      __pyx_t_11 += __pyx_v_8ztpcraft_7bosonic_24_oscillator_integrals_1d_GHdata_view.shape[0];
+      __pyx_t_11 += __pyx_v_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_GHdata_view.shape[0];
       if (unlikely(__pyx_t_11 < 0)) __pyx_t_12 = 0;
-    } else if (unlikely(__pyx_t_11 >= __pyx_v_8ztpcraft_7bosonic_24_oscillator_integrals_1d_GHdata_view.shape[0])) __pyx_t_12 = 0;
+    } else if (unlikely(__pyx_t_11 >= __pyx_v_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_GHdata_view.shape[0])) __pyx_t_12 = 0;
     if (__pyx_t_10 < 0) {
-      __pyx_t_10 += __pyx_v_8ztpcraft_7bosonic_24_oscillator_integrals_1d_GHdata_view.shape[1];
+      __pyx_t_10 += __pyx_v_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_GHdata_view.shape[1];
       if (unlikely(__pyx_t_10 < 0)) __pyx_t_12 = 1;
-    } else if (unlikely(__pyx_t_10 >= __pyx_v_8ztpcraft_7bosonic_24_oscillator_integrals_1d_GHdata_view.shape[1])) __pyx_t_12 = 1;
+    } else if (unlikely(__pyx_t_10 >= __pyx_v_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_GHdata_view.shape[1])) __pyx_t_12 = 1;
     if (__pyx_t_9 < 0) {
-      __pyx_t_9 += __pyx_v_8ztpcraft_7bosonic_24_oscillator_integrals_1d_GHdata_view.shape[2];
+      __pyx_t_9 += __pyx_v_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_GHdata_view.shape[2];
       if (unlikely(__pyx_t_9 < 0)) __pyx_t_12 = 2;
-    } else if (unlikely(__pyx_t_9 >= __pyx_v_8ztpcraft_7bosonic_24_oscillator_integrals_1d_GHdata_view.shape[2])) __pyx_t_12 = 2;
+    } else if (unlikely(__pyx_t_9 >= __pyx_v_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_GHdata_view.shape[2])) __pyx_t_12 = 2;
     if (unlikely(__pyx_t_12 != -1)) {
       __Pyx_RaiseBufferIndexError(__pyx_t_12);
       __PYX_ERR(0, 421, __pyx_L1_error)
     }
 
-    /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":422
+    /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":422
  *         phi_temp = GHdata_view[0,order,term]/Asqrt + B_2A
  *         GHintegral += GHdata_view[1,order,term] *\
  *             hermite_complex(n_i, phi_temp/phi_0_i - phi_ratio_i) *\             # <<<<<<<<<<<<<<
@@ -22185,9 +22185,9 @@ static double __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_ccosij_compl
       PyErr_SetString(PyExc_ZeroDivisionError, "float division");
       __PYX_ERR(0, 422, __pyx_L1_error)
     }
-    __pyx_t_13 = __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_hermite_complex(__pyx_v_n_i, __Pyx_c_diff_double(__Pyx_c_quot_double(__pyx_v_phi_temp, __pyx_t_3), __pyx_t_double_complex_from_parts(__pyx_v_phi_ratio_i, 0)), 0); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 422, __pyx_L1_error)
+    __pyx_t_13 = __pyx_f_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_hermite_complex(__pyx_v_n_i, __Pyx_c_diff_double(__Pyx_c_quot_double(__pyx_v_phi_temp, __pyx_t_3), __pyx_t_double_complex_from_parts(__pyx_v_phi_ratio_i, 0)), 0); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 422, __pyx_L1_error)
 
-    /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":423
+    /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":423
  *         GHintegral += GHdata_view[1,order,term] *\
  *             hermite_complex(n_i, phi_temp/phi_0_i - phi_ratio_i) *\
  *             hermite_complex(n_j, phi_temp/phi_0_j - phi_ratio_j)             # <<<<<<<<<<<<<<
@@ -22198,24 +22198,24 @@ static double __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_ccosij_compl
       PyErr_SetString(PyExc_ZeroDivisionError, "float division");
       __PYX_ERR(0, 423, __pyx_L1_error)
     }
-    __pyx_t_14 = __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_hermite_complex(__pyx_v_n_j, __Pyx_c_diff_double(__Pyx_c_quot_double(__pyx_v_phi_temp, __pyx_t_3), __pyx_t_double_complex_from_parts(__pyx_v_phi_ratio_j, 0)), 0); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 423, __pyx_L1_error)
+    __pyx_t_14 = __pyx_f_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_hermite_complex(__pyx_v_n_j, __Pyx_c_diff_double(__Pyx_c_quot_double(__pyx_v_phi_temp, __pyx_t_3), __pyx_t_double_complex_from_parts(__pyx_v_phi_ratio_j, 0)), 0); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 423, __pyx_L1_error)
 
-    /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":421
+    /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":421
  *     for term in range(order):
  *         phi_temp = GHdata_view[0,order,term]/Asqrt + B_2A
  *         GHintegral += GHdata_view[1,order,term] *\             # <<<<<<<<<<<<<<
  *             hermite_complex(n_i, phi_temp/phi_0_i - phi_ratio_i) *\
  *             hermite_complex(n_j, phi_temp/phi_0_j - phi_ratio_j)
 */
-    __pyx_v_GHintegral = __Pyx_c_sum_double(__pyx_v_GHintegral, __Pyx_c_prod_double(__Pyx_c_prod_double(__pyx_t_double_complex_from_parts((*((double *) ( /* dim=2 */ (( /* dim=1 */ (( /* dim=0 */ (__pyx_v_8ztpcraft_7bosonic_24_oscillator_integrals_1d_GHdata_view.data + __pyx_t_11 * __pyx_v_8ztpcraft_7bosonic_24_oscillator_integrals_1d_GHdata_view.strides[0]) ) + __pyx_t_10 * __pyx_v_8ztpcraft_7bosonic_24_oscillator_integrals_1d_GHdata_view.strides[1]) ) + __pyx_t_9 * __pyx_v_8ztpcraft_7bosonic_24_oscillator_integrals_1d_GHdata_view.strides[2]) ))), 0), __pyx_t_13), __pyx_t_14));
+    __pyx_v_GHintegral = __Pyx_c_sum_double(__pyx_v_GHintegral, __Pyx_c_prod_double(__Pyx_c_prod_double(__pyx_t_double_complex_from_parts((*((double *) ( /* dim=2 */ (( /* dim=1 */ (( /* dim=0 */ (__pyx_v_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_GHdata_view.data + __pyx_t_11 * __pyx_v_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_GHdata_view.strides[0]) ) + __pyx_t_10 * __pyx_v_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_GHdata_view.strides[1]) ) + __pyx_t_9 * __pyx_v_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_GHdata_view.strides[2]) ))), 0), __pyx_t_13), __pyx_t_14));
   }
 
-  /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":424
+  /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":424
  *             hermite_complex(n_i, phi_temp/phi_0_i - phi_ratio_i) *\
  *             hermite_complex(n_j, phi_temp/phi_0_j - phi_ratio_j)
  *     return creal(cexp(exparg - 1j*phi_ext) * cprefactor(n_i,n_j,phi_0_i,phi_0_j)/Asqrt * GHintegral)             # <<<<<<<<<<<<<<
 */
-  __pyx_t_2 = __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_cprefactor(__pyx_v_n_i, __pyx_v_n_j, __pyx_v_phi_0_i, __pyx_v_phi_0_j, 0); if (unlikely(__pyx_t_2 == ((double)-1) && PyErr_Occurred())) __PYX_ERR(0, 424, __pyx_L1_error)
+  __pyx_t_2 = __pyx_f_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_cprefactor(__pyx_v_n_i, __pyx_v_n_j, __pyx_v_phi_0_i, __pyx_v_phi_0_j, 0); if (unlikely(__pyx_t_2 == ((double)-1) && PyErr_Occurred())) __PYX_ERR(0, 424, __pyx_L1_error)
   __pyx_t_14 = __Pyx_c_prod_double(cexp(__Pyx_c_diff_double(__pyx_v_exparg, __Pyx_c_prod_double(__pyx_t_double_complex_from_parts(0, 1.0), __pyx_t_double_complex_from_parts(__pyx_v_phi_ext, 0)))), __pyx_t_double_complex_from_parts(__pyx_t_2, 0));
   __pyx_t_13 = __pyx_t_double_complex_from_parts(__pyx_v_Asqrt, 0);
   if (unlikely(__Pyx_c_is_zero_double(__pyx_t_13))) {
@@ -22225,7 +22225,7 @@ static double __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_ccosij_compl
   __pyx_r = creal(__Pyx_c_prod_double(__Pyx_c_quot_double(__pyx_t_14, __pyx_t_13), __pyx_v_GHintegral));
   goto __pyx_L0;
 
-  /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":373
+  /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":373
  * #evaluating the cosine (cos(a*phi - phi_ext)) matrix elements with Gauss-Hermite quadrature by writing the cosine in terms of complex exponentials
  * # then group the cosine with the exponentials; this way the polynomial become complex
  * cpdef double ccosij_complex_GH(Py_ssize_t n_i, Py_ssize_t n_j, double phi_ratio_i,double phi_ratio_j,double phi_0_i,double phi_0_j, double a, double phi_ext):             # <<<<<<<<<<<<<<
@@ -22237,7 +22237,7 @@ static double __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_ccosij_compl
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_4);
   __Pyx_XDECREF(__pyx_t_5);
-  __Pyx_AddTraceback("ztpcraft.bosonic._oscillator_integrals_1d.ccosij_complex_GH", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("ztpcraft.bosonic.oscillator_integrals._oscillator_integrals_1d_quadrature.ccosij_complex_GH", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = -1;
   __pyx_L0:;
   __Pyx_RefNannyFinishContext();
@@ -22245,16 +22245,16 @@ static double __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_ccosij_compl
 }
 
 /* Python wrapper */
-static PyObject *__pyx_pw_8ztpcraft_7bosonic_24_oscillator_integrals_1d_21ccosij_complex_GH(PyObject *__pyx_self, 
+static PyObject *__pyx_pw_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_21ccosij_complex_GH(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-PyDoc_STRVAR(__pyx_doc_8ztpcraft_7bosonic_24_oscillator_integrals_1d_20ccosij_complex_GH, " \n    Evaluating the the cosine (cos(a*phi - phi_ext)) matrix elements with Gauss-Hermite quadrature by writing the cosine in terms of complex exponentials\n    then group the cosine with the exponentials; this way the polynomial become complex\n\n    PARAMETERS\n    ----------\n        n_i : int\n            the excitation number of the state i\n        n_j : int\n            the excitation number of the state j\n        phi_ratio_i : double\n            the ratio of the center displacement of the state i to the width (phi_0_i) of the state i\n        phi_ratio_j : double\n            the ratio of the center displacement of the state j to the width (phi_0_j) of the state j\n        phi_0_i : double\n            the width of the state i\n        phi_0_j : double\n            the width of the state j\n        a : double\n            the coefficient of phi in the cosine operator\n        phi_ext : double\n            the external flux\n    \n    RETURNS\n    -------\n        the cos(a*phi - phi_ext) matrix element of the state i and j\n    ");
-static PyMethodDef __pyx_mdef_8ztpcraft_7bosonic_24_oscillator_integrals_1d_21ccosij_complex_GH = {"ccosij_complex_GH", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_8ztpcraft_7bosonic_24_oscillator_integrals_1d_21ccosij_complex_GH, __Pyx_METH_FASTCALL|METH_KEYWORDS, __pyx_doc_8ztpcraft_7bosonic_24_oscillator_integrals_1d_20ccosij_complex_GH};
-static PyObject *__pyx_pw_8ztpcraft_7bosonic_24_oscillator_integrals_1d_21ccosij_complex_GH(PyObject *__pyx_self, 
+PyDoc_STRVAR(__pyx_doc_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_20ccosij_complex_GH, " \n    Evaluating the the cosine (cos(a*phi - phi_ext)) matrix elements with Gauss-Hermite quadrature by writing the cosine in terms of complex exponentials\n    then group the cosine with the exponentials; this way the polynomial become complex\n\n    PARAMETERS\n    ----------\n        n_i : int\n            the excitation number of the state i\n        n_j : int\n            the excitation number of the state j\n        phi_ratio_i : double\n            the ratio of the center displacement of the state i to the width (phi_0_i) of the state i\n        phi_ratio_j : double\n            the ratio of the center displacement of the state j to the width (phi_0_j) of the state j\n        phi_0_i : double\n            the width of the state i\n        phi_0_j : double\n            the width of the state j\n        a : double\n            the coefficient of phi in the cosine operator\n        phi_ext : double\n            the external flux\n    \n    RETURNS\n    -------\n        the cos(a*phi - phi_ext) matrix element of the state i and j\n    ");
+static PyMethodDef __pyx_mdef_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_21ccosij_complex_GH = {"ccosij_complex_GH", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_21ccosij_complex_GH, __Pyx_METH_FASTCALL|METH_KEYWORDS, __pyx_doc_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_20ccosij_complex_GH};
+static PyObject *__pyx_pw_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_21ccosij_complex_GH(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
@@ -22372,11 +22372,11 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   for (Py_ssize_t __pyx_temp=0; __pyx_temp < (Py_ssize_t)(sizeof(values)/sizeof(values[0])); ++__pyx_temp) {
     Py_XDECREF(values[__pyx_temp]);
   }
-  __Pyx_AddTraceback("ztpcraft.bosonic._oscillator_integrals_1d.ccosij_complex_GH", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("ztpcraft.bosonic.oscillator_integrals._oscillator_integrals_1d_quadrature.ccosij_complex_GH", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_8ztpcraft_7bosonic_24_oscillator_integrals_1d_20ccosij_complex_GH(__pyx_self, __pyx_v_n_i, __pyx_v_n_j, __pyx_v_phi_ratio_i, __pyx_v_phi_ratio_j, __pyx_v_phi_0_i, __pyx_v_phi_0_j, __pyx_v_a, __pyx_v_phi_ext);
+  __pyx_r = __pyx_pf_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_20ccosij_complex_GH(__pyx_self, __pyx_v_n_i, __pyx_v_n_j, __pyx_v_phi_ratio_i, __pyx_v_phi_ratio_j, __pyx_v_phi_0_i, __pyx_v_phi_0_j, __pyx_v_a, __pyx_v_phi_ext);
 
   /* function exit code */
   for (Py_ssize_t __pyx_temp=0; __pyx_temp < (Py_ssize_t)(sizeof(values)/sizeof(values[0])); ++__pyx_temp) {
@@ -22386,7 +22386,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_8ztpcraft_7bosonic_24_oscillator_integrals_1d_20ccosij_complex_GH(CYTHON_UNUSED PyObject *__pyx_self, Py_ssize_t __pyx_v_n_i, Py_ssize_t __pyx_v_n_j, double __pyx_v_phi_ratio_i, double __pyx_v_phi_ratio_j, double __pyx_v_phi_0_i, double __pyx_v_phi_0_j, double __pyx_v_a, double __pyx_v_phi_ext) {
+static PyObject *__pyx_pf_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_20ccosij_complex_GH(CYTHON_UNUSED PyObject *__pyx_self, Py_ssize_t __pyx_v_n_i, Py_ssize_t __pyx_v_n_j, double __pyx_v_phi_ratio_i, double __pyx_v_phi_ratio_j, double __pyx_v_phi_0_i, double __pyx_v_phi_0_j, double __pyx_v_a, double __pyx_v_phi_ext) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   double __pyx_t_1;
@@ -22396,7 +22396,7 @@ static PyObject *__pyx_pf_8ztpcraft_7bosonic_24_oscillator_integrals_1d_20ccosij
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("ccosij_complex_GH", 0);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __pyx_f_8ztpcraft_7bosonic_24_oscillator_integrals_1d_ccosij_complex_GH(__pyx_v_n_i, __pyx_v_n_j, __pyx_v_phi_ratio_i, __pyx_v_phi_ratio_j, __pyx_v_phi_0_i, __pyx_v_phi_0_j, __pyx_v_a, __pyx_v_phi_ext, 1); if (unlikely(__pyx_t_1 == ((double)-1) && PyErr_Occurred())) __PYX_ERR(0, 373, __pyx_L1_error)
+  __pyx_t_1 = __pyx_f_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_ccosij_complex_GH(__pyx_v_n_i, __pyx_v_n_j, __pyx_v_phi_ratio_i, __pyx_v_phi_ratio_j, __pyx_v_phi_0_i, __pyx_v_phi_0_j, __pyx_v_a, __pyx_v_phi_ext, 1); if (unlikely(__pyx_t_1 == ((double)-1) && PyErr_Occurred())) __PYX_ERR(0, 373, __pyx_L1_error)
   __pyx_t_2 = PyFloat_FromDouble(__pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 373, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_r = __pyx_t_2;
@@ -22406,7 +22406,7 @@ static PyObject *__pyx_pf_8ztpcraft_7bosonic_24_oscillator_integrals_1d_20ccosij
   /* function exit code */
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_2);
-  __Pyx_AddTraceback("ztpcraft.bosonic._oscillator_integrals_1d.ccosij_complex_GH", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("ztpcraft.bosonic.oscillator_integrals._oscillator_integrals_1d_quadrature.ccosij_complex_GH", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XGIVEREF(__pyx_r);
@@ -22540,7 +22540,7 @@ static PyType_Slot __pyx_type___pyx_array_slots[] = {
   {0, 0},
 };
 static PyType_Spec __pyx_type___pyx_array_spec = {
-  "ztpcraft.bosonic._oscillator_integrals_1d.array",
+  "ztpcraft.bosonic.oscillator_integrals._oscillator_integrals_1d_quadrature.array",
   sizeof(struct __pyx_array_obj),
   0,
   Py_TPFLAGS_DEFAULT|Py_TPFLAGS_HAVE_VERSION_TAG|Py_TPFLAGS_CHECKTYPES|Py_TPFLAGS_HAVE_NEWBUFFER|Py_TPFLAGS_BASETYPE|Py_TPFLAGS_SEQUENCE,
@@ -22574,7 +22574,7 @@ static PyBufferProcs __pyx_tp_as_buffer_array = {
 
 static PyTypeObject __pyx_type___pyx_array = {
   PyVarObject_HEAD_INIT(0, 0)
-  "ztpcraft.bosonic._oscillator_integrals_1d.""array", /*tp_name*/
+  "ztpcraft.bosonic.oscillator_integrals._oscillator_integrals_1d_quadrature.""array", /*tp_name*/
   sizeof(struct __pyx_array_obj), /*tp_basicsize*/
   0, /*tp_itemsize*/
   __pyx_tp_dealloc_array, /*tp_dealloc*/
@@ -22719,7 +22719,7 @@ static PyType_Slot __pyx_type___pyx_MemviewEnum_slots[] = {
   {0, 0},
 };
 static PyType_Spec __pyx_type___pyx_MemviewEnum_spec = {
-  "ztpcraft.bosonic._oscillator_integrals_1d.Enum",
+  "ztpcraft.bosonic.oscillator_integrals._oscillator_integrals_1d_quadrature.Enum",
   sizeof(struct __pyx_MemviewEnum_obj),
   0,
   Py_TPFLAGS_DEFAULT|Py_TPFLAGS_HAVE_VERSION_TAG|Py_TPFLAGS_CHECKTYPES|Py_TPFLAGS_HAVE_NEWBUFFER|Py_TPFLAGS_BASETYPE|Py_TPFLAGS_HAVE_GC,
@@ -22729,7 +22729,7 @@ static PyType_Spec __pyx_type___pyx_MemviewEnum_spec = {
 
 static PyTypeObject __pyx_type___pyx_MemviewEnum = {
   PyVarObject_HEAD_INIT(0, 0)
-  "ztpcraft.bosonic._oscillator_integrals_1d.""Enum", /*tp_name*/
+  "ztpcraft.bosonic.oscillator_integrals._oscillator_integrals_1d_quadrature.""Enum", /*tp_name*/
   sizeof(struct __pyx_MemviewEnum_obj), /*tp_basicsize*/
   0, /*tp_itemsize*/
   __pyx_tp_dealloc_Enum, /*tp_dealloc*/
@@ -22996,7 +22996,7 @@ static PyType_Slot __pyx_type___pyx_memoryview_slots[] = {
   {0, 0},
 };
 static PyType_Spec __pyx_type___pyx_memoryview_spec = {
-  "ztpcraft.bosonic._oscillator_integrals_1d.memoryview",
+  "ztpcraft.bosonic.oscillator_integrals._oscillator_integrals_1d_quadrature.memoryview",
   sizeof(struct __pyx_memoryview_obj),
   0,
   Py_TPFLAGS_DEFAULT|Py_TPFLAGS_HAVE_VERSION_TAG|Py_TPFLAGS_CHECKTYPES|Py_TPFLAGS_HAVE_NEWBUFFER|Py_TPFLAGS_BASETYPE|Py_TPFLAGS_HAVE_GC,
@@ -23030,7 +23030,7 @@ static PyBufferProcs __pyx_tp_as_buffer_memoryview = {
 
 static PyTypeObject __pyx_type___pyx_memoryview = {
   PyVarObject_HEAD_INIT(0, 0)
-  "ztpcraft.bosonic._oscillator_integrals_1d.""memoryview", /*tp_name*/
+  "ztpcraft.bosonic.oscillator_integrals._oscillator_integrals_1d_quadrature.""memoryview", /*tp_name*/
   sizeof(struct __pyx_memoryview_obj), /*tp_basicsize*/
   0, /*tp_itemsize*/
   __pyx_tp_dealloc_memoryview, /*tp_dealloc*/
@@ -23173,7 +23173,7 @@ static PyType_Slot __pyx_type___pyx_memoryviewslice_slots[] = {
   {0, 0},
 };
 static PyType_Spec __pyx_type___pyx_memoryviewslice_spec = {
-  "ztpcraft.bosonic._oscillator_integrals_1d._memoryviewslice",
+  "ztpcraft.bosonic.oscillator_integrals._oscillator_integrals_1d_quadrature._memoryviewslice",
   sizeof(struct __pyx_memoryviewslice_obj),
   0,
   Py_TPFLAGS_DEFAULT|Py_TPFLAGS_HAVE_VERSION_TAG|Py_TPFLAGS_CHECKTYPES|Py_TPFLAGS_HAVE_NEWBUFFER|Py_TPFLAGS_BASETYPE|Py_TPFLAGS_HAVE_GC|Py_TPFLAGS_SEQUENCE,
@@ -23183,7 +23183,7 @@ static PyType_Spec __pyx_type___pyx_memoryviewslice_spec = {
 
 static PyTypeObject __pyx_type___pyx_memoryviewslice = {
   PyVarObject_HEAD_INIT(0, 0)
-  "ztpcraft.bosonic._oscillator_integrals_1d.""_memoryviewslice", /*tp_name*/
+  "ztpcraft.bosonic.oscillator_integrals._oscillator_integrals_1d_quadrature.""_memoryviewslice", /*tp_name*/
   sizeof(struct __pyx_memoryviewslice_obj), /*tp_basicsize*/
   0, /*tp_itemsize*/
   __pyx_tp_dealloc__memoryviewslice, /*tp_dealloc*/
@@ -23513,10 +23513,10 @@ static int __Pyx_modinit_function_import_code(__pyx_mstatetype *__pyx_mstate) {
 
 #if CYTHON_PEP489_MULTI_PHASE_INIT
 static PyObject* __pyx_pymod_create(PyObject *spec, PyModuleDef *def); /*proto*/
-static int __pyx_pymod_exec__oscillator_integrals_1d(PyObject* module); /*proto*/
+static int __pyx_pymod_exec__oscillator_integrals_1d_quadrature(PyObject* module); /*proto*/
 static PyModuleDef_Slot __pyx_moduledef_slots[] = {
   {Py_mod_create, (void*)__pyx_pymod_create},
-  {Py_mod_exec, (void*)__pyx_pymod_exec__oscillator_integrals_1d},
+  {Py_mod_exec, (void*)__pyx_pymod_exec__oscillator_integrals_1d_quadrature},
   #if CYTHON_COMPILING_IN_CPYTHON_FREETHREADING
   {Py_mod_gil, __Pyx_FREETHREADING_COMPATIBLE},
   #endif
@@ -23535,7 +23535,7 @@ namespace {
   #endif
   {
       PyModuleDef_HEAD_INIT,
-      "_oscillator_integrals_1d",
+      "_oscillator_integrals_1d_quadrature",
       __pyx_k_Cython_accelerated_oscillator_i, /* m_doc */
     #if CYTHON_USE_MODULE_STATE
       sizeof(__pyx_mstatetype), /* m_size */
@@ -23573,8 +23573,8 @@ namespace {
   #endif
 #endif
 
-__Pyx_PyMODINIT_FUNC PyInit__oscillator_integrals_1d(void) CYTHON_SMALL_CODE; /*proto*/
-__Pyx_PyMODINIT_FUNC PyInit__oscillator_integrals_1d(void)
+__Pyx_PyMODINIT_FUNC PyInit__oscillator_integrals_1d_quadrature(void) CYTHON_SMALL_CODE; /*proto*/
+__Pyx_PyMODINIT_FUNC PyInit__oscillator_integrals_1d_quadrature(void)
 #if CYTHON_PEP489_MULTI_PHASE_INIT
 {
   return PyModuleDef_Init(&__pyx_moduledef);
@@ -23681,7 +23681,7 @@ bad:
 }
 
 
-static CYTHON_SMALL_CODE int __pyx_pymod_exec__oscillator_integrals_1d(PyObject *__pyx_pyinit_module)
+static CYTHON_SMALL_CODE int __pyx_pymod_exec__oscillator_integrals_1d_quadrature(PyObject *__pyx_pyinit_module)
 #endif
 {
   int stringtab_initialized = 0;
@@ -23711,7 +23711,7 @@ static CYTHON_SMALL_CODE int __pyx_pymod_exec__oscillator_integrals_1d(PyObject 
   #if CYTHON_PEP489_MULTI_PHASE_INIT
   if (__pyx_m) {
     if (__pyx_m == __pyx_pyinit_module) return 0;
-    PyErr_SetString(PyExc_RuntimeError, "Module '_oscillator_integrals_1d' has already been imported. Re-initialisation is not supported.");
+    PyErr_SetString(PyExc_RuntimeError, "Module '_oscillator_integrals_1d_quadrature' has already been imported. Re-initialisation is not supported.");
     return -1;
   }
   #else
@@ -23727,7 +23727,7 @@ static CYTHON_SMALL_CODE int __pyx_pymod_exec__oscillator_integrals_1d(PyObject 
   #if CYTHON_USE_MODULE_STATE
   {
     int add_module_result = __Pyx_State_AddModule(__pyx_t_1, &__pyx_moduledef);
-    __pyx_t_1 = 0; /* transfer ownership from __pyx_t_1 to "_oscillator_integrals_1d" pseudovariable */
+    __pyx_t_1 = 0; /* transfer ownership from __pyx_t_1 to "_oscillator_integrals_1d_quadrature" pseudovariable */
     if (unlikely((add_module_result < 0))) __PYX_ERR(0, 1, __pyx_L1_error)
     pystate_addmodule_run = 1;
   }
@@ -23755,7 +23755,7 @@ static CYTHON_SMALL_CODE int __pyx_pymod_exec__oscillator_integrals_1d(PyObject 
   }
   #endif
   
-__Pyx_RefNannySetupContext("PyInit__oscillator_integrals_1d", 0);
+__Pyx_RefNannySetupContext("PyInit__oscillator_integrals_1d_quadrature", 0);
   __Pyx_init_runtime_version();
   if (__Pyx_check_binary_version(__PYX_LIMITED_VERSION_HEX, __Pyx_get_runtime_version(), CYTHON_COMPILING_IN_LIMITED_API) < (0)) __PYX_ERR(0, 1, __pyx_L1_error)
   __pyx_mstate->__pyx_empty_tuple = PyTuple_New(0); if (unlikely(!__pyx_mstate->__pyx_empty_tuple)) __PYX_ERR(0, 1, __pyx_L1_error)
@@ -23766,13 +23766,13 @@ __Pyx_RefNannySetupContext("PyInit__oscillator_integrals_1d", 0);
   if (__Pyx_InitConstants(__pyx_mstate) < (0)) __PYX_ERR(0, 1, __pyx_L1_error)
   stringtab_initialized = 1;
   if (__Pyx_InitGlobals() < (0)) __PYX_ERR(0, 1, __pyx_L1_error)
-  if (__pyx_module_is_main_ztpcraft__bosonic___oscillator_integrals_1d) {
+  if (__pyx_module_is_main_ztpcraft__bosonic__oscillator_integrals___oscillator_integrals_1d_quadrature) {
     if (PyObject_SetAttr(__pyx_m, __pyx_mstate_global->__pyx_n_u_name_2, __pyx_mstate_global->__pyx_n_u_main) < (0)) __PYX_ERR(0, 1, __pyx_L1_error)
   }
   {
     PyObject *modules = PyImport_GetModuleDict(); if (unlikely(!modules)) __PYX_ERR(0, 1, __pyx_L1_error)
-    if (!PyDict_GetItemString(modules, "ztpcraft.bosonic._oscillator_integrals_1d")) {
-      if (unlikely((PyDict_SetItemString(modules, "ztpcraft.bosonic._oscillator_integrals_1d", __pyx_m) < 0))) __PYX_ERR(0, 1, __pyx_L1_error)
+    if (!PyDict_GetItemString(modules, "ztpcraft.bosonic.oscillator_integrals._oscillator_integrals_1d_quadrature")) {
+      if (unlikely((PyDict_SetItemString(modules, "ztpcraft.bosonic.oscillator_integrals._oscillator_integrals_1d_quadrature", __pyx_m) < 0))) __PYX_ERR(0, 1, __pyx_L1_error)
     }
   }
   /*--- Builtin init code ---*/
@@ -24281,7 +24281,7 @@ __Pyx_RefNannySetupContext("PyInit__oscillator_integrals_1d", 0);
   if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_pyx_unpickle_Enum, __pyx_t_4) < (0)) __PYX_ERR(1, 4, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-  /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":21
+  /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":21
  * from scipy.special.cython_special cimport eval_hermite, gamma, hyp1f1
  * 
  * import numpy as np             # <<<<<<<<<<<<<<
@@ -24294,7 +24294,7 @@ __Pyx_RefNannySetupContext("PyInit__oscillator_integrals_1d", 0);
   if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_np, __pyx_t_4) < (0)) __PYX_ERR(0, 21, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-  /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":22
+  /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":22
  * 
  * import numpy as np
  * from scipy.special import roots_hermite             # <<<<<<<<<<<<<<
@@ -24318,7 +24318,7 @@ __Pyx_RefNannySetupContext("PyInit__oscillator_integrals_1d", 0);
   }
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-  /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":26
+  /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":26
  * 
  * # generate Gauss-Hermite quadrature points and weights
  * GHdata = np.zeros((2,300,300))             # <<<<<<<<<<<<<<
@@ -24343,7 +24343,7 @@ __Pyx_RefNannySetupContext("PyInit__oscillator_integrals_1d", 0);
   if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_GHdata, __pyx_t_4) < (0)) __PYX_ERR(0, 26, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-  /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":27
+  /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":27
  * # generate Gauss-Hermite quadrature points and weights
  * GHdata = np.zeros((2,300,300))
  * for index in range(1,300):             # <<<<<<<<<<<<<<
@@ -24356,7 +24356,7 @@ __Pyx_RefNannySetupContext("PyInit__oscillator_integrals_1d", 0);
     if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_index, __pyx_t_4) < (0)) __PYX_ERR(0, 27, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-    /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":28
+    /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":28
  * GHdata = np.zeros((2,300,300))
  * for index in range(1,300):
  *     zeros, weights = roots_hermite(index)             # <<<<<<<<<<<<<<
@@ -24444,7 +24444,7 @@ __Pyx_RefNannySetupContext("PyInit__oscillator_integrals_1d", 0);
     if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_weights, __pyx_t_10) < (0)) __PYX_ERR(0, 28, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
 
-    /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":29
+    /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":29
  * for index in range(1,300):
  *     zeros, weights = roots_hermite(index)
  *     zeros = np.pad(zeros, (0,300-index))             # <<<<<<<<<<<<<<
@@ -24492,7 +24492,7 @@ __Pyx_RefNannySetupContext("PyInit__oscillator_integrals_1d", 0);
     if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_zeros, __pyx_t_4) < (0)) __PYX_ERR(0, 29, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-    /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":30
+    /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":30
  *     zeros, weights = roots_hermite(index)
  *     zeros = np.pad(zeros, (0,300-index))
  *     weights = np.pad(weights, (0,300-index))             # <<<<<<<<<<<<<<
@@ -24540,7 +24540,7 @@ __Pyx_RefNannySetupContext("PyInit__oscillator_integrals_1d", 0);
     if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_weights, __pyx_t_4) < (0)) __PYX_ERR(0, 30, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-    /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":31
+    /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":31
  *     zeros = np.pad(zeros, (0,300-index))
  *     weights = np.pad(weights, (0,300-index))
  *     GHdata[0][index][:] = zeros             # <<<<<<<<<<<<<<
@@ -24564,7 +24564,7 @@ __Pyx_RefNannySetupContext("PyInit__oscillator_integrals_1d", 0);
     __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-    /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":32
+    /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":32
  *     weights = np.pad(weights, (0,300-index))
  *     GHdata[0][index][:] = zeros
  *     GHdata[1][index][:] = weights             # <<<<<<<<<<<<<<
@@ -24589,7 +24589,7 @@ __Pyx_RefNannySetupContext("PyInit__oscillator_integrals_1d", 0);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   }
 
-  /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":35
+  /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":35
  * 
  * # create a memoryview object to access GH quadrature data
  * cdef double [:, :, :] GHdata_view = GHdata             # <<<<<<<<<<<<<<
@@ -24600,19 +24600,19 @@ __Pyx_RefNannySetupContext("PyInit__oscillator_integrals_1d", 0);
   __Pyx_GOTREF(__pyx_t_4);
   __pyx_t_15 = __Pyx_PyObject_to_MemoryviewSlice_dsdsds_double(__pyx_t_4, PyBUF_WRITABLE); if (unlikely(!__pyx_t_15.memview)) __PYX_ERR(0, 35, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  __PYX_XCLEAR_MEMVIEW(&__pyx_v_8ztpcraft_7bosonic_24_oscillator_integrals_1d_GHdata_view, 1);
-  __pyx_v_8ztpcraft_7bosonic_24_oscillator_integrals_1d_GHdata_view = __pyx_t_15;
+  __PYX_XCLEAR_MEMVIEW(&__pyx_v_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_GHdata_view, 1);
+  __pyx_v_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_GHdata_view = __pyx_t_15;
   __pyx_t_15.memview = NULL;
   __pyx_t_15.data = NULL;
 
-  /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":57
+  /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":57
  * # Hermite polynomial with complex argument, using hyp1f1 functions
  * # notice that there are known numerical issues with this function when n is large
  * cpdef double complex hermite_complex(Py_ssize_t n, double complex z):             # <<<<<<<<<<<<<<
  *     cdef Py_ssize_t n_2 = n//2
  *     cdef double sign = 1 - 2* (n_2%2)
 */
-  __pyx_t_4 = __Pyx_CyFunction_New(&__pyx_mdef_8ztpcraft_7bosonic_24_oscillator_integrals_1d_1hermite_complex, 0, __pyx_mstate_global->__pyx_n_u_hermite_complex, NULL, __pyx_mstate_global->__pyx_n_u_ztpcraft_bosonic__oscillator_int, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[0])); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 57, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_CyFunction_New(&__pyx_mdef_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_1hermite_complex, 0, __pyx_mstate_global->__pyx_n_u_hermite_complex, NULL, __pyx_mstate_global->__pyx_n_u_ztpcraft_bosonic_oscillator_inte, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[0])); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 57, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   #if CYTHON_COMPILING_IN_CPYTHON && PY_VERSION_HEX >= 0x030E0000
   PyUnstable_Object_EnableDeferredRefcount(__pyx_t_4);
@@ -24620,14 +24620,14 @@ __Pyx_RefNannySetupContext("PyInit__oscillator_integrals_1d", 0);
   if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_hermite_complex, __pyx_t_4) < (0)) __PYX_ERR(0, 57, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-  /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":97
+  /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":97
  * 
  * # prefactor of the matrix element integrals from the two harmonic oscillator states
  * cpdef double cprefactor(Py_ssize_t n_i,Py_ssize_t n_j, double phi_0_i, double phi_0_j):             # <<<<<<<<<<<<<<
  *     return (1./sqrt(2.**n_i)) * 1./sqrt(gamma(<double>n_i + 1.) )*\
  *            (1./sqrt(2.**n_j)) * 1./sqrt(gamma(<double>n_j + 1.) )*\
 */
-  __pyx_t_4 = __Pyx_CyFunction_New(&__pyx_mdef_8ztpcraft_7bosonic_24_oscillator_integrals_1d_3cprefactor, 0, __pyx_mstate_global->__pyx_n_u_cprefactor, NULL, __pyx_mstate_global->__pyx_n_u_ztpcraft_bosonic__oscillator_int, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[1])); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 97, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_CyFunction_New(&__pyx_mdef_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_3cprefactor, 0, __pyx_mstate_global->__pyx_n_u_cprefactor, NULL, __pyx_mstate_global->__pyx_n_u_ztpcraft_bosonic_oscillator_inte, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[1])); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 97, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   #if CYTHON_COMPILING_IN_CPYTHON && PY_VERSION_HEX >= 0x030E0000
   PyUnstable_Object_EnableDeferredRefcount(__pyx_t_4);
@@ -24635,14 +24635,14 @@ __Pyx_RefNannySetupContext("PyInit__oscillator_integrals_1d", 0);
   if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_cprefactor, __pyx_t_4) < (0)) __PYX_ERR(0, 97, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-  /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":103
+  /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":103
  * 
  * # matrix elements of the overlapping integral, using the analytical form
  * cpdef double cSij(Py_ssize_t n_i,Py_ssize_t n_j,double phi_ratio_i,double phi_ratio_j,double phi_0_i,double phi_0_j):             # <<<<<<<<<<<<<<
  *     cdef double Sij_sum_j = 0
  *     cdef double Sij_sum_ij = 0
 */
-  __pyx_t_4 = __Pyx_CyFunction_New(&__pyx_mdef_8ztpcraft_7bosonic_24_oscillator_integrals_1d_5cSij, 0, __pyx_mstate_global->__pyx_n_u_cSij, NULL, __pyx_mstate_global->__pyx_n_u_ztpcraft_bosonic__oscillator_int, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[2])); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 103, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_CyFunction_New(&__pyx_mdef_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_5cSij, 0, __pyx_mstate_global->__pyx_n_u_cSij, NULL, __pyx_mstate_global->__pyx_n_u_ztpcraft_bosonic_oscillator_inte, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[2])); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 103, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   #if CYTHON_COMPILING_IN_CPYTHON && PY_VERSION_HEX >= 0x030E0000
   PyUnstable_Object_EnableDeferredRefcount(__pyx_t_4);
@@ -24650,14 +24650,14 @@ __Pyx_RefNannySetupContext("PyInit__oscillator_integrals_1d", 0);
   if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_cSij, __pyx_t_4) < (0)) __PYX_ERR(0, 103, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-  /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":127
+  /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":127
  * 
  * # matrix elements of the cos(a*phi - phi_ext), using the analytical form
  * cpdef double ccosij(Py_ssize_t n_i,Py_ssize_t n_j,double phi_ratio_i,double phi_ratio_j,double phi_0_i,double phi_0_j, double a, double phi_ext):             # <<<<<<<<<<<<<<
  *     cdef double complex cosij_sum_j = 0
  *     cdef double complex cosij_sum_ij = 0
 */
-  __pyx_t_4 = __Pyx_CyFunction_New(&__pyx_mdef_8ztpcraft_7bosonic_24_oscillator_integrals_1d_7ccosij, 0, __pyx_mstate_global->__pyx_n_u_ccosij, NULL, __pyx_mstate_global->__pyx_n_u_ztpcraft_bosonic__oscillator_int, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[3])); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 127, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_CyFunction_New(&__pyx_mdef_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_7ccosij, 0, __pyx_mstate_global->__pyx_n_u_ccosij, NULL, __pyx_mstate_global->__pyx_n_u_ztpcraft_bosonic_oscillator_inte, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[3])); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 127, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   #if CYTHON_COMPILING_IN_CPYTHON && PY_VERSION_HEX >= 0x030E0000
   PyUnstable_Object_EnableDeferredRefcount(__pyx_t_4);
@@ -24665,14 +24665,14 @@ __Pyx_RefNannySetupContext("PyInit__oscillator_integrals_1d", 0);
   if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_ccosij, __pyx_t_4) < (0)) __PYX_ERR(0, 127, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-  /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":145
+  /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":145
  * 
  * # matrix elements of n^2, using the analytical form
  * cpdef double cn2ij(Py_ssize_t n_i,Py_ssize_t n_j,double phi_ratio_i,double phi_ratio_j,double phi_0_i,double phi_0_j):             # <<<<<<<<<<<<<<
  *     if (phi_ratio_i==phi_ratio_j)&(phi_0_i==phi_0_j):
  *         if (n_i==n_j):
 */
-  __pyx_t_4 = __Pyx_CyFunction_New(&__pyx_mdef_8ztpcraft_7bosonic_24_oscillator_integrals_1d_9cn2ij, 0, __pyx_mstate_global->__pyx_n_u_cn2ij, NULL, __pyx_mstate_global->__pyx_n_u_ztpcraft_bosonic__oscillator_int, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[4])); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 145, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_CyFunction_New(&__pyx_mdef_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_9cn2ij, 0, __pyx_mstate_global->__pyx_n_u_cn2ij, NULL, __pyx_mstate_global->__pyx_n_u_ztpcraft_bosonic_oscillator_inte, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[4])); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 145, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   #if CYTHON_COMPILING_IN_CPYTHON && PY_VERSION_HEX >= 0x030E0000
   PyUnstable_Object_EnableDeferredRefcount(__pyx_t_4);
@@ -24680,14 +24680,14 @@ __Pyx_RefNannySetupContext("PyInit__oscillator_integrals_1d", 0);
   if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_cn2ij, __pyx_t_4) < (0)) __PYX_ERR(0, 145, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-  /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":170
+  /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":170
  *             )
  * 
  * cpdef double cn2ij_GH(Py_ssize_t n_i,Py_ssize_t n_j,double phi_ratio_i,double phi_ratio_j,double phi_0_i,double phi_0_j):             # <<<<<<<<<<<<<<
  *     if (phi_ratio_i==phi_ratio_j)&(phi_0_i==phi_0_j):
  *         if (n_i==n_j):
 */
-  __pyx_t_4 = __Pyx_CyFunction_New(&__pyx_mdef_8ztpcraft_7bosonic_24_oscillator_integrals_1d_11cn2ij_GH, 0, __pyx_mstate_global->__pyx_n_u_cn2ij_GH, NULL, __pyx_mstate_global->__pyx_n_u_ztpcraft_bosonic__oscillator_int, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[5])); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 170, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_CyFunction_New(&__pyx_mdef_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_11cn2ij_GH, 0, __pyx_mstate_global->__pyx_n_u_cn2ij_GH, NULL, __pyx_mstate_global->__pyx_n_u_ztpcraft_bosonic_oscillator_inte, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[5])); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 170, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   #if CYTHON_COMPILING_IN_CPYTHON && PY_VERSION_HEX >= 0x030E0000
   PyUnstable_Object_EnableDeferredRefcount(__pyx_t_4);
@@ -24695,14 +24695,14 @@ __Pyx_RefNannySetupContext("PyInit__oscillator_integrals_1d", 0);
   if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_cn2ij_GH, __pyx_t_4) < (0)) __PYX_ERR(0, 170, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-  /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":196
+  /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":196
  * 
  * # matrix elements of phi^2, using the analytical form
  * cpdef double cphi2ij(Py_ssize_t n_i,Py_ssize_t n_j,double phi_ratio_i,double phi_ratio_j,double phi_0_i,double phi_0_j):             # <<<<<<<<<<<<<<
  *     cdef double phi2ij_sum_j = 0
  *     cdef double phi2ij_sum_ij = 0
 */
-  __pyx_t_4 = __Pyx_CyFunction_New(&__pyx_mdef_8ztpcraft_7bosonic_24_oscillator_integrals_1d_13cphi2ij, 0, __pyx_mstate_global->__pyx_n_u_cphi2ij, NULL, __pyx_mstate_global->__pyx_n_u_ztpcraft_bosonic__oscillator_int, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[6])); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 196, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_CyFunction_New(&__pyx_mdef_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_13cphi2ij, 0, __pyx_mstate_global->__pyx_n_u_cphi2ij, NULL, __pyx_mstate_global->__pyx_n_u_ztpcraft_bosonic_oscillator_inte, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[6])); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 196, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   #if CYTHON_COMPILING_IN_CPYTHON && PY_VERSION_HEX >= 0x030E0000
   PyUnstable_Object_EnableDeferredRefcount(__pyx_t_4);
@@ -24710,14 +24710,14 @@ __Pyx_RefNannySetupContext("PyInit__oscillator_integrals_1d", 0);
   if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_cphi2ij, __pyx_t_4) < (0)) __PYX_ERR(0, 196, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-  /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":215
+  /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":215
  * 
  * #evaluating the overlap matrix elements with Gauss-Hermite quadrature
  * cpdef double cSij_GH(Py_ssize_t n_i,Py_ssize_t n_j,double phi_ratio_i,double phi_ratio_j,double phi_0_i,double phi_0_j):             # <<<<<<<<<<<<<<
  *     """
  *     Evaluating the overlap matrix elements with Gauss-Hermite quadrature
 */
-  __pyx_t_4 = __Pyx_CyFunction_New(&__pyx_mdef_8ztpcraft_7bosonic_24_oscillator_integrals_1d_15cSij_GH, 0, __pyx_mstate_global->__pyx_n_u_cSij_GH, NULL, __pyx_mstate_global->__pyx_n_u_ztpcraft_bosonic__oscillator_int, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[7])); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 215, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_CyFunction_New(&__pyx_mdef_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_15cSij_GH, 0, __pyx_mstate_global->__pyx_n_u_cSij_GH, NULL, __pyx_mstate_global->__pyx_n_u_ztpcraft_bosonic_oscillator_inte, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[7])); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 215, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   #if CYTHON_COMPILING_IN_CPYTHON && PY_VERSION_HEX >= 0x030E0000
   PyUnstable_Object_EnableDeferredRefcount(__pyx_t_4);
@@ -24725,14 +24725,14 @@ __Pyx_RefNannySetupContext("PyInit__oscillator_integrals_1d", 0);
   if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_cSij_GH, __pyx_t_4) < (0)) __PYX_ERR(0, 215, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-  /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":266
+  /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":266
  * 
  * #evaluating the phi^2 matrix elements with Gauss-Hermite quadrature
  * cpdef double cphi2ij_GH(Py_ssize_t n_i,Py_ssize_t n_j,double phi_ratio_i,double phi_ratio_j,double phi_0_i,double phi_0_j):             # <<<<<<<<<<<<<<
  *     """
  *     Evaluating the phi^2 matrix elements with Gauss-Hermite quadrature
 */
-  __pyx_t_4 = __Pyx_CyFunction_New(&__pyx_mdef_8ztpcraft_7bosonic_24_oscillator_integrals_1d_17cphi2ij_GH, 0, __pyx_mstate_global->__pyx_n_u_cphi2ij_GH, NULL, __pyx_mstate_global->__pyx_n_u_ztpcraft_bosonic__oscillator_int, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[8])); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 266, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_CyFunction_New(&__pyx_mdef_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_17cphi2ij_GH, 0, __pyx_mstate_global->__pyx_n_u_cphi2ij_GH, NULL, __pyx_mstate_global->__pyx_n_u_ztpcraft_bosonic_oscillator_inte, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[8])); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 266, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   #if CYTHON_COMPILING_IN_CPYTHON && PY_VERSION_HEX >= 0x030E0000
   PyUnstable_Object_EnableDeferredRefcount(__pyx_t_4);
@@ -24740,14 +24740,14 @@ __Pyx_RefNannySetupContext("PyInit__oscillator_integrals_1d", 0);
   if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_cphi2ij_GH, __pyx_t_4) < (0)) __PYX_ERR(0, 266, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-  /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":316
+  /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":316
  * 
  * #evaluating the cosine (cos(a*phi - phi_ext)) matrix elements with Gauss-Hermite quadrature, here we use the plain cosine
  * cpdef double ccosij_plain_GH(Py_ssize_t n_i, Py_ssize_t n_j, double phi_ratio_i,double phi_ratio_j,double phi_0_i,double phi_0_j, a, phi_ext):             # <<<<<<<<<<<<<<
  *     """
  *     Evaluating the the cosine (cos(a*phi - phi_ext)) matrix elements with Gauss-Hermite quadrature, here we use the plain cosine
 */
-  __pyx_t_4 = __Pyx_CyFunction_New(&__pyx_mdef_8ztpcraft_7bosonic_24_oscillator_integrals_1d_19ccosij_plain_GH, 0, __pyx_mstate_global->__pyx_n_u_ccosij_plain_GH, NULL, __pyx_mstate_global->__pyx_n_u_ztpcraft_bosonic__oscillator_int, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[9])); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 316, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_CyFunction_New(&__pyx_mdef_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_19ccosij_plain_GH, 0, __pyx_mstate_global->__pyx_n_u_ccosij_plain_GH, NULL, __pyx_mstate_global->__pyx_n_u_ztpcraft_bosonic_oscillator_inte, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[9])); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 316, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   #if CYTHON_COMPILING_IN_CPYTHON && PY_VERSION_HEX >= 0x030E0000
   PyUnstable_Object_EnableDeferredRefcount(__pyx_t_4);
@@ -24755,14 +24755,14 @@ __Pyx_RefNannySetupContext("PyInit__oscillator_integrals_1d", 0);
   if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_ccosij_plain_GH, __pyx_t_4) < (0)) __PYX_ERR(0, 316, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-  /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":373
+  /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":373
  * #evaluating the cosine (cos(a*phi - phi_ext)) matrix elements with Gauss-Hermite quadrature by writing the cosine in terms of complex exponentials
  * # then group the cosine with the exponentials; this way the polynomial become complex
  * cpdef double ccosij_complex_GH(Py_ssize_t n_i, Py_ssize_t n_j, double phi_ratio_i,double phi_ratio_j,double phi_0_i,double phi_0_j, double a, double phi_ext):             # <<<<<<<<<<<<<<
  *     """
  *     Evaluating the the cosine (cos(a*phi - phi_ext)) matrix elements with Gauss-Hermite quadrature by writing the cosine in terms of complex exponentials
 */
-  __pyx_t_4 = __Pyx_CyFunction_New(&__pyx_mdef_8ztpcraft_7bosonic_24_oscillator_integrals_1d_21ccosij_complex_GH, 0, __pyx_mstate_global->__pyx_n_u_ccosij_complex_GH, NULL, __pyx_mstate_global->__pyx_n_u_ztpcraft_bosonic__oscillator_int, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[10])); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 373, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_CyFunction_New(&__pyx_mdef_8ztpcraft_7bosonic_20oscillator_integrals_35_oscillator_integrals_1d_quadrature_21ccosij_complex_GH, 0, __pyx_mstate_global->__pyx_n_u_ccosij_complex_GH, NULL, __pyx_mstate_global->__pyx_n_u_ztpcraft_bosonic_oscillator_inte, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[10])); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 373, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   #if CYTHON_COMPILING_IN_CPYTHON && PY_VERSION_HEX >= 0x030E0000
   PyUnstable_Object_EnableDeferredRefcount(__pyx_t_4);
@@ -24770,7 +24770,7 @@ __Pyx_RefNannySetupContext("PyInit__oscillator_integrals_1d", 0);
   if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_ccosij_complex_GH, __pyx_t_4) < (0)) __PYX_ERR(0, 373, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-  /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":1
+  /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":1
  * """             # <<<<<<<<<<<<<<
  * Cython-accelerated oscillator integral routines used by Fluxonium non-orthogonal basis calculations.
  * This module provides:
@@ -24793,7 +24793,7 @@ __Pyx_RefNannySetupContext("PyInit__oscillator_integrals_1d", 0);
   __PYX_XCLEAR_MEMVIEW(&__pyx_t_15, 1);
   if (__pyx_m) {
     if (__pyx_mstate->__pyx_d && stringtab_initialized) {
-      __Pyx_AddTraceback("init ztpcraft.bosonic._oscillator_integrals_1d", __pyx_clineno, __pyx_lineno, __pyx_filename);
+      __Pyx_AddTraceback("init ztpcraft.bosonic.oscillator_integrals._oscillator_integrals_1d_quadrature", __pyx_clineno, __pyx_lineno, __pyx_filename);
     }
     #if !CYTHON_USE_MODULE_STATE
     Py_CLEAR(__pyx_m);
@@ -24807,7 +24807,7 @@ __Pyx_RefNannySetupContext("PyInit__oscillator_integrals_1d", 0);
     }
     #endif
   } else if (!PyErr_Occurred()) {
-    PyErr_SetString(PyExc_ImportError, "init ztpcraft.bosonic._oscillator_integrals_1d");
+    PyErr_SetString(PyExc_ImportError, "init ztpcraft.bosonic.oscillator_integrals._oscillator_integrals_1d_quadrature");
   }
   __pyx_L0:;
   __Pyx_RefNannyFinishContext();
@@ -24871,7 +24871,7 @@ static int __Pyx_InitCachedConstants(__pyx_mstatetype *__pyx_mstate) {
   __Pyx_GOTREF(__pyx_mstate_global->__pyx_slice[0]);
   __Pyx_GIVEREF(__pyx_mstate_global->__pyx_slice[0]);
 
-  /* "ztpcraft/bosonic/_oscillator_integrals_1d.pyx":26
+  /* "ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyx":26
  * 
  * # generate Gauss-Hermite quadrature points and weights
  * GHdata = np.zeros((2,300,300))             # <<<<<<<<<<<<<<
@@ -24930,25 +24930,25 @@ static int __Pyx_InitCachedConstants(__pyx_mstatetype *__pyx_mstate) {
 static int __Pyx_InitConstants(__pyx_mstatetype *__pyx_mstate) {
   CYTHON_UNUSED_VAR(__pyx_mstate);
   {
-    const struct { const unsigned int length: 10; } index[] = {{2},{68},{35},{54},{37},{60},{24},{52},{26},{34},{29},{33},{45},{22},{15},{179},{37},{30},{32},{1},{1},{1},{1},{1},{8},{5},{6},{15},{23},{25},{7},{6},{2},{6},{35},{9},{30},{50},{8},{20},{32},{22},{30},{37},{45},{5},{8},{6},{20},{8},{15},{1},{3},{15},{18},{4},{1},{4},{7},{6},{17},{15},{9},{17},{18},{5},{8},{5},{7},{10},{10},{8},{15},{6},{9},{5},{5},{6},{7},{8},{12},{15},{2},{10},{5},{13},{5},{8},{8},{7},{4},{10},{1},{3},{3},{4},{8},{4},{7},{2},{5},{3},{4},{3},{7},{7},{7},{11},{11},{3},{14},{11},{10},{19},{14},{12},{10},{17},{13},{8},{13},{5},{13},{12},{10},{12},{19},{5},{4},{5},{4},{4},{6},{8},{6},{6},{6},{7},{1},{1},{5},{41},{545},{129},{394},{317},{399},{492},{533},{394},{343},{328},{104},{399},{1}};
-    #if (CYTHON_COMPRESS_STRINGS) == 2 /* compression: bz2 (3054 bytes) */
-const char* const cstring = "BZh91AY&SY\371Y\325[\000\003\037\177\377\377\377\377\377\377\377\377\377\377\357\377\377\377\377\377\377\300@@@@@@@@@@@@\000@\000`\013\377B\003\336\263\322\253c\273\235\205Wvr\006\215\005(\275 4\r1\302I\022$\232\032z\200\3654?\t\247\246\320\232\n\203\324\323'\251\345\000z\217)\34454\320=!\240\323\324\017SOS\323hS\310\362\247\350M\250\202I \320\020\014\231S\332j\223\312{Jx5C\324\320\365\007\250\364\200\r\000\000\r\006\206\200\000\320\000\014\2004J~\212jmF\232\003F\200\000\006\200\000\000\000\000\001\240\000\000\000\000\0004\r4A\032!\251\352i\017S@\r\0004\323C\324\r\006\232\017P\000\000\000\000\000\032\000\000\002\r10\t\200&\010\323L\000\t\200\023CC\023\000\000\000\000\214#\000\21512\030\002I\000\2041\000A6M\0056\232\233T\360S\315)\275S\321\036Pz\236\246\20044hh\000\000\001\240\006\207\222{\310H&\272;]\376\230/8\211\244#\243\333\367\377u\360^\3339A\303\330\001\220\300\267\316\366\037\371,H\016#\214\\\200w\316\\j*k\036C\214\200\310\245\217X\372~\277\263\256k\366\017\265v\215\203\365?\037\335\177\006\311Pw\367\3336\315\303t\3367\313\374\013\204\356\215\306\245]\374s\004\301fD\004jDI2\2309\244\010\310B\020\201\005\034\010\020 \254\250\020$!b\004\010\020 AH\240AAT\204\2735\353\326\255V\256\337sr\377\373V\325\244L\034\0319997]u\327]u\327z=\340a\t\206@\225\351\035\224v{\240v\202\007\210]\263\341\367b=\035\333\013\001\206f\005$\224\202T\334\232\361\222\n\201\203\342\014*\003\343R\002\264\300\210\204\223\003)\006\370ZH1\035VP<\241X0V\016\001\304J\301\337 \247\230\034^\255\304+\320Z^^z\344\302\010\230\346\233>D\023@\211\203\0008\301$*$\244\"\262\243-\t\260\\\024\n,$\022\275H\215F4`!\025AT\214\001\010&h\naeb\2004\3433\004\244\022\2100\346`\203%F\262\240\236%i\021R\210\243\327\276\377G\272c\206\374.\235\330eXkr\177,\377SG~\277zau\310<f{\023\205\263\022H\3640\207jJ\033\n\300SP\220X\330S\204K6\224\354\341\210\370\240\274\002\334\321\247\230\354Z\321\260\245}\303\266\030Av\030\256\336,j\017\037\313\346\2408\265\253\022\016\023\324\331x\274\356'\215+D\305Z!\326\230\253\336\211\306q""\205\317\2350Y,\255\275\263\260\034b\344!\312\001\312\227\020\034\264':\004\300&\246\023\002g-\002\242C\252\036\362\032\301\357TuOG[\217\372\345\240Xs\311g\205\004\243\225h\272\323\016\006\327\2132\3450\366\3161\n\230<i\214|\313\346\272\351\264Fd\270*\247$\247*\363l\006\3403<\3321\2547\220\264\250\245\270#?\002\326L&\022&\346L\2443\303/\306fxF\025H\nT\252\024\300\230\023S\037\347t\242\010\200\211\017\036\261B\003o\\C\306\301\025\013)V\320P\214!\371\323\256\301{\035\257e\217do\253\311\212\3600\245x\263\205\241\250Y\006t\222\2204P\347\275\323\024\r>\3164\021\200F\247\002T\022\314O\311\261\227l\334\307JT\212\232\022\243T\322\014A\020\216,F\357\245\344\325\305\205VP\265\301\237T\221m\253\027\260,e/\010\005W\r\312\276vp3\030-\031\214\305k\010\241Al\316\r.G\241}\374\314\332H\264>\260\332\240\233$\307,!\231+J\2520\030\203H\\\347\016\036\207\211\361\203\223\020\3154\302\273\224\022\212Ih&D\372{\372i\247\235\200:\335\2636\034$\336\002z\306D\030\321\217Tl\366x\264\303\204\264\205+\370ZP\261K\323Q\245c\212:n\364\312\n\007\2454\223Z\237\324\030$\r\006\210$\0030H\371\t\324\006\030Y9%\223\321\202\020\220\215\245\275\001\216\311\312\326P#Z\205D\003\347\344o\225\265)\022\034x\r\303\2622\351\356y\327\244\351\201\027\363\275)\361\305P\341~\3622%\010b2\261G\233\273J\300\222\007\365[\021\321\017[\353\316\242\202.1}h\300[7\3445\224\021\001[\001b\004&\223\230\312+X\275\217;\340\347@\n\n[3\374\256\324\340\203\010\302\241\035sR\301\005.g8\276\377^\302\362\242\007\331fW6\214w\301\2013fi\351\363\356\235\354FS\376\302F\371n\223\320\2548~L\317Dm\017\\\363z\322*@\340\362>\001\r\006|\327\336\021\233L\332E\031o\032\244\346\231\034\216\037Q\234\344,h\311\216\244.\320\007i%\324\203\274\035\303\247\325\360\247w\310\242r\235*`\232\"\262p\3555\233C\031\303\320\020Q\006I\230\031o\364H9[\t\200V\201}\367\006S/\200\373vs\363\355\352\250\325\303\265\271\005\252\353c\354K\207\334\021L\371\265#\024\027\216\221\317{D\322\221\343\300:\236\205}\270\013\306p\016\331r\307U\356\346&\\\221y\221\303\230\306\320,6""\207\010l\331\263]Ef}9\351C#\365\302\316\034\320@<\342\200\213\203\036l\317\274\2154U\264\004\341\244\256\027\262,p\344\311\217\217\004A\367&\354\014\314@,\232t\202\026hY\314\346<\306\350\210\211~\374\265\320!\270S\0250\206t\256\nQ\210\304\001\361\223\227F\002\224tj`t\304\013I\231X\003\002m\2768`:uu\205L\361\004\200\313;,\364&\026RN1\210\024\254c\352E\346\374_\023\2757\312\n\343\332\03195\267a\311\030\211\236\307\217\272\346P\314\352,\304I\347\335\260\321\210\271\331\251U\263^\2333l\216\324\252c9`\313[\207k=\246\207M\301\345\326f\n\321\214(\322]9\223\257\311\024:\214(\311\315\246\243|\255rd\212H\361P\241g5\006\354%1-\335xy\225\320\331\013\320\325\003'4+\226\226\030\020\327\344\313Hq\013\201qF\2534\234Iq[\267tk\275\031\370 s\271\024<\214\3143G\177N\205\315\356\217\034\3165\026\234T\304\310\335\341U\354\036=\231\027\300\215\330\353\222&:F\024\3143x\021\002\250\324# QND\036\310\323\233\0079\034\031gT{$g\000\346\257W\032\017MY\211\314h\330l\221\300p\031\260\241\2462\2301\022&\255\014qnH aOd\215\306\336`\203(\n\3545\024\227\226\323\237\315 \212ea\027o\252\370\225\345\345p'Cx\317\271\326\300\014\207\310R\212\211\035\371Q*\205Kj\202\233i3\223+\243\231\206tw^\370,\243\325\225kP\262\027\246\026\361m\007\273rd\200j\244\220U\002\010j!\305(\004\242\301\nG\0033\014\303\020\272\203\246\025\212\225\",AB\366\334\300B\375\013B\317\260-`\261\\[~E\244\316\3342\007\326\302\240\375\216\261\300\355\362\0374xH'\223\024\265\214\345\007\304\210\343\002V\217 \265\222\311\2113\014\302\355\346\311\214Jd\351\251Z\363D\331\326ul\345\031\221s\357\236\304g0K\2451\016\247A\214\313E\022\272\207\347\236\301B\367Y\207\014\261a\262\373\352{z\230D\031L\246a\324\374\035B\344Ir\207P\227B\017\n\353\256\356\335S(\014R\241\341H=\237\223\003&L\267\263\033G(,\206\305\244\221\275\250Ds'\2725\324*\271\234\367\206;\007\0176'\032Y\340\3719(^\225\310/\021\2204%\352\375\363!\267c\215c\030\\\353xZN\214\240=\206\217\\\203\232.#q6%@\276T3gZw\036\237\n\226\021j\341P\305$Neh\341\252X\005</.\036\303\350\233\232\230u\2566""\332G\315M\211g\027,6-\336\276BL\250\265\325\262\330\030\"\216\262\020-l\357\3262\\\215\245\251c\254\230Ua>\344Qd\021\206R|\030fC\232\225\272CA\020\263\271S\340\353$<\316\216\272*X\256$\252\304\323\002\267@\370\006\034\030\211\274Z\332\211qN\237\226M\027:}\227;mh)\237i\303\204\236\023\2649\270\016\203\020\324I\221x\270\267\360+F\344\\\\UAH9\035\363\230\312\271\216`\317\313^\365\343msn\033V\034rAtG6\020\257\220\346]\nB\255\231\231\014\310].5\003#aek\030\261\035i\260\330\335\254\331\363\"\361\325>\030\366\224G\305\343\n\224\252a\006\340r\231\221\231jX7\035\207e\365U|\323(o&\326p\232z2I&X \321\321\203\364\370\365\373!\36203$\301\350\363\303\232\035\260\346\003#i\227\345\2004C\262\364&\026\307!\321p\300\340`\333\2247\323\234\274\240\201f\204rM\316\n\272\203\005a\360\016\251V\r\241k\007#\325f\206\020c:V\204K\244}\207\tp3\021\204(\270\034\007\270\232\000\215.\365\226\3501TQ\005P\244R\211-\220qM\272\254\231,A\326\n\301\\\r@\337\330\010\205\304\344\341<3\005\036`0p\003\201\206\007z\352A\341\253ep\2121\177\216D:dH\037\320\356\251!\367\260\314L\023\204I'\263.\366\265\014:\211p\n\206\034!\314\023\251\214 c\355\024=\214N\225\310\235u\330\035\t\317\0000\247'\\x\215P\274.e\365<\347\"k\257\010\236\027\030\013f\244\352\321x_8vH\242\017\317\260\023G9y\350\333\006\ngV\332e\3108rp\344\212\020\315j\330ho_\366\274\212hd\346\004\340\217D9X\013\202`k{V\3059(\241\312\360\241\230nN3\247\360\263\322\346s\303\326\010\245N>$q\376\241\316C\014\217(2\3526\235RK)Hs0J\022\036\000 \223\267A\305\2221\274'\205\304\260)#<$R\006\023Mh3\336\231\014-2\331\24785\023\023%\236\327F\240\350\245t\322\235\221p\272\236\304N(\366\002s\343xZ\241\200\210\205\251\\&\231\316G@\231\227\304_s\3358\345$\213p\0319\216\231\230\243\204\257s4\240\331\234\254\022-\020l\017P\216\317I\314G&\010\336\026]\227\226\326\032\306_\254\3255\313\005\200\255[\346\364OH*\352\360W\244/P\253X\315`\257Z\267\312\207u\236\261*\236\340T*^a\305j\265s\316\035\005r\302j\271\305\324\303\275\002\342\263[Z\264[g\003\026oWY\376\005\215\3314;\366""\255\332\317\211X\034\205~]k\214\343o\037&U\233\237y\357^\253t\265\374\223+\316c\237OG9\331\313\234y\374ZM\324\347+\013(\341\274Mx3R\246\226\024e*\372E\314K\000n,%b\240N\031gs}J\213\246\321\255\364\033\206\366\326i\002=N\241\367<\337\222}=Z\017\203\321\036\340B,04\037\336\325\226y\342\024\n\324\325\001\202I\357^\021\316\222t\212\3374F\023\035\342ta)&\322\330\030#@\342\350\354]\010\251W\207\277B\206\022sp8r\222\246\210=\376Y>\322d\211\014XJ<\303\323\336\344\257\306\022\t\004\222\204\241\004\241\010HBP\"tA\t\305\2423\tb\264\205?\361w$S\205\t\017\225\235U\260";
-    PyObject *data = __Pyx_DecompressString(cstring, 3054, 2);
+    const struct { const unsigned int length: 10; } index[] = {{2},{68},{35},{54},{37},{60},{24},{52},{26},{34},{29},{33},{45},{22},{15},{179},{37},{30},{32},{1},{1},{1},{1},{1},{8},{5},{6},{15},{23},{25},{7},{6},{2},{6},{35},{9},{30},{50},{8},{20},{32},{22},{30},{37},{77},{5},{8},{6},{20},{8},{15},{1},{3},{15},{18},{4},{1},{4},{7},{6},{17},{15},{9},{17},{18},{5},{8},{5},{7},{10},{10},{8},{15},{6},{9},{5},{5},{6},{7},{8},{12},{15},{2},{10},{5},{13},{5},{8},{8},{7},{4},{10},{1},{3},{3},{4},{8},{4},{7},{2},{5},{3},{4},{3},{7},{7},{7},{11},{11},{3},{14},{11},{10},{19},{14},{12},{10},{17},{13},{8},{13},{5},{13},{12},{10},{12},{19},{5},{4},{5},{4},{4},{6},{8},{6},{6},{6},{7},{1},{1},{5},{73},{545},{129},{394},{317},{399},{492},{533},{394},{343},{328},{104},{399},{1}};
+    #if (CYTHON_COMPRESS_STRINGS) == 2 /* compression: bz2 (3083 bytes) */
+const char* const cstring = "BZh91AY&SYj\252K\375\000\003 \177\377\377\377\377\377\377\377\377\377\377\357\377\377\377\377\377\377\300@@@@@@@@@@@@\000@\000`\014\037C`{\326t+c31\032\273\016S\233H\354\246\036\331\200\003M\327\204\221)\005\003OP\036\211\247\3424\364\332\020\025\007\251\247\250x\247\250\r\250\375Si6\241\240mC\324i\246F\2326&\nx\231=\t\221\004\222MM\251\2022\031\032\023)\3511\003\024\303I\240\321\350\215\000\323@\000\000\365\000\000\000\000\0316\240jdhQ\352\236\251\355SF\217S&\203\t\220\301\r0\214\230\214\0010&&\000F\230\000\t\210hb\014 i\242\001\"d\323Di\246\200\000\032i\241\352\006\203M\007\250\000\000\000\000\000\000\000\000\020i\211\200L\0010F\232`\000L\000\232\032\030\230\000\000\000\004a\030\004i\211\220\300\022H\004M\t\350\021\224\364M\240$\3652z\236\246\23216\220\000\320\000\310d\r\003@\000h\000\000\017\371\t\004\326\377\007o\314\202\377\004M!\033\375^\333\332|\027U\234\240\341\354\000\310`[g\177\203\300\225\364\007\t\304.0<''*\245\202\271p\234\302\014,\016]\023\356\374?\036\251\326\322?%\330;'h\375\277\245\333;\2051\373\277\351\254k\233&\321\266ln-\323xn%2\360\362\316\023\205yP\022)Q,\352p\362H\222\021\214c\022*H\221\"EWQ\"JF\264H\221\"D\212\225D\212\212\247\031\273\230\330\325j\324\251\255\336\327\330\377\252X\260\211\303s\023\023\023\022\232i\246\232i\246\236\037\370\030Ba\220%RF\3527w\200\346\003\315\361sN\367z#\321\332\334.\003\014\314\nI)\004\251\232k\276$\025\003\007\2000\250\017\215H\n\323\002\"\022L\014\244\032\241|\220^8nP:\001X0V\016\001\304J\301\336!O\024\034Z\257\336\025\250/\226\226\23690\202&9\246\317\221\004\320\"Y`8\262HTIHEeF*\023`\322\n\005\025\322\tZ\244F\243\002,!\025AT\213\002\020L\320\024\302\345b\2004\3432\311H%\020a\314\301\006J\215r\240\235\345|\210\251DQ\353\263\375\217\340\310\r\370]3\261\n\260\326z\277,\377KG|\277z\320\270\344\036#:\363\013y\022H\363\260\207f\212 \016\354\337#\245\260\006\2662\301\347\324(\224[\0351\201\354&><\026\2422\000\317\232T\003T\022\273\025\333E\215\220\361\374\275j\203\213X\257@\341;-\226\213\316\336q\254\265H\253D:\303""\025{\3218\3160\322|\351e\311bl\372;\020\333\026\341\r\320\r\324\266\200\335\2419\320&\00150\230\0237h\025\022\035P\367\220\327\007\275Q\325=\032\333\177\216*\005\303\326$\231\350$\034\254F{K\367\233r\234K+\020lc\017R\207ZR\256v\211s\347\226\004\210\361u#=\311\222\215X\364\003qLo6F5\303:\026\242\212Y\204d\342\255ra0\22172e!\236\030\274&g\204aT\200\245J\241L\t\20152}\036\274B E\023&\264\240\003og!\316`\215\213\t\213h,E\360\374n\3625\005\322\340\351\261\323\033\251\271z\320.\245h\262\005\360\312,#:IH\032(s\342t\244\343M\263R\010\300#S\001\"\t%&\337\325\207h\343\325BT\n\211\322\237n\271\005\340\210F\365\343\211\306\357\362\355]U\224/\2702e\222/\337W\272B\300R\320\200'\202pl\374\357/\362\370M\031\031\025\264\021B\202\330xU\234\217B\373\3513h\342\320\372\303h\202_sG#\303\022V\225\326^)\r`\316\347\016 \210\n\021\203\223\017\226YE\237(H+\262NJ\211\265\273\372(\243\304\274\033\273F+\367\311|\005\005Qp*E[1\264\032\002\326}\362\321\351h\345\264\201\221I\327Q\245\221\304\375wzD\344\344\022\226\354\266\250v\006\n\024(\210u\031\205\014\320U\365$\304T\324V\231\343\020PMH\351\204\257)\306+\251\221\250T@<\334-\344l\245\"C\216Y\230\354\206\\\316O\370\270\316\230\021\177\035\351On)#\237\375\344\344\322\020\305eb\21776v\200\242\007\365\033\025\321\017[\333\256\252\2420X\276\3220\026\315\361\rx\202 +_\254@\204\250\3464\212\332\002\356D\337\007:\000TR\331\237\312\345/\020\\/\216\024\350\355\032\206\010\250s9\306\215\036\276CAY\0242d\302\346\315\203DW\2235m\014\235\234\307>\361\210\354?\252@\320Si\302\2478\260\200p\334\276\035c\253\323\214\221\003\203\277|\002\032fLv\332\021\233L\320E\030\255\032\244\346\231\034.\037P8\310n\027\031\362c\205\013\200\003\201%\302\203\224\034\223\231\335sS\273r(\234\247J\230&\210\254;\033&\271\262\030\r\215\360\202\2102L\300\313W~A\272\327K\005|\013m\322\014F.\330\340\233ookf\263g\231\261\307\212\325\236\330\367\214\3443\205\311a.\312)\213@:\353\241\006\270\322\021\325xu\034\022\363^.\241\244v\252V\t*w$\201JEF\027\016c\003<\230\342\206\270j\325\253\211!a""\217[\035\010d~\367\331\303\232(\210\016\037\312\350\025b\305\r\004\021~\001aP\030c\001\314PVP\250P\213\256@\346\262\207J\t!\300T\221E\200>lj\302\302\2631M[\273\253\201\343\332'F\356+\331\271\221-1\2767\206VP\335\231\300e8\213\021T\\\036\351\262\260\006\004\333|f\003\246\256\256\251\234 \220\031f\3138*\206jK\t\316\002`\334\225\310\261\333E\240\036w-\254Tc(\022\215E*8\272\310\201D\266:\233\316d\372\335uV\\!fY\214w\212]]\331/\301n37\022\346\272R1a0\313K\207i=V~N\336\240\360\370\305a\215\030\002\215bI\214\034\274\027\037\262_F\016\225\025\234\242\305\277\202\345\330\351\235=\234\323\234\207\205\027\027#r\377:\311\333\001\241\rX2s=iJ\374Hm\0300\320\035\001m\256\204j\303!\260\226\305\376.a\251\341\263K\315\267\"\351\33730\315s[SMo\177\003\3073\214\245\360\332\245\346G\023aW\240x\366d[\002:X+\222&\016\221u3\014\334\264@\2525\010\302\024S\221\007\26251\331\307#f)\325\036\310\214\340\034\231m\331A\270\246\274\3461\3525Fi4\225\320\206\200\312\000\305\302\341n662\306\020\013\251\354\221\231\263\260A\224\005\245v\242\222\350_\016?\213 \212d\\\"\355U^\322\264\264\256\004\350g2f\326\260\031\017\220\245\025\022:\262\242U\n\227\352\202\233j\014\001\021I) \253\360\231\234\226\303+*\332P\264\027d-\343X\017v\340\321\000\324\321 \252\004\020\331!\305*\004\242\301\004\237X\222\t\004:\314\202\304\n\004\224\320\\`z}M\226q\365cX\325\232\202\373\004\312\222\375XVB\306\327\214\"\225\205t\213C\2568\035\252C\313\036\022\t\341\275-q\234\210>$G\026%\316\356\255\"Il\024\256\224\3143\013{\035x\204\240B\356eTF\264\266\253Vi\211\354F\210q&\312\213K\322iL?\214\350\2520\317<\216\236\030\346\312'\301\331(\242;\324MURD\331h\020b1\025\221\017\247\271\317\026\352K\214\034\361.\315\007p\267\227+k,\312\003\024\250xR\017g\341\261\223&F|f\3109AZk\032\026l\305\r^ \211\351\247\2722\262\340\256v.{\303\025\203\207\232\023\214\314\360|\234\2240\245\201\006\021\030\303*]\337X\304d\320\343\000B#9S\304\323F\260x\230fF\325\206\031!\204\214\007\020k\300\352\265\342k\260\251skQ>E@\255\327O\275\032!\002Tk\311\034\342""\205\021\024\2211\t\345\351\246\035k\215\246\273\th\310\2261i\rV\362\264].\341E\256\261\226\241\202\344v\017y}\254\213\2102[E,\237\003\203\200\221\000\352\224P\203\024\"kV\302\004J\006O\222m\000\230\240\310T\310[\3354dE\210\344\"Ez\2225%\346\200\022\271\341\321(\236\361\010\013u\247\222\231\2240\335\234\315\236)\365\334\355\245\230\275>\302p\341(\004\354\374[g\003\017\274]\300\272[\032\323\253\343n-\255\252\230\202\220n;\314c\022\3367\203&\355Y\355\033e\315\230\331WpI\006\224G5\320\257p\336[\352B\255\231\231\014\310\\\327\031A\221\240\271Z\300+\306\264\330l\016\3274yQx\352\237\014\033%\021\340\355\205JU0\2030n\230\321\215eVq\235\177bx\361\353WZ\206\261_ \3405z\324\2450\275\374N\263\377/\207\221\325\017\211\201\231&\017C\324\n\303\344\0140dj2\353\357\206xi\301\t\205\331\3432\234`p`\326\230,'u\242\021,O\034\223uB\276\300\301`|#\253V\003f[\200\344z\214\317x1\215,\241\025\327>\243\200\316\014\304\202\010\316\016\003\332L\360\222]\363/\254\030\326\024\003X\"F\t|@\342M\3462d\277`\350\207\0245\300\361\303\355\367\002\002\341t\342\200d\nL\200`\334\007\006\030\037\332R\220\r\n\353tR\013U\321\036\231I\004:\033\312X\351\260\314N\024\005$\224\031\227\177F\313\017fm\361Ya\304;\005\ns\200\016_\340\263\006/\274\316\212\027U\201\343A\342\006\025\005\013\212\371\240\027E\207\260\250\240\343Mr\001J\001m\200\264t\250V\013\242\373\003L\245H;\032A<\224\027`\215``\301:\226\223.1\307N:E\2243X\264\031\273[\031~n\n\031;\002p\223\242\034\214\005\26105\255[B\240\230Q\344\200Yf\032Z\346Wi\240\225\017\000\316\014\004\260\353\310\212\372\243\272\030d|\300\313,\3102\345\232c\000v`\230%<@E'\331\007+\222\r\343<nM\023\001\031\201*\2248\013\3135\241\004\310a^-\027\250\006\2639:Y\215pk&RW\017\236\206E\262\342\203\024\234\263\355\205\006|\002\305\226\002\221\033\0238\232wtt\t\331|\246\313\301\350\035K*\330\006N\307L\310RFh;4\300\331\034\214\022\256\2106\374\024d\257\356;\022K\277$\002\273\343\343\265f\255\217\354\265>\261X\254\025j\375\\\363\325\n\232\033\270\330\002\365\312\225L\226\014j\265~\204?""\327\005}S\316\ne;\2549V\245L\303{5[\254\232\247\274\\L?\250[\\\333M\316\\\373rm\261\223\223e\207d27=\237\312\265r,>5\2207\313<\253\027D\350\267\215\203\n\305o\313\024Ky\275\335/8\305\364\330\347`\347\345\276Z\346\034\336\033\315\324\346*\313\024\336\272Ot2R\301K\201\030\253\032\361n\372\340\ru\340*\224\302\200\316+m\251\221p\3244~\323\\\332\324\311\"I\322\372N\275\356\336\026W\016\231\317\337\217$!\026\030\032\017\345e\305<\221\n\005jj\200\301$\367\256h\347IF\321%nPF8\035\201\243\032\325\024\262\230 \021\340PS\370\343b)\262b\253xx\210:n\007\016RT\323\203\337\320\223\357\223$Hb\341(\357\017O{\222\267\000\3143\004\222\204\241\004\241\010HBP\"t\001\t\304\2522\024\306j\n\337\361w$S\205\t\006\252\244\277\320";
+    PyObject *data = __Pyx_DecompressString(cstring, 3083, 2);
     if (unlikely(!data)) __PYX_ERR(0, 1, __pyx_L1_error)
     const char* const bytes = __Pyx_PyBytes_AsString(data);
     #if !CYTHON_ASSUME_SAFE_MACROS
     if (likely(bytes)); else { Py_DECREF(data); __PYX_ERR(0, 1, __pyx_L1_error) }
     #endif
-    #elif (CYTHON_COMPRESS_STRINGS) != 0 /* compression: zlib (2805 bytes) */
-const char* const cstring = "x\332\335XM{\323V\026\216eS\322!\2648@aZ:\243Ph`J]\034\350\2643PZ'\241\220\207\002\261\003i\200\024q-]\333JlI\326\007\261\303\307t\351\245\226Zj\251\245\226^z\351\245\226^\362\023\370\t\363\036\311\316\007\037\303\320\241\317<3\317\223\350HW\367\236{\316{\336s\316\265\376.\026\352uQQ\033\\\263T]\263D\303\3442WT\255\272=(\236T\304\206c\331b\231\213\252\246\360\026WD\246)\242\246\333\242UW1}\326\251T\270)>T\371\206\250\350\334\212_\361\226\241[\\\264lSU\2705\3074Q\327\352mQ69\263\271\310\304r\262\310\2561[T-Q\3265[\255:\272ca\023\261\301\033\272\331\316a\025\251b\226\245V5\321\326E,V\276\214\365$3h\313\341\244\241\342\rS\265Y\271\316\207\023\022\243*\246\336\370Wkc\267\304\r\325\256\211v\333\340\342\364p\3346\231f\305nl/I\246a\205\n\250\354\035\330\315\357\004LM@H&]n\030v[\264j\014\252m\307\200q\025\335\024\345\266]\323\265\0343M\326^\210\r\320\035[\324+bYw4\305\022O\261\026\264\234TN/\274\274W\002\276c\030\272iseA{\310\352*\242\244+\374\014\001\217\311\010\322\264<-b\237ilF\216L\237\021\253X5\232\234\230\003\254\343m.^\217\035\\&\007a\302\r\035P\306\241\231\213\255$\177\024^W\313\334\004\310\200\220\302\212M\342\370i\342\342\345\305/\317\177{>\246\205\311\327\260\275\005\353\312r\035\221\003\035\310'G\255\333\330\214\340\265r\342BEl\353\216\250q\230\211\260\032\230\267s\201]\343\232hq\233n\304\3518\026\314\206\337\022\226\203\233\323C\\\325\207\234V\377\310\352\026\317\335\334\005\036L\036\022\214\3112\267Fh.\331\334\020\033\254\035\343\007>orS\337\006\372\266\0263\007*\301\306\207\334\0041l\336\240g\275LN\345.M\237\376\236)\212\244\021<\344\254\010\204\316\266d\275^'s\020\230\034+\313\027wp\231&%\306^zqxD\241K\212j\321\276<\336\275*\213\247(L\325\230=\344\001%#o\331\\\263\343\324\330\316K\325J\226(d\245\245nr\361\342w\342\331\227\270\245\351\010]\2059u[\224$\223+\216\314%IT\234\330QM\327\276D(\037\252\254\216\267\262\252\2516^&\356^\272\230$\257\262\313\213\227\307\210d[\316\354z\2775\352l!\313\352u]\216+\000\331&*\314f\271W\274M\330I:\206\005$\267i\033\262\311*""\366We\335\3225U\376J\322-Y\255\327\231\255\233\222\252\331\274j\202\007R^\311\031\355Vaina\341r\275\256\032\226j]\271J\273H\322b\273\205\377y\360V\272\001@K\274\262\304\233\016\327dN\264\317mg\000C\020G\226H\t\215\230\325\326dU\317\311\272\211,U5n\225\231\305eyI]\243\177\351\312UY\326-<\304WI\326\033H\363\326\326\260d\324\231\252\341\021\030\023\307%itS\3456\205\217\036\241\025\216H\310U\231\227\231\274.k3PH\027\322\003^\333\262QSi,\0214\212z]a2A )\344\230\244P\206I\252%%1\204w(\n\\s\032q\346r\323\324\315J\235U-\260\244\301\354ai\220\244\212\243\311d\024\314\261lr[\252q\263\001\313F\256\250\212$\251\r\2527\220T\255h\217-4\022\006\016i(I\rrVB\315\244\202IU\t\017\272\342\324!5\215|\\\323X\203\036\222+(\215+\337\300\305\200\245F\033\266\033\000\300`\n<\225\316Jj\"\326H r$L*\010\311\213\344v\315\320\rIB\354%\271\306\345u\313i$OCw\3506\206&\276s4C\225\327a\317em4\357a\3346\010\203\246\303\352\211e\333\371\262u\227d\326\216\001 \201\333\252j\331\004\256n[#\344\314\270\022\311\252\321\316Y\250\310\3100IBM\033:\215\273aV\306\367C+w\334\2176\2123\201`\305\260\211w\334\260l\035\377\246C\341\2661,\221;\200\3131\300s\216\352\356pk\203\253\325\232m\2656\251\302Y\243\334\311\rs'\367\272\334\211\306\016\272\371A\346s\237\r2\323~s\2209\341\027\374\222\337\014\306\303T\370Iw\266\313\272\315\236\320\233\352]\350\227\243\305bT,E\245[\321\255\237\243\237\357Dw\356FwW\243\325\373\321}5R\327\242\265f\3244#\363I\364\344\351\363\261\261\177\244\256\010\020W\204\005\022\013\3025\022\327\204\237H\374$\334 qCX$\261(\334#qOX%\261*\310$dA!\241\010:\t]0H\030B\213DK\330$\261)<\"\361HxB\342\211\360\224\304S\341\2074\304\017\351\002\211Bz\226\304lz\201\304B\372\032\211k\351\353$\256\247o\220\270\221\276I\342f\272H\242\230.\221(\245\227H,\245\357\222\270\233^%\261\232\376%=\310|\346\237\007:\251\347\357\215\355y\277\263\267\343\270\005w\311Ky\331\301\370G.\033\214Ot\256\270_\343\371\240W\360\212\203\211\375\203\211\254\233uO\270\2127\345]\304\302t\220\017\346\001mv0\361A\207u\232\356\270'xS\230""\030\355\377\002\257\346\202f\230\t\013a)lvS\335#@\376x\257\320+\366\312\375T?\333\237\216\212K\321\322r\264\274\022\255$\360\337\213\356U\242J5\252j\221\246G\372f\264\371(z\364x0~\324\333\347\347\375\313A68\021(\341Tx\021QL\367\362\275y\3509\026\335F\370\022\025,br$+\203\314\276\316\327n\312=\346\025\275\265 \025\034\nn\205G\273G{\331\336\324\257\251A\346c\030?\003w2G\\\323\233\364\362\336\234g\371S>xs\314\273\354g\375\343\376\254/c\257\223\261\365\263!\270\364)41\017|\332\373k\263\223\352Lv\316u\200\316\207\300k\326]\363\005\377s\354B\013\234\260\360l\3070i*\007B\3609A\024\236\014\235n!\032\233t\247\006\231\361\316>w\306]\365'\375o\202\343A\201\220\236\353\230.p<\204\020\224\334&@?2\324\300\206@\027\006\037d\335I\367\234\313\334\346\313\363\n\376\255`28\027\260\300\014'\303s!\013\233o\234\237\r>\013J\201\005D\363\317&\2209\317\306\367\221g\035L\307\023\234\300Jo\257g\302\314\374\263\375\024\372i\000v\016P\020`\304\234L\034c!<\323\255\367OE\245%\204\276sk\270\251\371\306\271\200\002\333\314a\223?l\315\231\017'\272?\365\307\221\235 \345\376C\2572\343\335\250\217\306\000\311\363\263c{\016\273\205A\346\250\007f\034\242\273\303nL\r\004\373\217\310\003p\242\020\307\177\220\371\304\313?C\340\204\316\361\316,@\332\200\r\355\255 \247\202#q\036d&:\363\240^\226B<\001\323k^\331\237\010f\003\220\350\375N\2663\325\311\023;\363\320 \303\017<\354\357\224\020\370\203\230*\303\241\213\276\031\034C\276X\335\3430S\350\237I\262\203\362s?\030\322t\005\3673\367\026&\236\367\232\330{\312?G{\323f\343\356\036\267H9{\320\275\000TL\377#\337\t\n\301r8\023\026)\233\327cf\377H\\\034L\300[\357\260W\003\265Z\240\313\247]\366\342P\226\254$*\264\200\363\307H\276y`w5\274\332-t\227{3=\200\007\\\236\377\365M\340\215p\033d\376\3545\377\233\340\035\216i\260\027\240\245\341\314U\350\224\221\221_t\213\335\032\252\321\276h\t]\000\225\377A\364\240\034\225\225HI\312P\215,\332\215:\221p\306/\002\246\247a1\224\273\223\335\374\273G?\036\372\020\373\246\340\346\337\274Y\217\2751\034Yw\027Wq\347\335C\345\231B""\335\000~\301#@R\200\267e\324\315\013}\326\337\210\226Q5\341+\352\345z\264\336\210\032\255\250\325\2466\224*P\343)\010\263$f\205\353$\256\217:\3342\211ea\205\304\212p\207\304\235\027\372\335}\022\367\005\211\204$< \361@\250\222\250\n*\tUX'\261.\324I\324\205\006\211\306\013\235\261I\242\371R\203$2Q\3167\223\206\365\272\032J\245,\251g/40\"\352\304\001w\257\353\340y\311O\371\331\301\001\374\201\265hi'\240\370\361\216\256U\034\034H*\310\3258\002\007\262QvzG\317\233\014\363\230\3643\016\025\345^\n\275%im\325~\251oE\245_\242_@'\036q\020)9HX\203\211\217\275\323o\325\306\320I6\275\254\367\227\270V\037\nV\302\025D\220\305u+N\250AF\364S\377\377\261\336\331-/\004e\224\370\343\341\225\356Lw\245W\352Y\375\343\375\371h\021\307\270\3331\200\311!\002\350K\221\224d2\245qTS\t\314\346K|\240\322\364.\370\220t\236)\312v4\336\r@O\207\314|o\266\307z\315\376\336\276\031\025Q``\023\nLb\220\025Yvd;\203\211O\275\325\255\263\306<NI\307@\"\031\247\243\023\210\334\343\330\025\020\t+\261\214\316\245T\010\276\203\003\273\213\000\n@\\y\177\317c\205\005\330\347\350 \367;\037+\276\001\221\317\307\253g\302\325\336\261\376Jt{\371u\307\212W\317\335\335\367\22396\262\355q\377[\024\372\2678V\374\026\365\321\330\237<\366\374\333\235\235q\273,\307I;\005\226eN\372E:}\307\207\316\302o\357\214\265\260\334\025\272S\324\204\376\203\016\371\354\2456\267}\270\310$\375\367-[\034\022\013g\351\243\240\302)\320\346z/\373\342PatH?\004\245U\257\004}Y\377t0\023\334\005\3052\335\371\336xrH+\216~\233\215\341T\361<\367?qZ{\367p\376{'\006\312\305\342\033O\n1X\0231(v\234\006e\357=\270-\014\217\310{\202\"X\245\300\243\313\275\341\317\272\267\2306\207]\217RB\r\277XH\212\356\320g\211\341W\030\361\324\253\307\317\210\370\025/\016?x\254\253\206\244\250\226\301l\271vz\354u\212\222\3473\342H\276\265\342d\242xj\261-Y\361g\037{[\331\033\027\275\270\373[/|\203\277\025\307\342\322\331*k4\330\256\221Z\333\310W\362c\364\225d\364\235f\347\373\374\360\375\316\241X\311\315\177\0027\323\3079";
-    PyObject *data = __Pyx_DecompressString(cstring, 2805, 1);
+    #elif (CYTHON_COMPRESS_STRINGS) != 0 /* compression: zlib (2820 bytes) */
+const char* const cstring = "x\332\335XM{\323V\026\216eS\322!\2648@aZ:\243\360\321\300\224\2728\320ig\240L\235\204B\036\n\304\016\244\001R\304\265tm+\261%Y\037\304\016\037\323\245\227Zj\251\245\226Zz\351\245\227Zz\311O\340'\314{$;\037@\207\322\241\317<3\317\223\350HW\367\236{\316{\336s\316\265\376.\026\352uQQ\033\\\263T]\263D\303\3442WT\255\272=(\236R\304\206c\331b\231\213\252\246\360\026WD\246)\242\246\333\242UW1}\326\251T\270)>R\371\206\250\350\334\212_\361\226\241[\\\264lSU\2705\3074Q\327\352mQ69\263\271\310\304r\262\310\2561[T-Q\3265[\255:\272ca\023\261\301\033\272\331\316a\025\251b\226\245V5\321\326E,V\276\210\365$3h\313\341\244\241\342\rS\265Y\271\316\207\023\022\243*\246\336\370wkc\267\304\r\325\256\211v\333\340\342\364p\3346\231f\305nl/I\246a\205\n\250\354\035\330\315\357\004LM@H&]i\030v[\264j\014\252m\307\200q\025\335\024\345\266]\323\265\0343M\326^\210\r\320\035[\324+bYw4\305\022O\263\026\264\234R\316,\274\272W\002\276c\030\272iseA{\304\352*\242\244+\374,\001\217\311\010\322\264<-b\237ilF\216L\237\025\253X5\232\234\230\003\254\343m.\335\210\035\\&\007a\302M\035P\306\241\231\213\255$\177\024^W\313\334\004\310\200\220\302\212M\342\370i\342\342\225\305/.|s!\246\205\311\327\260\275\005\353\312r\035\221\003\035\310'G\255\333\330\214\340\265r\342BEl\353\216\250q\230\211\260\032\230\267s\201]\343\232hq\233n\304\3518\026\314\206\337\022\226\203\233\323C\\\325G\234V\177\317\352\026\317\335\332\005\036L\036\022\214\3112\267Fh.\331\334\020\033\254\035\343\007>orS\337\006\372\216\0263\007*\301\306G\334\0041l\336\240g\275LN\345.O\237\371\007S\024I#x\310Y\021\010\235k\311z\275N\346 09V\226/\355\3402MJ\214\275\374\362\360\210B\227\025\325\242}y\274{U\026OS\230\2521{\310\003JF\336\262\271f\307\251\261\235\227\252\225,Q\310JK\335\344\342\245o\305s\257pK\323\021\272\ns\352\266(I&W\034\231K\222\2508\261\243\232\256}\201P>RY\035oeUSm\274L\334\275|)I^e\227\027\257\216\021\311\266\234\331\365~k\324\331B\226\325\353\272\034W\000\262MT\230\315r\257y\233\260\223t\014\013Hn\3236d\223U\354/\313\272\245k\252""\374\245n\311j\275\316l\335\224T\315\346U\0234\370Rz\335\250\224W\244\246\303\024p\3271y\316h\267\nKs\013\013W\352u\325\260T\353\3525\262B\222\026\333-\374\317\203\327\322M\000^\342\225%\336t\270&sJ\213\334v\2060\004yd\251\224\320\214YmMV\365\234\254\233\310bU\343V\231Y\\\226\227\3245\372\227\256^\223e\335\302C|\225d\275\2012\320\332\032\226\214:S5<\"\006\224\003\2224\272\251r\233\302K\217\320\n\237$\344\262\314\313L^\227\265\031(\244\013\351\001\357m\331\250\2514\226\010\032E=\2570\231\320\220\024rLR(\003%\325\222\222\030\303;\024\r\2569\2158\263\271i\352f\245\316\252\026X\324`\366\260tHR\305\321d2\n\346X6\271-\325\270\331\200e#WTE\222\324\006\325#H\252f\264\307\026\032\tC\2074\225\244\0069+\241\246RA\245\252\205\007]q\352\220\232F>\256i\254A\017\311\025\224\307\225o\340b\300R\243\r\333\r\000`0\005\236J\347$5\021k$\0209\022&\025\214\344Er\273f\350\206$!\366\222\\\343\362\272\3454\222\247\241;t\033C\023\3379\232\241\312\353\260\347\2126\232\367(n+\204\001\250TO,\333\316\247\255\273$\363v\014\000\t\334VU\313&pu\333\032!g\306\225JV\215v\316B\305F\006J\022j\336\320i\334\r\2636\276\037Z\271\343~\264Q\234)\004+\206M\274\343\206e\353\3707\035\n\267\215a\211\334\001\\\216\001\236sT\177\207[\033\\\255\326l\253\265I\025\320\032\345Vn\230[\271\327eQ\356W\344V4v\320\315\0172\237\371l\220\231\366\233\203\314I\277\340\227\374f0\036\246\302O\272\263]\326m\366\204\336T\357b\277\034-\026\243b)*\335\216n\377\030\375x7\272{/\272\267\032\255>\210\036\250\221\272\026\2555\243\246\031\231O\243\247\317^\214\215\3753uU\200\270*,\220X\020\256\223\270.\374@\342\007\341&\211\233\302\"\211E\341>\211\373\302*\211UA&!\013\n\tE\320I\350\202A\302\020Z$Z\302&\211M\3411\211\307\302S\022O\205g$\236\t\337\245!\276K\027H\024\322\263$f\323\013$\026\322\327I\\O\337 q#}\223\304\315\364-\022\267\322E\022\305t\211D)\275Db)}\217\304\275\364*\211\325\364O\351A\346\204\177\001\350\244^\2747\266\347\375\316\336\216\343\026\334%/\345e\007\343\037\271l0>\321\271\352~\205\347\203^\301+\016&\366\017&\262n\326=""\351*\336\224w\t\013\323A>\230\007\264\331\301\304\007\035\326i\272\343\236\340Mab\264\377s\274\232\013\232a&,\204\245\260\331Mu\217\000\371\343\275B\257\330+\367S\375l\177:*.EK\313\321\362J\264\222\300\177?\272_\211*\325\250\252E\232\036\351\233\321\346\343\350\361\223\301\370Qo\237\237\367\257\004\331\340d\240\204S\341%D1\335\313\367\346\241\347Xt\007\341KT\260\210\311\221\254\0142\373:_\271)\367\230W\364\326\202Tp(\270\035\036\355\036\355e{S?\247\006\231\217a\374\014\334\311\034qMo\322\313{s\236\345O\371\340\3151\357\212\237\365\217\373\263\276\214\275N\305\326\317\206\340\322\247\320\304<\360i\357\317\315N\2523\3319\337\001:\037\002\257Yw\315\027\374\317\260\013-p\302\302\363\035\303\244\251\034\010\301g\004Qx*t\272\205hl\322\235\032d\306;\373\334\031w\325\237\364\277\016\216\007\005Bz\256c\272\300\361\020BPr\233\000\375\310P\003\033\002]\030|\220u'\335\363.s\233\257\316+\370\267\203\311\340|\300\0023\234\014\317\207,l\276q~68\021\224\002\013\210\346\237O s\236\217\357#\317:\230\216'8\201\225\336^\317\204\231\371\347\373)\364\323\000\354<\240 \300\2109\2318\306Bx\266[\357\237\216JK\010}\347\366pS\363\215s\001\005\266\231\303&\177\330\2323\037Nt\177\350\217#;A\312\375\207^g\306\273Q\037\215\001\222\027\347\306\366\034v\013\203\314Q\017\3148Dw\207\335\230\032\010\366\037\221\007\340D!\216\377 \363\211\227\177\216\300\t\235\343\235Y\200\264\001\033\332[AN\005G\342<\310Lt\346A\275,\205x\002\246\327\274\262?\021\314\006 \321\373\235lg\252\223'v\346\241A\206\037x\330\337)!\360\0071U\206C\227|38\206|\261\272\307a\246\320?\233d\007\345\347~0\244\351\n\356\t\3676&^\360\232\330{\312?O{\323f\343\356\036\267H9{\320\275\010TL\377#\337\t\n\301r8\023\026)\233\327cf\177O\\\034L\300[\357\260W\003\265Z\240\313\247]\366\362P\226\254$*\264\200\363\307H\276y`w-\274\326-t\227{3=\200\007\\^\374\365M\340\215p\033d\376\3545\377\233\340\035\216i\260\027\240\245\341\3145\350\224\221\221\237w\213\335\032\252\321\276h\t]\000\225\377a\364\260\034\225\225HI\312P\215,\332\215:\221p\306/\002""\246ga1\224\273\223\335\374\273G?\036\372\020\373\246\340\346\337\274Y\217\2751\034Yw\027Wq\347\335G\345\231B\335\000~\301c@R\200\267e\324\315\213}\326\337\210\226Q5\341+\352\345z\264\336\210\032\255\250\325\2466\224*P\343)\010\263$f\205\033$n\214:\3342\211ea\205\304\212p\227\304\335\227\372\335\003\022\017\004\211\204$<$\361P\250\222\250\n*\tUX'\261.\324I\324\205\006\211\306K\235\261I\242\371J\203$2Q\3167\223\206\365K5\224JYR\317^j`D\324\211\003\356^\327\301\363\222\237\362\263\203\003\370\003k\321\322NB\361\223\035]\25388\220T\220kq\004\016d\243\354\364\216\2367\031\3461\351G\034*\312\275\024zK\322\332\252\375R\337\212J?E?\201N<\342 Rr\220\260\006\023\037{g\336\252\215\241\223lzY\357/q\255>\024\254\204+\210 \213\353V\234P\203\214\350\247\376\377c\275\263[^\014\312(\361\307\303\253\335\231\356J\257\324\263\372\307\373\363\321\"\216qwb\000\223C\004\320\227\")\311dJ\343\250\246\022\230\315W\370@\245\351]\360!\351<S\224\355h\274\033\200\236\016\231\371\336l\217\365\232\375\275}3*\242\300\300&\024\230\304 +\262\354\310v\006\023\237z\253[g\215y\234\222\216\201D2NG'\021\271'\261+ \022Vb\031\235K\251\020|\013\007v\027\001\024\200\270\362\376\236\307\n\013\260\317\321A\356w>V|\r\"_\210W\317\204\253\275c\375\225\350\316\362/\035+^?ww\337O\346\330\310\266'\375oP\350\337\342X\361[\324Gc\177\362\330\213ovv\306\355\262\034'\355\024X\2269\345\027\351\364\035\037:\013\277\2753\326\302rW\350NQ\023\372\017:\344\363W\332\334\366\341\"\223\364\337\267lqH,\234\245\217\202\n\247A\233\033\275\354\313C\205\321!\375\020\224V\275\022\364e\3753\301Lp\017\024\313t\347{\343\311!\2558\372m6\206S\305\213\334\377\304i\355\335\303\371\353N\014\224\213\3057\236\024b\260&bP\3548\r\312\336{p[\030\036\221\367\004E\260J\201GWz\303\237uo1m\016\273\036\245\204\032~\321\220\024\335\241\317\026\303\2574\342\351\327\217\237\025\361\203^\034~\020YW\rIQ-\203\331r\355\314\330/)J\236\317\212#\371\326\212\223\211\342\351\305\266d\305\237\205\354meo\\\364\362\356o\275\360\r\376V\034\213K\347\252\254\321`\273Fjm#""_\311\217\321W\224\321w\234\235\357\363\303\367;\207b%\267\376\005'X\341\230";
+    PyObject *data = __Pyx_DecompressString(cstring, 2820, 1);
     if (unlikely(!data)) __PYX_ERR(0, 1, __pyx_L1_error)
     const char* const bytes = __Pyx_PyBytes_AsString(data);
     #if !CYTHON_ASSUME_SAFE_MACROS
     if (likely(bytes)); else { Py_DECREF(data); __PYX_ERR(0, 1, __pyx_L1_error) }
     #endif
-    #else /* compression: none (6442 bytes) */
-const char* const bytes = ": All dimensions preceding dimension %d must be indexed and not slicedBuffer view does not expose stridesCan only create a buffer that is contiguous in memory.Cannot assign to read-only memoryviewCannot create writable memory view from read-only memoryviewCannot index with type 'Cannot transpose memoryview with indirect dimensionsDimension %d is not directEmpty shape tuple for cython.arrayIndex out of bounds (axis %d)Indirect dimensions not supportedInvalid mode, expected 'c' or 'fortran', got Invalid shape in axis <MemoryView of Note that Cython is deliberately stricter than PEP-484 and rejects subclasses of builtin types. If you need to pass subclasses then set the 'annotation_typing' directive to False.Out of bounds on buffer access (axis Step may not be zero (axis %d)Unable to convert item to object.>')?add_note and  at 0xcollections.abc<contiguous and direct><contiguous and indirect>disableenablegc (got got differing extents in dimension isenableditemsize <= 0 for cython.arrayno default __reduce__ due to non-trivial __cinit__ object><strided and direct><strided and direct or indirect><strided and indirect>unable to allocate array data.unable to allocate shape and strides.ztpcraft/bosonic/_oscillator_integrals_1d.pyxASCIIEllipsisGHdata__Pyx_PyDict_NextRefSequenceView.MemoryViewaabcallocate_bufferasyncio.coroutinesbaseccSijcSij_GHccosijccosij_complex_GHccosij_plain_GH__class____class_getitem__cline_in_tracebackcn2ijcn2ij_GHcountcphi2ijcphi2ij_GHcprefactor__dict__dtype_is_objectencodeenumerateerrorflagsformatfortran__func____getstate__hermite_complexid__import__index_is_coroutineitemsitemsize__main__memviewmode__module__nn_in_jname__name__ndim__new__npnumpyobjpackpadphi_0_iphi_0_jphi_extphi_ratio_iphi_ratio_jpop__pyx_checksum__pyx_state__pyx_type__pyx_unpickle_Enum__pyx_vtable____qualname____reduce____reduce_cython____reduce_ex__registerroots_hermiteroundscipy.special__set_name__setdefault__setstate____setstate_cython__shapesizestartstepstopstruct__test__unpackupd""atevaluesweightsxzzerosztpcraft.bosonic._oscillator_integrals_1d\320\000\023\2201\330\004&\240a\330\004'\240q\330\004$\240A\240R\240q\250\010\260\001\260\033\270B\270a\270q\300\002\300!\300;\310b\320PQ\320QR\320RT\320TW\320WY\320YZ\320Z\\\320\\^\320^i\320ij\320jq\320qr\320r}\320}~\360\000\000\177\001G\002\360\000\000G\002I\002\360\000\000I\002K\002\360\000\000K\002L\002\360\000\000L\002N\002\360\000\000N\002P\002\360\000\000P\002[\002\360\000\000[\002\\\002\360\000\000\\\002c\002\360\000\000c\002d\002\360\000\000d\002o\002\360\000\000o\002p\002\360\000\000p\002x\002\360\000\000x\002z\002\360\000\000z\002{\002\360\000\000{\002}\002\360\000\000}\002~\002\360\000\000~\002@\003\360\000\000@\003A\003\360\000\000A\003B\003\360\000\000B\003I\003\360\000\000I\003K\003\360\000\000K\003M\003\360\000\000M\003N\003\360\000\000N\003O\003\360\000\000O\003Q\003\360\000\000Q\003R\003\360\000\000R\003S\003\360\000\000S\003Z\003\360\000\000Z\003\\\003\360\000\000\\\003]\003\330\004#\2404\240q\250\001\360\006\000\005\t\210\007\210u\220A\220S\230\001\230\021\330\010\026\220a\330\010\014\210G\2205\230\001\230\023\230A\230Q\330\014\r\330\014\021\220\021\220$\220d\230!\230<\240q\250\003\2501\250D\260\001\260\021\330\014\016\210a\210q\220\010\230\002\230!\330\014\r\320\r+\2501\250C\250q\260\004\260A\260R\260q\270\001\270\027\300\002\300\"\300A\300Q\300b\310\001\310\021\310'\320QS\320SV\320VX\320XY\320YZ\320Z[\320[f\320fg\320gn\320no\320oz\320z{\320{|\330\010\030\230\013\2401\240E\250\021\250$\250d\260!\260<\270q\300\003\3001\300D\310\001\310\034\320UW\320WX\320XY\320Ya\320ac\320cd\330\004\013\2105\220\001\220\034\230Q\230j\250\001\250\024\250T\260\030\270\030\300\021\300!\200\001\330\004\032\230!\2302\230Q\330\004\027\220r\230\022\2301\230C\230s\240!\2401\330\004\034\230E\240\021\240\"\240B\240c\250\021\250%\250q\260\004\260B\260a\330\004\035\230Q\230a\230q\330\004\007\200q\210\001\210\022\2103\210a\330\010\017\210u\220B\220j\240\002\240&\250\001\250\021\250%\250u\260A\340\010\017\210u""\220B\220j\240\002\240\"\240B\240b\250\002\250&\260\001\260\021\260%\260u\270A\320\000\022\220!\330\004\010\210\013\2202\220\\\240\022\2407\250\"\250A\330\010\014\210C\210r\220\021\330\014\024\220A\220R\220q\230\001\230\027\240\002\240\"\240B\240a\240q\250\003\2501\250A\330\016\021\220\022\2203\220a\220q\330\014\024\220A\220R\220q\230\001\230\027\240\002\240\"\240A\240T\250\022\2503\250a\250r\260\022\2603\260a\260q\330\016\021\220\022\2203\220a\220q\330\014\024\220A\220R\220q\230\001\230\027\240\002\240\"\240A\240T\250\021\250#\250R\250s\260!\2601\340\014\023\2201\340\010\013\2103\210a\210q\330\014\023\2201\220B\220a\220q\230\007\230r\240\022\2401\340\r\021\220\021\220'\230\022\2303\230a\230s\240!\2404\240q\250\004\250C\250q\260\002\260,\270l\310(\320RS\330\014\r\210T\220\022\2203\220a\220r\230\022\2303\230a\230s\240!\2404\240q\250\004\250C\250q\260\002\260,\270l\310(\320RS\330\014\022\220!\2201\220C\220q\230\n\240!\2404\240q\250\004\250D\260\014\270L\310\010\320PQ\360\006\000\r\024\2201\220B\220a\220q\230\007\230r\240\022\2401\340\r\021\220\022\2203\220a\220r\230\022\2303\230a\230s\240!\2404\240q\250\004\250C\250q\260\002\260,\270l\310(\320RS\330\014\022\220!\2201\220C\220q\230\n\240!\2404\240q\250\004\250D\260\014\270L\310\010\320PQ\320\000\024\220A\3600\000\005\025\220A\330\004\030\230\001\330\004\024\220A\330\004\025\220Q\330\004\027\220q\330\004\031\230\021\330\004\034\230A\330\004\035\230Q\330\004\033\2301\340\004\010\210\002\210\"\210B\210a\210w\220a\220y\240\002\240\"\240B\240b\250\001\250\027\260\001\260\021\330\004\014\210D\220\001\220\021\330\004\010\210\014\220B\220h\230b\240\014\250B\250a\330\004\t\210\021\210!\2101\330\004\013\2101\210B\210c\220\022\2201\330\004\r\210R\210r\220\023\220B\220c\230\022\230<\240r\250\034\260R\260s\270\"\270L\310\002\310,\320VX\320XY\360\006\000\005\r\210C\210q\220\002\220#\220T\230\022\2304\230q\240\002\240!\2403\240b\250\001\330\004\010\210\010\220\005\220Q\220a\330\010\023\220;\230a\230r\240\026\240u\250A\250V\2602\260Q""\330\010\026\220k\240\021\240\"\240F\250&\260\001\330\014\030\230\001\230\025\230h\240a\240x\250r\260\035\270a\330\014\030\230\001\230\025\230h\240a\240x\250r\260\021\330\004\013\2103\210a\210x\220r\230\032\2401\240D\250\004\250H\260H\270A\270V\3002\300Q\320\000\034\230A\3606\000\005\025\220A\330\004\030\230\001\330\004\024\220A\330\004\025\220Q\330\004\027\220q\330\004\031\230\021\330\004\035\230Q\330\004\033\2301\330\004\037\230q\340\004\010\210\002\210\"\210B\210a\210w\220a\220y\240\002\240\"\240B\240b\250\001\250\027\260\001\260\021\330\004\014\210D\220\001\220\021\330\004\010\210\014\220B\220h\230b\240\014\250B\250a\330\004\t\210\021\210!\2101\330\004\013\2101\210B\210c\220\022\2201\330\004\r\210R\210r\220\023\220B\220c\230\022\230<\240r\250\034\260R\260s\270\"\270L\310\002\310,\320VX\320XY\360\006\000\005\025\220C\220q\230\007\230q\240\003\2401\240H\250B\250c\260\021\260+\270Q\270h\300b\310\013\320ST\320T^\320^`\320`b\320bd\320df\320fg\320gh\330\004\014\210C\210q\220\002\220#\220T\230\022\2304\230r\240\022\2402\240Q\240a\240~\260Q\260c\270\022\2701\330\004\010\210\010\220\005\220Q\220a\330\010\023\220;\230a\230r\240\026\240u\250A\250V\2602\260Q\330\010\026\220k\240\021\240\"\240F\250&\260\001\330\014\030\230\001\230\025\230h\240a\240x\250r\260\035\270a\330\014\030\230\001\230\025\230h\240a\240x\250r\260\035\270a\330\014\017\210q\220\001\220\022\2209\230B\230a\330\004\013\2103\210a\210x\220r\230\032\2401\240D\250\004\250H\260H\270A\270V\3002\300Q\320\000\021\220\021\330\004\034\230A\330\004\035\230Q\330\004\034\230A\230[\250\002\250!\2501\250B\250a\250{\270\"\270A\270Q\270b\300\003\300;\310a\310w\320VW\320Wb\320bc\320ck\320km\320mx\320xy\360\000\000z\001A\002\360\000\000A\002B\002\360\000\000B\002M\002\360\000\000M\002N\002\360\000\000N\002V\002\360\000\000V\002X\002\360\000\000X\002Y\002\360\000\000Y\002[\002\360\000\000[\002\\\002\360\000\000\\\002^\002\360\000\000^\002_\002\360\000\000_\002`\002\360\000\000`\002g\002\360\000\000g\002i\002\360\000\000i\002k""\002\360\000\000k\002l\002\360\000\000l\002m\002\360\000\000m\002o\002\360\000\000o\002p\002\360\000\000p\002q\002\360\000\000q\002x\002\360\000\000x\002z\002\360\000\000z\002{\002\330\004\033\2303\230a\230q\360\006\000\005\t\210\013\2202\220\\\240\022\2407\250\"\250A\330\010\014\210C\210r\220\021\330\014\023\2201\340\014\023\2201\340\010\014\210G\2205\230\001\230\023\230A\230Q\330\014\030\230\001\330\014\020\220\007\220u\230A\230S\240\001\240\021\330\020\021\330\020\025\220Q\220d\230$\230a\230|\2501\250C\250q\260\004\260A\260Q\330\020\022\220!\2201\220H\230B\230a\330\020\021\320\021'\240q\250\003\2501\250D\260\001\260\022\2601\260A\260W\270B\270b\300\001\300\021\300\"\300A\300Q\300g\310R\310s\320R]\320]^\320^e\320ef\320fq\320qr\320rs\330\014\032\230)\2401\240E\250\021\250$\250d\260!\260<\270q\300\003\3001\300D\310\001\310\034\320UW\320WX\320XY\320Ya\320ac\320cd\330\010\017\210z\230\021\230*\240A\240T\250\024\250X\260X\270Q\270a\320\000\024\220A\330\004\037\230q\330\004 \240\001\330\004\034\230A\230[\250\002\250!\2501\250B\250a\250{\270\"\270A\270Q\270b\300\003\300;\310a\310w\320VW\320Wb\320bc\320ck\320km\320mx\320xy\360\000\000z\001A\002\360\000\000A\002B\002\360\000\000B\002M\002\360\000\000M\002N\002\360\000\000N\002V\002\360\000\000V\002X\002\360\000\000X\002Y\002\360\000\000Y\002[\002\360\000\000[\002\\\002\360\000\000\\\002^\002\360\000\000^\002_\002\360\000\000_\002`\002\360\000\000`\002g\002\360\000\000g\002i\002\360\000\000i\002k\002\360\000\000k\002l\002\360\000\000l\002m\002\360\000\000m\002o\002\360\000\000o\002p\002\360\000\000p\002q\002\360\000\000q\002x\002\360\000\000x\002z\002\360\000\000z\002{\002\330\004\033\2303\230a\230q\330\004\010\210\013\2202\220\\\240\022\240;\250b\260\002\260\"\260G\2702\270X\300R\300s\310\"\310D\320PR\320RU\320UW\320WZ\320Z[\320[]\320]_\320_b\320bd\320dg\320gh\320hi\330\010\017\210q\340\010\014\210G\2205\230\001\230\023\230A\230Q\330\014\033\2301\330\014\020\220\007\220u\230A\230S\240\001\240\021\330\020\021\330\020\025""\220Q\220d\230$\230a\230|\2501\250C\250q\260\004\260A\260Q\330\020\022\220!\2201\220H\230B\230a\330\020\021\320\021'\240q\250\003\2501\250C\250q\260\002\260!\2602\260Q\260a\260w\270b\300\002\300!\3001\300B\300a\300q\310\007\310r\320QT\320T_\320_`\320`g\320gh\320hs\320st\320tu\330\014\035\230\\\250\021\250%\250q\260\004\260D\270\001\270\034\300Q\300c\310\021\310$\310a\310|\320[]\320]^\320^_\320_g\320gi\320ij\330\004\013\210=\230\001\230\032\2401\240D\250\004\250H\260H\270A\270Q\320\000\025\220Q\330\004\010\210\013\2202\220\\\240\022\2407\250\"\250A\330\010\014\210C\210r\220\021\330\014\024\220A\220R\220q\230\001\230\027\240\002\240\"\240B\240a\240q\250\003\2501\250A\330\016\021\220\022\2203\220a\220q\330\014\024\220A\220R\220q\230\001\230\027\240\002\240\"\240A\240T\250\022\2503\250a\250s\260\"\260C\260q\270\001\330\016\021\220\022\2203\220a\220q\330\014\024\220A\220R\220q\230\001\230\027\240\002\240\"\240A\240T\250\021\250#\250R\250s\260!\2601\340\014\023\2201\340\010\013\2103\210a\210q\330\014\023\2201\220B\220a\220q\230\007\230r\240\022\2401\340\r\021\220\021\220'\230\022\2303\230a\230s\240!\2407\250!\2504\250s\260!\2602\260\\\300\034\310X\320UV\330\014\r\210T\220\022\2203\220a\220r\230\022\2303\230a\230s\240!\2407\250!\2504\250s\260!\2602\260\\\300\034\310X\320UV\330\014\022\220!\2201\220C\220q\230\n\240!\2407\250!\2504\250t\260<\270|\3108\320ST\360\006\000\r\024\2201\220B\220a\220q\230\007\230r\240\022\2401\340\r\021\220\022\2203\220a\220r\230\022\2303\230a\230s\240!\2407\250!\2504\250s\260!\2602\260\\\300\034\310X\320UV\330\014\022\220!\2201\220C\220q\230\n\240!\2407\250!\2504\250t\260<\270|\3108\320ST\320\000\036\230a\3608\000\005\025\220A\330\004\030\230\001\330\004\034\230A\330\004\035\230Q\330\004\037\230q\330\004!\240\021\330\004%\240Q\330\004#\2401\330\004\034\230A\340\004\010\210\002\210\"\210B\210a\210w\220a\220y\240\002\240\"\240B\240b\250\001\250\027\260\001\260\021\330\004\014\210D\220\001\220\021\330\004\010\210\014\220B\220h\230b\240\014\250B\250h""\260b\270\002\270!\2701\330\004\t\210\021\210!\2101\330\004\013\2101\210B\210c\220\022\2201\330\004\r\210R\210r\220\023\220B\220c\230\022\230<\240r\250\034\260R\260s\270\"\270L\310\002\310,\320VX\320XY\340\004\014\210C\210q\220\002\220#\220T\230\022\2304\230q\240\002\240!\2403\240b\250\004\250B\250a\330\004\010\210\010\220\005\220Q\220a\330\010\023\220;\230a\230r\240\026\240u\250A\250V\2602\260Q\330\010\026\220k\240\021\240\"\240F\250&\260\001\330\014\033\2301\230E\240\030\250\021\250(\260\"\260M\300\021\330\014\033\2301\230E\240\030\250\021\250(\260\"\260A\330\004\013\2105\220\001\220\024\220Q\220g\230R\230r\240\021\240)\2502\250Z\260q\270\004\270D\300\010\310\010\320PQ\320QW\320WY\320YZ\320\000\027\220q\360.\000\005\025\220A\330\004\030\230\001\330\004\024\220A\330\004\025\220Q\330\004\027\220q\330\004\031\230\021\330\004\034\230A\330\004\035\230Q\330\004\033\2301\340\004\010\210\002\210\"\210B\210a\210w\220a\220y\240\002\240\"\240B\240b\250\001\250\027\260\001\260\021\330\004\014\210D\220\001\220\021\330\004\010\210\014\220B\220h\230b\240\014\250B\250a\330\004\t\210\021\210!\2101\330\004\013\2101\210B\210c\220\022\2201\330\004\r\210R\210r\220\023\220B\220c\230\022\230<\240r\250\034\260R\260s\270\"\270L\310\002\310,\320VX\320XY\340\004\014\210C\210q\220\002\220#\220T\230\022\2304\230q\240\002\240!\2403\240b\250\004\250B\250a\330\004\010\210\010\220\005\220Q\220a\330\010\023\220;\230a\230r\240\026\240u\250A\250V\2602\260Q\330\010\026\220k\240\021\240\"\240F\250&\260\001\330\014\030\230\001\230\025\230h\240a\240x\250r\260\035\270a\330\014\030\230\001\230\025\230h\240a\240x\250r\260\035\270a\330\014\024\220A\220Q\330\004\013\2103\210a\210x\220r\230\032\2401\240D\250\004\250H\260H\270A\270V\3002\300Q\320\000\027\220q\330\004\014\210B\210a\210t\2201\220B\220b\230\006\230b\240\002\240!\2404\240q\250\005\250Q\250h\260d\270\"\270E\300\021\330\014\016\210a\210t\2201\220B\220b\230\006\230b\240\002\240!\2404\240q\250\005\250Q\250h\260d\270\"\270E\300\021\330\014\016\210a""\210t\2201\220C\220r\230\030\240\022\2401__pyx_t_double_complex (__pyx_t_double_complex, int __pyx_skip_dispatch)\000__pyx_t_double_complex (double, double, __pyx_t_double_complex, int __pyx_skip_dispatch)\000double (Py_ssize_t, double, int __pyx_skip_dispatch)\000double (double, double, double, int __pyx_skip_dispatch)\000double (double, int __pyx_skip_dispatch)\000__pyx_fuse_0gamma\000__pyx_fuse_0hyp1f1\000eval_hermite\000__pyx_fuse_1hyp1f1\000__pyx_fuse_1gammaO";
+    #else /* compression: none (6506 bytes) */
+const char* const bytes = ": All dimensions preceding dimension %d must be indexed and not slicedBuffer view does not expose stridesCan only create a buffer that is contiguous in memory.Cannot assign to read-only memoryviewCannot create writable memory view from read-only memoryviewCannot index with type 'Cannot transpose memoryview with indirect dimensionsDimension %d is not directEmpty shape tuple for cython.arrayIndex out of bounds (axis %d)Indirect dimensions not supportedInvalid mode, expected 'c' or 'fortran', got Invalid shape in axis <MemoryView of Note that Cython is deliberately stricter than PEP-484 and rejects subclasses of builtin types. If you need to pass subclasses then set the 'annotation_typing' directive to False.Out of bounds on buffer access (axis Step may not be zero (axis %d)Unable to convert item to object.>')?add_note and  at 0xcollections.abc<contiguous and direct><contiguous and indirect>disableenablegc (got got differing extents in dimension isenableditemsize <= 0 for cython.arrayno default __reduce__ due to non-trivial __cinit__ object><strided and direct><strided and direct or indirect><strided and indirect>unable to allocate array data.unable to allocate shape and strides.ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.pyxASCIIEllipsisGHdata__Pyx_PyDict_NextRefSequenceView.MemoryViewaabcallocate_bufferasyncio.coroutinesbaseccSijcSij_GHccosijccosij_complex_GHccosij_plain_GH__class____class_getitem__cline_in_tracebackcn2ijcn2ij_GHcountcphi2ijcphi2ij_GHcprefactor__dict__dtype_is_objectencodeenumerateerrorflagsformatfortran__func____getstate__hermite_complexid__import__index_is_coroutineitemsitemsize__main__memviewmode__module__nn_in_jname__name__ndim__new__npnumpyobjpackpadphi_0_iphi_0_jphi_extphi_ratio_iphi_ratio_jpop__pyx_checksum__pyx_state__pyx_type__pyx_unpickle_Enum__pyx_vtable____qualname____reduce____reduce_cython____reduce_ex__registerroots_hermiteroundscipy.special__set_name__setdefault__setstate____setstate_cython__shapesizestar""tstepstopstruct__test__unpackupdatevaluesweightsxzzerosztpcraft.bosonic.oscillator_integrals._oscillator_integrals_1d_quadrature\320\000\023\2201\330\004&\240a\330\004'\240q\330\004$\240A\240R\240q\250\010\260\001\260\033\270B\270a\270q\300\002\300!\300;\310b\320PQ\320QR\320RT\320TW\320WY\320YZ\320Z\\\320\\^\320^i\320ij\320jq\320qr\320r}\320}~\360\000\000\177\001G\002\360\000\000G\002I\002\360\000\000I\002K\002\360\000\000K\002L\002\360\000\000L\002N\002\360\000\000N\002P\002\360\000\000P\002[\002\360\000\000[\002\\\002\360\000\000\\\002c\002\360\000\000c\002d\002\360\000\000d\002o\002\360\000\000o\002p\002\360\000\000p\002x\002\360\000\000x\002z\002\360\000\000z\002{\002\360\000\000{\002}\002\360\000\000}\002~\002\360\000\000~\002@\003\360\000\000@\003A\003\360\000\000A\003B\003\360\000\000B\003I\003\360\000\000I\003K\003\360\000\000K\003M\003\360\000\000M\003N\003\360\000\000N\003O\003\360\000\000O\003Q\003\360\000\000Q\003R\003\360\000\000R\003S\003\360\000\000S\003Z\003\360\000\000Z\003\\\003\360\000\000\\\003]\003\330\004#\2404\240q\250\001\360\006\000\005\t\210\007\210u\220A\220S\230\001\230\021\330\010\026\220a\330\010\014\210G\2205\230\001\230\023\230A\230Q\330\014\r\330\014\021\220\021\220$\220d\230!\230<\240q\250\003\2501\250D\260\001\260\021\330\014\016\210a\210q\220\010\230\002\230!\330\014\r\320\r+\2501\250C\250q\260\004\260A\260R\260q\270\001\270\027\300\002\300\"\300A\300Q\300b\310\001\310\021\310'\320QS\320SV\320VX\320XY\320YZ\320Z[\320[f\320fg\320gn\320no\320oz\320z{\320{|\330\010\030\230\013\2401\240E\250\021\250$\250d\260!\260<\270q\300\003\3001\300D\310\001\310\034\320UW\320WX\320XY\320Ya\320ac\320cd\330\004\013\2105\220\001\220\034\230Q\230j\250\001\250\024\250T\260\030\270\030\300\021\300!\200\001\330\004\032\230!\2302\230Q\330\004\027\220r\230\022\2301\230C\230s\240!\2401\330\004\034\230E\240\021\240\"\240B\240c\250\021\250%\250q\260\004\260B\260a\330\004\035\230Q\230a\230q\330\004\007\200q\210\001\210\022\2103\210a\330\010\017\210u\220B\220j""\240\002\240&\250\001\250\021\250%\250u\260A\340\010\017\210u\220B\220j\240\002\240\"\240B\240b\250\002\250&\260\001\260\021\260%\260u\270A\320\000\022\220!\330\004\010\210\013\2202\220\\\240\022\2407\250\"\250A\330\010\014\210C\210r\220\021\330\014\024\220A\220R\220q\230\001\230\027\240\002\240\"\240B\240a\240q\250\003\2501\250A\330\016\021\220\022\2203\220a\220q\330\014\024\220A\220R\220q\230\001\230\027\240\002\240\"\240A\240T\250\022\2503\250a\250r\260\022\2603\260a\260q\330\016\021\220\022\2203\220a\220q\330\014\024\220A\220R\220q\230\001\230\027\240\002\240\"\240A\240T\250\021\250#\250R\250s\260!\2601\340\014\023\2201\340\010\013\2103\210a\210q\330\014\023\2201\220B\220a\220q\230\007\230r\240\022\2401\340\r\021\220\021\220'\230\022\2303\230a\230s\240!\2404\240q\250\004\250C\250q\260\002\260,\270l\310(\320RS\330\014\r\210T\220\022\2203\220a\220r\230\022\2303\230a\230s\240!\2404\240q\250\004\250C\250q\260\002\260,\270l\310(\320RS\330\014\022\220!\2201\220C\220q\230\n\240!\2404\240q\250\004\250D\260\014\270L\310\010\320PQ\360\006\000\r\024\2201\220B\220a\220q\230\007\230r\240\022\2401\340\r\021\220\022\2203\220a\220r\230\022\2303\230a\230s\240!\2404\240q\250\004\250C\250q\260\002\260,\270l\310(\320RS\330\014\022\220!\2201\220C\220q\230\n\240!\2404\240q\250\004\250D\260\014\270L\310\010\320PQ\320\000\024\220A\3600\000\005\025\220A\330\004\030\230\001\330\004\024\220A\330\004\025\220Q\330\004\027\220q\330\004\031\230\021\330\004\034\230A\330\004\035\230Q\330\004\033\2301\340\004\010\210\002\210\"\210B\210a\210w\220a\220y\240\002\240\"\240B\240b\250\001\250\027\260\001\260\021\330\004\014\210D\220\001\220\021\330\004\010\210\014\220B\220h\230b\240\014\250B\250a\330\004\t\210\021\210!\2101\330\004\013\2101\210B\210c\220\022\2201\330\004\r\210R\210r\220\023\220B\220c\230\022\230<\240r\250\034\260R\260s\270\"\270L\310\002\310,\320VX\320XY\360\006\000\005\r\210C\210q\220\002\220#\220T\230\022\2304\230q\240\002\240!\2403\240b\250\001\330\004\010\210\010\220\005\220Q\220a""\330\010\023\220;\230a\230r\240\026\240u\250A\250V\2602\260Q\330\010\026\220k\240\021\240\"\240F\250&\260\001\330\014\030\230\001\230\025\230h\240a\240x\250r\260\035\270a\330\014\030\230\001\230\025\230h\240a\240x\250r\260\021\330\004\013\2103\210a\210x\220r\230\032\2401\240D\250\004\250H\260H\270A\270V\3002\300Q\320\000\034\230A\3606\000\005\025\220A\330\004\030\230\001\330\004\024\220A\330\004\025\220Q\330\004\027\220q\330\004\031\230\021\330\004\035\230Q\330\004\033\2301\330\004\037\230q\340\004\010\210\002\210\"\210B\210a\210w\220a\220y\240\002\240\"\240B\240b\250\001\250\027\260\001\260\021\330\004\014\210D\220\001\220\021\330\004\010\210\014\220B\220h\230b\240\014\250B\250a\330\004\t\210\021\210!\2101\330\004\013\2101\210B\210c\220\022\2201\330\004\r\210R\210r\220\023\220B\220c\230\022\230<\240r\250\034\260R\260s\270\"\270L\310\002\310,\320VX\320XY\360\006\000\005\025\220C\220q\230\007\230q\240\003\2401\240H\250B\250c\260\021\260+\270Q\270h\300b\310\013\320ST\320T^\320^`\320`b\320bd\320df\320fg\320gh\330\004\014\210C\210q\220\002\220#\220T\230\022\2304\230r\240\022\2402\240Q\240a\240~\260Q\260c\270\022\2701\330\004\010\210\010\220\005\220Q\220a\330\010\023\220;\230a\230r\240\026\240u\250A\250V\2602\260Q\330\010\026\220k\240\021\240\"\240F\250&\260\001\330\014\030\230\001\230\025\230h\240a\240x\250r\260\035\270a\330\014\030\230\001\230\025\230h\240a\240x\250r\260\035\270a\330\014\017\210q\220\001\220\022\2209\230B\230a\330\004\013\2103\210a\210x\220r\230\032\2401\240D\250\004\250H\260H\270A\270V\3002\300Q\320\000\021\220\021\330\004\034\230A\330\004\035\230Q\330\004\034\230A\230[\250\002\250!\2501\250B\250a\250{\270\"\270A\270Q\270b\300\003\300;\310a\310w\320VW\320Wb\320bc\320ck\320km\320mx\320xy\360\000\000z\001A\002\360\000\000A\002B\002\360\000\000B\002M\002\360\000\000M\002N\002\360\000\000N\002V\002\360\000\000V\002X\002\360\000\000X\002Y\002\360\000\000Y\002[\002\360\000\000[\002\\\002\360\000\000\\\002^\002\360\000\000^\002_\002\360\000\000_\002`\002""\360\000\000`\002g\002\360\000\000g\002i\002\360\000\000i\002k\002\360\000\000k\002l\002\360\000\000l\002m\002\360\000\000m\002o\002\360\000\000o\002p\002\360\000\000p\002q\002\360\000\000q\002x\002\360\000\000x\002z\002\360\000\000z\002{\002\330\004\033\2303\230a\230q\360\006\000\005\t\210\013\2202\220\\\240\022\2407\250\"\250A\330\010\014\210C\210r\220\021\330\014\023\2201\340\014\023\2201\340\010\014\210G\2205\230\001\230\023\230A\230Q\330\014\030\230\001\330\014\020\220\007\220u\230A\230S\240\001\240\021\330\020\021\330\020\025\220Q\220d\230$\230a\230|\2501\250C\250q\260\004\260A\260Q\330\020\022\220!\2201\220H\230B\230a\330\020\021\320\021'\240q\250\003\2501\250D\260\001\260\022\2601\260A\260W\270B\270b\300\001\300\021\300\"\300A\300Q\300g\310R\310s\320R]\320]^\320^e\320ef\320fq\320qr\320rs\330\014\032\230)\2401\240E\250\021\250$\250d\260!\260<\270q\300\003\3001\300D\310\001\310\034\320UW\320WX\320XY\320Ya\320ac\320cd\330\010\017\210z\230\021\230*\240A\240T\250\024\250X\260X\270Q\270a\320\000\024\220A\330\004\037\230q\330\004 \240\001\330\004\034\230A\230[\250\002\250!\2501\250B\250a\250{\270\"\270A\270Q\270b\300\003\300;\310a\310w\320VW\320Wb\320bc\320ck\320km\320mx\320xy\360\000\000z\001A\002\360\000\000A\002B\002\360\000\000B\002M\002\360\000\000M\002N\002\360\000\000N\002V\002\360\000\000V\002X\002\360\000\000X\002Y\002\360\000\000Y\002[\002\360\000\000[\002\\\002\360\000\000\\\002^\002\360\000\000^\002_\002\360\000\000_\002`\002\360\000\000`\002g\002\360\000\000g\002i\002\360\000\000i\002k\002\360\000\000k\002l\002\360\000\000l\002m\002\360\000\000m\002o\002\360\000\000o\002p\002\360\000\000p\002q\002\360\000\000q\002x\002\360\000\000x\002z\002\360\000\000z\002{\002\330\004\033\2303\230a\230q\330\004\010\210\013\2202\220\\\240\022\240;\250b\260\002\260\"\260G\2702\270X\300R\300s\310\"\310D\320PR\320RU\320UW\320WZ\320Z[\320[]\320]_\320_b\320bd\320dg\320gh\320hi\330\010\017\210q\340\010\014\210G\2205\230\001\230\023\230A\230Q\330\014\033\2301\330\014\020""\220\007\220u\230A\230S\240\001\240\021\330\020\021\330\020\025\220Q\220d\230$\230a\230|\2501\250C\250q\260\004\260A\260Q\330\020\022\220!\2201\220H\230B\230a\330\020\021\320\021'\240q\250\003\2501\250C\250q\260\002\260!\2602\260Q\260a\260w\270b\300\002\300!\3001\300B\300a\300q\310\007\310r\320QT\320T_\320_`\320`g\320gh\320hs\320st\320tu\330\014\035\230\\\250\021\250%\250q\260\004\260D\270\001\270\034\300Q\300c\310\021\310$\310a\310|\320[]\320]^\320^_\320_g\320gi\320ij\330\004\013\210=\230\001\230\032\2401\240D\250\004\250H\260H\270A\270Q\320\000\025\220Q\330\004\010\210\013\2202\220\\\240\022\2407\250\"\250A\330\010\014\210C\210r\220\021\330\014\024\220A\220R\220q\230\001\230\027\240\002\240\"\240B\240a\240q\250\003\2501\250A\330\016\021\220\022\2203\220a\220q\330\014\024\220A\220R\220q\230\001\230\027\240\002\240\"\240A\240T\250\022\2503\250a\250s\260\"\260C\260q\270\001\330\016\021\220\022\2203\220a\220q\330\014\024\220A\220R\220q\230\001\230\027\240\002\240\"\240A\240T\250\021\250#\250R\250s\260!\2601\340\014\023\2201\340\010\013\2103\210a\210q\330\014\023\2201\220B\220a\220q\230\007\230r\240\022\2401\340\r\021\220\021\220'\230\022\2303\230a\230s\240!\2407\250!\2504\250s\260!\2602\260\\\300\034\310X\320UV\330\014\r\210T\220\022\2203\220a\220r\230\022\2303\230a\230s\240!\2407\250!\2504\250s\260!\2602\260\\\300\034\310X\320UV\330\014\022\220!\2201\220C\220q\230\n\240!\2407\250!\2504\250t\260<\270|\3108\320ST\360\006\000\r\024\2201\220B\220a\220q\230\007\230r\240\022\2401\340\r\021\220\022\2203\220a\220r\230\022\2303\230a\230s\240!\2407\250!\2504\250s\260!\2602\260\\\300\034\310X\320UV\330\014\022\220!\2201\220C\220q\230\n\240!\2407\250!\2504\250t\260<\270|\3108\320ST\320\000\036\230a\3608\000\005\025\220A\330\004\030\230\001\330\004\034\230A\330\004\035\230Q\330\004\037\230q\330\004!\240\021\330\004%\240Q\330\004#\2401\330\004\034\230A\340\004\010\210\002\210\"\210B\210a\210w\220a\220y\240\002\240\"\240B\240b\250\001\250\027\260\001\260\021\330\004\014\210D\220""\001\220\021\330\004\010\210\014\220B\220h\230b\240\014\250B\250h\260b\270\002\270!\2701\330\004\t\210\021\210!\2101\330\004\013\2101\210B\210c\220\022\2201\330\004\r\210R\210r\220\023\220B\220c\230\022\230<\240r\250\034\260R\260s\270\"\270L\310\002\310,\320VX\320XY\340\004\014\210C\210q\220\002\220#\220T\230\022\2304\230q\240\002\240!\2403\240b\250\004\250B\250a\330\004\010\210\010\220\005\220Q\220a\330\010\023\220;\230a\230r\240\026\240u\250A\250V\2602\260Q\330\010\026\220k\240\021\240\"\240F\250&\260\001\330\014\033\2301\230E\240\030\250\021\250(\260\"\260M\300\021\330\014\033\2301\230E\240\030\250\021\250(\260\"\260A\330\004\013\2105\220\001\220\024\220Q\220g\230R\230r\240\021\240)\2502\250Z\260q\270\004\270D\300\010\310\010\320PQ\320QW\320WY\320YZ\320\000\027\220q\360.\000\005\025\220A\330\004\030\230\001\330\004\024\220A\330\004\025\220Q\330\004\027\220q\330\004\031\230\021\330\004\034\230A\330\004\035\230Q\330\004\033\2301\340\004\010\210\002\210\"\210B\210a\210w\220a\220y\240\002\240\"\240B\240b\250\001\250\027\260\001\260\021\330\004\014\210D\220\001\220\021\330\004\010\210\014\220B\220h\230b\240\014\250B\250a\330\004\t\210\021\210!\2101\330\004\013\2101\210B\210c\220\022\2201\330\004\r\210R\210r\220\023\220B\220c\230\022\230<\240r\250\034\260R\260s\270\"\270L\310\002\310,\320VX\320XY\340\004\014\210C\210q\220\002\220#\220T\230\022\2304\230q\240\002\240!\2403\240b\250\004\250B\250a\330\004\010\210\010\220\005\220Q\220a\330\010\023\220;\230a\230r\240\026\240u\250A\250V\2602\260Q\330\010\026\220k\240\021\240\"\240F\250&\260\001\330\014\030\230\001\230\025\230h\240a\240x\250r\260\035\270a\330\014\030\230\001\230\025\230h\240a\240x\250r\260\035\270a\330\014\024\220A\220Q\330\004\013\2103\210a\210x\220r\230\032\2401\240D\250\004\250H\260H\270A\270V\3002\300Q\320\000\027\220q\330\004\014\210B\210a\210t\2201\220B\220b\230\006\230b\240\002\240!\2404\240q\250\005\250Q\250h\260d\270\"\270E\300\021\330\014\016\210a\210t\2201\220B\220b\230\006\230b\240\002\240!\2404""\240q\250\005\250Q\250h\260d\270\"\270E\300\021\330\014\016\210a\210t\2201\220C\220r\230\030\240\022\2401__pyx_t_double_complex (__pyx_t_double_complex, int __pyx_skip_dispatch)\000__pyx_t_double_complex (double, double, __pyx_t_double_complex, int __pyx_skip_dispatch)\000double (Py_ssize_t, double, int __pyx_skip_dispatch)\000double (double, double, double, int __pyx_skip_dispatch)\000double (double, int __pyx_skip_dispatch)\000__pyx_fuse_0gamma\000__pyx_fuse_0hyp1f1\000eval_hermite\000__pyx_fuse_1hyp1f1\000__pyx_fuse_1gammaO";
     PyObject *data = NULL;
     CYTHON_UNUSED_VAR(__Pyx_DecompressString);
     #endif
@@ -25060,57 +25060,57 @@ static int __Pyx_CreateCodeObjects(__pyx_mstatetype *__pyx_mstate) {
   {
     const __Pyx_PyCode_New_function_description descr = {2, 0, 0, 2, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 57};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_n, __pyx_mstate->__pyx_n_u_z};
-    __pyx_mstate_global->__pyx_codeobj_tab[0] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_ztpcraft_bosonic__oscillator_int_2, __pyx_mstate->__pyx_n_u_hermite_complex, __pyx_mstate->__pyx_kp_b_iso88591_2Q_r_1Cs_1_E_Bc_q_Ba_Qaq_q_3a_u, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[0])) goto bad;
+    __pyx_mstate_global->__pyx_codeobj_tab[0] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_ztpcraft_bosonic_oscillator_inte_2, __pyx_mstate->__pyx_n_u_hermite_complex, __pyx_mstate->__pyx_kp_b_iso88591_2Q_r_1Cs_1_E_Bc_q_Ba_Qaq_q_3a_u, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[0])) goto bad;
   }
   {
     const __Pyx_PyCode_New_function_description descr = {4, 0, 0, 4, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 97};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_n_i, __pyx_mstate->__pyx_n_u_n_j, __pyx_mstate->__pyx_n_u_phi_0_i, __pyx_mstate->__pyx_n_u_phi_0_j};
-    __pyx_mstate_global->__pyx_codeobj_tab[1] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_ztpcraft_bosonic__oscillator_int_2, __pyx_mstate->__pyx_n_u_cprefactor, __pyx_mstate->__pyx_kp_b_iso88591_q_Bat1Bb_b_4q_Qhd_E_at1Bb_b_4q, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[1])) goto bad;
+    __pyx_mstate_global->__pyx_codeobj_tab[1] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_ztpcraft_bosonic_oscillator_inte_2, __pyx_mstate->__pyx_n_u_cprefactor, __pyx_mstate->__pyx_kp_b_iso88591_q_Bat1Bb_b_4q_Qhd_E_at1Bb_b_4q, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[1])) goto bad;
   }
   {
     const __Pyx_PyCode_New_function_description descr = {6, 0, 0, 6, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 103};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_n_i, __pyx_mstate->__pyx_n_u_n_j, __pyx_mstate->__pyx_n_u_phi_ratio_i, __pyx_mstate->__pyx_n_u_phi_ratio_j, __pyx_mstate->__pyx_n_u_phi_0_i, __pyx_mstate->__pyx_n_u_phi_0_j};
-    __pyx_mstate_global->__pyx_codeobj_tab[2] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_ztpcraft_bosonic__oscillator_int_2, __pyx_mstate->__pyx_n_u_cSij, __pyx_mstate->__pyx_kp_b_iso88591_A_Q_A_1Ba_AQb_awVWWbbcckkmmxxy, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[2])) goto bad;
+    __pyx_mstate_global->__pyx_codeobj_tab[2] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_ztpcraft_bosonic_oscillator_inte_2, __pyx_mstate->__pyx_n_u_cSij, __pyx_mstate->__pyx_kp_b_iso88591_A_Q_A_1Ba_AQb_awVWWbbcckkmmxxy, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[2])) goto bad;
   }
   {
     const __Pyx_PyCode_New_function_description descr = {8, 0, 0, 8, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 127};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_n_i, __pyx_mstate->__pyx_n_u_n_j, __pyx_mstate->__pyx_n_u_phi_ratio_i, __pyx_mstate->__pyx_n_u_phi_ratio_j, __pyx_mstate->__pyx_n_u_phi_0_i, __pyx_mstate->__pyx_n_u_phi_0_j, __pyx_mstate->__pyx_n_u_a, __pyx_mstate->__pyx_n_u_phi_ext};
-    __pyx_mstate_global->__pyx_codeobj_tab[3] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_ztpcraft_bosonic__oscillator_int_2, __pyx_mstate->__pyx_n_u_ccosij, __pyx_mstate->__pyx_kp_b_iso88591_1_a_q_ARq_Baq_bPQQRRTTWWYYZZ_ii, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[3])) goto bad;
+    __pyx_mstate_global->__pyx_codeobj_tab[3] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_ztpcraft_bosonic_oscillator_inte_2, __pyx_mstate->__pyx_n_u_ccosij, __pyx_mstate->__pyx_kp_b_iso88591_1_a_q_ARq_Baq_bPQQRRTTWWYYZZ_ii, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[3])) goto bad;
   }
   {
     const __Pyx_PyCode_New_function_description descr = {6, 0, 0, 6, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 145};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_n_i, __pyx_mstate->__pyx_n_u_n_j, __pyx_mstate->__pyx_n_u_phi_ratio_i, __pyx_mstate->__pyx_n_u_phi_ratio_j, __pyx_mstate->__pyx_n_u_phi_0_i, __pyx_mstate->__pyx_n_u_phi_0_j};
-    __pyx_mstate_global->__pyx_codeobj_tab[4] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_ztpcraft_bosonic__oscillator_int_2, __pyx_mstate->__pyx_n_u_cn2ij, __pyx_mstate->__pyx_kp_b_iso88591_2_7_A_Cr_ARq_Baq_1A_3aq_ARq_AT, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[4])) goto bad;
+    __pyx_mstate_global->__pyx_codeobj_tab[4] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_ztpcraft_bosonic_oscillator_inte_2, __pyx_mstate->__pyx_n_u_cn2ij, __pyx_mstate->__pyx_kp_b_iso88591_2_7_A_Cr_ARq_Baq_1A_3aq_ARq_AT, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[4])) goto bad;
   }
   {
     const __Pyx_PyCode_New_function_description descr = {6, 0, 0, 6, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 170};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_n_i, __pyx_mstate->__pyx_n_u_n_j, __pyx_mstate->__pyx_n_u_phi_ratio_i, __pyx_mstate->__pyx_n_u_phi_ratio_j, __pyx_mstate->__pyx_n_u_phi_0_i, __pyx_mstate->__pyx_n_u_phi_0_j};
-    __pyx_mstate_global->__pyx_codeobj_tab[5] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_ztpcraft_bosonic__oscillator_int_2, __pyx_mstate->__pyx_n_u_cn2ij_GH, __pyx_mstate->__pyx_kp_b_iso88591_Q_2_7_A_Cr_ARq_Baq_1A_3aq_ARq_A, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[5])) goto bad;
+    __pyx_mstate_global->__pyx_codeobj_tab[5] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_ztpcraft_bosonic_oscillator_inte_2, __pyx_mstate->__pyx_n_u_cn2ij_GH, __pyx_mstate->__pyx_kp_b_iso88591_Q_2_7_A_Cr_ARq_Baq_1A_3aq_ARq_A, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[5])) goto bad;
   }
   {
     const __Pyx_PyCode_New_function_description descr = {6, 0, 0, 6, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 196};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_n_i, __pyx_mstate->__pyx_n_u_n_j, __pyx_mstate->__pyx_n_u_phi_ratio_i, __pyx_mstate->__pyx_n_u_phi_ratio_j, __pyx_mstate->__pyx_n_u_phi_0_i, __pyx_mstate->__pyx_n_u_phi_0_j};
-    __pyx_mstate_global->__pyx_codeobj_tab[6] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_ztpcraft_bosonic__oscillator_int_2, __pyx_mstate->__pyx_n_u_cphi2ij, __pyx_mstate->__pyx_kp_b_iso88591_A_q_A_1Ba_AQb_awVWWbbcckkmmxxy, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[6])) goto bad;
+    __pyx_mstate_global->__pyx_codeobj_tab[6] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_ztpcraft_bosonic_oscillator_inte_2, __pyx_mstate->__pyx_n_u_cphi2ij, __pyx_mstate->__pyx_kp_b_iso88591_A_q_A_1Ba_AQb_awVWWbbcckkmmxxy, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[6])) goto bad;
   }
   {
     const __Pyx_PyCode_New_function_description descr = {6, 0, 0, 6, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 215};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_n_i, __pyx_mstate->__pyx_n_u_n_j, __pyx_mstate->__pyx_n_u_phi_ratio_i, __pyx_mstate->__pyx_n_u_phi_ratio_j, __pyx_mstate->__pyx_n_u_phi_0_i, __pyx_mstate->__pyx_n_u_phi_0_j};
-    __pyx_mstate_global->__pyx_codeobj_tab[7] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_ztpcraft_bosonic__oscillator_int_2, __pyx_mstate->__pyx_n_u_cSij_GH, __pyx_mstate->__pyx_kp_b_iso88591_A0_A_A_Q_q_A_Q_1_Baway_Bb_D_Bhb, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[7])) goto bad;
+    __pyx_mstate_global->__pyx_codeobj_tab[7] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_ztpcraft_bosonic_oscillator_inte_2, __pyx_mstate->__pyx_n_u_cSij_GH, __pyx_mstate->__pyx_kp_b_iso88591_A0_A_A_Q_q_A_Q_1_Baway_Bb_D_Bhb, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[7])) goto bad;
   }
   {
     const __Pyx_PyCode_New_function_description descr = {6, 0, 0, 6, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 266};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_n_i, __pyx_mstate->__pyx_n_u_n_j, __pyx_mstate->__pyx_n_u_phi_ratio_i, __pyx_mstate->__pyx_n_u_phi_ratio_j, __pyx_mstate->__pyx_n_u_phi_0_i, __pyx_mstate->__pyx_n_u_phi_0_j};
-    __pyx_mstate_global->__pyx_codeobj_tab[8] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_ztpcraft_bosonic__oscillator_int_2, __pyx_mstate->__pyx_n_u_cphi2ij_GH, __pyx_mstate->__pyx_kp_b_iso88591_q_A_A_Q_q_A_Q_1_Baway_Bb_D_Bhb, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[8])) goto bad;
+    __pyx_mstate_global->__pyx_codeobj_tab[8] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_ztpcraft_bosonic_oscillator_inte_2, __pyx_mstate->__pyx_n_u_cphi2ij_GH, __pyx_mstate->__pyx_kp_b_iso88591_q_A_A_Q_q_A_Q_1_Baway_Bb_D_Bhb, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[8])) goto bad;
   }
   {
     const __Pyx_PyCode_New_function_description descr = {8, 0, 0, 8, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 316};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_n_i, __pyx_mstate->__pyx_n_u_n_j, __pyx_mstate->__pyx_n_u_phi_ratio_i, __pyx_mstate->__pyx_n_u_phi_ratio_j, __pyx_mstate->__pyx_n_u_phi_0_i, __pyx_mstate->__pyx_n_u_phi_0_j, __pyx_mstate->__pyx_n_u_a, __pyx_mstate->__pyx_n_u_phi_ext};
-    __pyx_mstate_global->__pyx_codeobj_tab[9] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_ztpcraft_bosonic__oscillator_int_2, __pyx_mstate->__pyx_n_u_ccosij_plain_GH, __pyx_mstate->__pyx_kp_b_iso88591_A6_A_A_Q_q_Q_1_q_Baway_Bb_D_Bhb, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[9])) goto bad;
+    __pyx_mstate_global->__pyx_codeobj_tab[9] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_ztpcraft_bosonic_oscillator_inte_2, __pyx_mstate->__pyx_n_u_ccosij_plain_GH, __pyx_mstate->__pyx_kp_b_iso88591_A6_A_A_Q_q_Q_1_q_Baway_Bb_D_Bhb, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[9])) goto bad;
   }
   {
     const __Pyx_PyCode_New_function_description descr = {8, 0, 0, 8, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 373};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_n_i, __pyx_mstate->__pyx_n_u_n_j, __pyx_mstate->__pyx_n_u_phi_ratio_i, __pyx_mstate->__pyx_n_u_phi_ratio_j, __pyx_mstate->__pyx_n_u_phi_0_i, __pyx_mstate->__pyx_n_u_phi_0_j, __pyx_mstate->__pyx_n_u_a, __pyx_mstate->__pyx_n_u_phi_ext};
-    __pyx_mstate_global->__pyx_codeobj_tab[10] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_ztpcraft_bosonic__oscillator_int_2, __pyx_mstate->__pyx_n_u_ccosij_complex_GH, __pyx_mstate->__pyx_kp_b_iso88591_a8_A_A_Q_q_Q_1_A_Baway_Bb_D_Bhb, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[10])) goto bad;
+    __pyx_mstate_global->__pyx_codeobj_tab[10] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_ztpcraft_bosonic_oscillator_inte_2, __pyx_mstate->__pyx_n_u_ccosij_complex_GH, __pyx_mstate->__pyx_kp_b_iso88591_a8_A_A_Q_q_Q_1_A_Baway_Bb_D_Bhb, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[10])) goto bad;
   }
   Py_DECREF(tuple_dedup_map);
   return 0;

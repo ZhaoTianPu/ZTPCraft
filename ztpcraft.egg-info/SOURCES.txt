@@ -5,6 +5,7 @@ license_chencrafts.md
 pyproject.toml
 requirements.txt
 setup.py
+tests/test_oscillator_integrals_nd.py
 ztpcraft/__init__.py
 ztpcraft/version.py
 ztpcraft.egg-info/PKG-INFO
@@ -13,11 +14,13 @@ ztpcraft.egg-info/dependency_links.txt
 ztpcraft.egg-info/requires.txt
 ztpcraft.egg-info/top_level.txt
 ztpcraft/bosonic/__init__.py
-ztpcraft/bosonic/_oscillator_integrals_1d.c
-ztpcraft/bosonic/_oscillator_integrals_1d.pyi
 ztpcraft/bosonic/helpers.py
 ztpcraft/bosonic/input_output.py
-ztpcraft/bosonic/oscillator_integrals_1d.py
+ztpcraft/bosonic/oscillator_integrals/__init__.py
+ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.c
+ztpcraft/bosonic/oscillator_integrals/gaussian_hermite_nd.py
+ztpcraft/bosonic/oscillator_integrals/oscillator_integrals_1d_quadrature.py
+ztpcraft/bosonic/oscillator_integrals/oscillator_integrals_nd.py
 ztpcraft/misc/__init__.py
 ztpcraft/misc/helpers.py
 ztpcraft/projects/f1f2/__init__.py
@@ -25,8 +28,9 @@ ztpcraft/projects/f1f2/irg_squid.py
 ztpcraft/projects/f1f2/loss.py
 ztpcraft/projects/f1f2/overlap.py
 ztpcraft/projects/f1f2/tmon_filter_network_example.py
-ztpcraft/projects/flxn_array_mode/__init__.py
-ztpcraft/projects/flxn_array_mode/flxn_array_mode.py
+ztpcraft/projects/fluxonium/__init__.py
+ztpcraft/projects/fluxonium/array_mode.py
+ztpcraft/projects/fluxonium/multiloop_fluxonium.py
 ztpcraft/simulations/dbdqs.py
 ztpcraft/toolbox/__init__.py
 ztpcraft/toolbox/aedt_result_reader.py
