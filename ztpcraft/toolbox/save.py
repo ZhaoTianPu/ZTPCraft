@@ -2,8 +2,9 @@ import time
 import os
 
 import dill
+import h5py
 
-from typing import Any
+from typing import Any, Dict
 
 
 def datetime_dir(
@@ -72,3 +73,88 @@ def dill_load(filename: str) -> Any:
     file.close()
 
     return obj
+
+
+# Save data to HDF5 file
+def h5_dump(
+    data_dict: Dict[str, Any],
+    file_name: str,
+):
+    """
+    Dump a single-level dictionary to a HDF5 file.
+
+    Note: This function only supports single-level dictionaries. Nested
+    dictionaries are not supported and will raise a ValueError.
+
+    Parameters
+    ----------
+    file_name : str
+        The filename of the HDF5 file.
+    data_dict : Dict[str, Any]
+        A single-level dictionary where values are arrays or scalars,
+        not nested dictionaries.
+
+    Raises
+    ------
+    ValueError
+        If any value in data_dict is a dictionary (nested structure).
+    """
+    # Check for nested dictionaries
+    for key, value in data_dict.items():
+        if isinstance(value, dict):
+            raise ValueError(
+                f"Nested dictionaries are not supported. "
+                f"Key '{key}' contains a dictionary value. "
+                f"Please flatten your data structure."
+            )
+
+    with h5py.File(file_name, "w") as f:
+        # Create datasets for all data
+        for key, value in data_dict.items():
+            f.create_dataset(key, data=value)
+
+
+# Load data from HDF5 file
+def h5_load(
+    file_name: str,
+) -> Dict[str, Any]:
+    """
+    Load a single-level dictionary from a HDF5 file.
+
+    Note: This function only supports single-level HDF5 files. If the HDF5 file
+    contains groups (nested structure), the keys will be flattened using forward
+    slashes (e.g., 'group/dataset'). For true nested dictionary support,
+    consider using a different approach.
+
+    Parameters
+    ----------
+    file_name : str
+        The filename of the HDF5 file.
+
+    Returns
+    -------
+    data_dict : Dict[str, Any]
+        A single-level dictionary loaded from the HDF5 file. If the original
+        file had nested groups, the keys will be flattened (e.g., 'group/dataset').
+    """
+    data_dict = {}
+    with h5py.File(file_name, "r") as f:
+        # Helper function to read all items (flattens nested structure)
+        def extract_data(name, obj):
+            if isinstance(obj, h5py.Dataset):
+                data_dict[name] = obj[()]
+
+        # Visit all items in the file
+        f.visititems(extract_data)
+
+        # Print file structure
+        print("File structure:")
+
+        def print_info(name, obj):
+            print(
+                f"{name}, shape: {obj.shape}" if isinstance(obj, h5py.Dataset) else name
+            )
+
+        f.visititems(print_info)
+
+    return data_dict

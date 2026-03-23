@@ -54,8 +54,13 @@ def read_hfss_eigenmode_file(
                 is_lossy = True
             # lossless case
             elif len(match_result) == 2:
-                # Extract the data from the matched groups
+                # lossless case, without Q
                 _, real_freq = match_result
+                frequencies.append(float(real_freq))
+                is_lossy = False
+            elif len(match_result) == 3:
+                # lossless case, with Q = 0
+                _, real_freq, _ = match_result
                 frequencies.append(float(real_freq))
                 is_lossy = False
             else:

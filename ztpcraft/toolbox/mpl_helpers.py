@@ -2,13 +2,163 @@ import numpy as np
 import matplotlib.pyplot as plt
 from matplotlib.typing import ColorType
 from typing import Any, Dict, Union, Literal, List, Tuple
-from ztpcraft.utils.figure_settings import MPL_PRESET
+import matplotlib as mpl
+from cycler import cycler
 from matplotlib.axes import Axes
 from matplotlib.figure import Figure
 from matplotlib.colors import hsv_to_rgb, rgb_to_hsv
 from matplotlib.collections import PathCollection, QuadMesh
 from matplotlib.image import AxesImage
 from mpl_toolkits.axes_grid1.inset_locator import mark_inset
+
+# preset
+MPL_PRESET: Dict[str, Dict[str, Any]] = {}
+
+# PhysRev
+# compute the width and height of one column and two columns
+PHYS_REV_ONE_COL_WIDTH_PT = 246.0
+PHYS_REV_TWO_COL_WIDTH_PT = 510.0
+PHYS_REV_INCHES_PER_PT = 1.0 / 72.27
+PHYS_REV_GOLDEN_MEAN = (np.sqrt(5) - 1.0) / 2.0
+PHYS_REV_ONE_COL_FIG_WIDTH = PHYS_REV_ONE_COL_WIDTH_PT * PHYS_REV_INCHES_PER_PT
+PHYS_REV_ONE_COL_FIG_HEIGHT = PHYS_REV_ONE_COL_FIG_WIDTH / 1.5
+MPL_PRESET["PhysRevOneCol"] = {
+    "lines.linewidth": 1,
+    "font.size": 10,
+    "figure.figsize": [PHYS_REV_ONE_COL_FIG_WIDTH, PHYS_REV_ONE_COL_FIG_HEIGHT],
+    "legend.fontsize": 10,
+    "axes.labelsize": 10,
+    "xtick.labelsize": 10,
+    "ytick.labelsize": 10,
+    "mathtext.fontset": "stix",
+    "font.family": "times",
+    "figure.dpi": 300,
+}
+MPL_PRESET["PhysRevOneColSans"] = {
+    "lines.linewidth": 1,
+    "font.size": 10,
+    "figure.figsize": [PHYS_REV_ONE_COL_FIG_WIDTH, PHYS_REV_ONE_COL_FIG_HEIGHT],
+    "legend.fontsize": 10,
+    "axes.labelsize": 10,
+    "xtick.labelsize": 10,
+    "ytick.labelsize": 10,
+    "mathtext.fontset": "dejavusans",
+    "font.family": "helvetica",
+    "figure.dpi": 300,
+}
+PHYS_REV_TWO_COL_FIG_WIDTH = PHYS_REV_TWO_COL_WIDTH_PT * PHYS_REV_INCHES_PER_PT
+PHYS_REV_TWO_COL_FIG_HEIGHT = PHYS_REV_TWO_COL_FIG_WIDTH / 1.5
+MPL_PRESET["PhysRevTwoCol"] = {
+    "lines.linewidth": 1,
+    "font.size": 10,
+    "figure.figsize": [PHYS_REV_TWO_COL_FIG_WIDTH, PHYS_REV_TWO_COL_FIG_HEIGHT],
+    "legend.fontsize": 10,
+    "axes.labelsize": 10,
+    "xtick.labelsize": 10,
+    "ytick.labelsize": 10,
+    "mathtext.fontset": "stix",
+    "font.family": "times",
+    "figure.dpi": 300,
+}
+
+# COLOR ---------------------#
+COLOR_PALETTE = {}
+COLOR_PALETTE["RdYlBu_5"] = ["#d7191c", "#fdae61", "#ffffbf", "#abd9e9", "#2c7bb6"]
+COLOR_PALETTE["RdYlBu_4"] = ["#d7191c", "#fdae61", "#abd9e9", "#2c7bb6"]
+COLOR_PALETTE["RdYlBu_11"] = [
+    "#a50026",
+    "#d73027",
+    "#f46d43",
+    "#fdae61",
+    "#fee090",
+    "#ffffbf",
+    "#e0f3f8",
+    "#abd9e9",
+    "#74add1",
+    "#4575b4",
+    "#313695",
+]
+COLOR_PALETTE["RdBu_9"] = [
+    "#b2182b",
+    "#d6604d",
+    "#f4a582",
+    "#fddbc7",
+    "#f7f7f7",
+    "#d1e5f0",
+    "#92c5de",
+    "#4393c3",
+    "#2166ac",
+]
+COLOR_PALETTE["RdBu_11"] = [
+    "#67001f",
+    "#b2182b",
+    "#d6604d",
+    "#f4a582",
+    "#fddbc7",
+    "#f7f7f7",
+    "#d1e5f0",
+    "#92c5de",
+    "#4393c3",
+    "#2166ac",
+    "#053061",
+]
+# from chencrafts
+COLOR_PALETTE["PGL"] = [
+    "#0c2e6d",
+    "#b63566",
+    "#91adc2",
+    "#e9c2c3",
+    "#AEB358",
+]
+# IBM colorblind safe
+COLOR_PALETTE["IBM"] = [
+    "#648fff",
+    "#785ef0",
+    "#dc267f",
+    "#fe6100",
+    "#ffb000",
+]
+# from https://arxiv.org/abs/2107.02270
+COLOR_PALETTE["colorblind_1"] = [
+    "#3f90da",
+    "#ffa90e",
+    "#bd1f01",
+    "#832db6",
+    "#94a4a2",
+    "#a96b59",
+    "#e76300",
+    "#b9ac70",
+    "#717581",
+    "#92dadd",
+]
+
+
+COLOR_PALETTE["green_to_red"] = [
+    "#001219",
+    "#005f73",
+    "#0a9396",
+    "#94d2bd",
+    "#e9d8a6",
+    "#ee9b00",
+    "#ca6702",
+    "#bb3e03",
+    "#9b2226",
+]
+
+color_cyclers = dict([(key, cycler(color=COLOR_PALETTE[key])) for key in COLOR_PALETTE])
+
+
+def set_color_cycler(cycler_name: str | List[str]):
+    """
+    Available cycler names:
+    PGL, green_to_red, sunset, hotel_70s, blue_to_red, colorblind_1, C2QA
+    """
+    if isinstance(cycler_name, str):
+        mpl.rcParams["axes.prop_cycle"] = color_cyclers[cycler_name]
+        plt.rcParams["axes.prop_cycle"] = color_cyclers[cycler_name]
+    elif isinstance(cycler_name, list):
+        mpl.rcParams["axes.prop_cycle"] = cycler(color=cycler_name)
+        plt.rcParams["axes.prop_cycle"] = cycler(color=cycler_name)
 
 
 def update_matplotlib_settings(

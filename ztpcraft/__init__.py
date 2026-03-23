@@ -17,3 +17,19 @@ __all__ = [
     "misc",
     "__version__",
 ]
+
+
+def reload_all():
+    """Dynamically reload all ztpcraft modules."""
+    import sys
+    import importlib
+
+    # Get all loaded ztpcraft modules
+    modules = [m for m in sys.modules if m.startswith("ztpcraft.")]
+    # Sort by dependency (deeper modules first)
+    modules.sort(key=lambda m: m.count("."), reverse=True)
+    # Reload each module
+    for module_name in modules:
+        if module_name in sys.modules:
+            importlib.reload(sys.modules[module_name])
+    print(f"Reloaded {len(modules)} modules!")

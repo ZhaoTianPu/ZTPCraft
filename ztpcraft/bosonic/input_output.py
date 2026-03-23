@@ -269,3 +269,55 @@ def solve_oscillator_under_drive(
         atol=1e-10,
     )
     return sol
+
+
+def hanger_S21(
+    freq_probe: float,
+    freq_res: float,
+    Q_load: float,
+    Q_ext: float,
+    ext_phase: float = 0,
+) -> complex:
+    """
+    Calculate the S21 parameter of a resonator.
+
+    Parameters
+    ----------
+    freq_probe : float
+        Frequency of the probe.
+    freq_res : float
+        Frequency of the resonator.
+    Q_load : float
+        Quality factor of the load.
+    Q_ext : float
+        Quality factor of the external circuit.
+    ext_phase : float
+        External phase that causes asymmetry. Measured in radians.
+
+    Returns
+    -------
+    S21 : complex
+        S21 parameter of the resonator.
+    """
+    detuning = freq_probe - freq_res
+    return 1 - (Q_load / Q_ext) / (
+        (1 - 1j * 2 * Q_load * detuning / freq_res) * np.exp(1j * ext_phase)
+    )
+
+
+def necklace_S21(
+    freq_probe: float,
+    freq_res: float,
+    Q_load: float,
+    Q_ext: float,
+    ext_phase: float = 0,
+) -> complex:
+    """
+    Calculate the S21 parameter of a necklace of resonators.
+    """
+    detuning = freq_probe - freq_res
+    return (
+        2
+        * (Q_load / Q_ext)
+        / ((1 - 1j * 2 * Q_load * detuning / freq_res) * np.exp(1j * ext_phase))
+    )

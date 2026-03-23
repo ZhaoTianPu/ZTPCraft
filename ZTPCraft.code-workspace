@@ -2,6 +2,12 @@
 	"folders": [
 		{
 			"path": "."
+		},
+		{
+			"path": "../Superconducting_qubit_NU/Codes/chencrafts"
+		},
+		{
+			"path": "../Superconducting_qubit_NU/Codes/scqubits_Tianpu"
 		}
 	],
 	"settings": {}

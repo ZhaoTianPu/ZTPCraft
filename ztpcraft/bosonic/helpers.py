@@ -31,7 +31,7 @@ def thermal_state_diag(evals: NDArray[np.float64], kbt: float) -> NDArray[np.flo
 
 def poisson(n: int, nbar: float) -> float:
     """
-    n is the number of phonons, nbar is the average number of phonons
+    n is the number of photons, nbar is the average number of photons
     return the Poisson distribution
     """
     return np.power(nbar, n) * np.exp(-nbar) / factorial(n)
