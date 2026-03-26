@@ -9,9 +9,9 @@ from scipy import integrate
 from ztpcraft.bosonic.oscillator_integrals.gaussian_hermite_nd import (
     integrate_gaussian_hermite,
 )
-from ztpcraft.bosonic.oscillator_integrals.oscillator_integrals_nd import (
+from ztpcraft.bosonic.oscillator_integrals.oscillators import LocalHarmonicOscillator
+from ztpcraft.bosonic.oscillator_integrals.oscillator_overlap import (
     CachedOverlapInternals,
-    LocalHarmonicOscillator,
     OscillatorOverlapEngine,
     OscillatorPairOverlapData,
     batched_overlaps,
@@ -235,12 +235,14 @@ def _build_sample_oscillators() -> (
     center_osc2: Array1D = np.array([-0.1, 0.4], dtype=np.float64)
 
     osc1 = LocalHarmonicOscillator(
-        transform=transform_osc1,
+        transform_xi_theta=transform_osc1,
+        transform_qn=np.linalg.inv(transform_osc1),
         frequencies=frequencies_osc1,
         center=center_osc1,
     )
     osc2 = LocalHarmonicOscillator(
-        transform=transform_osc2,
+        transform_xi_theta=transform_osc2,
+        transform_qn=np.linalg.inv(transform_osc2),
         frequencies=frequencies_osc2,
         center=center_osc2,
     )
@@ -250,10 +252,10 @@ def _build_sample_oscillators() -> (
 def _build_pair_and_cache() -> tuple[OscillatorPairOverlapData, CachedOverlapInternals]:
     osc1, osc2 = _build_sample_oscillators()
     pair_data = prepare_oscillator_pair_overlap(
-        osc1.transform,
+        osc1.transform_xi_theta,
         osc1.frequencies,
         osc1.center,
-        osc2.transform,
+        osc2.transform_xi_theta,
         osc2.frequencies,
         osc2.center,
     )
@@ -337,14 +339,14 @@ def test_batched_overlaps_matches_manual_loop():
     batch_vals = batched_overlaps(
         pair_data,
         occupation_pairs,
-        include_normalization=True,
+        include_normalization=False,
     )
     loop_vals = [
         overlap_between_oscillator_fock_states(
             pair_data,
             occ1,
             occ2,
-            include_normalization=True,
+            include_normalization=False,
         )
         for occ1, occ2 in occupation_pairs
     ]

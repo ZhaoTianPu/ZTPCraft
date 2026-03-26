@@ -3,6 +3,32 @@ from ztpcraft.bosonic.oscillator_integrals.gaussian_hermite_nd import (
     apply_L,
     integrate_gaussian_hermite,
 )
+from ztpcraft.bosonic.oscillator_integrals.oscillators import (
+    LocalHarmonicOscillator,
+    oscillator_from_circuit,
+)
+from ztpcraft.bosonic.oscillator_integrals.oscillator_overlap import (
+    CachedOverlapInternals,
+    OscillatorOverlapEngine,
+    OscillatorPairOverlapData,
+    batched_overlaps,
+    build_overlap_cache,
+    overlap_between_oscillator_fock_states,
+    overlap_with_cache,
+    prepare_oscillator_pair_overlap,
+)
+from ztpcraft.bosonic.oscillator_integrals.oscillator_operators import (
+    OperatorMatrixBuilder,
+)
+from ztpcraft.bosonic.oscillator_integrals.oscillator_overlap_cache import (
+    OverlapManager,
+)
+from ztpcraft.bosonic.oscillator_integrals.fock_states import OscillatorFockState
+from ztpcraft.bosonic.oscillator_integrals.oscillator_system import (
+    OscillatorRegistry,
+    OscillatorSystem,
+    sparse_to_full,
+)
 from ztpcraft.bosonic.oscillator_integrals.oscillator_integrals_1d_quadrature import (
     OscEnergy,
     cSij,
@@ -18,17 +44,6 @@ from ztpcraft.bosonic.oscillator_integrals.oscillator_integrals_1d_quadrature im
     lowdin,
     prefactor,
 )
-from ztpcraft.bosonic.oscillator_integrals.oscillator_integrals_nd import (
-    CachedOverlapInternals,
-    LocalHarmonicOscillator,
-    OscillatorOverlapEngine,
-    OscillatorPairOverlapData,
-    batched_overlaps,
-    build_overlap_cache,
-    overlap_between_oscillator_fock_states,
-    overlap_with_cache,
-    prepare_oscillator_pair_overlap,
-)
 
 __all__ = [
     "G0_tensor",
@@ -43,6 +58,13 @@ __all__ = [
     "overlap_between_oscillator_fock_states",
     "batched_overlaps",
     "OscillatorOverlapEngine",
+    "oscillator_from_circuit",
+    "OscillatorFockState",
+    "OperatorMatrixBuilder",
+    "OverlapManager",
+    "OscillatorRegistry",
+    "OscillatorSystem",
+    "sparse_to_full",
     "hermite_complex",
     "cprefactor",
     "cSij",
