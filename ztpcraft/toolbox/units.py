@@ -1,4 +1,5 @@
 import numpy as np
+import numpy.typing as npt
 from scipy.constants import (
     h,
     hbar,
@@ -7,10 +8,11 @@ from scipy.constants import (
 )
 
 phi_0 = h / (2 * e)
+ScalarOrArray = float | npt.NDArray[np.float64]
 
 
 # unit conversion ======================================================
-def capacitance_2_EC(C):
+def capacitance_2_EC(C: ScalarOrArray) -> ScalarOrArray:
     """
     Give capacitance in fF, return charging energy in GHz.
 
@@ -19,7 +21,7 @@ def capacitance_2_EC(C):
     return e**2 / (2 * C * 1e-15) / h / 1e9
 
 
-def EC_2_capacitance(EC):
+def EC_2_capacitance(EC: ScalarOrArray) -> ScalarOrArray:
     """
     Give charging energy in GHz, return capacitance in fF
 
@@ -28,7 +30,7 @@ def EC_2_capacitance(EC):
     return e**2 / (2 * h * EC * 1e9) / 1e-15
 
 
-def EL_2_inductance(EL):
+def EL_2_inductance(EL: ScalarOrArray) -> ScalarOrArray:
     """
     Give EL in GHz, return inductance in uH
 
@@ -39,7 +41,7 @@ def EL_2_inductance(EL):
     return Phi_0**2 / (2 * pi) ** 2 / (h * EL * 1e9) / 1e-6
 
 
-def inductance_2_EL(L):
+def inductance_2_EL(L: ScalarOrArray) -> ScalarOrArray:
     """
     Give inductance in uH, return EL in GHz
 
@@ -50,7 +52,7 @@ def inductance_2_EL(L):
     return Phi_0**2 / (2 * pi) ** 2 / (L * 1e-6) / h / 1e9
 
 
-def EC_EL_2_omega_Z(EC, EL):
+def EC_EL_2_omega_Z(EC: ScalarOrArray, EL: ScalarOrArray) -> tuple[ScalarOrArray, ScalarOrArray]:
     """
     Give EC and EL in GHz, return oscillation frequency in GHz and
     impedence in ohms, where
@@ -70,7 +72,7 @@ def EC_EL_2_omega_Z(EC, EL):
     return freq, Z
 
 
-def omega_Z_2_EC_EL(freq, Z):
+def omega_Z_2_EC_EL(freq: ScalarOrArray, Z: ScalarOrArray) -> tuple[ScalarOrArray, ScalarOrArray]:
     """
     Give oscillation frequency in GHz and impedence in ohms, return
     EC and EL in GHz, where
@@ -89,7 +91,7 @@ def omega_Z_2_EC_EL(freq, Z):
     return EC, EL
 
 
-def Z_2_phi_zpf(Z):
+def Z_2_phi_zpf(Z: ScalarOrArray) -> ScalarOrArray:
     """
     For a resonator, give impedence in ohms, return zero point fluctuation of
     flux in the unit of Phi_0 / 2pi.
@@ -100,7 +102,7 @@ def Z_2_phi_zpf(Z):
     return Phi_zpf / Phi_0 * 2 * np.pi
 
 
-def phi_zpf_2_Z(phi_zpf):
+def phi_zpf_2_Z(phi_zpf: ScalarOrArray) -> ScalarOrArray:
     """
     For a resonator, give zero point fluctuation of flux in the unit of Phi_0 / 2pi,
     return impedence in ohms.
@@ -111,7 +113,7 @@ def phi_zpf_2_Z(phi_zpf):
     return 2 * Phi_zpf**2 / hbar
 
 
-def Z_2_n_zpf(Z):
+def Z_2_n_zpf(Z: ScalarOrArray) -> ScalarOrArray:
     """
     For a resonator, give impedence in ohms, return zero point fluctuation of
     charge in the unit of 2e.
@@ -121,7 +123,7 @@ def Z_2_n_zpf(Z):
     return Q_zpf / 2 / e
 
 
-def n_zpf_2_Z(n_zpf):
+def n_zpf_2_Z(n_zpf: ScalarOrArray) -> ScalarOrArray:
     """
     For a resonator, give zero point fluctuation of charge in the unit of 2e,
     return impedence in ohms.

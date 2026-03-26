@@ -15,7 +15,7 @@ from ztpcraft.bosonic.oscillator_integrals.oscillator_operators import (
 
 def make_engine_oscillator(EC: float, EL: float) -> LocalHarmonicOscillator:
     """
-    Build your engine oscillator matching Fluxonium harmonic limit.
+    Build your engine oscillator matching scqubits results.
     """
     nm = diagonalize_quadratic_hamiltonian(np.array([[EC]]), np.array([[EL]]))
     return LocalHarmonicOscillator(

@@ -136,7 +136,7 @@ class TwoLoopFluxoidModel:
     ) -> float | FloatArray:
         """
         Equivalent single-inductor form:
-        U(phi) = EL/2 * (phi - phi_eff)^2 - EJ cos(phi) + offset
+        U(phi) = EL/2 * (phi + phi_eff)^2 - EJ cos(phi) + offset
         """
         p = self.params
         EL_sum, _, _ = self.inductive_fractions()
