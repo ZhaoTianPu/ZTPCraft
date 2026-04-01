@@ -85,19 +85,28 @@ def fgr_decay_rate(
     spectral_density: Callable[..., float | complex],
     T: float | None = None,
     include_upward: bool = False,
+    units: FrequencyUnit = "GHz",
+    spectral_omega_units: Literal["input", "SI"] = "SI",
 ) -> float:
     """Compute a transition rate from Fermi's Golden Rule.
 
-    Energies are assumed to be in linear-frequency units and internally
+    Energies are assumed to be in linear-frequency units (``units``) and internally
     converted to angular frequency via ``omega = 2*pi*(Ei - Ej)``.
+    By default, the spectral density is evaluated in SI angular-frequency units
+    (rad/s), i.e. ``omega * scale_hz[units]``.
     """
     omega = 2.0 * np.pi * (energy_i - energy_j)
+    omega_for_spectral = omega
+    if spectral_omega_units == "SI":
+        omega_for_spectral = omega * _FREQUENCY_SCALE_HZ[units]
 
-    spectral_weight = _evaluate_spectral_density(spectral_density, omega, T)
+    spectral_weight = _evaluate_spectral_density(spectral_density, omega_for_spectral, T)
     if include_upward:
-        spectral_weight += _evaluate_spectral_density(spectral_density, -omega, T)
+        spectral_weight += _evaluate_spectral_density(
+            spectral_density, -omega_for_spectral, T
+        )
 
-    rate = (abs(matrix_element) ** 2) * spectral_weight
+    rate = (abs(matrix_element) ** 2) * spectral_weight / hbar**2
     real_rate = np.real_if_close(rate)
     if np.iscomplexobj(real_rate):
         raise ValueError("Computed FGR rate is complex; spectral density must be real.")

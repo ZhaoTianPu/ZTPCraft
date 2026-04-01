@@ -88,12 +88,16 @@ class TwoLoopFluxoidModel:
         )
 
     @overload
-    def potential(self, phi: float, sector: FluxoidSector) -> float: ...
+    def potential_as_explicit_inductor_sum(
+        self, phi: float, sector: FluxoidSector
+    ) -> float: ...
 
     @overload
-    def potential(self, phi: FloatArray, sector: FluxoidSector) -> FloatArray: ...
+    def potential_as_explicit_inductor_sum(
+        self, phi: FloatArray, sector: FluxoidSector
+    ) -> FloatArray: ...
 
-    def potential(
+    def potential_as_explicit_inductor_sum(
         self, phi: float | FloatArray, sector: FluxoidSector
     ) -> float | FloatArray:
         """
@@ -124,14 +128,16 @@ class TwoLoopFluxoidModel:
         )
 
     @overload
-    def reduced_potential(self, phi: float, sector: FluxoidSector) -> float: ...
+    def potential_as_effective_inductor_plus_offset(
+        self, phi: float, sector: FluxoidSector
+    ) -> float: ...
 
     @overload
-    def reduced_potential(
+    def potential_as_effective_inductor_plus_offset(
         self, phi: FloatArray, sector: FluxoidSector
     ) -> FloatArray: ...
 
-    def reduced_potential(
+    def potential_as_effective_inductor_plus_offset(
         self, phi: float | FloatArray, sector: FluxoidSector
     ) -> float | FloatArray:
         """

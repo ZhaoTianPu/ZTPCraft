@@ -26,9 +26,9 @@ def test_flux_allocation_invariance(params: FluxoidModelParams):
     sys2: TwoLoopFluxoidSystem = TwoLoopFluxoidSystem(params2)
     sys3: TwoLoopFluxoidSystem = TwoLoopFluxoidSystem(params3)
 
-    E1: FloatArray = sys1.eigenvalues(s)
-    E2: FloatArray = sys2.eigenvalues(s)
-    E3: FloatArray = sys3.eigenvalues(s)
+    E1: FloatArray = sys1.eigenvalues_with_offset(s)
+    E2: FloatArray = sys2.eigenvalues_with_offset(s)
+    E3: FloatArray = sys3.eigenvalues_with_offset(s)
 
     assert np.allclose(E1, E2, atol=1e-8)
     assert np.allclose(E1, E3, atol=1e-8)

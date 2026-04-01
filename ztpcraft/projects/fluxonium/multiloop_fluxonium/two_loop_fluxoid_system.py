@@ -91,8 +91,13 @@ class TwoLoopFluxoidSystem:
     # Convenience accessors
     # -------------------------
 
-    def eigenvalues(self, sector: FluxoidSector) -> FloatArray:
-        return self._manager.get_sector_state(sector).evals
+    def eigenvalues_with_offset(self, sector: FluxoidSector) -> FloatArray:
+        return self._manager.get_sector_state(sector).evals + self.model.energy_offset(
+            sector
+        )
 
-    def eigenvectors(self, sector: FluxoidSector) -> ComplexArray:
+    def eigenvectors_without_shift(self, sector: FluxoidSector) -> ComplexArray:
         return self._manager.get_sector_state(sector).evecs
+    
+    def oscillator_center_shift(self, sector: FluxoidSector) -> float:
+        return self._manager.get_sector_state(sector).shift

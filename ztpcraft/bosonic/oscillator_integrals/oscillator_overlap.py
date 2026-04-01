@@ -170,20 +170,38 @@ def overlap_with_cache(
     n2: npt.NDArray[np.int_] = np.asarray(occupations_osc2, dtype=int)
     n_total: npt.NDArray[np.int_] = np.concatenate([n1, n2])
 
-    D_list: list[Array1D] = pair_data.hermite_directions
-    x0_list: list[Array1D] = pair_data.hermite_centers
-    m = np.array([D @ (cache.mu - x0) for D, x0 in zip(D_list, x0_list)], dtype=complex)
+    # --- active mode filtering ---
+    active_idx = np.nonzero(n_total)[0]
 
-    G0: npt.NDArray[np.complex128] = G0_tensor(m, n_total, use_logs)
-    p_max = int(n_total.sum()) // 2
+    if len(active_idx) == 0:
+        if report_prefactor_as_exponent:
+            return 1.0 + 0j, cache.Z0_exponent
+        return np.exp(cache.Z0_exponent)
+
+    # reduce everything
+    n_active = n_total[active_idx]
+    D_active: list[Array1D] = [pair_data.hermite_directions[i] for i in active_idx]
+    x0_active: list[Array1D] = [pair_data.hermite_centers[i] for i in active_idx]
+
+    # build m
+    m = np.array(
+        [D @ (cache.mu - x0) for D, x0 in zip(D_active, x0_active)],
+        dtype=np.complex128,
+    )
+
+    # reduced M
+    M_active = cache.M[np.ix_(active_idx, active_idx)]
+
+    G0: npt.NDArray[np.complex128] = G0_tensor(m, n_active, use_logs)
+    p_max = int(n_active.sum()) // 2
     g_tensor = G0
     accum = G0.copy()
 
     for p in range(1, p_max + 1):
-        g_tensor = np.asarray(apply_L(g_tensor, cache.M), dtype=np.complex128) / p
+        g_tensor = np.asarray(apply_L(g_tensor, M_active), dtype=np.complex128) / p
         accum += g_tensor
 
-    coeff = accum[tuple([-1] * len(n_total))]
+    coeff = accum[tuple([-1] * len(n_active))]
     prefactor = sum(math.lgamma(int(n) + 1) for n in n_total)
 
     if np.isclose(coeff, 0.0, atol=1e-14, rtol=0.0):

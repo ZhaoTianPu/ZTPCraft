@@ -17,7 +17,8 @@ def test_fgr_decay_rate_downward_only() -> None:
         spectral_density=spectral_density,
         include_upward=False,
     )
-    expected = (abs(2.0) ** 2) * (0.1 + 0.05 * (2.0 * np.pi))
+    omega_si = 2.0 * np.pi * (6.0 - 5.0) * 1e9
+    expected = ((abs(2.0) ** 2) * (0.1 + 0.05 * abs(omega_si))) / (hbar**2)
     assert np.isclose(rate, expected)
 
 
@@ -34,8 +35,10 @@ def test_fgr_decay_rate_include_upward_with_temperature() -> None:
         T=0.2,
         include_upward=True,
     )
-    omega = 2.0 * np.pi * (4.0 - 1.0)
-    expected = (abs(1.5) ** 2) * ((abs(omega) + 0.4) + (abs(-omega) + 0.4))
+    omega_si = 2.0 * np.pi * (4.0 - 1.0) * 1e9
+    expected = (abs(1.5) ** 2) * ((abs(omega_si) + 0.4) + (abs(-omega_si) + 0.4)) / (
+        hbar**2
+    )
     assert np.isclose(rate, expected)
 
 
@@ -51,7 +54,42 @@ def test_fgr_accepts_one_argument_spectral_density() -> None:
         T=0.1,
         include_upward=False,
     )
-    expected = (abs(3.0) ** 2) * (0.2 * abs(2.0 * np.pi * 0.5))
+    omega_si = 2.0 * np.pi * (2.5 - 2.0) * 1e9
+    expected = (abs(3.0) ** 2) * (0.2 * abs(omega_si)) / (hbar**2)
+    assert np.isclose(rate, expected)
+
+
+def test_fgr_decay_rate_supports_si_spectral_frequency() -> None:
+    def spectral_density(omega: float) -> float:
+        # Expecting SI angular frequency [rad/s].
+        return 0.1 + 0.05 * abs(omega)
+
+    rate = fgr_decay_rate(
+        energy_i=6.0,
+        energy_j=5.0,
+        matrix_element=2.0,
+        spectral_density=spectral_density,
+        units="GHz",
+        spectral_omega_units="SI",
+    )
+    omega_si = 2.0 * np.pi * (6.0 - 5.0) * 1e9
+    expected = ((abs(2.0) ** 2) * (0.1 + 0.05 * abs(omega_si))) / (hbar**2)
+    assert np.isclose(rate, expected)
+
+
+def test_fgr_decay_rate_can_use_input_omega_units() -> None:
+    def spectral_density(omega: float) -> float:
+        return 0.2 * abs(omega)
+
+    rate = fgr_decay_rate(
+        energy_i=2.5,
+        energy_j=2.0,
+        matrix_element=3.0,
+        spectral_density=spectral_density,
+        spectral_omega_units="input",
+    )
+    omega_input = 2.0 * np.pi * (2.5 - 2.0)
+    expected = (abs(3.0) ** 2) * (0.2 * abs(omega_input)) / (hbar**2)
     assert np.isclose(rate, expected)
 
 

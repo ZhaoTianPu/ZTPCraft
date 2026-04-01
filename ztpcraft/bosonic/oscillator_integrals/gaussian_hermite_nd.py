@@ -198,12 +198,12 @@ def integrate_gaussian_hermite(
     N = covariance_matrix.shape[0]
     assert covariance_matrix.shape == (N, N)
     assert linear_term.shape == (N,)
-    K = len(hermite_directions)  # total number of Hermite polynomials
-    assert len(displacement_vectors) == K
-    assert len(hermite_orders) == K
+    k_full = len(hermite_directions)  # total number of Hermite polynomials
+    assert len(displacement_vectors) == k_full
+    assert len(hermite_orders) == k_full
     hermite_orders = np.asarray(hermite_orders, dtype=int)
+    active_idx = np.nonzero(hermite_orders)[0]
     assert np.all(hermite_orders >= 0)
-    n_tot = int(hermite_orders.sum())
 
     # Cholesky for stability
     L = np.linalg.cholesky(covariance_matrix)
@@ -215,7 +215,9 @@ def integrate_gaussian_hermite(
         return np.linalg.solve(L.T, np.linalg.solve(L, b))
 
     # μ = -1/2 A^{-1} B
-    mu = -0.5 * solve_A(linear_term)
+    mu: npt.NDArray[np.complex128] = np.asarray(
+        -0.5 * solve_A(linear_term), dtype=np.complex128
+    )
 
     # log(det A) from Cholesky
     logdetA = 2.0 * np.sum(np.log(np.diag(L)))
@@ -228,37 +230,40 @@ def integrate_gaussian_hermite(
     # Z0 = np.exp(Z0_exponent)
 
     # if there is no excitation at all, return Z0
-    if K == 0 or np.all(np.asarray(hermite_orders, int) == 0):
+    if len(active_idx) == 0:
         if report_prefactor_as_exponent:
-            return 1, Z0_exponent
+            return 1.0, Z0_exponent
         else:
-            Z0 = np.exp(Z0_exponent)
-            return Z0
+            return np.exp(Z0_exponent)
 
-    # Build m_k and Γ_{ij} without forming A^{-1}
-    # m_k = D_k^T (μ - x0_k)
-    hermite_directions = [np.asarray(d, dtype=float) for d in hermite_directions]
-    displacement_vectors = [
-        np.asarray(x_0, dtype=float) for x_0 in displacement_vectors
+    # active-mode compression
+    hermite_directions_arr: list[Array1D] = [
+        np.asarray(d, dtype=np.float64) for d in hermite_directions
     ]
+    displacement_vectors_arr: list[Array1D] = [
+        np.asarray(x_0, dtype=np.float64) for x_0 in displacement_vectors
+    ]
+    D_list: list[Array1D] = [hermite_directions_arr[i] for i in active_idx]
+    x0_list: list[Array1D] = [displacement_vectors_arr[i] for i in active_idx]
+    n_list = hermite_orders[active_idx]
+
+    # Build m only for active modes
     m = np.array(
-        [D @ (mu - x_0) for D, x_0 in zip(hermite_directions, displacement_vectors)],
-        dtype=complex,
+        [np.dot(D_list[k], mu - x0_list[k]) for k in range(len(n_list))],
+        dtype=np.complex128,
     )
 
-    # Γ_{ij} = D_i^T A^{-1} D_j = D_i^T y_j,  where A y_j = D_j
-    # Solve once per j
-    aux_vectors = np.column_stack([solve_A(d) for d in hermite_directions])  # (N,K)
-    Gamma = np.array(
-        [
-            [hermite_directions[i] @ aux_vectors[:, j] for j in range(K)]
-            for i in range(K)
-        ],
-        dtype=float,
-    )
+    # reduced Gamma for active modes only
+    Sigma = np.asarray(np.linalg.inv(covariance_matrix), dtype=np.float64)
+    K_active = len(n_list)
+    Gamma = np.zeros((K_active, K_active), dtype=np.float64)
+
+    for a in range(K_active):
+        for b in range(K_active):
+            Gamma[a, b] = D_list[a] @ Sigma @ D_list[b]
 
     # M = 2 Γ - I
-    M = 2.0 * Gamma - np.eye(K)
+    M = 2.0 * Gamma - np.eye(K_active)
 
     # Multivariate series coefficient of exp(2 t^T m) * exp(t^T M t)
     # For a given multi-index n_list, want to find the coefficient of
@@ -268,8 +273,8 @@ def integrate_gaussian_hermite(
 
     # max_deg = tuple(int(n) for n in n_list)
 
-    G0 = G0_tensor(m, hermite_orders, use_logs)
-    n_tot = int(hermite_orders.sum())
+    G0 = G0_tensor(m, n_list, use_logs)
+    n_tot = int(n_list.sum())
     p_max = n_tot // 2
 
     G_tensor_list = [G0]
@@ -293,10 +298,10 @@ def integrate_gaussian_hermite(
     F_tensor = np.sum(G_tensor_list, axis=0)
 
     # read off the coefficient
-    coeff = F_tensor[tuple([-1] * len(hermite_orders))]
+    coeff = F_tensor[tuple([-1] * len(n_list))]
 
     # multiply by a prefactor prod_k n_k!
-    prefactor_exponent = sum(math.lgamma(int(n) + 1) for n in hermite_orders)
+    prefactor_exponent = sum(math.lgamma(int(n) + 1) for n in n_list)
     # prefactor = np.exp(prefactor_exponent)
 
     # Final value
