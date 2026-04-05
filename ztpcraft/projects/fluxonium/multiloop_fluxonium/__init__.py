@@ -8,8 +8,14 @@ from ztpcraft.projects.fluxonium.multiloop_fluxonium.two_loop_fluxoid_model impo
 from ztpcraft.projects.fluxonium.multiloop_fluxonium.two_loop_fluxoid_system import (
     TwoLoopFluxoidSystem,
 )
-from ztpcraft.projects.fluxonium.multiloop_fluxonium.two_loop_fluxonium_with_arrays_normal_modes import TwoLoopArrayFluxonium
-from ztpcraft.projects.fluxonium.multiloop_fluxonium.two_loop_fluxonium_with_arrays_core import find_minima, node_flux_from_phi_b, potential_energy_node_flux
+from ztpcraft.projects.fluxonium.multiloop_fluxonium.two_loop_fluxonium_with_arrays_normal_modes import (
+    TwoLoopArrayFluxonium,
+)
+from ztpcraft.projects.fluxonium.multiloop_fluxonium.two_loop_fluxonium_with_arrays_core import (
+    find_minima,
+    node_flux_from_phi_b,
+    potential_energy_node_flux,
+)
 from ztpcraft.projects.fluxonium.multiloop_fluxonium.two_loop_fluxoid_transition_rates import (
     DaggerOperator,
     FluxoidOperator,
@@ -28,6 +34,17 @@ from ztpcraft.projects.fluxonium.multiloop_fluxonium.two_loop_fluxoid_transition
     sector_rate_matrix_fast,
     sector_to_sector_rate,
     thermal_weights,
+)
+from ztpcraft.projects.fluxonium.multiloop_fluxonium.tunneling_assisted_incoherent_jumps import (
+    HybridizationComponent,
+    OperatorSelector,
+    PerturbativeDressedStates,
+    PhaseSlipSector,
+    SpectrumInAPhaseSlipSector,
+    PhaseSlipStateLabel,
+    TunnelingAssistedIncoherentJumps,
+    TunnelingAssistedModelParams,
+    ensure_explicit_p_values,
 )
 
 __all__ = [
@@ -56,4 +73,13 @@ __all__ = [
     "sector_to_sector_rate",
     "sector_rate_matrix_fast",
     "sector_rate_matrix",
+    "HybridizationComponent",
+    "OperatorSelector",
+    "PerturbativeDressedStates",
+    "PhaseSlipSector",
+    "SpectrumInAPhaseSlipSector",
+    "PhaseSlipStateLabel",
+    "TunnelingAssistedIncoherentJumps",
+    "TunnelingAssistedModelParams",
+    "ensure_explicit_p_values",
 ]
