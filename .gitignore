@@ -13,3 +13,6 @@ dist/
 
 # OS/editor artifacts
 .DS_Store
+
+# develop docs
+develop_docs/

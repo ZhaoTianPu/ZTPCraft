@@ -15,8 +15,6 @@ import jax.numpy as jnp
 
 from ztpcraft.bosonic.input_output import (
     power_dissipator_coeff_frequency_to_drive_strength,
-    enveloped_cos,
-    envelope_func,
     solve_oscillator_under_drive,
 )
 
@@ -28,13 +26,9 @@ from numpy.typing import NDArray
 # -- Simulation-related classes --------------------------------------------------
 """LME simulation helper.
 
-1. `DbdqsSimulation` – build full Hilbert-space Hamiltonian, transform to the
+1. `DbdqsSimulation` - build full Hilbert-space Hamiltonian, transform to the
    dressed basis, truncate, time-evolve with *dynamiqs* and persist results.
-2. `DbdqsAnalysis` – lightweight post-processing utilities.
-
-Only the overall structure is included; places that depend on heavy physics
-expressions are marked with `# TODO:` so users can paste the exact notebook
-formulas.  Nothing here changes external public API later.
+2. `DbdqsAnalysis` - lightweight post-processing utilities.
 """
 
 
@@ -527,12 +521,15 @@ class DriveInducedDecohSim:
             self.static_hamiltonian_truncated.to_numpy()
         )
         evals, evecs = np.linalg.eigh(hamiltonian_ndarray)
-        # standardize the eigenvectors to have positive real part of the largest element
+        # Standardize each eigenvector by fixing the phase of its largest-magnitude
+        # component to be positive real. This avoids invalid comparisons for complex
+        # entries and keeps indexing deterministic.
         evecs_new_dq = []
         for evec in evecs.T:
             evec_full = copy.deepcopy(evec)
-            if evec[np.argmax(np.abs(evec))] < 0:
-                evec_full *= -1
+            pivot = evec[np.argmax(np.abs(evec))]
+            if np.abs(pivot) > 0:
+                evec_full *= np.exp(-1j * np.angle(pivot))
             evecs_new_dq.append(
                 dq.asqarray(
                     np.array([evec_full]),
@@ -576,7 +573,12 @@ class DriveInducedDecohSim:
             ):
                 index = i
                 diff = np.abs(index_list[i, 3] - q_state)
-        return index
+        if index is None:
+            raise ValueError(
+                "Could not find a dressed-state index for "
+                f"(a={a_state}, b={b_state}, q~{q_state})."
+            )
+        return int(index)
 
     def _generate_qubit_rho01_projector(self) -> dq.QArray:
         off_diag_proj: dq.QArray = 0 * dq.eye_like(self.evecs[0])
@@ -736,7 +738,12 @@ class DriveInducedDecohSim:
             print(f"frequency sweep {freq_idx+1}/{len(drive_frequencies_GHz)}")
             omega_d = f_GHz * 2 * np.pi
             # round to nearest 1/f_d time for the ramp and the flat part
-            t_ramp_rounded = np.round(solution_config.t_ramp_nominal_ns * f_GHz) / f_GHz
+            t_ramp_nominal_rounded = (
+                np.round(solution_config.t_ramp_nominal_ns * f_GHz) / f_GHz
+            )
+            t_ramp_rounded = (
+                t_ramp_nominal_rounded if solution_config.include_ramp_pulse else 0.0
+            )
             t_flat_rounded = np.round(solution_config.t_flat_nominal_ns * f_GHz) / f_GHz
             t_period = 1 / f_GHz
             t_sample_step = t_period / solution_config.n_snapshots_per_period
@@ -757,7 +764,7 @@ class DriveInducedDecohSim:
                         * (t / t_ramp)
                     )
 
-                H_d_ramp_up = static_hamiltonian
+                H_d_ramp_up = copy.deepcopy(static_hamiltonian)
                 for mode in ["a", "b", "q"]:
                     if self.drive_strength[mode][freq_idx] != 0:
                         H_d_ramp_up += dq.modulated(
@@ -806,7 +813,7 @@ class DriveInducedDecohSim:
             ) -> float:
                 return self.drive_strength[mode][freq_idx] * jnp.cos(omega_d * t)
 
-            H_d_flat = static_hamiltonian
+            H_d_flat = copy.deepcopy(static_hamiltonian)
             for mode in ["a", "b", "q"]:
                 if self.drive_strength[mode][freq_idx] != 0:
                     H_d_flat += dq.modulated(
@@ -820,7 +827,7 @@ class DriveInducedDecohSim:
             if solution_config.include_ramp_pulse:
                 initial_state_for_flat_pulse = ramp_up_output.states[-1]
             else:
-                initial_state_for_flat_pulse = initial_state.dag()
+                initial_state_for_flat_pulse = initial_state
             flat_output = dq.mesolve(
                 H_d_flat,
                 self.c_ops,
@@ -846,13 +853,18 @@ class DriveInducedDecohSim:
                 )
 
             if solution_config.displace_state_for_measurements:
+                init_displacement = (
+                    ramp_up_output.expects[2][-1]
+                    if solution_config.include_ramp_pulse
+                    else 0.0
+                )
                 flat_output_displaced = solve_oscillator_under_drive(
                     t_sample=tlist_flat + t_ramp_rounded,
                     t_ramp=t_ramp_rounded,
                     drive_strength=self.drive_strength["q"][freq_idx],
                     omega_q=physical_config.f_q_GHz * 2 * np.pi,
                     omega_d=omega_d,
-                    init_displacement=ramp_up_output.expects[2][-1],
+                    init_displacement=init_displacement,
                 )
 
             measurement_outcomes: Dict[str, NDArray[np.complex128]] = {}
@@ -1492,7 +1504,7 @@ def dressed_basis_eom(
             ],
         ],
         dtype=complex,
-    ) @ np.array([a1, a2, aq]) + np.array([c1, c2, c3]) * eps * np.cos(1j * omega_d * t)
+    ) @ np.array([a1, a2, aq]) + np.array([c1, c2, c3]) * eps * np.cos(omega_d * t)
     return dydt
 
 
