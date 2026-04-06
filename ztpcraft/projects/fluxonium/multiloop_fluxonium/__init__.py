@@ -37,8 +37,9 @@ from ztpcraft.projects.fluxonium.multiloop_fluxonium.two_loop_fluxoid_transition
 )
 from ztpcraft.projects.fluxonium.multiloop_fluxonium.tunneling_assisted_incoherent_jumps import (
     HybridizationComponent,
+    NoiseChannel,
     OperatorSelector,
-    PerturbativeDressedStates,
+    PerturbativeHybridizationInfo,
     PhaseSlipSector,
     SpectrumInAPhaseSlipSector,
     PhaseSlipStateLabel,
@@ -74,8 +75,9 @@ __all__ = [
     "sector_rate_matrix_fast",
     "sector_rate_matrix",
     "HybridizationComponent",
+    "NoiseChannel",
     "OperatorSelector",
-    "PerturbativeDressedStates",
+    "PerturbativeHybridizationInfo",
     "PhaseSlipSector",
     "SpectrumInAPhaseSlipSector",
     "PhaseSlipStateLabel",

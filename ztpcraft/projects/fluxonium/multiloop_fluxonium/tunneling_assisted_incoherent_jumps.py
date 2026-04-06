@@ -74,14 +74,19 @@ class HybridizationComponent:
 
 
 @dataclass
-class PerturbativeDressedStates:
+class PerturbativeHybridizationInfo:
     states: list[PhaseSlipStateLabel]
     energies: FloatArray
-    bare_operator_matrix: ComplexArray
-    dressed_operator_matrix: ComplexArray
-    mixing_matrix: ComplexArray
+    dressed_eigenvectors_in_bare_basis: ComplexArray
     contributions_by_source: dict[int, list[HybridizationComponent]]
     invalid_contributions: list[HybridizationComponent]
+
+
+@dataclass(frozen=True)
+class NoiseChannel:
+    name: str
+    operator: OperatorSelector
+    spectral_density: Callable[..., float | complex]
 
 
 OperatorSelector = str | Callable[[Any], NDArray[Any]]
@@ -316,7 +321,7 @@ class TunnelingAssistedIncoherentJumps:
                 energy_esys=(sector_state.evals, sector_state.evecs)
             )
         else:
-            raise NotImplementedError(f"Unsupported operator type: {type(operator).__name__}")
+            operator_matrix = np.asarray(operator(sector_state.fluxonium))
 
         self._operator_cache[cache_key] = operator_matrix  # type: ignore[assignment]
         return operator_matrix  # type: ignore[return-value]
@@ -348,16 +353,13 @@ class TunnelingAssistedIncoherentJumps:
             neighbors.append(p + 1)
         return tuple(neighbors)
 
-    def build_perturbative_dressed_states(
-        self,
-        operator: OperatorSelector,
-        states: list[PhaseSlipStateLabel] | None = None,
-    ) -> PerturbativeDressedStates:
+    def build_perturbative_hybridization_info(
+        self, states: list[PhaseSlipStateLabel] | None = None
+    ) -> PerturbativeHybridizationInfo:
         basis_states = self.build_states() if states is None else list(states)
         # n_states is the total number of states that we consider
         n_states = len(basis_states)
         energies = self.build_energy_array(basis_states)
-        bare_operator = self.build_bare_operator_matrix(basis_states, operator)
         allowed_p_values = {state.sector.P for state in basis_states}
 
         state_to_index = {state: idx for idx, state in enumerate(basis_states)}
@@ -428,61 +430,128 @@ class TunnelingAssistedIncoherentJumps:
                         invalid_components.append(hybridization_component)
 
                     if abs(amplitude) > _MATRIX_ELEMENT_CUTOFF:
-                        dressed_eigenvectors_in_bare_basis[partner_idx, source_state_idx] += amplitude
+                        dressed_eigenvectors_in_bare_basis[
+                            partner_idx, source_state_idx
+                        ] += amplitude
 
-        dressed_operator = (
-            dressed_eigenvectors_in_bare_basis.conj().T @ bare_operator @ dressed_eigenvectors_in_bare_basis
-        )
-
-        return PerturbativeDressedStates(
+        return PerturbativeHybridizationInfo(
             states=list(basis_states),
             energies=energies,
-            bare_operator_matrix=bare_operator,
-            dressed_operator_matrix=np.asarray(dressed_operator, dtype=np.complex128),
-            mixing_matrix=dressed_eigenvectors_in_bare_basis,
+            dressed_eigenvectors_in_bare_basis=dressed_eigenvectors_in_bare_basis,
             contributions_by_source=hybridization_components_for_all_states,
             invalid_contributions=invalid_components,
         )
 
-    def compute_transition_rate_matrix(
+    def build_dressed_operator_matrix(
         self,
-        dressed_states: PerturbativeDressedStates,
-        spectral_density: Callable[..., float | complex],
+        hybridization: PerturbativeHybridizationInfo,
+        operator: OperatorSelector,
+        bare_operator_matrix: ComplexArray | None = None,
+    ) -> ComplexArray:
+        bare_operator = (
+            self.build_bare_operator_matrix(hybridization.states, operator)
+            if bare_operator_matrix is None
+            else bare_operator_matrix
+        )
+        U = hybridization.dressed_eigenvectors_in_bare_basis
+        return np.asarray(U.conj().T @ bare_operator @ U, dtype=np.complex128)
+
+    def compute_transition_rate_matrix_for_channel(
+        self,
+        hybridization: PerturbativeHybridizationInfo,
+        channel: NoiseChannel,
         T: float | None,
         units: FrequencyUnit = "GHz",
         spectral_omega_units: Literal["input", "SI"] = "SI",
     ) -> FloatArray:
+        dressed_operator = self.build_dressed_operator_matrix(
+            hybridization=hybridization,
+            operator=channel.operator,
+        )
         return compute_rate_matrix(
-            energies=dressed_states.energies,
-            O_matrix=dressed_states.dressed_operator_matrix,
-            spectral_density=spectral_density,
+            energies=hybridization.energies,
+            O_matrix=dressed_operator,
+            spectral_density=channel.spectral_density,
             T=T,
             units=units,
             spectral_omega_units=spectral_omega_units,
         )
 
-    def compute_all_decay_rates(
+    def _compute_multi_channel_rate_matrices(
         self,
-        dressed_states: PerturbativeDressedStates,
-        spectral_density: Callable[..., float | complex],
+        channels: Sequence[NoiseChannel],
         T: float | None,
+        states: list[PhaseSlipStateLabel] | None = None,
+        hybridization: PerturbativeHybridizationInfo | None = None,
         units: FrequencyUnit = "GHz",
         spectral_omega_units: Literal["input", "SI"] = "SI",
-    ) -> dict[tuple[int, int], float]:
-        rate_matrix = self.compute_transition_rate_matrix(
-            dressed_states=dressed_states,
-            spectral_density=spectral_density,
+    ) -> tuple[
+        PerturbativeHybridizationInfo, dict[str, FloatArray], FloatArray
+    ]:
+        if len(channels) == 0:
+            raise ValueError("channels must be non-empty.")
+
+        seen: set[str] = set()
+        for channel in channels:
+            if channel.name in seen:
+                raise ValueError(f"Duplicate channel name: {channel.name!r}")
+            seen.add(channel.name)
+
+        hybrid = (
+            self.build_perturbative_hybridization_info(states=states)
+            if hybridization is None
+            else hybridization
+        )
+        total = np.zeros((len(hybrid.states), len(hybrid.states)), dtype=np.float64)
+        per_channel: dict[str, FloatArray] = {}
+
+        for channel in channels:
+            rate_matrix = self.compute_transition_rate_matrix_for_channel(
+                hybridization=hybrid,
+                channel=channel,
+                T=T,
+                units=units,
+                spectral_omega_units=spectral_omega_units,
+            )
+            per_channel[channel.name] = rate_matrix
+            total += rate_matrix
+
+        return hybrid, per_channel, total
+
+    def compute_multi_channel_decay_rates(
+        self,
+        channels: Sequence[NoiseChannel],
+        T: float | None,
+        states: list[PhaseSlipStateLabel] | None = None,
+        hybridization: PerturbativeHybridizationInfo | None = None,
+        units: FrequencyUnit = "GHz",
+        spectral_omega_units: Literal["input", "SI"] = "SI",
+    ) -> tuple[dict[str, dict[tuple[int, int], float]], dict[tuple[int, int], float]]:
+        _, rate_matrix_by_channel, total_matrix = self._compute_multi_channel_rate_matrices(
+            channels=channels,
             T=T,
+            states=states,
+            hybridization=hybridization,
             units=units,
             spectral_omega_units=spectral_omega_units,
         )
-        out: dict[tuple[int, int], float] = {}
-        mask = np.abs(dressed_states.dressed_operator_matrix) >= _MATRIX_ELEMENT_CUTOFF
-        np.fill_diagonal(mask, False)
-        pairs = np.argwhere(mask)
-        for i, j in pairs:
-            out[(int(i), int(j))] = float(rate_matrix[i, j])
-        return out
+        per_channel_decay: dict[str, dict[tuple[int, int], float]] = {}
+        for name, rate_matrix in rate_matrix_by_channel.items():
+            channel_decay: dict[tuple[int, int], float] = {}
+            for i in range(rate_matrix.shape[0]):
+                for j in range(rate_matrix.shape[1]):
+                    if i == j or rate_matrix[i, j] <= 0.0:
+                        continue
+                    channel_decay[(i, j)] = float(rate_matrix[i, j])
+            per_channel_decay[name] = channel_decay
+
+        total_decay: dict[tuple[int, int], float] = {}
+        for i in range(total_matrix.shape[0]):
+            for j in range(total_matrix.shape[1]):
+                if i == j or total_matrix[i, j] <= 0.0:
+                    continue
+                total_decay[(i, j)] = float(total_matrix[i, j])
+        return per_channel_decay, total_decay
 
     def thermal_weights(self, sector: PhaseSlipSector, T: float) -> FloatArray:
         if T <= 0.0:
@@ -501,22 +570,22 @@ class TunnelingAssistedIncoherentJumps:
 
     def p_to_p_rate(
         self,
-        dressed_states: PerturbativeDressedStates,
-        spectral_density: Callable[..., float | complex],
+        hybridization: PerturbativeHybridizationInfo,
+        channel: NoiseChannel,
         p_from: int,
         p_to: int,
         T: float,
         units: FrequencyUnit = "GHz",
         spectral_omega_units: Literal["input", "SI"] = "SI",
     ) -> float:
-        rates = self.compute_transition_rate_matrix(
-            dressed_states=dressed_states,
-            spectral_density=spectral_density,
+        rates = self.compute_transition_rate_matrix_for_channel(
+            hybridization=hybridization,
+            channel=channel,
             T=T,
             units=units,
             spectral_omega_units=spectral_omega_units,
         )
-        states = dressed_states.states
+        states = hybridization.states
         indices_from = np.asarray(
             [i for i, s in enumerate(states) if s.sector.P == p_from], dtype=np.int64
         )
@@ -535,8 +604,8 @@ class TunnelingAssistedIncoherentJumps:
 
     def p_rate_matrix(
         self,
-        dressed_states: PerturbativeDressedStates,
-        spectral_density: Callable[..., float | complex],
+        hybridization: PerturbativeHybridizationInfo,
+        channel: NoiseChannel,
         T: float,
         units: FrequencyUnit = "GHz",
         spectral_omega_units: Literal["input", "SI"] = "SI",
@@ -546,8 +615,8 @@ class TunnelingAssistedIncoherentJumps:
         for i, p_from in enumerate(p_list):
             for j, p_to in enumerate(p_list):
                 matrix[i, j] = self.p_to_p_rate(
-                    dressed_states=dressed_states,
-                    spectral_density=spectral_density,
+                    hybridization=hybridization,
+                    channel=channel,
                     p_from=p_from,
                     p_to=p_to,
                     T=T,
@@ -558,8 +627,8 @@ class TunnelingAssistedIncoherentJumps:
 
     def aggregated_neighbor_jump_rates(
         self,
-        dressed_states: PerturbativeDressedStates,
-        spectral_density: Callable[..., float | complex],
+        hybridization: PerturbativeHybridizationInfo,
+        channel: NoiseChannel,
         T: float,
         units: FrequencyUnit = "GHz",
         spectral_omega_units: Literal["input", "SI"] = "SI",
@@ -569,8 +638,8 @@ class TunnelingAssistedIncoherentJumps:
             out[p] = {}
             for p_target in self._neighbor_ps(p, set(self.p_values)):
                 out[p][p_target] = self.p_to_p_rate(
-                    dressed_states=dressed_states,
-                    spectral_density=spectral_density,
+                    hybridization=hybridization,
+                    channel=channel,
                     p_from=p,
                     p_to=p_target,
                     T=T,
@@ -589,8 +658,9 @@ def ensure_explicit_p_values(p_values: Iterable[int]) -> list[int]:
 
 __all__ = [
     "HybridizationComponent",
+    "NoiseChannel",
     "OperatorSelector",
-    "PerturbativeDressedStates",
+    "PerturbativeHybridizationInfo",
     "PhaseSlipSector",
     "SpectrumInAPhaseSlipSector",
     "PhaseSlipStateLabel",
