@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+"""Operator construction and FGR transition-rate utilities for fluxoid sectors."""
+
 from abc import ABC, abstractmethod
 from collections.abc import Callable, Iterable
 from dataclasses import dataclass
@@ -22,7 +24,7 @@ ComplexArray = NDArray[np.complex128]
 FloatArray = NDArray[np.float64]
 
 _MATRIX_ELEMENT_CUTOFF = 1e-14
-_FREQUENCY_SCALE_HZ: dict[FrequencyUnit, float] = {
+_FREQUENCY_SCALE_IN_HZ: dict[FrequencyUnit, float] = {
     "GHz": 1e9,
     "MHz": 1e6,
     "kHz": 1e3,
@@ -32,17 +34,33 @@ _FREQUENCY_SCALE_HZ: dict[FrequencyUnit, float] = {
 
 @dataclass(frozen=True)
 class GlobalState:
+    """Global state label identified by sector and in-sector level index."""
     sector: FluxoidSector
     level: int
 
 
 def _shift_sector(sector: FluxoidSector, delta: tuple[int, int]) -> FluxoidSector:
+    """Return sector shifted by integer delta in `(m_a, m_b)`."""
     return FluxoidSector(sector.m_a + delta[0], sector.m_b + delta[1])
 
 
 def build_global_states(
     sectors: Iterable[FluxoidSector], system: TwoLoopFluxoidSystem
 ) -> list[GlobalState]:
+    """Enumerate all `(sector, level)` states for provided sectors.
+
+    Parameters
+    ----------
+    sectors:
+        Iterable of sector labels.
+    system:
+        Fluxoid system object used to determine level counts.
+
+    Returns
+    -------
+    list[GlobalState]
+        Flattened list of states in sector-major order.
+    """
     states: list[GlobalState] = []
     for sector in sectors:
         evals = system.eigenvalues_with_offset(sector)
@@ -52,6 +70,8 @@ def build_global_states(
 
 
 class FluxoidOperator(ABC):
+    """Abstract operator over `GlobalState` basis with composable algebra."""
+
     def __add__(self, other: "FluxoidOperator") -> "FluxoidOperator":
         return SumOperator(self, other)
 
@@ -74,6 +94,7 @@ class FluxoidOperator(ABC):
 
 @dataclass(frozen=True)
 class SectorJumpOperator(FluxoidOperator):
+    """Inter-sector jump operator selecting a fixed sector displacement."""
     system: TwoLoopFluxoidSystem
     delta: tuple[int, int]
 
@@ -86,6 +107,7 @@ class SectorJumpOperator(FluxoidOperator):
 
 @dataclass(frozen=True)
 class SumOperator(FluxoidOperator):
+    """Operator sum `left + right`."""
     left: FluxoidOperator
     right: FluxoidOperator
 
@@ -100,6 +122,7 @@ class SumOperator(FluxoidOperator):
 
 @dataclass(frozen=True)
 class ProductOperator(FluxoidOperator):
+    """Operator product `left @ right` evaluated in a bound basis."""
     left: FluxoidOperator
     right: FluxoidOperator
     states: tuple[GlobalState, ...] | None = None
@@ -124,6 +147,7 @@ class ProductOperator(FluxoidOperator):
 
 @dataclass(frozen=True)
 class DaggerOperator(FluxoidOperator):
+    """Hermitian-conjugate wrapper for another operator."""
     operator: FluxoidOperator
 
     def bind_states(self, states: list[GlobalState]) -> "FluxoidOperator":
@@ -135,6 +159,7 @@ class DaggerOperator(FluxoidOperator):
 
 @dataclass(frozen=True)
 class ScaledOperator(FluxoidOperator):
+    """Scalar-multiplied operator."""
     scalar: complex
     operator: FluxoidOperator
 
@@ -148,6 +173,7 @@ class ScaledOperator(FluxoidOperator):
 def _state_structure(
     states: list[GlobalState],
 ) -> tuple[dict[FluxoidSector, NDArray[np.int64]], dict[FluxoidSector, NDArray[np.int64]]]:
+    """Return per-sector index and level lookup arrays."""
     indices: dict[FluxoidSector, list[int]] = {}
     levels: dict[FluxoidSector, list[int]] = {}
     for idx, state in enumerate(states):
@@ -162,6 +188,20 @@ def _state_structure(
 def build_energy_array(
     system: TwoLoopFluxoidSystem, states: list[GlobalState]
 ) -> FloatArray:
+    """Build energy vector aligned with `states` ordering.
+
+    Parameters
+    ----------
+    system:
+        Fluxoid system object.
+    states:
+        Ordered list of global states.
+
+    Returns
+    -------
+    FloatArray
+        Energies in the same order as `states`.
+    """
     sector_indices, sector_levels = _state_structure(states)
     energy_by_sector: dict[FluxoidSector, FloatArray] = {}
     energies = np.empty(len(states), dtype=np.float64)
@@ -180,6 +220,24 @@ def build_jump_matrix(
     delta: tuple[int, int],
     overlap_cache: dict[tuple[FluxoidSector, FluxoidSector], ComplexArray] | None = None,
 ) -> ComplexArray:
+    """Construct dense jump matrix for a fixed sector displacement.
+
+    Parameters
+    ----------
+    system:
+        Fluxoid system providing overlap matrices.
+    states:
+        Ordered global-state basis.
+    delta:
+        Sector displacement `(dm_a, dm_b)`.
+    overlap_cache:
+        Optional overlap cache reused across calls.
+
+    Returns
+    -------
+    ComplexArray
+        Dense jump operator matrix in the global basis.
+    """
     n_states = len(states)
     matrix = np.zeros((n_states, n_states), dtype=np.complex128)
     sector_indices, sector_levels = _state_structure(states)
@@ -211,6 +269,7 @@ def _spectral_density_grid(
     omega: FloatArray,
     T: float | None,
 ) -> ComplexArray:
+    """Evaluate spectral density on an omega grid with optional temperature."""
     try:
         signature = inspect.signature(spectral_density)
         params = tuple(signature.parameters.values())
@@ -257,6 +316,22 @@ def build_operator_matrix(
     system: TwoLoopFluxoidSystem,
     states: list[GlobalState],
 ) -> ComplexArray:
+    """Build dense matrix for composite `FluxoidOperator` in global basis.
+
+    Parameters
+    ----------
+    operator:
+        Operator expression built from `FluxoidOperator` primitives.
+    system:
+        Fluxoid system used by jump operators.
+    states:
+        Ordered global-state basis.
+
+    Returns
+    -------
+    ComplexArray
+        Dense operator matrix for the provided basis.
+    """
     overlap_cache: dict[tuple[FluxoidSector, FluxoidSector], ComplexArray] = {}
     jump_cache: dict[tuple[int, int], ComplexArray] = {}
     op_cache: dict[int, ComplexArray] = {}
@@ -307,12 +382,35 @@ def compute_rate_matrix(
     units: FrequencyUnit = "GHz",
     spectral_omega_units: Literal["input", "SI"] = "SI",
 ) -> FloatArray:
+    """Compute FGR transition-rate matrix from energies and operator matrix.
+
+    Parameters
+    ----------
+    energies:
+        Energy vector aligned with matrix indices.
+    O_matrix:
+        Operator matrix in the same basis as `energies`.
+    spectral_density:
+        Spectral density callable `S(omega)` or `S(omega, T)`.
+    T:
+        Temperature in Kelvin or `None`.
+    units:
+        Unit used by `energies`.
+    spectral_omega_units:
+        Whether the spectral function expects input omega in the same units
+        ("input") or SI rad/s ("SI").
+
+    Returns
+    -------
+    FloatArray
+        Dense transition-rate matrix with zero diagonal.
+    """
     ei = energies[:, None]
     ej = energies[None, :]
     omega = 2.0 * np.pi * (ei - ej)
     omega_for_spectral = omega
     if spectral_omega_units == "SI":
-        omega_for_spectral = omega * _FREQUENCY_SCALE_HZ[units]
+        omega_for_spectral = omega * _FREQUENCY_SCALE_IN_HZ[units]
     spectral = _spectral_density_grid(spectral_density, omega_for_spectral, T)
 
     me2 = np.abs(O_matrix) ** 2
@@ -336,6 +434,30 @@ def compute_all_decay_rates(
     units: FrequencyUnit = "GHz",
     spectral_omega_units: Literal["input", "SI"] = "SI",
 ) -> dict[tuple[int, int], float]:
+    """Return sparse decay-rate dictionary for non-negligible transitions.
+
+    Parameters
+    ----------
+    system:
+        Fluxoid system object.
+    states:
+        Ordered global-state basis.
+    operator:
+        Operator expression used in FGR rates.
+    spectral_density:
+        Spectral density callable `S(omega)` or `S(omega, T)`.
+    T:
+        Temperature in Kelvin or `None`.
+    units:
+        Unit used by energies.
+    spectral_omega_units:
+        Units expected by spectral-density callable.
+
+    Returns
+    -------
+    dict[tuple[int, int], float]
+        Sparse mapping from transition index pairs `(i, j)` to rates.
+    """
     energies = build_energy_array(system, states)
     operator_matrix = build_operator_matrix(operator, system, states)
     rate_matrix = compute_rate_matrix(
@@ -361,6 +483,22 @@ def compute_all_decay_rates(
 def thermal_weights(
     system: TwoLoopFluxoidSystem, sector: FluxoidSector, T: float
 ) -> FloatArray:
+    """Compute normalized Boltzmann weights for one sector.
+
+    Parameters
+    ----------
+    system:
+        Fluxoid system object.
+    sector:
+        Sector for which thermal weights are computed.
+    T:
+        Temperature in Kelvin.
+
+    Returns
+    -------
+    FloatArray
+        Normalized Boltzmann weights over levels in `sector`.
+    """
     if T <= 0.0:
         raise ValueError("Temperature T must be positive.")
 
@@ -386,6 +524,34 @@ def sector_to_sector_rate(
     units: FrequencyUnit = "GHz",
     spectral_omega_units: Literal["input", "SI"] = "SI",
 ) -> float:
+    """Compute thermalized aggregate rate from one sector to another.
+
+    Parameters
+    ----------
+    system:
+        Fluxoid system object.
+    sector_from:
+        Initial sector.
+    sector_to:
+        Final sector.
+    states:
+        Ordered global-state basis.
+    operator:
+        Operator expression used in FGR rates.
+    spectral_density:
+        Spectral density callable.
+    T:
+        Temperature in Kelvin.
+    units:
+        Unit used by energies.
+    spectral_omega_units:
+        Units expected by spectral-density callable.
+
+    Returns
+    -------
+    float
+        Thermalized aggregate transition rate from `sector_from` to `sector_to`.
+    """
     energies = build_energy_array(system, states)
     operator_matrix = build_operator_matrix(operator, system, states)
     rates = compute_rate_matrix(
@@ -413,6 +579,24 @@ def sector_rate_matrix_fast(
     rates: FloatArray,
     weights: dict[FluxoidSector, FloatArray],
 ) -> FloatArray:
+    """Aggregate precomputed state-rate matrix into sector-rate matrix.
+
+    Parameters
+    ----------
+    states:
+        Ordered global-state basis.
+    sectors:
+        Sector order used for matrix rows/columns.
+    rates:
+        Dense state-to-state rate matrix.
+    weights:
+        Precomputed thermal weights per sector.
+
+    Returns
+    -------
+    FloatArray
+        Sector-to-sector aggregate rate matrix.
+    """
     sector_indices, sector_levels = _state_structure(states)
     matrix = np.zeros((len(sectors), len(sectors)), dtype=np.float64)
 
@@ -441,6 +625,32 @@ def sector_rate_matrix(
     units: FrequencyUnit = "GHz",
     spectral_omega_units: Literal["input", "SI"] = "SI",
 ) -> FloatArray:
+    """Convenience wrapper building full sector-to-sector rate matrix.
+
+    Parameters
+    ----------
+    system:
+        Fluxoid system object.
+    sectors:
+        Sector order used for matrix rows/columns.
+    states:
+        Ordered global-state basis.
+    operator:
+        Operator expression used in FGR rates.
+    spectral_density:
+        Spectral density callable.
+    T:
+        Temperature in Kelvin.
+    units:
+        Unit used by energies.
+    spectral_omega_units:
+        Units expected by spectral-density callable.
+
+    Returns
+    -------
+    FloatArray
+        Sector-to-sector aggregate rate matrix.
+    """
     energies = build_energy_array(system, states)
     operator_matrix = build_operator_matrix(operator, system, states)
     rates = compute_rate_matrix(
