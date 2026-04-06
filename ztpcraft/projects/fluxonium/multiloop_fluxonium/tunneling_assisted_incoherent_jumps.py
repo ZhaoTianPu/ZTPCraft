@@ -30,6 +30,7 @@ _MATRIX_ELEMENT_CUTOFF = 1e-14
 
 @dataclass(frozen=True)
 class TunnelingAssistedModelParams:
+    """Physical parameters for Model-B (tunneling-assisted incoherent jumps)."""
     EL_a: float
     EL_b: float
     EJ: float
@@ -41,17 +42,20 @@ class TunnelingAssistedModelParams:
 
 @dataclass(frozen=True)
 class PhaseSlipSector:
+    """Phase-slip sector labeled by integer P."""
     P: int
 
 
 @dataclass(frozen=True)
 class PhaseSlipStateLabel:
+    """Bare state label within a phase-slip sector."""
     sector: PhaseSlipSector
     level: int
 
 
 @dataclass
 class SpectrumInAPhaseSlipSector:
+    """Cached eigensystem and oscillator metadata for one sector P."""
     sector: PhaseSlipSector
     evals: FloatArray
     evecs: ComplexArray
@@ -63,6 +67,7 @@ class SpectrumInAPhaseSlipSector:
 
 @dataclass(frozen=True)
 class HybridizationComponent:
+    """Single perturbative contribution from a neighboring-sector bare state."""
     source: PhaseSlipStateLabel
     partner: PhaseSlipStateLabel
     coupling: complex
@@ -75,6 +80,11 @@ class HybridizationComponent:
 
 @dataclass
 class PerturbativeHybridizationInfo:
+    """Hybridization output in the truncated bare basis.
+
+    `dressed_eigenvectors_in_bare_basis` is the basis transform matrix U whose
+    columns are dressed states expanded in the chosen bare basis.
+    """
     states: list[PhaseSlipStateLabel]
     energies: FloatArray
     dressed_eigenvectors_in_bare_basis: ComplexArray
@@ -84,6 +94,7 @@ class PerturbativeHybridizationInfo:
 
 @dataclass(frozen=True)
 class NoiseChannel:
+    """Noise channel definition: operator + spectral density + user-facing name."""
     name: str
     operator: OperatorSelector
     spectral_density: Callable[..., float | complex]
@@ -93,7 +104,13 @@ OperatorSelector = str | Callable[[Any], NDArray[Any]]
 
 
 class TunnelingAssistedIncoherentJumps:
-    """Model-B perturbative tunneling-assisted incoherent jumps."""
+    """Model-B perturbative tunneling-assisted incoherent jumps.
+
+    Typical workflow:
+    1) Build/choose a truncated basis and call `build_perturbative_hybridization_info`.
+    2) Define one or more `NoiseChannel`s.
+    3) Compute rates with `compute_multi_channel_decay_rates`.
+    """
 
     def __init__(
         self,
@@ -356,6 +373,24 @@ class TunnelingAssistedIncoherentJumps:
     def build_perturbative_hybridization_info(
         self, states: list[PhaseSlipStateLabel] | None = None
     ) -> PerturbativeHybridizationInfo:
+        """Build first-order hybridization in a truncated bare basis.
+
+        If `states` is None, all states from `self.p_values` and `evals_count`
+        are used. If provided, only those labels are used, which directly sets
+        the truncation used for perturbative mixing.
+
+        Parameters
+        ----------
+        states:
+            Optional explicit truncated bare basis. Each entry is a
+            `PhaseSlipStateLabel(sector=P, level=mu)`.
+
+        Returns
+        -------
+        PerturbativeHybridizationInfo
+            Hybridization data including energies, basis transform matrix, and
+            channel-by-channel perturbative contribution diagnostics.
+        """
         basis_states = self.build_states() if states is None else list(states)
         # n_states is the total number of states that we consider
         n_states = len(basis_states)
@@ -448,6 +483,26 @@ class TunnelingAssistedIncoherentJumps:
         operator: OperatorSelector,
         bare_operator_matrix: ComplexArray | None = None,
     ) -> ComplexArray:
+        """Return dressed operator U^dagger O U in the chosen truncated basis.
+
+        Parameters
+        ----------
+        hybridization:
+            Hybridization result from `build_perturbative_hybridization_info`.
+        operator:
+            Operator selector. Either an scqubits operator method name (e.g.
+            `"n_operator"`, `"phi_operator"`) or a callable taking a fluxonium
+            object and returning an operator matrix.
+        bare_operator_matrix:
+            Optional precomputed bare-basis operator matrix matching
+            `hybridization.states`.
+
+        Returns
+        -------
+        ComplexArray
+            Dressed operator matrix in the same truncated basis ordering as
+            `hybridization.states`.
+        """
         bare_operator = (
             self.build_bare_operator_matrix(hybridization.states, operator)
             if bare_operator_matrix is None
@@ -464,6 +519,27 @@ class TunnelingAssistedIncoherentJumps:
         units: FrequencyUnit = "GHz",
         spectral_omega_units: Literal["input", "SI"] = "SI",
     ) -> FloatArray:
+        """Compute full transition-rate matrix for one noise channel.
+
+        Parameters
+        ----------
+        hybridization:
+            Hybridization result defining basis and energies.
+        channel:
+            Noise channel containing operator and spectral density.
+        T:
+            Temperature in Kelvin. Pass `None` if spectral density is
+            temperature-independent.
+        units:
+            Energy/frequency unit used by `hybridization.energies`.
+        spectral_omega_units:
+            Units expected by the spectral density function.
+
+        Returns
+        -------
+        FloatArray
+            Full rate matrix with shape `(n_states, n_states)`.
+        """
         dressed_operator = self.build_dressed_operator_matrix(
             hybridization=hybridization,
             operator=channel.operator,
@@ -488,6 +564,28 @@ class TunnelingAssistedIncoherentJumps:
     ) -> tuple[
         PerturbativeHybridizationInfo, dict[str, FloatArray], FloatArray
     ]:
+        """Internal helper returning per-channel and summed dense rate matrices.
+
+        Parameters
+        ----------
+        channels:
+            Sequence of noise channels to include.
+        T:
+            Temperature in Kelvin.
+        states:
+            Optional explicit truncated basis.
+        hybridization:
+            Optional precomputed hybridization. If provided, `states` is ignored.
+        units:
+            Energy/frequency unit used by state energies.
+        spectral_omega_units:
+            Units expected by spectral density callables.
+
+        Returns
+        -------
+        tuple[PerturbativeHybridizationInfo, dict[str, FloatArray], FloatArray]
+            `(hybridization, per_channel_rate_matrices, total_rate_matrix)`.
+        """
         if len(channels) == 0:
             raise ValueError("channels must be non-empty.")
 
@@ -527,6 +625,31 @@ class TunnelingAssistedIncoherentJumps:
         units: FrequencyUnit = "GHz",
         spectral_omega_units: Literal["input", "SI"] = "SI",
     ) -> tuple[dict[str, dict[tuple[int, int], float]], dict[tuple[int, int], float]]:
+        """Compute sparse decay maps for multiple channels.
+
+        Returns `(per_channel, total)` where each value is a dictionary keyed by
+        `(i, j)` state-index pairs for positive off-diagonal rates only.
+
+        Parameters
+        ----------
+        channels:
+            Sequence of noise channels to include.
+        T:
+            Temperature in Kelvin.
+        states:
+            Optional explicit truncated basis used to build hybridization.
+        hybridization:
+            Optional precomputed hybridization. If provided, `states` is ignored.
+        units:
+            Energy/frequency unit used by state energies.
+        spectral_omega_units:
+            Units expected by spectral density callables.
+
+        Returns
+        -------
+        tuple[dict[str, dict[tuple[int, int], float]], dict[tuple[int, int], float]]
+            `(per_channel, total)` sparse transition dictionaries.
+        """
         _, rate_matrix_by_channel, total_matrix = self._compute_multi_channel_rate_matrices(
             channels=channels,
             T=T,
@@ -554,6 +677,20 @@ class TunnelingAssistedIncoherentJumps:
         return per_channel_decay, total_decay
 
     def thermal_weights(self, sector: PhaseSlipSector, T: float) -> FloatArray:
+        """Boltzmann weights within a fixed sector P.
+
+        Parameters
+        ----------
+        sector:
+            Phase-slip sector for thermal weighting.
+        T:
+            Temperature in Kelvin.
+
+        Returns
+        -------
+        FloatArray
+            Normalized Boltzmann weights over bare levels in `sector`.
+        """
         if T <= 0.0:
             raise ValueError("Temperature T must be positive.")
         energies = np.asarray(
@@ -578,6 +715,30 @@ class TunnelingAssistedIncoherentJumps:
         units: FrequencyUnit = "GHz",
         spectral_omega_units: Literal["input", "SI"] = "SI",
     ) -> float:
+        """Thermally averaged rate from sector `p_from` to `p_to` for one channel.
+
+        Parameters
+        ----------
+        hybridization:
+            Hybridization result defining basis and energies.
+        channel:
+            Noise channel used to compute transition rates.
+        p_from:
+            Initial phase-slip sector.
+        p_to:
+            Final phase-slip sector.
+        T:
+            Temperature in Kelvin.
+        units:
+            Energy/frequency unit used by state energies.
+        spectral_omega_units:
+            Units expected by the spectral density callable.
+
+        Returns
+        -------
+        float
+            Thermally averaged sector-to-sector transition rate.
+        """
         rates = self.compute_transition_rate_matrix_for_channel(
             hybridization=hybridization,
             channel=channel,
@@ -610,6 +771,27 @@ class TunnelingAssistedIncoherentJumps:
         units: FrequencyUnit = "GHz",
         spectral_omega_units: Literal["input", "SI"] = "SI",
     ) -> FloatArray:
+        """Sector-to-sector thermal rate matrix for one channel.
+
+        Parameters
+        ----------
+        hybridization:
+            Hybridization result defining basis and energies.
+        channel:
+            Noise channel used to compute rates.
+        T:
+            Temperature in Kelvin.
+        units:
+            Energy/frequency unit used by state energies.
+        spectral_omega_units:
+            Units expected by the spectral density callable.
+
+        Returns
+        -------
+        FloatArray
+            Matrix `R[a,b] = Gamma_{P_a -> P_b}` using thermal averaging within
+            each source sector.
+        """
         p_list = list(self.p_values)
         matrix = np.zeros((len(p_list), len(p_list)), dtype=np.float64)
         for i, p_from in enumerate(p_list):
@@ -633,6 +815,27 @@ class TunnelingAssistedIncoherentJumps:
         units: FrequencyUnit = "GHz",
         spectral_omega_units: Literal["input", "SI"] = "SI",
     ) -> dict[int, dict[int, float]]:
+        """Return aggregated nearest-neighbor (P->P±1) thermal rates.
+
+        Parameters
+        ----------
+        hybridization:
+            Hybridization result defining basis and energies.
+        channel:
+            Noise channel used to compute rates.
+        T:
+            Temperature in Kelvin.
+        units:
+            Energy/frequency unit used by state energies.
+        spectral_omega_units:
+            Units expected by the spectral density callable.
+
+        Returns
+        -------
+        dict[int, dict[int, float]]
+            Nested mapping `{P_from: {P_to: rate}}` restricted to nearest-neighbor
+            targets `P_to in {P_from-1, P_from+1}` present in the configured range.
+        """
         out: dict[int, dict[int, float]] = {}
         for p in self.p_values:
             out[p] = {}
@@ -650,6 +853,18 @@ class TunnelingAssistedIncoherentJumps:
 
 
 def ensure_explicit_p_values(p_values: Iterable[int]) -> list[int]:
+    """Normalize user-provided P values (unique + sorted) and validate non-empty.
+
+    Parameters
+    ----------
+    p_values:
+        Iterable of integer-like phase-slip sector labels.
+
+    Returns
+    -------
+    list[int]
+        Sorted unique list of explicit phase-slip sector indices.
+    """
     out = sorted(set(int(p) for p in p_values))
     if len(out) == 0:
         raise ValueError("At least one explicit P value is required.")
