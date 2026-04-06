@@ -5,6 +5,13 @@ from dataclasses import dataclass
 import numpy as np
 from numpy.typing import NDArray
 
+from ztpcraft.projects.fluxonium.multiloop_fluxonium.two_loop_fluxoid_sweeps import (
+    build_fgr_workspace,
+    sector_rate_matrix_from_workspace,
+    sparse_decay_rates_from_workspace,
+    sweep_spectral_densities,
+    sweep_temperatures,
+)
 from ztpcraft.projects.fluxonium.multiloop_fluxonium.two_loop_fluxoid_transition_rates import (
     FluxoidOperator,
     GlobalState,
@@ -266,4 +273,79 @@ def test_thermal_weights_and_sector_aggregation_and_detailed_balance() -> None:
     assert np.allclose(matrix, matrix_fast, rtol=1e-12, atol=1e-12)
     assert matrix.shape == (len(sectors), len(sectors))
     assert np.all(np.isreal(matrix))
+
+
+def test_fgr_workspace_matches_direct_rates_across_temperatures() -> None:
+    system, sectors, states, raise_a, lower_a = _build_fixture()
+    operator = raise_a + lower_a
+
+    def spectral_density(omega: float, temperature: float | None = None) -> float:
+        t_shift = 0.0 if temperature is None else 0.1 * temperature
+        return abs(omega) + 0.2 + t_shift
+
+    ws = build_fgr_workspace(system, states, operator)  # type: ignore[arg-type]
+    Ts = [0.04, 0.06, 0.11]
+    for T in Ts:
+        direct = sector_rate_matrix(
+            system=system,  # type: ignore[arg-type]
+            sectors=sectors,
+            states=states,
+            operator=operator,
+            spectral_density=spectral_density,
+            T=T,
+        )
+        from_ws = sector_rate_matrix_from_workspace(
+            ws,
+            list(sectors),
+            spectral_density,
+            T,
+        )
+        assert np.allclose(direct, from_ws, rtol=1e-12, atol=1e-12)
+        sparse_d = compute_all_decay_rates(
+            system=system,  # type: ignore[arg-type]
+            states=states,
+            operator=operator,
+            spectral_density=spectral_density,
+            T=T,
+        )
+        sparse_w = sparse_decay_rates_from_workspace(ws, spectral_density, T)
+        assert sparse_d.keys() == sparse_w.keys()
+        for k in sparse_d:
+            assert np.isclose(sparse_d[k], sparse_w[k], rtol=1e-12, atol=1e-12)
+
+
+def test_sweep_temperatures_and_spectral_models() -> None:
+    system, sectors, states, raise_a, lower_a = _build_fixture()
+    operator = raise_a + lower_a
+
+    def spectral_density(omega: float, temperature: float | None = None) -> float:
+        t_shift = 0.0 if temperature is None else 0.1 * temperature
+        return abs(omega) + 0.2 + t_shift
+
+    ws = build_fgr_workspace(system, states, operator)  # type: ignore[arg-type]
+    Ts = [0.05, 0.07]
+    sector_list = list(sectors)
+
+    mats_t = sweep_temperatures(ws, sector_list, Ts, spectral_density)
+    assert len(mats_t) == 2
+    for i, T in enumerate(Ts):
+        ref = sector_rate_matrix_from_workspace(ws, sector_list, spectral_density, T)
+        assert np.allclose(mats_t[i], ref, rtol=1e-12, atol=1e-12)
+
+    def s1(omega: float, temperature: float | None = None) -> float:
+        return abs(omega) + 1.0
+
+    def s2(omega: float, temperature: float | None = None) -> float:
+        return 2.0 * abs(omega) + 0.5
+
+    T_fix = 0.06
+    mats_s = sweep_spectral_densities(ws, sector_list, [s1, s2], T_fix)
+    assert len(mats_s) == 2
+    assert np.allclose(
+        mats_s[0],
+        sector_rate_matrix_from_workspace(ws, sector_list, s1, T_fix),
+        rtol=1e-12,
+        atol=1e-12,
+    )
+    assert not np.allclose(mats_s[0], mats_s[1])
 

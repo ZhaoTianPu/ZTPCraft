@@ -16,6 +16,20 @@ from ztpcraft.projects.fluxonium.multiloop_fluxonium.two_loop_fluxonium_with_arr
     node_flux_from_phi_b,
     potential_energy_node_flux,
 )
+from ztpcraft.projects.fluxonium.multiloop_fluxonium.two_loop_fluxoid_sweeps import (
+    FluxoidFGRWorkspace,
+    FluxoidFluxSweepResult,
+    build_fgr_workspace,
+    rates_at_flux_points,
+    rate_matrix_from_workspace,
+    sector_rate_matrix_from_workspace,
+    sparse_decay_rates_from_workspace,
+    sweep_common_mode_flux_transition_setup,
+    sweep_external_flux_transition_setup,
+    sweep_spectral_densities,
+    sweep_temperatures,
+    with_common_mode_flux,
+)
 from ztpcraft.projects.fluxonium.multiloop_fluxonium.two_loop_fluxoid_transition_rates import (
     DaggerOperator,
     FluxoidOperator,
@@ -49,6 +63,18 @@ from ztpcraft.projects.fluxonium.multiloop_fluxonium.tunneling_assisted_incohere
 )
 
 __all__ = [
+    "FluxoidFGRWorkspace",
+    "FluxoidFluxSweepResult",
+    "build_fgr_workspace",
+    "rate_matrix_from_workspace",
+    "sparse_decay_rates_from_workspace",
+    "sector_rate_matrix_from_workspace",
+    "sweep_temperatures",
+    "sweep_spectral_densities",
+    "with_common_mode_flux",
+    "sweep_external_flux_transition_setup",
+    "sweep_common_mode_flux_transition_setup",
+    "rates_at_flux_points",
     "FluxoidModelParams",
     "FluxoidSector",
     "TwoLoopFluxoidModel",
