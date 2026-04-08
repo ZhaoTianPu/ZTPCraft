@@ -117,9 +117,7 @@ def _build_fixture(
     )
 
 
-def _channel_n(
-    name: str, spectral_density
-) -> NoiseChannel:
+def _channel_n(name: str, spectral_density) -> NoiseChannel:
     return NoiseChannel(
         name=name,
         operator="n_operator",
@@ -201,16 +199,18 @@ def test_hybridization_diagnostics_flags_breakdown() -> None:
     )
 
 
-def test_mixing_matrix_contains_identity_plus_neighbor_components() -> None:
+def test_dressed_eigenvectors_in_bare_basis_contains_identity_plus_neighbor_components() -> (
+    None
+):
     model = _build_fixture(E_S=1e-3)
     hybridization = model.build_perturbative_hybridization_info()
     identity = np.eye(len(hybridization.states), dtype=np.complex128)
-    delta = hybridization.mixing_matrix - identity
+    delta = hybridization.dressed_eigenvectors_in_bare_basis - identity
 
     # Columns correspond to dressed state nearest each source bare state.
     # Self-component should remain exactly identity in this perturbative map.
     assert np.allclose(
-        np.diag(hybridization.mixing_matrix), 1.0 + 0.0j
+        np.diag(hybridization.dressed_eigenvectors_in_bare_basis), 1.0 + 0.0j
     )
 
     for row, source in enumerate(hybridization.states):
@@ -232,7 +232,7 @@ def test_user_supplied_truncated_basis_limits_hybridization_targets() -> None:
     # Only neighbor present for P=0 is P=-1 and vice versa.
     source_ps = [state.sector.P for state in hybridization.states]
     assert source_ps == [-1, 0]
-    delta = hybridization.mixing_matrix - np.eye(
+    delta = hybridization.dressed_eigenvectors_in_bare_basis - np.eye(
         2, dtype=np.complex128
     )
     assert not np.isclose(delta[0, 1], 0.0 + 0.0j)
@@ -281,11 +281,15 @@ def test_multi_channel_total_decay_matches_channelwise_sum() -> None:
         _channel_n("charge", spectral_density_charge),
         _channel_n("flux", spectral_density_flux),
     ]
-    per_channel, total = model.compute_multi_channel_decay_rates(channels=channels, T=0.06)
+    per_channel, total = model.compute_multi_channel_decay_rates(
+        channels=channels, T=0.06
+    )
     assert set(per_channel) == {"charge", "flux"}
     all_keys = set(per_channel["charge"]) | set(per_channel["flux"]) | set(total)
     for key in all_keys:
-        expected = per_channel["charge"].get(key, 0.0) + per_channel["flux"].get(key, 0.0)
+        expected = per_channel["charge"].get(key, 0.0) + per_channel["flux"].get(
+            key, 0.0
+        )
         actual = total.get(key, 0.0)
         assert np.isclose(actual, expected, rtol=1e-12, atol=1e-12)
 

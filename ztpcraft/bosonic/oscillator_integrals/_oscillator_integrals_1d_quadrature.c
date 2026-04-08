@@ -5,7 +5,7 @@
     "distutils": {
         "depends": [],
         "include_dirs": [
-            "/private/var/folders/0f/hd_vjc8d4f90plv74n4dz9h00000gn/T/pip-build-env-q2fa7blf/overlay/lib/python3.11/site-packages/numpy/_core/include"
+            "/private/var/folders/0f/hd_vjc8d4f90plv74n4dz9h00000gn/T/pip-build-env-83wmkg1w/overlay/lib/python3.11/site-packages/numpy/_core/include"
         ],
         "language": "c",
         "name": "ztpcraft.bosonic.oscillator_integrals._oscillator_integrals_1d_quadrature",

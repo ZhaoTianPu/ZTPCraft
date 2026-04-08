@@ -1,6 +1,8 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
+from collections.abc import Callable
+from typing import cast
 
 import numpy as np
 from numpy.typing import NDArray
@@ -8,7 +10,7 @@ from numpy.typing import NDArray
 from ztpcraft.projects.fluxonium.multiloop_fluxonium.two_loop_fluxoid_sweeps import (
     build_fgr_workspace,
     sector_rate_matrix_from_workspace,
-    sparse_decay_rates_from_workspace,
+    state_to_state_transition_rates_from_workspace,
     sweep_spectral_densities,
     sweep_temperatures,
 )
@@ -27,9 +29,7 @@ from ztpcraft.projects.fluxonium.multiloop_fluxonium.two_loop_fluxoid_transition
     sector_to_sector_rate,
     thermal_weights,
 )
-from ztpcraft.projects.fluxonium.multiloop_fluxonium.two_loop_fluxoid_model import (
-    FluxoidSector,
-)
+from ztpcraft.projects.fluxonium.multiloop_fluxonium.two_loop_fluxoid_model import FluxoidSector
 
 ComplexArray = NDArray[np.complex128]
 FloatArray = NDArray[np.float64]
@@ -43,7 +43,9 @@ class FakeFluxoidSystem:
     def eigenvalues_with_offset(self, sector: FluxoidSector) -> FloatArray:
         return self.energies[sector]
 
-    def overlap_matrix(self, sector1: FluxoidSector, sector2: FluxoidSector) -> ComplexArray:
+    def overlap_matrix(
+        self, sector1: FluxoidSector, sector2: FluxoidSector
+    ) -> ComplexArray:
         if (sector1, sector2) in self.overlaps:
             return self.overlaps[(sector1, sector2)]
         n1 = len(self.energies[sector1])
@@ -52,7 +54,11 @@ class FakeFluxoidSystem:
 
 
 def _build_fixture() -> tuple[
-    FakeFluxoidSystem, list[FluxoidSector], list[GlobalState], FluxoidOperator, FluxoidOperator
+    FakeFluxoidSystem,
+    list[FluxoidSector],
+    list[GlobalState],
+    FluxoidOperator,
+    FluxoidOperator,
 ]:
     s00 = FluxoidSector(0, 0)
     s10 = FluxoidSector(1, 0)
@@ -103,7 +109,7 @@ def _legacy_rates(
     system: FakeFluxoidSystem,
     states: list[GlobalState],
     operator: FluxoidOperator,
-    spectral_density,
+    spectral_density: Callable[[float, float | None], float],
     temperature: float,
 ) -> dict[tuple[int, int], float]:
     from ztpcraft.decoherence.fgr import fgr_decay_rate
@@ -139,9 +145,9 @@ def test_single_sum_product_composite_and_hermitian_operators() -> None:
     assert np.isclose(single, expected_single)
 
     summed = (raise_a + lower_a).matrix_element(_state(s10, 0), _state(s00, 1))
-    expected_sum = raise_a.matrix_element(_state(s10, 0), _state(s00, 1)) + lower_a.matrix_element(
+    expected_sum = raise_a.matrix_element(
         _state(s10, 0), _state(s00, 1)
-    )
+    ) + lower_a.matrix_element(_state(s10, 0), _state(s00, 1))
     assert np.isclose(summed, expected_sum)
 
     product = (raise_a * lower_b).bind_states(states)
@@ -218,7 +224,9 @@ def test_vectorized_operator_build_and_rate_matrix_matches_legacy() -> None:
 
     # Sanity-check one off-diagonal transition exists for this composite operator.
     transitions_from_s01 = [
-        key for key in fast_rates if states[key[1]].sector == s01 and states[key[0]].sector != s01
+        key
+        for key in fast_rates
+        if states[key[1]].sector == s01 and states[key[0]].sector != s01
     ]
     assert len(transitions_from_s01) > 0
 
@@ -308,7 +316,9 @@ def test_fgr_workspace_matches_direct_rates_across_temperatures() -> None:
             spectral_density=spectral_density,
             T=T,
         )
-        sparse_w = sparse_decay_rates_from_workspace(ws, spectral_density, T)
+        sparse_w = state_to_state_transition_rates_from_workspace(
+            ws, spectral_density, T
+        )
         assert sparse_d.keys() == sparse_w.keys()
         for k in sparse_d:
             assert np.isclose(sparse_d[k], sparse_w[k], rtol=1e-12, atol=1e-12)
@@ -326,7 +336,10 @@ def test_sweep_temperatures_and_spectral_models() -> None:
     Ts = [0.05, 0.07]
     sector_list = list(sectors)
 
-    mats_t = sweep_temperatures(ws, sector_list, Ts, spectral_density)
+    mats_t = cast(
+        list[FloatArray],
+        sweep_temperatures(ws, sector_list, Ts, spectral_density, show_progress=False),
+    )
     assert len(mats_t) == 2
     for i, T in enumerate(Ts):
         ref = sector_rate_matrix_from_workspace(ws, sector_list, spectral_density, T)
@@ -339,7 +352,10 @@ def test_sweep_temperatures_and_spectral_models() -> None:
         return 2.0 * abs(omega) + 0.5
 
     T_fix = 0.06
-    mats_s = sweep_spectral_densities(ws, sector_list, [s1, s2], T_fix)
+    mats_s = cast(
+        list[FloatArray],
+        sweep_spectral_densities(ws, sector_list, [s1, s2], T_fix, show_progress=False),
+    )
     assert len(mats_s) == 2
     assert np.allclose(
         mats_s[0],
@@ -348,4 +364,3 @@ def test_sweep_temperatures_and_spectral_models() -> None:
         atol=1e-12,
     )
     assert not np.allclose(mats_s[0], mats_s[1])
-

@@ -10,10 +10,11 @@ re-evaluate ``S(ω)`` (and thermal weights for sector aggregation).
 
 from collections.abc import Callable, Iterable, Sequence
 from dataclasses import dataclass
-from typing import Literal
+from typing import Literal, TypeVar
 
 import numpy as np
 from numpy.typing import NDArray
+from tqdm.auto import tqdm
 
 from ztpcraft.decoherence.fgr import FrequencyUnit
 from ztpcraft.projects.fluxonium.multiloop_fluxonium.two_loop_fluxoid_model import (
@@ -37,8 +38,23 @@ from ztpcraft.projects.fluxonium.multiloop_fluxonium.two_loop_fluxoid_transition
 )
 
 FloatArray = NDArray[np.float64]
+ComplexArray = NDArray[np.complex128]
 
 _MATRIX_ELEMENT_CUTOFF = 1e-14
+
+_T_seq = TypeVar("_T_seq")
+
+
+def _maybe_progress(
+    seq: Sequence[_T_seq],
+    *,
+    desc: str,
+    show_progress: bool,
+) -> Iterable[_T_seq]:
+    """Wrap ``seq`` in ``tqdm`` when ``show_progress`` is True."""
+    if not show_progress:
+        return seq
+    return tqdm(seq, desc=desc)
 
 
 @dataclass(frozen=True)
@@ -111,7 +127,7 @@ def rate_matrix_from_workspace(
     )
 
 
-def sparse_decay_rates_from_workspace(
+def state_to_state_transition_rates_from_workspace(
     workspace: FluxoidFGRWorkspace,
     spectral_density: Callable[..., float | complex],
     T: float | None,
@@ -175,6 +191,7 @@ def sweep_temperatures(
     units: FrequencyUnit = "GHz",
     spectral_omega_units: Literal["input", "SI"] = "SI",
     include_sparse: bool = False,
+    show_progress: bool = True,
 ) -> list[FloatArray] | tuple[list[FloatArray], list[dict[tuple[int, int], float]]]:
     """Sector rate matrix at each temperature; operator matrix built once.
 
@@ -190,6 +207,8 @@ def sweep_temperatures(
         ``S(ω)`` or ``S(ω, T)`` as elsewhere in this package.
     include_sparse:
         If True, also return sparse state-pair rates per temperature.
+    show_progress:
+        If True (default), show a ``tqdm`` bar over temperatures.
 
     Returns
     -------
@@ -199,7 +218,11 @@ def sweep_temperatures(
     """
     sector_mats: list[FloatArray] = []
     sparse_list: list[dict[tuple[int, int], float]] = []
-    for T in temperatures:
+    for T in _maybe_progress(
+        list(temperatures),
+        desc="FGR temperature sweep",
+        show_progress=show_progress,
+    ):
         gamma = sector_rate_matrix_from_workspace(
             workspace,
             sectors,
@@ -211,7 +234,7 @@ def sweep_temperatures(
         sector_mats.append(gamma)
         if include_sparse:
             sparse_list.append(
-                sparse_decay_rates_from_workspace(
+                state_to_state_transition_rates_from_workspace(
                     workspace,
                     spectral_density,
                     T,
@@ -233,15 +256,25 @@ def sweep_spectral_densities(
     units: FrequencyUnit = "GHz",
     spectral_omega_units: Literal["input", "SI"] = "SI",
     include_sparse: bool = False,
+    show_progress: bool = True,
 ) -> list[FloatArray] | tuple[list[FloatArray], list[dict[tuple[int, int], float]]]:
     """Evaluate several spectral-density callables at fixed temperature and flux.
 
     Use this when parameters enter only through ``S`` (e.g. amplitude, cutoff
     frequency) so Hamiltonian overlaps are reused.
+
+    Parameters
+    ----------
+    show_progress:
+        If True, show a ``tqdm`` bar over spectral models.
     """
     sector_mats: list[FloatArray] = []
     sparse_list: list[dict[tuple[int, int], float]] = []
-    for S in spectral_models:
+    for S in _maybe_progress(
+        list(spectral_models),
+        desc="FGR spectral-density sweep",
+        show_progress=show_progress,
+    ):
         gamma = sector_rate_matrix_from_workspace(
             workspace,
             sectors,
@@ -253,7 +286,7 @@ def sweep_spectral_densities(
         sector_mats.append(gamma)
         if include_sparse:
             sparse_list.append(
-                sparse_decay_rates_from_workspace(
+                state_to_state_transition_rates_from_workspace(
                     workspace,
                     S,
                     T,
@@ -264,22 +297,6 @@ def sweep_spectral_densities(
     if include_sparse:
         return sector_mats, sparse_list
     return sector_mats
-
-
-def with_common_mode_flux(
-    base: FluxoidModelParams,
-    phi_cm: float,
-) -> FluxoidModelParams:
-    """Return params with ``phi_cm/2`` added to both ``phi_ext_a`` and ``phi_ext_b``."""
-    return FluxoidModelParams(
-        EL_a=base.EL_a,
-        EL_b=base.EL_b,
-        EJ=base.EJ,
-        EC=base.EC,
-        phi_ext_a=base.phi_ext_a + phi_cm / 2.0,
-        phi_ext_b=base.phi_ext_b + phi_cm / 2.0,
-        flux_allocation_alpha=base.flux_allocation_alpha,
-    )
 
 
 @dataclass(frozen=True)
@@ -301,6 +318,7 @@ def sweep_external_flux_transition_setup(
     cutoff: int = 120,
     evals_count: int = 10,
     build_workspace: bool = True,
+    show_progress: bool = True,
 ) -> list[FluxoidFluxSweepResult]:
     """Build a new :class:`TwoLoopFluxoidSystem` per flux point (full diagonalization).
 
@@ -319,6 +337,8 @@ def sweep_external_flux_transition_setup(
     build_workspace:
         If True, precompute :class:`FluxoidFGRWorkspace` for T / spectral sweeps
         at each flux without rebuilding the operator matrix.
+    show_progress:
+        If True, show a ``tqdm`` bar over flux points.
 
     Returns
     -------
@@ -327,7 +347,11 @@ def sweep_external_flux_transition_setup(
     """
     results: list[FluxoidFluxSweepResult] = []
     sector_list = list(sectors)
-    for label, params in flux_labels_and_params:
+    for label, params in _maybe_progress(
+        list(flux_labels_and_params),
+        desc="Fluxoid flux sweep (setup)",
+        show_progress=show_progress,
+    ):
         system = TwoLoopFluxoidSystem(params, cutoff=cutoff, evals_count=evals_count)
         states = build_global_states(sector_list, system)
         operator = operator_factory(system)
@@ -346,29 +370,7 @@ def sweep_external_flux_transition_setup(
     return results
 
 
-def sweep_common_mode_flux_transition_setup(
-    base_params: FluxoidModelParams,
-    phi_cm_values: Sequence[float],
-    sectors: Iterable[FluxoidSector],
-    operator_factory: Callable[[TwoLoopFluxoidSystem], FluxoidOperator],
-    *,
-    cutoff: int = 120,
-    evals_count: int = 10,
-    build_workspace: bool = True,
-) -> list[FluxoidFluxSweepResult]:
-    """Convenience wrapper: ``params = with_common_mode_flux(base, phi_cm)`` per point."""
-    flux_points = [(phi_cm, with_common_mode_flux(base_params, phi_cm)) for phi_cm in phi_cm_values]
-    return sweep_external_flux_transition_setup(
-        sectors=sectors,
-        flux_labels_and_params=flux_points,
-        operator_factory=operator_factory,
-        cutoff=cutoff,
-        evals_count=evals_count,
-        build_workspace=build_workspace,
-    )
-
-
-def rates_at_flux_points(
+def jump_rates_flux_sweep(
     flux_results: Sequence[FluxoidFluxSweepResult],
     sectors: list[FluxoidSector],
     spectral_density: Callable[..., float | complex],
@@ -377,31 +379,67 @@ def rates_at_flux_points(
     operator_factory: Callable[[TwoLoopFluxoidSystem], FluxoidOperator] | None = None,
     units: FrequencyUnit = "GHz",
     spectral_omega_units: Literal["input", "SI"] = "SI",
-    sparse: bool = False,
+    save_state_to_state_transition_rates: bool = True,
+    show_progress: bool = True,
 ) -> tuple[list[FloatArray], list[dict[tuple[int, int], float]] | None]:
-    """Compute sector (and optionally sparse) rates for pre-built flux sweep results.
+    """Compute sector-to-sector (and optionally state-to-state) transition rates for pre-built flux sweep results.
+
+    When computing sector-to-sector transition rates, we assume that before each jump, the system thermalizes within
+    each sector.
 
     If results were created with ``build_workspace=True``, uses the cached
     operator matrix. If ``workspace`` is missing, pass ``operator_factory`` to
     rebuild ``O`` once per flux point (still no extra work versus a manual loop).
+
+    Parameters
+    ----------
+    flux_results:
+        List of :class:`FluxoidFluxSweepResult` objects.
+    sectors:
+        List of :class:`FluxoidSector` objects.
+    spectral_density:
+        Spectral density callable.
+    T:
+        Temperature in Kelvin.
+    operator_factory:
+        Operator factory callable.
+    units:
+        Unit used by energies.
+    spectral_omega_units:
+        Units expected by spectral-density callable.
+    save_state_to_state_transition_rates:
+        If True, save state-to-state transition rates.
+    show_progress:
+        If True (default), show a ``tqdm`` bar over flux results.
+
+    Returns
+    -------
+    tuple[list[FloatArray], list[dict[tuple[int, int], float]] | None]
+        List of sector-to-sector transition rates, and optionally list of state-to-state transition rates.
     """
-    sector_mats: list[FloatArray] = []
-    sparse_out: list[dict[tuple[int, int], float]] | None = [] if sparse else None
-    for entry in flux_results:
-        if entry.workspace is not None:
+    sector_to_sector_transition_rates: list[FloatArray] = []
+    state_to_state_transition_rates: list[dict[tuple[int, int], float]] | None = (
+        [] if save_state_to_state_transition_rates else None
+    )
+    for sweep_entry in _maybe_progress(
+        list(flux_results),
+        desc="Fluxoid flux sweep (rates)",
+        show_progress=show_progress,
+    ):
+        if sweep_entry.workspace is not None:
             gamma = sector_rate_matrix_from_workspace(
-                entry.workspace,
+                sweep_entry.workspace,
                 sectors,
                 spectral_density,
                 T,
                 units=units,
                 spectral_omega_units=spectral_omega_units,
             )
-            sector_mats.append(gamma)
-            if sparse_out is not None:
-                sparse_out.append(
-                    sparse_decay_rates_from_workspace(
-                        entry.workspace,
+            sector_to_sector_transition_rates.append(gamma)
+            if state_to_state_transition_rates is not None:
+                state_to_state_transition_rates.append(
+                    state_to_state_transition_rates_from_workspace(
+                        sweep_entry.workspace,
                         spectral_density,
                         T,
                         units=units,
@@ -413,11 +451,11 @@ def rates_at_flux_points(
                 raise ValueError(
                     "rates_at_flux_points needs entry.workspace or operator_factory."
                 )
-            states = list(entry.states)
-            op = operator_factory(entry.system)
-            sector_mats.append(
+            states = list(sweep_entry.states)
+            op = operator_factory(sweep_entry.system)
+            sector_to_sector_transition_rates.append(
                 sector_rate_matrix(
-                    system=entry.system,
+                    system=sweep_entry.system,
                     sectors=sectors,
                     states=states,
                     operator=op,
@@ -427,10 +465,10 @@ def rates_at_flux_points(
                     spectral_omega_units=spectral_omega_units,
                 )
             )
-            if sparse_out is not None:
-                sparse_out.append(
+            if state_to_state_transition_rates is not None:
+                state_to_state_transition_rates.append(
                     compute_all_decay_rates(
-                        system=entry.system,
+                        system=sweep_entry.system,
                         states=states,
                         operator=op,
                         spectral_density=spectral_density,
@@ -439,4 +477,4 @@ def rates_at_flux_points(
                         spectral_omega_units=spectral_omega_units,
                     )
                 )
-    return sector_mats, sparse_out
+    return sector_to_sector_transition_rates, state_to_state_transition_rates
