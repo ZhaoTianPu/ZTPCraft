@@ -7,9 +7,10 @@ from collections.abc import Callable
 from typing import Literal
 
 import numpy as np
+from numpy.typing import NDArray
 from scipy.constants import hbar, k
 
-__all__ = ["calc_therm_ratio", "fgr_decay_rate"]
+__all__ = ["calc_therm_ratio", "fgr_decay_rate", "compute_rate_matrix"]
 
 FrequencyUnit = Literal["GHz", "MHz", "kHz", "Hz"]
 _FREQUENCY_SCALE_HZ: dict[FrequencyUnit, float] = {
@@ -18,6 +19,36 @@ _FREQUENCY_SCALE_HZ: dict[FrequencyUnit, float] = {
     "kHz": 1e3,
     "Hz": 1.0,
 }
+FloatArray = NDArray[np.float64]
+ComplexArray = NDArray[np.complex128]
+
+
+def _spectral_density_grid(
+    spectral_density: Callable[..., float | complex],
+    omega: FloatArray,
+    temperature: float | None,
+) -> ComplexArray:
+    """Evaluate spectral density on an omega grid with optional temperature."""
+    supports_temp = _supports_temperature_argument(spectral_density)
+
+    if temperature is None or not supports_temp:
+        try:
+            values = spectral_density(omega)
+            return np.asarray(values, dtype=np.complex128)
+        except Exception:
+            vectorized = np.vectorize(spectral_density, otypes=[np.complex128])
+            return np.asarray(vectorized(omega), dtype=np.complex128)
+
+    try:
+        values = spectral_density(omega, temperature)
+        return np.asarray(values, dtype=np.complex128)
+    except Exception:
+
+        def _scalar_eval(w: float) -> complex:
+            return complex(spectral_density(w, temperature))
+
+        vectorized = np.vectorize(_scalar_eval, otypes=[np.complex128])
+        return np.asarray(vectorized(omega), dtype=np.complex128)
 
 
 def _supports_temperature_argument(
@@ -100,7 +131,9 @@ def fgr_decay_rate(
     if spectral_omega_units == "SI":
         omega_for_spectral = omega * _FREQUENCY_SCALE_HZ[units]
 
-    spectral_weight = _evaluate_spectral_density(spectral_density, omega_for_spectral, T)
+    spectral_weight = _evaluate_spectral_density(
+        spectral_density, omega_for_spectral, T
+    )
     if include_upward:
         spectral_weight += _evaluate_spectral_density(
             spectral_density, -omega_for_spectral, T
@@ -111,3 +144,35 @@ def fgr_decay_rate(
     if np.iscomplexobj(real_rate):
         raise ValueError("Computed FGR rate is complex; spectral density must be real.")
     return float(real_rate)
+
+
+def compute_rate_matrix(
+    energies: FloatArray,
+    O_matrix: ComplexArray,
+    spectral_density: Callable[..., float | complex],
+    T: float | None,
+    units: FrequencyUnit = "GHz",
+    spectral_omega_units: Literal["input", "SI"] = "SI",
+    matrix_element_cutoff: float = 1e-14,
+) -> FloatArray:
+    """Compute dense FGR transition-rate matrix from energies and operator matrix."""
+    ei = energies[:, None]
+    ej = energies[None, :]
+    omega = 2.0 * np.pi * (ei - ej)
+    omega_for_spectral = omega
+    if spectral_omega_units == "SI":
+        omega_for_spectral = omega * _FREQUENCY_SCALE_HZ[units]
+    spectral = _spectral_density_grid(spectral_density, omega_for_spectral, T)
+
+    matrix_element_mod_square = np.abs(O_matrix) ** 2
+    matrix_element_mod_square[
+        matrix_element_mod_square < matrix_element_cutoff**2
+    ] = 0.0
+    rates_complex = (matrix_element_mod_square * spectral) / (hbar**2)
+    np.fill_diagonal(rates_complex, 0.0)
+    rates_real = np.real_if_close(rates_complex)
+    if np.iscomplexobj(rates_real):
+        raise ValueError("Computed FGR rates are complex.")
+
+    rates = np.asarray(rates_real, dtype=np.float64)
+    return rates

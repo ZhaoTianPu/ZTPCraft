@@ -5,14 +5,13 @@ from __future__ import annotations
 from abc import ABC, abstractmethod
 from collections.abc import Callable, Iterable
 from dataclasses import dataclass
-import inspect
 from typing import Literal
 
 import numpy as np
 from numpy.typing import NDArray
-from scipy.constants import h, hbar, k as k_B
+from scipy.constants import h, k as k_B
 
-from ztpcraft.decoherence.fgr import FrequencyUnit
+from ztpcraft.decoherence.fgr import FrequencyUnit, compute_rate_matrix
 from ztpcraft.projects.fluxonium.multiloop_fluxonium.two_loop_fluxoid_model import (
     FluxoidSector,
 )
@@ -24,17 +23,12 @@ ComplexArray = NDArray[np.complex128]
 FloatArray = NDArray[np.float64]
 
 _MATRIX_ELEMENT_CUTOFF = 1e-14
-_FREQUENCY_SCALE_IN_HZ: dict[FrequencyUnit, float] = {
-    "GHz": 1e9,
-    "MHz": 1e6,
-    "kHz": 1e3,
-    "Hz": 1.0,
-}
 
 
 @dataclass(frozen=True)
 class GlobalState:
     """Global state label identified by sector and in-sector level index."""
+
     sector: FluxoidSector
     level: int
 
@@ -42,6 +36,11 @@ class GlobalState:
 def _shift_sector(sector: FluxoidSector, delta: tuple[int, int]) -> FluxoidSector:
     """Return sector shifted by integer delta in `(m_a, m_b)`."""
     return FluxoidSector(sector.m_a + delta[0], sector.m_b + delta[1])
+
+
+def _sector_key(sector: FluxoidSector) -> tuple[int, int]:
+    """Return class-agnostic hash/equality key for a fluxoid sector."""
+    return (sector.m_a, sector.m_b)
 
 
 def build_global_states(
@@ -95,11 +94,13 @@ class FluxoidOperator(ABC):
 @dataclass(frozen=True)
 class SectorJumpOperator(FluxoidOperator):
     """Inter-sector jump operator selecting a fixed sector displacement."""
+
     system: TwoLoopFluxoidSystem
     delta: tuple[int, int]
 
     def matrix_element(self, s1: GlobalState, s2: GlobalState) -> complex:
-        if s1.sector != _shift_sector(s2.sector, self.delta):
+        shifted = _shift_sector(s2.sector, self.delta)
+        if _sector_key(s1.sector) != _sector_key(shifted):
             return 0.0j
         overlap = self.system.overlap_matrix(s1.sector, s2.sector)
         return complex(overlap[s1.level, s2.level])
@@ -108,6 +109,7 @@ class SectorJumpOperator(FluxoidOperator):
 @dataclass(frozen=True)
 class SumOperator(FluxoidOperator):
     """Operator sum `left + right`."""
+
     left: FluxoidOperator
     right: FluxoidOperator
 
@@ -123,6 +125,7 @@ class SumOperator(FluxoidOperator):
 @dataclass(frozen=True)
 class ProductOperator(FluxoidOperator):
     """Operator product `left @ right` evaluated in a bound basis."""
+
     left: FluxoidOperator
     right: FluxoidOperator
     states: tuple[GlobalState, ...] | None = None
@@ -148,6 +151,7 @@ class ProductOperator(FluxoidOperator):
 @dataclass(frozen=True)
 class DaggerOperator(FluxoidOperator):
     """Hermitian-conjugate wrapper for another operator."""
+
     operator: FluxoidOperator
 
     def bind_states(self, states: list[GlobalState]) -> "FluxoidOperator":
@@ -160,6 +164,7 @@ class DaggerOperator(FluxoidOperator):
 @dataclass(frozen=True)
 class ScaledOperator(FluxoidOperator):
     """Scalar-multiplied operator."""
+
     scalar: complex
     operator: FluxoidOperator
 
@@ -172,7 +177,9 @@ class ScaledOperator(FluxoidOperator):
 
 def _state_structure(
     states: list[GlobalState],
-) -> tuple[dict[FluxoidSector, NDArray[np.int64]], dict[FluxoidSector, NDArray[np.int64]]]:
+) -> tuple[
+    dict[FluxoidSector, NDArray[np.int64]], dict[FluxoidSector, NDArray[np.int64]]
+]:
     """Return per-sector index and level lookup arrays."""
     indices: dict[FluxoidSector, list[int]] = {}
     levels: dict[FluxoidSector, list[int]] = {}
@@ -218,7 +225,9 @@ def build_jump_matrix(
     system: TwoLoopFluxoidSystem,
     states: list[GlobalState],
     delta: tuple[int, int],
-    overlap_cache: dict[tuple[FluxoidSector, FluxoidSector], ComplexArray] | None = None,
+    overlap_cache: (
+        dict[tuple[FluxoidSector, FluxoidSector], ComplexArray] | None
+    ) = None,
 ) -> ComplexArray:
     """Construct dense jump matrix for a fixed sector displacement.
 
@@ -241,11 +250,22 @@ def build_jump_matrix(
     n_states = len(states)
     matrix = np.zeros((n_states, n_states), dtype=np.complex128)
     sector_indices, sector_levels = _state_structure(states)
+    sector_by_key = {_sector_key(sector): sector for sector in sector_indices}
+    indices_by_key = {
+        _sector_key(sector): indices for sector, indices in sector_indices.items()
+    }
+    levels_by_key = {
+        _sector_key(sector): levels for sector, levels in sector_levels.items()
+    }
     cache = overlap_cache if overlap_cache is not None else {}
 
     for sector_src, idx_src in sector_indices.items():
-        sector_dst = _shift_sector(sector_src, delta)
-        idx_dst = sector_indices.get(sector_dst)
+        shifted_dst = _shift_sector(sector_src, delta)
+        sector_dst_key = _sector_key(shifted_dst)
+        sector_dst = sector_by_key.get(sector_dst_key)
+        if sector_dst is None:
+            continue
+        idx_dst = indices_by_key.get(sector_dst_key)
         if idx_dst is None:
             continue
 
@@ -257,58 +277,11 @@ def build_jump_matrix(
             )
             cache[key] = overlap
 
-        lvl_dst = sector_levels[sector_dst]
+        lvl_dst = levels_by_key[sector_dst_key]
         lvl_src = sector_levels[sector_src]
         block = overlap[np.ix_(lvl_dst, lvl_src)]
         matrix[np.ix_(idx_dst, idx_src)] = block
     return matrix
-
-
-def _spectral_density_grid(
-    spectral_density: Callable[..., float | complex],
-    omega: FloatArray,
-    T: float | None,
-) -> ComplexArray:
-    """Evaluate spectral density on an omega grid with optional temperature."""
-    try:
-        signature = inspect.signature(spectral_density)
-        params = tuple(signature.parameters.values())
-        supports_temp = any(p.kind is inspect.Parameter.VAR_POSITIONAL for p in params) or (
-            len(
-                [
-                    p
-                    for p in params
-                    if p.kind
-                    in (
-                        inspect.Parameter.POSITIONAL_ONLY,
-                        inspect.Parameter.POSITIONAL_OR_KEYWORD,
-                    )
-                ]
-            )
-            >= 2
-        )
-    except (TypeError, ValueError):
-        supports_temp = True
-
-    if T is None or not supports_temp:
-        try:
-            values = spectral_density(omega)
-            return np.asarray(values, dtype=np.complex128)
-        except Exception:
-            vectorized = np.vectorize(spectral_density, otypes=[np.complex128])
-            return np.asarray(vectorized(omega), dtype=np.complex128)
-
-    try:
-        values = spectral_density(omega, T)
-        return np.asarray(values, dtype=np.complex128)
-    except Exception:
-        def _scalar_eval(w: float) -> complex:
-            return complex(spectral_density(w, T))
-
-        vectorized = np.vectorize(
-            _scalar_eval, otypes=[np.complex128]
-        )
-        return np.asarray(vectorized(omega), dtype=np.complex128)
 
 
 def build_operator_matrix(
@@ -345,7 +318,9 @@ def build_operator_matrix(
         out: ComplexArray
         if isinstance(op, SectorJumpOperator):
             if op.system is not system:
-                raise ValueError("SectorJumpOperator.system must match the provided system.")
+                raise ValueError(
+                    "SectorJumpOperator.system must match the provided system."
+                )
             key = (op.delta[0], op.delta[1])
             cached_jump = jump_cache.get(key)
             if cached_jump is None:
@@ -372,57 +347,6 @@ def build_operator_matrix(
         return out
 
     return _build(operator)
-
-
-def compute_rate_matrix(
-    energies: FloatArray,
-    O_matrix: ComplexArray,
-    spectral_density: Callable[..., float | complex],
-    T: float | None,
-    units: FrequencyUnit = "GHz",
-    spectral_omega_units: Literal["input", "SI"] = "SI",
-) -> FloatArray:
-    """Compute FGR transition-rate matrix from energies and operator matrix.
-
-    Parameters
-    ----------
-    energies:
-        Energy vector aligned with matrix indices.
-    O_matrix:
-        Operator matrix in the same basis as `energies`.
-    spectral_density:
-        Spectral density callable `S(omega)` or `S(omega, T)`.
-    T:
-        Temperature in Kelvin or `None`.
-    units:
-        Unit used by `energies`.
-    spectral_omega_units:
-        Whether the spectral function expects input omega in the same units
-        ("input") or SI rad/s ("SI").
-
-    Returns
-    -------
-    FloatArray
-        Dense transition-rate matrix with zero diagonal.
-    """
-    ei = energies[:, None]
-    ej = energies[None, :]
-    omega = 2.0 * np.pi * (ei - ej)
-    omega_for_spectral = omega
-    if spectral_omega_units == "SI":
-        omega_for_spectral = omega * _FREQUENCY_SCALE_IN_HZ[units]
-    spectral = _spectral_density_grid(spectral_density, omega_for_spectral, T)
-
-    me2 = np.abs(O_matrix) ** 2
-    me2[me2 < _MATRIX_ELEMENT_CUTOFF**2] = 0.0
-    rates_complex = (me2 * spectral) / (hbar**2)
-    rates_real = np.real_if_close(rates_complex)
-    if np.iscomplexobj(rates_real):
-        raise ValueError("Computed FGR rates are complex.")
-
-    rates = np.asarray(rates_real, dtype=np.float64)
-    np.fill_diagonal(rates, 0.0)
-    return rates
 
 
 def compute_all_decay_rates(

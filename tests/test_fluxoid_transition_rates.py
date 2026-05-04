@@ -14,6 +14,7 @@ from ztpcraft.projects.fluxonium.multiloop_fluxonium.two_loop_fluxoid_sweeps imp
     sweep_spectral_densities,
     sweep_temperatures,
 )
+from ztpcraft.decoherence.fgr import compute_rate_matrix
 from ztpcraft.projects.fluxonium.multiloop_fluxonium.two_loop_fluxoid_transition_rates import (
     FluxoidOperator,
     GlobalState,
@@ -22,7 +23,6 @@ from ztpcraft.projects.fluxonium.multiloop_fluxonium.two_loop_fluxoid_transition
     build_global_states,
     build_jump_matrix,
     build_operator_matrix,
-    compute_rate_matrix,
     compute_all_decay_rates,
     sector_rate_matrix,
     sector_rate_matrix_fast,

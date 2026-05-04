@@ -2,11 +2,11 @@ from __future__ import annotations
 
 import numpy as np
 
-from ztpcraft.decoherence.quantum_noise import QuantumNoiseSpectralDensity
+from ztpcraft.decoherence.quantum_noise import OhmicLikeNoise
 
 
 def test_quantum_noise_zero_temperature_absorption_suppressed() -> None:
-    qn = QuantumNoiseSpectralDensity(alpha=1.2e-5, s=1.0, temperature=0.0)
+    qn = OhmicLikeNoise(alpha=1.2e-5, s=1.0, temperature=0.0)
     omega = 2.0 * np.pi * 5.0e9
     assert np.isclose(qn.S(-omega), 0.0)
     assert qn.S(omega) > 0.0
@@ -15,7 +15,7 @@ def test_quantum_noise_zero_temperature_absorption_suppressed() -> None:
 def test_quantum_noise_cutoff_behaviors() -> None:
     omega = 2.0 * np.pi * 4.0e9
 
-    qn_hard = QuantumNoiseSpectralDensity(
+    qn_hard = OhmicLikeNoise(
         alpha=1.0,
         s=1.0,
         temperature=0.02,
@@ -24,7 +24,7 @@ def test_quantum_noise_cutoff_behaviors() -> None:
     )
     assert np.isclose(qn_hard.S(omega), 0.0)
 
-    qn_exp = QuantumNoiseSpectralDensity(
+    qn_exp = OhmicLikeNoise(
         alpha=1.0,
         s=1.0,
         temperature=0.02,
@@ -35,7 +35,7 @@ def test_quantum_noise_cutoff_behaviors() -> None:
 
 
 def test_quantum_noise_vectorized_matches_scalar() -> None:
-    qn = QuantumNoiseSpectralDensity(alpha=3.0e-6, s=0.8, temperature=0.03)
+    qn = OhmicLikeNoise(alpha=3.0e-6, s=0.8, temperature=0.03)
     omega = np.array(
         [
             -2.0 * np.pi * 6.0e9,
@@ -52,7 +52,7 @@ def test_quantum_noise_vectorized_matches_scalar() -> None:
 
 
 def test_quantum_noise_S_temperature_override() -> None:
-    qn = QuantumNoiseSpectralDensity(alpha=1e-5, s=1.0, temperature=0.05)
+    qn = OhmicLikeNoise(alpha=1e-5, s=1.0, temperature=0.05)
     omega = 2.0 * np.pi * 5.0e9
     s_default = qn.S(omega)
     s_cold = qn.S(omega, temperature=0.01)
