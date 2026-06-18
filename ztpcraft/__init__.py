@@ -9,6 +9,11 @@ import ztpcraft.decoherence as decoherence
 import ztpcraft.utils as utils
 import ztpcraft.misc as misc
 
+try:
+    import ztpcraft.gpu as gpu
+except ImportError:
+    gpu = None
+
 # public modules
 __all__ = [
     "prj",
@@ -19,6 +24,9 @@ __all__ = [
     "misc",
     "__version__",
 ]
+
+if gpu is not None:
+    __all__.append("gpu")
 
 
 def reload_all():

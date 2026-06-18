@@ -40,6 +40,11 @@ dependencies = [
 ]
 
 [project.optional-dependencies]
+# GPU monitoring (NVML via pynvml)
+gpu = [
+    "nvidia-ml-py",
+]
+
 # Developer / contributor extras
 dev = [
     "black",
