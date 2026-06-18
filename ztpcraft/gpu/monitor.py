@@ -3,14 +3,18 @@ from __future__ import annotations
 import threading
 import time
 from pathlib import Path
+from types import TracebackType
+from typing import Any, cast
 
 import matplotlib.pyplot as plt
-import pandas as pd
-from pynvml import (
-    nvmlInit,
-    nvmlDeviceGetHandleByIndex,
-    nvmlDeviceGetMemoryInfo,
-)
+import pandas as pd  # type: ignore[reportMissingTypeStubs]
+import pynvml as _pynvml  # type: ignore[import-untyped]
+
+nvmlInit = cast(Any, _pynvml.nvmlInit)
+nvmlDeviceGetHandleByIndex = cast(Any, _pynvml.nvmlDeviceGetHandleByIndex)
+nvmlDeviceGetMemoryInfo = cast(Any, _pynvml.nvmlDeviceGetMemoryInfo)
+
+plt = cast(Any, plt)
 
 
 class monitor_gpu:
@@ -22,6 +26,15 @@ class monitor_gpu:
     >>> with monitor_gpu("floquet"):
     ...     run_simulation()
     """
+
+    name: str
+    device: int
+    interval: float
+    output_dir: Path
+    _records: list[tuple[float, float]]
+    _running: bool
+    _t0: float
+    _thread: threading.Thread | None
 
     def __init__(
         self,
@@ -48,8 +61,12 @@ class monitor_gpu:
         self.device = device
         self.interval = interval
         self.output_dir = Path(output_dir)
+        self._records = []
+        self._running = False
+        self._t0 = 0.0
+        self._thread = None
 
-    def __enter__(self):
+    def __enter__(self) -> monitor_gpu:
         nvmlInit()
 
         self.output_dir.mkdir(parents=True, exist_ok=True)
@@ -67,7 +84,7 @@ class monitor_gpu:
                 self._records.append(
                     (
                         time.perf_counter() - self._t0,
-                        mem.used / 1024**3,
+                        int(mem.used) / 1024**3,
                     )
                 )
 
@@ -81,29 +98,38 @@ class monitor_gpu:
 
         return self
 
-    def __exit__(self, exc_type, exc_val, exc_tb):
+    def __exit__(
+        self,
+        exc_type: type[BaseException] | None,
+        exc_val: BaseException | None,
+        exc_tb: TracebackType | None,
+    ) -> bool:
         self._running = False
-        self._thread.join()
+        if self._thread is not None:
+            self._thread.join()
 
         df = pd.DataFrame(
             self._records,
-            columns=["time_s", "memory_gb"],
+            columns=["time_s", "memory_gb"],  # type: ignore[arg-type]
         )
 
         csv_path = self.output_dir / f"{self.name}.csv"
         png_path = self.output_dir / f"{self.name}.png"
 
-        df.to_csv(csv_path, index=False)
+        df.to_csv(csv_path, index=False)  # type: ignore[reportUnknownMemberType]
 
-        plt.figure(figsize=(6, 3))
-        plt.plot(df["time_s"], df["memory_gb"])
-        plt.xlabel("Time (s)")
-        plt.ylabel("Memory (GB)")
-        plt.tight_layout()
-        plt.savefig(png_path, dpi=150)
-        plt.close()
+        times = [t for t, _ in self._records]
+        memory_gb = [m for _, m in self._records]
 
-        peak = df["memory_gb"].max()
+        plt.figure(figsize=(6, 3))  # type: ignore[reportUnknownMemberType]
+        plt.plot(times, memory_gb)  # type: ignore[reportUnknownMemberType]
+        plt.xlabel("Time (s)")  # type: ignore[reportUnknownMemberType]
+        plt.ylabel("Memory (GB)")  # type: ignore[reportUnknownMemberType]
+        plt.tight_layout()  # type: ignore[reportUnknownMemberType]
+        plt.savefig(png_path, dpi=150)  # type: ignore[reportUnknownMemberType]
+        plt.close()  # type: ignore[reportUnknownMemberType]
+
+        peak = max(memory_gb, default=0.0)
 
         print(
             f"[GPU monitor] peak={peak:.2f} GB | "
