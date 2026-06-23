@@ -5,5 +5,7 @@ tqdm
 pandas
 dill
 pathos
+psutil
 scqubits
+dynamiqs
 IPython

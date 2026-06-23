@@ -8,6 +8,9 @@
 		},
 		{
 			"path": "../Superconducting_qubit_NU/Codes/scqubits_Tianpu"
+		},
+		{
+			"path": "../Superconducting_qubit_NU/Codes/dynamiqs"
 		}
 	],
 	"settings": {}
