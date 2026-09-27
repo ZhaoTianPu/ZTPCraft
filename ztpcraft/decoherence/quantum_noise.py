@@ -15,23 +15,13 @@ CutoffType = Literal["exponential", "hard", None]
 
 @dataclass
 class OhmicLikeNoise:
-    """
-    Unsymmetrized quantum, ohmic-like noise spectral density S(omega).
+    """Unsymmetrized noise with J(w) = alpha * w**s * cutoff(w), w > 0.
 
-    J(omega) = alpha * omega^s if 0 < omega < cutoff_freq,
-             = 0 if omega <= 0,
-             = alpha * omega^s * cutoff_function(omega) if omega > cutoff_freq.
-    where cutoff_function(omega) is either
-        - exponential: exp(-omega / cutoff_freq)
-        - hard: 1 if omega < cutoff_freq, 0 otherwise
-        - None: 1 for all
-
-    S(omega) = J(omega) * (bose(omega) + 1) if omega > 0,
-             = J(omega) * bose(omega) if omega < 0.
-
-    The cutoff_function is used to smoothly transition the spectral density to 0 at the cutoff frequency.
-
-    All frequencies are angular frequencies in SI units (rad/s).
+    Positive frequency is the emission branch; negative frequency is absorption.
+    The exponential cutoff exp(-w/cutoff_freq) applies at every frequency.
+    Frequencies are SI angular frequencies (rad/s). At positive temperature,
+    S(0) = alpha*k*T/hbar for s=1, zero for s>1, and diverges for 0<s<1.
+    A sub-Ohmic spectrum needs a physical infrared regularization for FGR at zero.
     """
 
     alpha: float
@@ -52,7 +42,7 @@ class OhmicLikeNoise:
         beta = hbar * abs(float(omega)) / (k * T)
         if beta > 700.0:
             return 0.0
-        return float(1.0 / (np.exp(beta) - 1.0))
+        return float(1.0 / np.expm1(beta))
 
     def J(self, omega: float) -> float:
         """Spectral function J(omega) for omega > 0."""
@@ -72,54 +62,45 @@ class OhmicLikeNoise:
         return float(value)
 
     def S(self, omega: float, temperature: float | None = None) -> float:
-        """
-        Unsymmetrized spectral density.
-
-        omega > 0: emission branch
-        omega < 0: absorption branch
-
-        If ``temperature`` is None, uses ``self.temperature``. A non-None value
-        overrides for this call only (compatible with FGR passing ``T`` as the
-        second positional argument).
-        """
-        omega = float(omega)
-        if omega == 0.0:
-            return 0.0
-
-        if omega > 0.0:
-            return float(self.J(omega) * (self.bose(omega, temperature) + 1.0))
-        omega_abs = abs(omega)
-        return float(self.J(omega_abs) * self.bose(omega_abs, temperature))
+        """Scalar S; an explicit temperature overrides the stored value."""
+        return float(self.S_array(np.asarray(omega), temperature))
 
     def S_array(
         self,
         omega: NDArray[np.float64] | list[float],
         temperature: float | None = None,
     ) -> FloatArray:
-        """Vectorized unsymmetrized spectral density over SI angular frequencies."""
-        omega_array = np.asarray(omega, dtype=np.float64)
-        result = np.zeros_like(omega_array, dtype=np.float64)
+        """Array-capable S(omega, T), including the zero-frequency limit.
 
-        pos = omega_array > 0.0
-        neg = omega_array < 0.0
-        if np.any(pos):
-            values_pos = np.asarray(
-                [
-                    self.J(float(w)) * (self.bose(float(w), temperature) + 1.0)
-                    for w in omega_array[pos]
-                ],
-                dtype=np.float64,
-            )
-            result[pos] = values_pos
-        if np.any(neg):
-            values_neg = np.asarray(
-                [
-                    self.J(float(abs(w))) * self.bose(float(abs(w)), temperature)
-                    for w in omega_array[neg]
-                ],
-                dtype=np.float64,
-            )
-            result[neg] = values_neg
+        Uses expm1 and negative exponentials for stable Bose factors without
+        overflow at large frequencies or cancellation near zero.
+        """
+        T = self._thermal_temperature(temperature)
+        if not np.isfinite(T) or T < 0:
+            raise ValueError("Temperature must be finite and nonnegative.")
+        if self.s <= 0:
+            raise ValueError("OhmicLikeNoise requires a positive exponent s.")
+        omega_array = np.asarray(omega, dtype=float)
+        if not np.all(np.isfinite(omega_array)):
+            raise ValueError("Frequencies must be finite.")
+        result = np.zeros_like(omega_array)
+        nonzero = omega_array != 0
+        w = np.abs(omega_array[nonzero])
+        density = self.alpha * w**self.s
+        if self.cutoff_type == "exponential" and self.cutoff_freq is not None:
+            density *= np.exp(-w / self.cutoff_freq)
+        elif self.cutoff_type == "hard" and self.cutoff_freq is not None:
+            density[w > self.cutoff_freq] = 0.0
+        occupation = np.zeros_like(w)
+        if T > 0:
+            beta = hbar * w / (k * T)
+            occupation = np.exp(-beta) / (-np.expm1(-beta))
+        result[nonzero] = density * (occupation + (omega_array[nonzero] > 0))
+        if T > 0 and self.alpha != 0:
+            if self.s == 1:
+                result[~nonzero] = self.alpha * k * T / hbar
+            elif self.s < 1:
+                result[~nonzero] = np.inf
         return result
 
 
@@ -189,6 +170,7 @@ class CapacitiveNoise:
 
         result = 2.0 * hbar / self.C / q_cap_values * coth_factor / exp_plus_one
         return np.asarray(result, dtype=np.float64)
+
 
 @dataclass
 class InductiveNoise:

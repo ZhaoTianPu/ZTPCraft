@@ -1,6 +1,10 @@
 from __future__ import annotations
 
-"""Operator construction and FGR transition-rate utilities for fluxoid sectors."""
+"""Legacy expression-based operators and FGR helpers.
+
+New calculations should use SectorBasis and explicit matrices from
+``two_loop_fluxoid_rates``. This API remains for existing notebooks.
+"""
 
 from abc import ABC, abstractmethod
 from collections.abc import Callable, Iterable
@@ -393,13 +397,10 @@ def compute_all_decay_rates(
         spectral_omega_units=spectral_omega_units,
     )
     rates: dict[tuple[int, int], float] = {}
-    n_states = len(states)
-    mask = np.abs(operator_matrix) >= _MATRIX_ELEMENT_CUTOFF
+    mask = np.abs(operator_matrix.T) >= _MATRIX_ELEMENT_CUTOFF
     np.fill_diagonal(mask, False)
     idx_pairs = np.argwhere(mask)
     for i, j in idx_pairs:
-        if i < 0 or j < 0 or i >= n_states or j >= n_states:
-            continue
         rates[(int(i), int(j))] = float(rate_matrix[i, j])
     return rates
 

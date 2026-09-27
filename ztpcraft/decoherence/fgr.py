@@ -10,7 +10,12 @@ import numpy as np
 from numpy.typing import NDArray
 from scipy.constants import hbar, k
 
-__all__ = ["calc_therm_ratio", "fgr_decay_rate", "compute_rate_matrix"]
+__all__ = [
+    "calc_therm_ratio",
+    "fgr_decay_rate",
+    "compute_rate_matrix",
+    "rate_matrix_from_spectral_values",
+]
 
 FrequencyUnit = Literal["GHz", "MHz", "kHz", "Hz"]
 _FREQUENCY_SCALE_HZ: dict[FrequencyUnit, float] = {
@@ -155,7 +160,12 @@ def compute_rate_matrix(
     spectral_omega_units: Literal["input", "SI"] = "SI",
     matrix_element_cutoff: float = 1e-14,
 ) -> FloatArray:
-    """Compute dense FGR transition-rate matrix from energies and operator matrix."""
+    """Return rates[initial, final] from O_matrix[final, initial].
+
+    The compatibility entry point accepts scalar or array spectral callables.
+    New array-only workflows can evaluate S explicitly and use
+    rate_matrix_from_spectral_values without signature inspection or fallback.
+    """
     ei = energies[:, None]
     ej = energies[None, :]
     omega = 2.0 * np.pi * (ei - ej)
@@ -164,15 +174,40 @@ def compute_rate_matrix(
         omega_for_spectral = omega * _FREQUENCY_SCALE_HZ[units]
     spectral = _spectral_density_grid(spectral_density, omega_for_spectral, T)
 
-    matrix_element_mod_square = np.abs(O_matrix) ** 2
-    matrix_element_mod_square[
-        matrix_element_mod_square < matrix_element_cutoff**2
-    ] = 0.0
-    rates_complex = (matrix_element_mod_square * spectral) / (hbar**2)
-    np.fill_diagonal(rates_complex, 0.0)
-    rates_real = np.real_if_close(rates_complex)
-    if np.iscomplexobj(rates_real):
-        raise ValueError("Computed FGR rates are complex.")
+    return rate_matrix_from_spectral_values(
+        O_matrix, spectral, matrix_element_cutoff=matrix_element_cutoff
+    )
 
-    rates = np.asarray(rates_real, dtype=np.float64)
-    return rates
+
+def rate_matrix_from_spectral_values(
+    O_matrix: ComplexArray,
+    spectral: FloatArray,
+    *,
+    matrix_element_cutoff: float = 1e-14,
+) -> FloatArray:
+    """FGR rates[initial, final] for a pre-evaluated S(omega[initial, final]).
+
+    Operators have conventional [final, initial] ordering. S has SI units of
+    energy squared times seconds for a dimensionless operator. Scalar spectral
+    values broadcast; invalid shapes or nonphysical spectral values raise.
+    """
+    operator = np.asarray(O_matrix, dtype=complex)
+    if operator.ndim != 2 or operator.shape[0] != operator.shape[1]:
+        raise ValueError("O_matrix must be square.")
+    if not np.all(np.isfinite(operator)):
+        raise ValueError("O_matrix must be finite.")
+    if not np.isfinite(matrix_element_cutoff) or matrix_element_cutoff < 0:
+        raise ValueError("matrix_element_cutoff must be finite and nonnegative.")
+    spectral = np.asarray(spectral)
+    if np.iscomplexobj(spectral) and np.any(spectral.imag != 0):
+        raise ValueError("Spectral density must be real.")
+    spectral = np.broadcast_to(spectral.real, operator.shape)
+    if not np.all(np.isfinite(spectral)) or np.any(spectral < 0):
+        raise ValueError("Spectral density must be finite and nonnegative.")
+    strengths = np.abs(operator.T) ** 2
+    strengths[strengths < matrix_element_cutoff**2] = 0.0
+    rates = strengths * spectral / hbar**2
+    np.fill_diagonal(rates, 0.0)
+    if not np.all(np.isfinite(rates)):
+        raise ValueError("Computed FGR rates are not finite.")
+    return np.asarray(rates, dtype=float)

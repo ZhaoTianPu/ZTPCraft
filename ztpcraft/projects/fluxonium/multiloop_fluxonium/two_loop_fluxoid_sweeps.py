@@ -1,6 +1,9 @@
 from __future__ import annotations
 
-"""Parameter sweeps for two-loop fluxoid FGR rates.
+"""Legacy expression-based sweeps for two-loop fluxoid FGR rates.
+
+New calculations can use RateSetup and ordinary loops from
+``two_loop_fluxoid_rates`` without operator factories.
 
 Diagonalization and global operator-matrix assembly are expensive. For a fixed
 external-flux configuration, :func:`build_fgr_workspace` caches energies and the
@@ -145,7 +148,7 @@ def state_to_state_transition_rates_from_workspace(
     )
     O = workspace.operator_matrix
     rates: dict[tuple[int, int], float] = {}
-    mask = np.abs(O) >= _MATRIX_ELEMENT_CUTOFF
+    mask = np.abs(O.T) >= _MATRIX_ELEMENT_CUTOFF
     np.fill_diagonal(mask, False)
     for i, j in np.argwhere(mask):
         rates[(int(i), int(j))] = float(rate_matrix[int(i), int(j)])

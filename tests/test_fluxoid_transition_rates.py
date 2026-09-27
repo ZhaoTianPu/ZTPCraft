@@ -121,7 +121,7 @@ def _legacy_rates(
         for j, s_j in enumerate(states):
             if i == j:
                 continue
-            element = bound.matrix_element(s_i, s_j)
+            element = bound.matrix_element(s_j, s_i)
             if abs(element) < 1e-14:
                 continue
             rates[(i, j)] = fgr_decay_rate(

@@ -282,7 +282,7 @@ def state_to_state_transition_rates_from_workspace(
     )
     O = workspace.dressed_operator(channel_name)
     rates: dict[tuple[int, int], float] = {}
-    mask = np.abs(O) >= _MATRIX_ELEMENT_CUTOFF
+    mask = np.abs(O.T) >= _MATRIX_ELEMENT_CUTOFF
     np.fill_diagonal(mask, False)
     for i, j in np.argwhere(mask):
         value = float(rate_matrix[int(i), int(j)])

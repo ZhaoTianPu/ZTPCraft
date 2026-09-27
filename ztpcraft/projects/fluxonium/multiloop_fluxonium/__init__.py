@@ -100,7 +100,29 @@ from ztpcraft.projects.fluxonium.multiloop_fluxonium.cqps import (
     tunneling_strength_from_single_junction,
 )
 
+# Preferred matrix API; older expression-based entry points remain available.
+from .two_loop_fluxoid_rates import (
+    SectorBasis,
+    RateSetup,
+    sector_energies,
+    jump_matrix,
+    prepare_rates,
+    calculate_state_rates,
+    thermal_populations,
+    aggregate_rates,
+    calculate_sector_rates,
+)
+
 __all__ = [
+    "SectorBasis",
+    "RateSetup",
+    "sector_energies",
+    "jump_matrix",
+    "prepare_rates",
+    "calculate_state_rates",
+    "thermal_populations",
+    "aggregate_rates",
+    "calculate_sector_rates",
     "FluxoidFGRWorkspace",
     "FluxoidFluxSweepResult",
     "build_fgr_workspace",
