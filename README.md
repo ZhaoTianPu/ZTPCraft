@@ -20,12 +20,14 @@ python -m pip install -e '.[dev]'
 ```
 
 Python 3.10–3.12 is required. The release workflow builds and tests wheels for
-CPython 3.10–3.12 on Linux x86_64 and macOS Apple Silicon/Intel. SciPy is constrained to
+CPython 3.10–3.12 on Linux x86_64, macOS Apple Silicon/Intel, and Windows x86_64. SciPy is constrained to
 1.13.x at build time and runtime because its Cython API changed in later versions.
 Support for newer Python/SciPy versions requires updating and testing the extension.
 Source builds require a C compiler; pip installs the declared Cython, NumPy, and
-SciPy build dependencies automatically. Windows wheels are not currently built;
-the C99 complex-number extension needs porting before Windows support is promised.
+SciPy build dependencies automatically. On Windows, source builds require Microsoft
+C++ Build Tools; installing a matching wheel does not require a compiler.
+The Windows build is configured but remains unverified until its GitHub Actions
+job passes. Optional JAX/dynamiqs features are outside this core wheel test matrix.
 
 ## Fluxoid jump rates
 

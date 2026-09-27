@@ -48,7 +48,7 @@ the rate API without importing JAX or ninatool. Tests run against the installed 
    Commit and push the release changes. Ordinary pushes and pull requests only build.
 2. In GitHub Actions, run **Build and publish distributions**, selecting
    `testpypi`, to rehearse publication. `none` only builds and tests.
-3. Inspect the results for all three platforms. Download the TestPyPI wheel without
+3. Inspect the results for all four runner configurations. Download the TestPyPI wheel without
    dependencies into a fresh folder, then install that local wheel normally so its
    dependencies come from PyPI:
    ```sh
@@ -65,6 +65,10 @@ the rate API without importing JAX or ninatool. Tests run against the installed 
 PyPI does not allow uploaded filenames to be reused. Fix a published package by
 bumping the version and creating a new release.
 
-The workflow covers CPython 3.10–3.12, Linux x86_64, and macOS arm64/x86_64.
-It builds each wheel from the source archive and tests it in isolation. Windows,
-Linux ARM, and newer Python versions are not in the current wheel test matrix.
+The workflow covers CPython 3.10–3.12, Linux x86_64, macOS arm64/x86_64, and
+Windows x86_64. It builds each wheel from the source archive and tests it in
+isolation, including complex oscillator integrals and orders that exceed 32-bit
+integer products. Windows support remains provisional until that CI job passes.
+Linux ARM, Windows ARM, and newer Python versions are outside this matrix.
+The local shell examples above use macOS/Linux paths; on Windows the virtual
+environment executable is `Scripts/python.exe` instead of `bin/python`.

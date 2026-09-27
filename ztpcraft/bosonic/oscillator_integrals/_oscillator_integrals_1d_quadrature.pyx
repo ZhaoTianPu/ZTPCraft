@@ -7,11 +7,8 @@ This module provides:
 - cSij_GH, cn2ij_GH, cphi2ij_GH, ccosij_complex_GH (Gauss-Hermite quadrature forms)
 """
 # imports
-from libc.math cimport floor, sqrt, pi, exp, cos, abs
-cdef extern from "complex.h":
-    double complex cexp(double complex)
-    double complex csqrt(double complex)
-    double creal(double complex)
+from libc.math cimport floor, sqrt, pi, exp, cos, sin, abs
+from libc.stdint cimport uint64_t
 from cython.view cimport array as cvarray
 
 from cython cimport Py_ssize_t
@@ -20,6 +17,11 @@ from scipy.special.cython_special cimport eval_hermite, gamma, hyp1f1
 
 import numpy as np
 from scipy.special import roots_hermite
+
+
+cdef inline double complex complex_exp(double complex z):
+    """Complex exponential using portable real-valued C math functions."""
+    return exp(z.real) * (cos(z.imag) + 1j * sin(z.imag))
 
 
 # generate Gauss-Hermite quadrature points and weights
@@ -34,9 +36,11 @@ for index in range(1,300):
 # create a memoryview object to access GH quadrature data
 cdef double [:, :, :] GHdata_view = GHdata
 
+# Fixed-width products keep the same range on Windows and Unix.
+# As before, sufficiently high orders can overflow these 64-bit intermediates.
 # continuous product function
-cdef unsigned long int cprod(Py_ssize_t nstart, Py_ssize_t nfinal, Py_ssize_t dn):
-    cdef unsigned long int prod_result
+cdef uint64_t cprod(Py_ssize_t nstart, Py_ssize_t nfinal, Py_ssize_t dn):
+    cdef uint64_t prod_result
     cdef Py_ssize_t n = nstart + dn
     if nstart <= 0:
         prod_result = 1
@@ -64,14 +68,14 @@ cpdef double complex hermite_complex(Py_ssize_t n, double complex z):
     else:
         return sign * prefactor * 2 * z * hyp1f1(-n_2, 1.5, z2)
 
-# combination function
-cdef unsigned long int ccomb(Py_ssize_t n, Py_ssize_t r):
-    if n==r:
-        return 1
-    elif r==0:
-        return 1
-    else:
-        return cprod(n,n-r+1,-1)//cprod(r,0,-1)
+# Compute binomial coefficients without overflowing factorial-sized intermediates.
+cdef uint64_t ccomb(Py_ssize_t n, Py_ssize_t r):
+    cdef uint64_t result = 1
+    cdef Py_ssize_t k
+    r = min(r, n - r)
+    for k in range(1, r + 1):
+        result = result * (n - r + k) // k
+    return result
 
 # the result of the Gaussian integral without the exponential part
 cdef double cGauss_int_without_exp(Py_ssize_t n, double a, double b):
@@ -84,13 +88,14 @@ cdef double cGauss_int_without_exp(Py_ssize_t n, double a, double b):
     return Gauss_sum
 
 # the result of the Gaussian integral without the exponential part, for complex coefficients
-cdef long double complex cGauss_int_without_exp_complex(Py_ssize_t n, double complex a, double complex b):
-    cdef long double complex Gauss_sum
+cdef double complex cGauss_int_without_exp_complex(Py_ssize_t n, double a, double complex b):
+    # The Gaussian quadratic coefficient a is real and positive at the call site.
+    cdef double complex Gauss_sum
     cdef Py_ssize_t k
     Gauss_sum = 0
     for k in range(round(floor(n/2.+1))):
         Gauss_sum += ccomb(n,2*k)*cprod(2*k-1, 0, -2)/(2*a)**(n-k)*b**(n-2*k)
-    Gauss_sum *= csqrt(pi/a)
+    Gauss_sum *= sqrt(pi/a)
     return Gauss_sum
 
 # prefactor of the matrix element integrals from the two harmonic oscillator states
@@ -128,7 +133,7 @@ cpdef double ccosij(Py_ssize_t n_i,Py_ssize_t n_j,double phi_ratio_i,double phi_
     cdef double complex cosij_sum_j = 0
     cdef double complex cosij_sum_ij = 0
     cdef double complex expfactor = -1j*phi_ext -phi_ratio_i**2/2 -phi_ratio_j**2/2 + (1j*a + phi_ratio_i/phi_0_i+phi_ratio_j/phi_0_j)*(1j*a + phi_ratio_i/phi_0_i+phi_ratio_j/phi_0_j)/(4*(1/(2*phi_0_i**2)+1/(2*phi_0_j**2)))
-    cdef double complex expvalue = cexp(expfactor)
+    cdef double complex expvalue = complex_exp(expfactor)
     cdef Py_ssize_t k_i
     cdef Py_ssize_t k_j
     for k_i in range(n_i+1):
@@ -138,8 +143,8 @@ cpdef double ccosij(Py_ssize_t n_i,Py_ssize_t n_j,double phi_ratio_i,double phi_
             ccomb(n_j,k_j)*eval_hermite(n_j-k_j,-phi_ratio_j)\
             *(2/phi_0_j)**k_j\
             *cGauss_int_without_exp_complex(k_i+k_j,1/(2*phi_0_i**2)+1/(2*phi_0_j**2),1j*a+phi_ratio_i/phi_0_i+phi_ratio_j/phi_0_j)
-        cosij_sum_ij += cosij_sum_j*ccomb(n_i,k_i)*eval_hermite(n_i-k_i,-phi_ratio_i)*(2/phi_0_i)**k_i
-    return creal(cosij_sum_ij*cprefactor(n_i,n_j,phi_0_i,phi_0_j)*expvalue)
+        cosij_sum_ij += cosij_sum_j*<double>ccomb(n_i,k_i)*eval_hermite(n_i-k_i,-phi_ratio_i)*(2/phi_0_i)**k_i
+    return (cosij_sum_ij*cprefactor(n_i,n_j,phi_0_i,phi_0_j)*expvalue).real
 
 # matrix elements of n^2, using the analytical form
 cpdef double cn2ij(Py_ssize_t n_i,Py_ssize_t n_j,double phi_ratio_i,double phi_ratio_j,double phi_0_i,double phi_0_j):
@@ -421,4 +426,4 @@ cpdef double ccosij_complex_GH(Py_ssize_t n_i, Py_ssize_t n_j, double phi_ratio_
         GHintegral += GHdata_view[1,order,term] *\
             hermite_complex(n_i, phi_temp/phi_0_i - phi_ratio_i) *\
             hermite_complex(n_j, phi_temp/phi_0_j - phi_ratio_j) 
-    return creal(cexp(exparg - 1j*phi_ext) * cprefactor(n_i,n_j,phi_0_i,phi_0_j)/Asqrt * GHintegral)
+    return (complex_exp(exparg - 1j*phi_ext) * cprefactor(n_i,n_j,phi_0_i,phi_0_j)/Asqrt * GHintegral).real

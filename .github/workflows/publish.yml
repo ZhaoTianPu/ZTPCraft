@@ -46,8 +46,11 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        runner: [ubuntu-latest, macos-14, macos-15-intel]
+        runner: [ubuntu-latest, macos-14, macos-15-intel, windows-2022]
     runs-on: ${{ matrix.runner }}
+    defaults:
+      run:
+        shell: bash
     steps:
       - uses: actions/setup-python@v5
         with:
@@ -64,12 +67,13 @@ jobs:
           CIBW_ARCHS: native
           CIBW_TEST_REQUIRES: pytest
           CIBW_TEST_COMMAND: >-
-            python -I {project}/tools/check_install.py &&
+            python -I "{project}/tools/check_install.py" &&
             python -I -m pytest --import-mode=importlib
-            {project}/tests/test_fluxoid_matrix_rates.py
-            {project}/tests/test_fluxoid_transition_rates.py
-            {project}/tests/test_fgr.py
-            {project}/tests/test_quantum_noise.py
+            "{project}/tests/test_fluxoid_matrix_rates.py"
+            "{project}/tests/test_fluxoid_transition_rates.py"
+            "{project}/tests/test_fgr.py"
+            "{project}/tests/test_quantum_noise.py"
+            "{project}/tests/test_oscillator_integrals_portability.py"
         run: python -m cibuildwheel dist/*.tar.gz --output-dir wheelhouse
       - run: python -m twine check --strict wheelhouse/*
       - uses: actions/upload-artifact@v4
