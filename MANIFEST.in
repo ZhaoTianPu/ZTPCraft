@@ -1,8 +1,7 @@
-include README.md
-include license.md
-include license_chencrafts.md
-include requirements.txt
-
-recursive-include ztpcraft *.py
-include ztpcraft/bosonic/_oscillator_integrals_1d.pyx
-include ztpcraft/bosonic/_oscillator_integrals_1d.c
+include README.md RELEASING.md requirements.txt
+include license.md license_chencrafts.md
+recursive-include ztpcraft *.py *.pyx *.md
+recursive-include tests *.py
+include tools/check_install.py
+exclude ztpcraft/bosonic/oscillator_integrals/_oscillator_integrals_1d_quadrature.c
+global-exclude *.so *.pyd *.pyc

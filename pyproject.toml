@@ -2,11 +2,11 @@
 
 [build-system]
 requires = [
-    "setuptools>=61",
+    "setuptools>=77.0.3",
     "wheel",
-    "Cython>=0.29.36",
-    "numpy",
-    "scipy",
+    "Cython>=3.0",
+    "numpy>=2,<3",
+    "scipy>=1.13,<1.14",
 ]
 build-backend = "setuptools.build_meta"
 
@@ -15,33 +15,45 @@ name = "ztpcraft"
 version = "0.2"
 description = "Tianpu Zhao's personal toolbox"
 readme = "README.md"
-requires-python = ">=3.10"
+requires-python = ">=3.10,<3.13"
 authors = [
     { name = "Tianpu Zhao", email = "pacosynthesis@gmail.com" },
 ]
 license = "BSD-3-Clause"
+license-files = ["license.md", "license_chencrafts.md"]
 keywords = ["quantum", "toolbox", "physics", "research"]
 classifiers = [
     "Programming Language :: Python :: 3",
-    "Operating System :: OS Independent",
+    "Operating System :: MacOS",
+    "Operating System :: POSIX :: Linux",
 ]
 
-# Core runtime dependencies (mirrors requirements.txt)
+# The extension uses SciPy's version-sensitive Cython API; match the build range.
+# Core runtime dependencies
 dependencies = [
     "matplotlib",
-    "numpy",
-    "scipy",
+    "numpy>=1.26,<3",
+    "scipy>=1.13,<1.14",
     "tqdm",
     "pandas",
     "dill",
     "pathos",
     "psutil",
-    "scqubits",
-    "dynamiqs",
+    "scqubits>=4.3",
+    "qutip>=5",
+    "h5py>=3.10",
+    "cycler",
     "IPython",
 ]
 
+[project.urls]
+Repository = "https://github.com/ZhaoTianPu/ZTPCraft"
+
 [project.optional-dependencies]
+arrays = ["jax>=0.4.35"]
+simulation = ["dynamiqs>=0.3", "jax>=0.4.35", "sympy", "pydantic>=2"]
+notebook = ["jupyterlab", "ipykernel"]
+
 # GPU monitoring (NVML via pynvml)
 gpu = [
     "nvidia-ml-py",
@@ -74,12 +86,19 @@ typeCheckingMode = "strict"
 
 [tool.flake8]
 max-line-length = 88
-extend-ignore = ["E203", "W503"] 
+extend-ignore = ["E203", "W503"]
 
 [tool.pytest.ini_options]
 markers = [
     "slow: marks tests as slow (deselect with '-m \"not slow\"')",
 ]
 
+[tool.setuptools]
+include-package-data = false
+
+[tool.setuptools.package-data]
+"*" = ["*.md"]
+
 [tool.setuptools.packages.find]
-exclude = ["tests*", "docs*", "examples*"] 
+include = ["ztpcraft*"]
+exclude = ["tests*", "docs*", "examples*"]

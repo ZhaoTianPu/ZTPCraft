@@ -1,11 +1,2 @@
-matplotlib
-numpy
-scipy
-tqdm
-pandas
-dill
-pathos
-psutil
-scqubits
-dynamiqs
-IPython
+# Runtime dependencies are declared in pyproject.toml. Run from the repo root.
+.

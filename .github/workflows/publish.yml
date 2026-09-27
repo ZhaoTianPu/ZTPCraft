@@ -1,0 +1,109 @@
+name: Build and publish distributions
+on:
+  pull_request:
+  push:
+    branches: [main]
+  release:
+    types: [published]
+  workflow_dispatch:
+    inputs:
+      publish:
+        description: Optional destination for this build
+        type: choice
+        options: [none, testpypi]
+        default: none
+permissions:
+  contents: read
+jobs:
+  sdist:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install build twine
+      - name: Check release version
+        if: github.event_name == 'release'
+        env:
+          RELEASE_TAG: ${{ github.event.release.tag_name }}
+        run: |
+          python - <<'PY'
+          import os, tomllib
+          with open('pyproject.toml', 'rb') as f:
+              version = tomllib.load(f)['project']['version']
+          assert os.environ['RELEASE_TAG'] == f'v{version}', 'Release tag must match project version'
+          PY
+      - run: python -m build --sdist
+      - run: python -m twine check --strict dist/*
+      - uses: actions/upload-artifact@v4
+        with:
+          name: dist-sdist
+          path: dist/*.tar.gz
+          if-no-files-found: error
+  wheels:
+    needs: sdist
+    strategy:
+      fail-fast: false
+      matrix:
+        runner: [ubuntu-latest, macos-14, macos-15-intel]
+    runs-on: ${{ matrix.runner }}
+    steps:
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - uses: actions/download-artifact@v4
+        with:
+          name: dist-sdist
+          path: dist
+      - run: python -m pip install 'cibuildwheel>=3,<4' twine
+      - name: Build and test wheels from source archive
+        env:
+          CIBW_BUILD: 'cp310-* cp311-* cp312-*'
+          CIBW_SKIP: '*-musllinux*'
+          CIBW_ARCHS: native
+          CIBW_TEST_REQUIRES: pytest
+          CIBW_TEST_COMMAND: >-
+            python -I {project}/tools/check_install.py &&
+            python -I -m pytest --import-mode=importlib
+            {project}/tests/test_fluxoid_matrix_rates.py
+            {project}/tests/test_fluxoid_transition_rates.py
+            {project}/tests/test_fgr.py
+            {project}/tests/test_quantum_noise.py
+        run: python -m cibuildwheel dist/*.tar.gz --output-dir wheelhouse
+      - run: python -m twine check --strict wheelhouse/*
+      - uses: actions/upload-artifact@v4
+        with:
+          name: dist-${{ matrix.runner }}
+          path: wheelhouse/*.whl
+          if-no-files-found: error
+  pypi:
+    if: github.event_name == 'release'
+    needs: [sdist, wheels]
+    runs-on: ubuntu-latest
+    environment: pypi
+    permissions:
+      id-token: write
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: dist-*
+          merge-multiple: true
+          path: dist
+      - uses: pypa/gh-action-pypi-publish@release/v1
+  testpypi:
+    if: github.event_name == 'workflow_dispatch' && inputs.publish == 'testpypi'
+    needs: [sdist, wheels]
+    runs-on: ubuntu-latest
+    environment: testpypi
+    permissions:
+      id-token: write
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: dist-*
+          merge-multiple: true
+          path: dist
+      - uses: pypa/gh-action-pypi-publish@release/v1
+        with:
+          repository-url: https://test.pypi.org/legacy/

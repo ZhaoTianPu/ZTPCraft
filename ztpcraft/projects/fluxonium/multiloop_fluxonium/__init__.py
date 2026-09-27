@@ -8,9 +8,6 @@ from ztpcraft.projects.fluxonium.multiloop_fluxonium.two_loop_fluxoid_model impo
 from ztpcraft.projects.fluxonium.multiloop_fluxonium.two_loop_fluxoid_system import (
     TwoLoopFluxoidSystem,
 )
-from ztpcraft.projects.fluxonium.multiloop_fluxonium.two_loop_fluxonium_with_arrays_normal_modes import (
-    TwoLoopArrayFluxonium,
-)
 from ztpcraft.projects.fluxonium.multiloop_fluxonium.two_loop_fluxonium_with_arrays_core import (
     find_minima,
     node_flux_from_phi_b,
@@ -199,3 +196,12 @@ __all__ = [
     "phase_slip_total_state_to_state_transition_rates_from_workspace",
     "tunneling_strength_from_single_junction",
 ]
+
+
+def __getattr__(name):
+    if name == "TwoLoopArrayFluxonium":
+        from .two_loop_fluxonium_with_arrays_normal_modes import TwoLoopArrayFluxonium
+
+        globals()[name] = TwoLoopArrayFluxonium
+        return TwoLoopArrayFluxonium
+    raise AttributeError(f"module {__name__!r} has no attribute {name!r}")
