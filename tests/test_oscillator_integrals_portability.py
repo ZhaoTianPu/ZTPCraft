@@ -4,7 +4,7 @@ from math import factorial, pi, sqrt
 import numpy as np
 import pytest
 from scipy.integrate import quad
-from scipy.special import eval_hermite
+from numpy.polynomial.hermite import Hermite
 
 from ztpcraft.bosonic.oscillator_integrals import (
     _oscillator_integrals_1d_quadrature as kernel,
@@ -13,7 +13,8 @@ from ztpcraft.bosonic.oscillator_integrals import (
 
 def wavefunction(n, ratio, width, x):
     u = x / width - ratio
-    return eval_hermite(n, u) * np.exp(-u * u / 2) / sqrt(
+    # Avoid SciPy 1.13's platform-dependent integer dispatch in eval_hermite.
+    return Hermite.basis(n)(u) * np.exp(-u * u / 2) / sqrt(
         2**n * factorial(n) * sqrt(pi) * width
     )
 
